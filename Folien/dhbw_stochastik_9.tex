@@ -1,0 +1,138 @@
+\documentclass{beamer}
+\usetheme{Warsaw}
+
+\usepackage[utf8]{inputenc}
+\usepackage{fancybox}
+\usepackage{multimedia} 
+\usepackage{subfig}
+\usepackage{amsmath}
+\usepackage{hyperref}
+\usepackage[all]{xy}
+\begin{document}
+
+
+\title[Stochastik] % (optional, only for long titles)
+{Stochastik für Informatiker
+\\
+\includegraphics[scale=0.5]{img/craps}
+}
+\subtitle{}
+\author[Dr. Johannes Riesterer] % (optional, for multiple authors)
+{Dr.  rer. nat. Johannes Riesterer}
+
+\date[KPT 2004] % (optional)
+{}
+
+\subject{Stochastik}
+
+\frame{\titlepage}
+
+
+
+
+
+
+\begin{frame}
+    \frametitle{Statistik - Hypothesentest}
+\framesubtitle{}
+
+\begin{block}{Parametertests im Gaußmodell}
+Gegeben sei in diesem Abschnitt immer das zweiparametrige Gauß'sche Produktmodell
+\begin{align*}
+(\mathbb{R}^n, \mathcal{B}(\mathbb{R}^n), \prod N(m,v): m \in \mathbb{R}, v > 0 )
+\end{align*}
+\end{block}
+
+\begin{block}{Parametertests im Gaußmodell}
+Modell beschreibt zum Beispiel  $n$-maliges unabhängiges  Messen einer Messgröße (z.B. Temperatur) mit einem Sensor mit unbekannter Qualität. 
+\end{block}
+
+
+ \end{frame}
+
+
+\begin{frame}
+    \frametitle{Statistik - Hypothesentest}
+\framesubtitle{}
+
+\begin{block}{Parametertests im Gaußmodell - Chiquadrat-Test}
+Wir möchten für das Testproblem der Varianz $v$ 
+\begin{align*}
+H_0: v \leq v_0 \text{ gegen } H_1: v > v_0
+\end{align*}
+mit der Entscheidungsfunktion 
+ eine geeignete Statistik $T$ und die Konstanten $c$ finden, so dass 
+der Test optimal ist und ein  Signifikanzniveau von $\alpha$ besitzt. 
+%$\Theta_0 = \mathbb{R} \times [0, v_0]$ und $\Theta_1 = \mathbb{R} \times (v_0, \infty)$ 
+\end{block}
+\begin{block}{Parametertests im Gaußmodell - Chiquadrat-Test}
+Zum Beispiel möchte man testen, ob ein Sensor eine bestimmte Qualität hat (wenig streut).
+\end{block}
+
+
+ \end{frame}
+
+
+\begin{frame}
+    \frametitle{Statistik - Hypothesentest}
+\framesubtitle{}
+
+\begin{block}{Student's Satz}
+Gegeben sei das Gauß'sche Produktmodell und die Schätzer $M =  \frac{1}{n} \sum_{i= 1}^n X_i$ und $V* = \frac{1}{n-1} \sum_{i= 1}^n (X_i - M)^2$ für Erwartungswert und Varianz. Dann gilt:
+\begin{itemize}
+\item $M$ und $V^*$ sind stoch. unabhängig.
+\item $M$ hat die Verteilung $N(m ,\frac{v}{n})$.
+\item $V^*$ hat die Verteilung $\chi^2_{n-1}$ (\href{https://de.wikipedia.org/wiki/Chi-Quadrat-Verteilung}{\underline{Chiquadrat-Verteilung}}).
+\item $T_m := \frac{\sqrt{n}(M-m)}{\sqrt{V^*}}$ hat die Verteilung $t_{n-1}$ (\href{https://de.wikipedia.org/wiki/Studentsche_t-Verteilung}{\underline{Student'sche t-Verteilung}}).
+\end{itemize}
+\end{block}
+\begin{figure}[htp]
+      \centering
+    \includegraphics[width=0.3\textwidth]{img/Guinness}
+
+      \caption{Quelle: Wikipedia}
+\end{figure}
+
+
+ \end{frame}
+
+\begin{frame}
+    \frametitle{Statistik - Hypothesentest}
+\framesubtitle{}
+
+\begin{block}{Beispiel-Beweis: Quadrat einer Standardnormalverteilten Zufallsvariable}
+Sei $\phi_{0,1}$ die Dichte der Standardnormalverteilung.
+Aus Symmetriegründen hat $|X|$ die Dichte $2 \phi_{0,1}$ auf $\mathcal{X} = (0, \infty)$ (den Fall $X=0$ kann man ignorieren, da er mit Wahrscheinlichkeit $0$ auftritt). Durch \href{https://de.wikipedia.org/wiki/Integration_durch_Substitution}{\underline{Substitution}}    $\varphi(x)= x^2$ mit Umkehrfunktion $\varphi(y)^{-1} = \sqrt{y}$ hat $X^2 = \varphi(|X|)$ die Dichte
+\begin{align*}
+\rho_{X^2} (y) = 2 \phi_{0,1}(\sqrt{y}) \frac{1}{2}y^{-\frac{1}{2}} = \frac{1}{\sqrt{2 \pi}} e^{-\frac{y}{2}} y^{-\frac{1}{2}} = \frac{\Gamma(\frac{1}{2})}{\sqrt{\pi}} \gamma_{\frac{1}{2}, \frac{1}{2}} (y)
+\end{align*}
+\end{block}
+ \end{frame}
+
+
+\begin{frame}
+    \frametitle{Statistik - Hypothesentest}
+\framesubtitle{}
+
+\begin{block}{Chiquadrat-Test}
+Für den Schätzer $V^*= \sum_{i=1}^{n} (X_i - M)^2$ der Varianz 
+ist der Test mit dem Ablehnungsbereich $\{ \sum_{i=1}^{n} (X_i - M)^2 > v_0 \chi^2_{n-1;1-\alpha} \}$, wobei $ \chi^2_{n-1;1-\alpha}$ ein $\alpha$-Fraktil der $\chi^2_{n-1}$-Verteilung ist,   ein bester Test zum Signifikanzniveau $\alpha$.
+\end{block}
+ \end{frame}
+
+
+\begin{frame}
+    \frametitle{Statistik - Hypothesentest}
+\framesubtitle{}
+
+\begin{block}{Chiquadrat-Test}
+Für den Schätzer $M =  \frac{1}{n} \sum_{i= 1}^n X_i$ für den Erwartungswert 
+ist der Test mit dem Ablehnungsbereich 
+$\{ \frac{M -m_0}{\sqrt{\frac{n}{V^*}}}  >  t_{n-1; 1- \alpha} \}$,
+ wobei $t_{n-1; 1- \alpha} $ ein $\alpha$-Frakitl der $t_{n-1}$-Verteilung ist,   ein bester Test zum Signifikanzniveau $\alpha$.
+\end{block}
+ \end{frame}
+
+
+
+\end{document}
