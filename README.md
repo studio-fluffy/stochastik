@@ -1,1 +1,1 @@
-# stochastik
+# Vorlesungsunterlagen Stochastik an der DHBW
