@@ -75,7 +75,12 @@ Für eine Zerlegung  $\Omega = \bigcup_{j=1}^{n} B_j, \text{ mit } B_i \cap B_k 
 & P(A ) = \sum_{j=1}^{n}  P(A \; | \;  B_j) \cdot P(B_j)
 \end{align*}
 \end{Satz}
-
+\begin{proof}
+$A = A \cap B \cup A \cap \bar{B}$ und  $A \cap B \cap A \cap \bar{B} = \emptyset$. 
+\begin{align*}
+& P(A) =  P(A \cap B) + P(A \cap \bar{B}) = P(B) \cdot P(A  \; | \; B) + P(\bar{B}) \cdot P(A  \; | \; \bar{B}) 
+\end{align*}
+\end{proof}
 
 \begin{Satz}{Satz von Bayes}
 Für $A,B \subset \mathcal{P}(\Omega)$ mit  $P(B) > 0$ gilt
