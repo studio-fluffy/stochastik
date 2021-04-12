@@ -83,7 +83,7 @@ Kausalität ist die Beziehung zwischen Ursache und Wirkung. Sie betrifft die Abf
     \frametitle{Einleitung}
 \framesubtitle{}
    \begin{block}{Stochastik vs. Kausalität}
-In den seltensten Fällen lassen sich aus stochastischen Zusammenhängen kausale Zusammenhänge ableiten. ACHTUNG: Populisten tuen dies jedoch ständig!
+In den seltensten Fällen lassen sich aus stochastischen Zusammenhängen kausale Zusammenhänge ableiten. ACHTUNG: Populisten tun dies jedoch ständig!
 \end{block}
 
 \end{frame}
@@ -236,7 +236,7 @@ Potenzmenge  $\mathcal{P}(\Omega)$   (Menge aller Teilmengen).  \\
 $A \in \mathcal{P}(\Omega)$ bezeichnet man auch als Ereignis. 
 \begin{align*}
 & P(A) := \frac{ \#A}{ \# \Omega} \\
- & (\#M := \text{Anzahl der Elemente})
+ & (\#M := \text{Anzahl der Elemente von M})
 \end{align*}
 heißt Laplace Wahrscheinlichkeit.
 \end{block}
@@ -250,6 +250,22 @@ heißt Laplace Wahrscheinlichkeit.
 
 
  \end{frame}
+ 
+ \begin{frame}
+    \frametitle{Diskrete Modelle}
+\framesubtitle{ Laplace Wahrscheinlichkeit}
+
+\begin{block}{Beispiel (Würfel)}
+Für einen einmaligen Wurf eines Würfels sei $\Omega := \{1,2,3,4,5,6\}$. \\
+Ein mögliches Ereignis $A \in \mathcal{P}(\Omega)$ wäre das Ereignis $A := \{3,4\}$, also das Ereignis eine 3 oder eine 4 zu würfeln.  \\
+Hierzu ist die Laplace Wahrscheinlichkeit dann 
+\begin{align*}
+& P(A) = \frac{ \#A}{ \# \Omega} = \frac{2}{6}
+\end{align*}
+Das Gegenereignis hierzu ist $A^c = \{1,2,5,6\}$ mit $P(A^c) = \frac{4}{6}$
+\end{block}
+
+ \end{frame}
 
 
 
@@ -258,11 +274,35 @@ heißt Laplace Wahrscheinlichkeit.
 \framesubtitle{Kombinatorik}
 
 \begin{block}{Kombinationen und Permutationen}
+Für alle folgenden Fälle gilt $n := \#\Omega$.
 \begin{itemize}
 \item $Perm_k^n(\Omega, m.W.) : = \{ \omega_1, \ldots, \omega_k \in \Omega^k \}$  Menge aller Permutationen mit Wiederholung.
-\item $Perm_k^n(\Omega, o.W.) : = \{ \omega_1, \ldots, \omega_k \in \Omega^k  | \omega_i \neq \omega_j\}$  Menge aller Permutationen ohne Wiederholung.
-\item $Kom_k^n(\Omega, m.W.) : = \{ \omega_{i_1}, \ldots, \omega_{i_k} \in \Omega^k  | 1  \leq i_1 \leq  \ldots  \leq i_k \}$  Menge aller Kombinationen  mit Wiederholung.
-\item $Kom_k^n(\Omega, o.W.) : = \{ \omega_{i_1}, \ldots, \omega_{i_k} \in \Omega^k  | 1 \leq i_1  \leq \ldots \leq i_k ;  \omega_{i_i} \neq \omega_{i_j} \}$  Menge aller Kombinationen  ohne  Wiederholung.
+\item $Perm_k^n(\Omega, o.W.) : = \{ \omega_1, \ldots, \omega_k \in \Omega^k  \, | \, \omega_i \neq \omega_j\}$  Menge aller Permutationen ohne Wiederholung.
+
+\end{itemize}
+\end{block}
+\begin{block}{Beispiel (Würfel)}
+\begin{itemize}
+\item Die Menge $\{3,3,2,5\} \in Perm_4^6(\Omega, m.W.)$ ist eine mögliche Permutation mit Wiederholung.
+\item Die Menge $\{4,2,1,5\} \in Perm_4^6(\Omega, o.W.)$ ist eine mögliche Permutation ohne Wiederholung.
+\end{itemize}
+\end{block}
+ \end{frame}
+ 
+\begin{frame}
+    \frametitle{Diskrete Modelle}
+\framesubtitle{Kombinatorik}
+
+\begin{block}{Kombinationen und Permutationen}
+\begin{itemize}
+\item $Kom_k^n(\Omega, m.W.) : = \{ \omega_{i_1}, \ldots, \omega_{i_k} \in \Omega^k  \, | \, 1  \leq i_1 \leq  \ldots  \leq i_k \}$  Menge aller Kombinationen  mit Wiederholung.
+\item $Kom_k^n(\Omega, o.W.) : = \{ \omega_{i_1}, \ldots, \omega_{i_k} \in \Omega^k  \, | \, 1 \leq i_1  \leq \ldots \leq i_k ;  \omega_{i_i} \neq \omega_{i_j} \}$  Menge aller Kombinationen  ohne  Wiederholung.
+\end{itemize}
+\end{block}
+\begin{block}{Beispiel (Würfel)}
+\begin{itemize}
+\item Die Menge $\{2,3,3,5\} \in Kom_4^6(\Omega, m.W.)$ ist eine mögliche Kombination mit Wiederholung.
+\item Die Menge $\{1,2,4,5\} \in Kom_4^6(\Omega, o.W.)$ ist eine mögliche Kombination ohne Wiederholung.
 \end{itemize}
 \end{block}
  \end{frame}
