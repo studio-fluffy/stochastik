@@ -275,6 +275,51 @@ heißt Laplace Wahrscheinlichkeit.
  \end{frame}
 
 
+\begin{frame}
+    \frametitle{Diskrete Wahrscheinlichkeitsverteilung}
+\framesubtitle{}
+
+\begin{block}{Beispiel: Hash Kollision}
+Beim Hashing werden zufällig $k \leq n$ Daten auf $n$ Speicherplätze  verteilt. Bezeichnen wir mit $A_{k,n}$ die Möglichkeiten der Mehrfachbelegungen von Feldern, so ist das Komplementäre Ereignis
+$A^c_{k,n} = Perm^n_k(\Omega, o.W.)$,  wobei $\Omega$ die Menge der Verfügbaren Speicherplätze Darstellt. 
+\end{block}
+
+
+
+ \end{frame}
+
+
+\begin{frame}
+    \frametitle{Diskrete Wahrscheinlichkeitsverteilung}
+\framesubtitle{}
+
+\begin{block}{Beispiel: Hash Kollision}
+\begin{align*}
+ P(A^c_{k,n} ) & = \frac{\# Perm^n_k(\Omega, o.W.)}{ \# Perm^n_k(\Omega, m.W.)} = \frac{n_k}{n^k} = \prod_{i=0}^{k-1} (1- \frac{i}{n}) \\
+& = \exp (\sum_{i=0}^{k-1} \ln {(1- \frac{i}{n})}) \leq  \exp (\sum_{i=0}^{k-1} (- \frac{i}{n}) \\
+ & (ln(1-x) \leq -x \text{ für } x < 1) \\
+&= \exp(- \frac{(k-1)k } {2n})
+\end{align*}
+\end{block}
+
+
+
+ \end{frame}
+
+\begin{frame}
+    \frametitle{Diskrete Wahrscheinlichkeitsverteilung}
+\framesubtitle{}
+
+\begin{block}{Beispiel: Hash Kollision (Geburtstags-Paradoxon)}
+Für $n=365$ und $k=23$ ist damit $ P(A_{k,n} ) > \frac{1}{2}$. Die Wahrscheinlichkeit, dass bei einer Gruppe von mehr als $23$ Leuten zwei Leute am gleichen Tag Geburtstag haben, ist also größer als $ \frac{1}{2}$.
+\end{block}
+
+
+
+ \end{frame}
+
+
+
 
 
 \end{document}
