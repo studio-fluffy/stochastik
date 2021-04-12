@@ -127,3 +127,17 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# LaTeX, Mac OS and Jupyter Notebook temp files
+**/.ipynb_checkpoints
+*.DS_Store
+*.aux
+*.bbl
+*.blg
+*.dvi
+*.log
+*.toc
+*.synctex.gz
+*.nav
+*.out
+*.snm
