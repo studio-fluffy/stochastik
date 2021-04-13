@@ -88,7 +88,7 @@ Für $n=365$ und $k=23$ ist damit $ P(A_{k,n} ) > \frac{1}{2}$. Die Wahrscheinli
     \frametitle{Axiome von Kolmogorov}
 \framesubtitle{}
 \begin{block}{$\sigma$-Algebra}
-Es sei $\Omega$ eine Menge und $\mathcal{A} \subset  \mathcal{P}(\Omega)$ ein System von Teilmengen. $\mathcal{A}$ heißt $\sigma$-Algebra falls gilt:
+Es sei $\Omega$ eine Menge und $\mathcal{A} \subset  \mathcal{P}(\Omega)$ ein System von Teilmengen. $\mathcal{A}$ heißt $\sigma$-Algebra (Ereignis-Algebra) falls gilt:
 \begin{align*}
 & (i) \; \Omega \subset \mathcal{A} \\
 & (ii) \; A \in \mathcal{A} \Rightarrow A^c \in \mathcal{A} \\
@@ -98,7 +98,7 @@ $(A^c = \Omega - A)$
 \end{block}
 
 \begin{block}{Interpretation}
-Die Grundmenge ist ein Ereignis. Das nicht-Eintreffen eines Ereignisses ist ein Ereignis. Die Vereinigung von Ereignissen ist ein Ereignis.
+Die Grundmenge $\Omega$ ist ein Ereignis. Das nicht-Eintreffen eines Ereignisses ist ein Ereignis. Die Vereinigung von Ereignissen ist ein Ereignis.
 \end{block}
 
 
@@ -117,6 +117,13 @@ $P : \mathcal{A} \to [0,1]$
 \end{align*}
 Die Elemente von $\Omega$ werden elementare Ereignisse und die von $\mathcal{A}$ Ereignisse genannt. Mengen mit $P(M) = 0$ werden Nullmengen genannt.
 \end{block}
+
+
+\begin{block}{Interpretation}
+Die Grundmenge ist ein sicheres Ereignis. Die Wahrscheinlichkeit von überschneidungsfreien Ereignissen addiert sich.
+\end{block}
+
+
  \end{frame}
 
 
@@ -126,11 +133,12 @@ Die Elemente von $\Omega$ werden elementare Ereignisse und die von $\mathcal{A}$
 \begin{frame}
     \frametitle{Diskrete Wahrscheinlichkeitsverteilungen}
 \framesubtitle{}
-
 \begin{block}{Diskrete Wahrscheinlichkeitsverteilung}
-
+Ein diskreter Wahrscheinlichkeitsraum ist ein Wahrscheinlichkeitsraum $(\Omega, \mathcal{A}, P)$, bei dem die Grundmenge $\Omega$ albzählbar ist.
 \end{block}
-
+\begin{block}{Beispiel: Laplace Wahrscheinlichkeit}
+$\Omega$ endlich $ \mathcal{A} = \mathcal{P}(\Omega)$,  und $P(A) = \frac{\#A}{\#\Omega}$.
+\end{block}
 
  \end{frame}
 
@@ -141,7 +149,7 @@ Die Elemente von $\Omega$ werden elementare Ereignisse und die von $\mathcal{A}$
 \framesubtitle{}
 
 \begin{block}{Lemma}
-Für $A \subset \mathcal{P}(\Omega)$ ist
+Sei $(\Omega, \mathcal{A}, P)$ ein diskreter Wahrscheinlichkeitsraum. Dann ist für $A \subset \mathcal{A}$ 
 $P(A) = \sum_{\omega \in A} P(\{ \omega \})$.
 \end{block}
 
@@ -149,14 +157,6 @@ $P(A) = \sum_{\omega \in A} P(\{ \omega \})$.
 
 
 
-\begin{frame}
-    \frametitle{Diskrete Wahrscheinlichkeitsverteilungen}
-\framesubtitle{}
-
-\begin{block}{Beispiel: Laplace Wahrscheinlichkeit}
-$\Omega$ endlich und $P(A) = \frac{\#A}{\#\Omega}$.
-\end{block}
- \end{frame}
 
 
 
