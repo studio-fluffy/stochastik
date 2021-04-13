@@ -66,7 +66,7 @@ $A^c_{k,n} = Perm^n_k(\Omega, o.W.)$,  wobei $\Omega$ die Menge der Verfügbaren
 
 \begin{block}{Beispiel: Hash Kollision}
 \begin{align*}
- P(A^c_{k,n} ) & = \frac{\# Perm^n_k(\Omega, o.W.)}{ \# Perm^n_k(\Omega, m.W.)} = \frac{n_k}{n^k} = \prod_{i=0}^{k-1} (1- \frac{i}{n}) \\
+ P(A^c_{k,n} ) & = \frac{\# Var^n_k(\Omega, o.W.)}{ \# Var^n_k(\Omega, m.W.)} = \frac{n_k}{n^k} = \prod_{i=0}^{k-1} (1- \frac{i}{n}) \\
 & = \exp (\sum_{i=0}^{k-1} \ln {(1- \frac{i}{n})}) \leq  \exp (\sum_{i=0}^{k-1} (- \frac{i}{n}) \\
  & (ln(1-x) \leq -x \text{ für } x < 1) \\
 &= \exp(- \frac{(k-1)k } {2n})
@@ -291,7 +291,7 @@ gilt.  Gleichbedeutend damit ist  $P(A | B) = P(A)$ und $P(B  | A) = P(B)$.
 
 \begin{block}{Naiver Bayes'scher Spam Filter}
 Gegeben ist eine E-Mail $E$.  Wir möchten anhand des Vorkommens bestimmter Wörter $A_1, \ldots A_n$ in der Mail entscheiden, ob es sich um eine erwünschte Mail $H$ oder eine unerwünschte Mail $S$ (Ham or Spam) handelt. 
-(Typische Wörter wären zum Beispiel "reichwerden",  "onlinecasino" ...)
+(Typische Wörter wären zum Beispiel "reich",  "casino", "Vergrösserung" ...)
 \end{block}
 
 \begin{figure}[htp]

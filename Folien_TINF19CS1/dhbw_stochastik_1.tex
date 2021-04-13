@@ -282,12 +282,12 @@ Das Gegenereignis hierzu ist $A^c = \{1,2,5,6\}$ mit $P(A^c) = \frac{4}{6}$
 \begin{frame}
     \frametitle{Diskrete Modelle}
 \framesubtitle{Kombinatorik}
-\begin{block}{Kombinationen und Permutationen}
+\begin{block}{Variationen und Permutationen}
 
 Sei $n = \#\Omega$ und $k \leq n$.
 \begin{itemize}
-\item $Perm_k^n(\Omega, m.W.) : = \{ ( \omega_1, \ldots, \omega_k) \ |\  \omega_i \in \Omega \}$  Menge aller Permutationen mit Wiederholung.
-\item $Perm_k^n(\Omega, o.W.) : = \{ ( \omega_1, \ldots, \omega_k) \ |\  \omega_i \in \Omega; \;  \omega_i \neq \omega_j  \}$  Menge aller Permutationen ohne Wiederholung.
+\item $Var_k^n(\Omega, m.W.) : = \{ ( \omega_1, \ldots, \omega_k) \ |\  \omega_i \in \Omega \}$  Menge aller Variationen mit Wiederholung.
+\item $Var_k^n(\Omega, o.W.) : = \{ ( \omega_1, \ldots, \omega_k) \ |\  \omega_i \in \Omega; \;  \omega_i \neq \omega_j  \}$  Menge aller Variationen ohne Wiederholung.
 \item $Kom_k^n(\Omega, m.W.) : = \{ ( \omega_{i_1}, \ldots, \omega_{i_k})  \ |\  \omega_{i_l} \in \Omega; \; 1  \leq i_1 \leq  \ldots  \leq i_k  \}$  Menge aller Kombinationen  mit Wiederholung.
 \item $Kom_k^n(\Omega, o.W.) : = \{ ( \omega_{i_1}, \ldots, \omega_{i_k} ) \ |\  \omega_{i_l} \in \Omega; \; 1 \leq i_1  \leq \ldots \leq i_k; \;  \omega_{i_i} \neq \omega_{i_j} \} $  Menge aller Kombinationen  ohne  Wiederholung.
 \end{itemize}
@@ -302,8 +302,8 @@ Sei $n = \#\Omega$ und $k \leq n$.
 
 \begin{block}{Beispiel (Würfel)}
 \begin{itemize}
-\item Das Tupel $ (3,3,2,5 )  \in Perm_4^6(\Omega, m.W.)$ ist eine mögliche Permutation mit Wiederholung.
-\item Das Tupel $ (4,2,1,5 ) \in Perm_4^6(\Omega, o.W.)$ ist eine mögliche Permutation ohne Wiederholung.
+\item Das Tupel $ (3,3,2,5 )  \in Var_4^6(\Omega, m.W.)$ ist eine mögliche Variationen mit Wiederholung.
+\item Das Tupel $ (4,2,1,5 ) \in Var_4^6(\Omega, o.W.)$ ist eine mögliche Variationen ohne Wiederholung.
 \item Das Tupel $ (2,3,3,5 )  \in Kom_4^6(\Omega, m.W.)$ ist eine mögliche Kombination mit Wiederholung.
 \item Das Tupel $(1,2,4,5) \in Kom_4^6(\Omega, o.W.)$ ist eine mögliche Kombination ohne Wiederholung.
 
@@ -318,10 +318,10 @@ Sei $n = \#\Omega$ und $k \leq n$.
     \frametitle{Diskrete Modelle}
 \framesubtitle{Kombinatorik}
 
-\begin{block}{Kombinationen und Permutationen}
+\begin{block}{Variationen und Permutationen}
 \begin{itemize}
-\item $\# Perm_k^n(\Omega, m.W.)  = n^k = \underbrace{n \cdot n \cdots n}_{\text{k-mal}}$
-\item $\# Perm_k^n(\Omega, o.W.)  = n_k = n \cdot (n-1) \cdots  (n-k+1) = \frac{n!}{(n-k)!}$  
+\item $\# Var_k^n(\Omega, m.W.)  = n^k = \underbrace{n \cdot n \cdots n}_{\text{k-mal}}$
+\item $\# Var_k^n(\Omega, o.W.)  = n_k = n \cdot (n-1) \cdots  (n-k+1) = \frac{n!}{(n-k)!}$  
 \item $\#Kom_k^n(\Omega, o.W.) = \binom{n}{k} = \frac{n!}{k! (n-k)!}$  
 \item $\#Kom_k^n(\Omega, m.W.)  = \binom{n + k -1}{k}$  
 \end{itemize}
