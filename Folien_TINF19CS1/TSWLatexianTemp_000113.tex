@@ -84,9 +84,7 @@ Für $n=365$ und $k=23$ ist damit $ P(A_{k,n} ) > \frac{1}{2}$. Die Wahrscheinli
 
 
 
-\begin{frame}
-    \frametitle{Axiome von Kolmogorov}
-\framesubtitle{}
+
 \begin{block}{$\sigma$-Algebra}
 Es sei $\Omega$ eine Menge und $\mathcal{A} \subset  \mathcal{P}(\Omega)$ ein System von Teilmengen. $\mathcal{A}$ heißt $\sigma$-Algebra falls gilt:
 \begin{align*}
@@ -96,11 +94,6 @@ Es sei $\Omega$ eine Menge und $\mathcal{A} \subset  \mathcal{P}(\Omega)$ ein Sy
 \end{align*}
 $(A^c = \Omega - A)$
 \end{block}
-
-\begin{block}{Interpretation}
-Die Grundmenge ist ein sicheres Ereignis. Das nicht-eintreffen eines Ereignisses ist ein Ereignis. Die Vereinigung von Ereignissen ist ein Ereignis.
-\end{block}
-
 
  \end{frame}
 
@@ -128,7 +121,12 @@ Die Elemente von $\Omega$ werden elementare Ereignisse und die von $\mathcal{A}$
 \framesubtitle{}
 
 \begin{block}{Diskrete Wahrscheinlichkeitsverteilung}
-
+Es sei $\Omega$ eine (nicht leere) albzählbare Menge. Eine Abbildung 
+$P :\mathcal{P}(\Omega) \to [0,1]$ heißt diskrete Wahrscheinlichkeitsverteilung (Wahrscheinlichkeismaß), falls gilt:
+\begin{align*}
+& P(\Omega) = 1\\
+& P \Biggl( \bigcup_{n=1}^{\infty} A_n \biggr)= \sum_{n=1}^{\infty} P(A_n), \text{ mit } A_i \cap A_j = \emptyset \text{ für } i \neq j 
+\end{align*}
 \end{block}
 
 
