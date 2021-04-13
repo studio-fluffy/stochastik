@@ -292,12 +292,31 @@ gilt.  Gleichbedeutend damit ist  $P(A | B) = P(A)$ und $P(B  | A) = P(B)$.
 \begin{block}{Naiver Bayes'scher Spam Filter}
 Gegeben ist eine E-Mail $E$.  Wir möchten anhand des Vorkommens bestimmter Wörter $A_1, \ldots A_n$ in der Mail entscheiden, ob es sich um eine erwünschte Mail $H$ oder eine unerwünschte Mail $S$ (Ham or Spam) handelt. 
 (Typische Wörter wären zum Beispiel "reichwerden",  "onlinecasino" ...)
-Aus einer Datenbank kann man das Vorkommen dieser Wörter in Spam und Ham Mails zählen und damit empirisch die Wahrscheinlichkeiten $P(A_i | S)$ und $P(A_i | H) $ des Vorkommens dieser Wörter in Spam und Ham Mails ermitteln.  Wir gehen davon aus, dass es sich bei der Mail  prinzipiell mit  Wahrscheinlichkeit $P(E= S) = P(E= H)= \frac{1}{2}$  um eine erwünschte  Mail $H$ oder eine unerwünschte Mail $S$  handeln kann. 
 \end{block}
+
+\begin{figure}[htp]
+      \centering
+    \includegraphics[width=0.4\textwidth]{img/ham}
+    \includegraphics[width=0.4\textwidth]{img/spam}
+
+\end{figure}
 
 
 
  \end{frame}
+
+
+\begin{frame}
+    \frametitle{Diskrete Wahrscheinlichkeitsverteilung}
+\framesubtitle{}
+
+\begin{block}{Naiver Bayes'scher Spam Filter}
+
+Aus einer Datenbank kann man das Vorkommen dieser Wörter in Spam und Ham Mails zählen und damit empirisch die Wahrscheinlichkeiten $P(A_i | S)$ und $P(A_i | H) $ des Vorkommens dieser Wörter in Spam und Ham Mails ermitteln.  Wir gehen davon aus, dass es sich bei der Mail  prinzipiell mit  Wahrscheinlichkeit $P(E= S) = P(E= H)= \frac{1}{2}$  um eine erwünschte  Mail $H$ oder eine unerwünschte Mail $S$  handeln kann. 
+\end{block}
+
+ \end{frame}
+
 
 
 \begin{frame}
