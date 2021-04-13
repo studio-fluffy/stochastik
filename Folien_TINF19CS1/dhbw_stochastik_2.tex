@@ -158,7 +158,12 @@ $\Omega$ endlich $ \mathcal{A} = \mathcal{P}(\Omega)$,  und $P(A) = \frac{\#A}{\
 
 \begin{block}{Lemma}
 Sei $(\Omega, \mathcal{A}, P)$ ein diskreter Wahrscheinlichkeitsraum. Dann ist für $A \subset \mathcal{A}$ 
-$P(A) = \sum_{\omega \in A} P(\{ \omega \})$.
+\begin{align*}
+& P(A) = \sum_{\omega \in A} P(\{ \omega \}) \\
+& P(A^c) = 1 - P(A) \\
+& P(\emptyset) = 0
+\end{align*}
+
 \end{block}
 
  \end{frame}
@@ -169,6 +174,25 @@ $P(A) = \sum_{\omega \in A} P(\{ \omega \})$.
 
 
 
+\begin{frame}
+    \frametitle{Diskrete Wahrscheinlichkeitsverteilungen}
+\framesubtitle{}
+
+\begin{block}{Herleitung der bedingten  Wahrscheinlichkeit}
+\begin{align*}
+& \tilde{\Omega} : = B \\
+& \tilde{\mathcal{A}} := \{ C \cap B  \; | \;  C \in \mathcal{A} \}  \\
+& \tilde{P} = \frac{P }{P(B)}
+\end{align*}
+\end{block}
+
+
+\begin{figure}[htp]
+      \centering
+    \includegraphics[width=0.3\textwidth]{img/bedingtewkeit}
+\end{figure}
+
+ \end{frame}
 
 
 \begin{frame}
@@ -193,25 +217,6 @@ die bedingte Wahrscheinlichkeit (von $A$ unter $B$).
 
  \end{frame}
 
-\begin{frame}
-    \frametitle{Diskrete Wahrscheinlichkeitsverteilungen}
-\framesubtitle{}
-
-\begin{block}{Herleitung der bedingten  Wahrscheinlichkeit}
-\begin{align*}
-& \tilde{\Omega} : = B \\
-& \tilde{\mathcal{A}} := \{ C \cap B  \; | \;  C \in \mathcal{A} \}  \\
-& \tilde{P} = \frac{P }{P(B)}
-\end{align*}
-\end{block}
-
-
-\begin{figure}[htp]
-      \centering
-    \includegraphics[width=0.3\textwidth]{img/bedingtewkeit}
-\end{figure}
-
- \end{frame}
 
 
 
