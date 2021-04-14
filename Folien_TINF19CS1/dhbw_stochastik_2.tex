@@ -97,13 +97,13 @@ Für $n=365$ und $k=23$ ist damit $ P(A_{k,n} ) > \frac{1}{2}$. Die Wahrscheinli
     \frametitle{Axiome von Kolmogorov}
 \framesubtitle{}
 \begin{block}{$\sigma$-Algebra}
-Es sei $\Omega$ eine Menge und $\mathcal{A} \subset  \mathcal{P}(\Omega)$ ein System von Teilmengen. $\mathcal{A}$ heißt $\sigma$-Algebra (Ereignis-Algebra) falls gilt:
+Es sei $\Omega$ eine Menge und $\mathcal{A} \subset  \mathcal{P}(\Omega)$ ein System von Teilmengen (= Ereignissen). $\mathcal{A}$ heißt $\sigma$-Algebra (Sigma-Algebra) falls gilt:
 \begin{align*}
-& (i) \; \Omega \subset \mathcal{A} \\
+& (i) \; \Omega \in \mathcal{A} \\
 & (ii) \; A \in \mathcal{A} \Rightarrow A^c \in \mathcal{A} \\
 & (iii) \; A_i \in \mathcal{A} \Rightarrow \bigcup_i A_i \in \mathcal{A} 
 \end{align*}
-$(A^c = \Omega - A)$
+$(A^c = \Omega \setminus A)$
 \end{block}
 
 \begin{block}{Interpretation}
@@ -124,7 +124,7 @@ $P : \mathcal{A} \to [0,1]$
 (i) & \; P(\Omega) = 1 \\
 (ii) & \;  P \biggl(  \bigcup_i A_i  \biggr) = \sum_i P(A_i), \text{ mit } A_i \cap A_j = \emptyset \text{ für } i \neq j
 \end{align*}
-Die Elemente von $\Omega$ werden elementare Ereignisse und die von $\mathcal{A}$ Ereignisse genannt. Mengen mit $P(M) = 0$ werden Nullmengen genannt.
+Die Elemente von $\Omega$ werden elementare Ereignisse und die von $\mathcal{A}$ Ereignisse genannt. Mengen M mit $P(M) = 0$ werden Nullmengen genannt.
 \end{block}
 
 
@@ -144,7 +144,7 @@ Die Grundmenge ist ein sicheres Ereignis. Das Experiment liefert also sicher ein
 
 \begin{block}{Würfel}
 $\Omega = \{1,2,3,4,5,6 \}$.  $\mathcal{A} :=  \mathcal{P}(\Omega)$ entspricht dem Laplace-Experiment. Wir sind an allen möglichen Fragen interessiert.
-$\mathcal{A} := \{  \{ 1,2,3\}, \{4,5,6 \}, \{ 1,2,3,4,5,6 \}   \} $ entspricht dem Interesse daran, ob die Augenzahl grösser oder kleiner gleich 3 ist.
+$\mathcal{A} := \{  \{ 1,2,3\}, \{4,5,6 \}, \{ 1,2,3,4,5,6 \}, \{\}   \} $ entspricht dem Interesse daran, ob die Augenzahl größer oder kleiner gleich 3 ist.
 \end{block}
 
  \end{frame}
@@ -157,10 +157,10 @@ $\mathcal{A} := \{  \{ 1,2,3\}, \{4,5,6 \}, \{ 1,2,3,4,5,6 \}   \} $ entspricht 
     \frametitle{Diskrete Wahrscheinlichkeitsverteilungen}
 \framesubtitle{}
 \begin{block}{Diskrete Wahrscheinlichkeitsverteilung}
-Ein diskreter Wahrscheinlichkeitsraum ist ein Wahrscheinlichkeitsraum $(\Omega, \mathcal{A}, P)$, bei dem die Grundmenge $\Omega$ albzählbar ist.
+Ein diskreter Wahrscheinlichkeitsraum ist ein Wahrscheinlichkeitsraum $(\Omega, \mathcal{A}, P)$, bei dem die Grundmenge $\Omega$ abzählbar ist.
 \end{block}
 \begin{block}{Beispiel: Laplace Wahrscheinlichkeit}
-$\Omega$ endlich $ \mathcal{A} = \mathcal{P}(\Omega)$,  und $P(A) = \frac{\#A}{\#\Omega}$.
+$\Omega$ endlich, $ \mathcal{A} = \mathcal{P}(\Omega)$,  und $P(A) := \frac{\#A}{\#\Omega}$.
 \end{block}
 
  \end{frame}
@@ -172,9 +172,9 @@ $\Omega$ endlich $ \mathcal{A} = \mathcal{P}(\Omega)$,  und $P(A) = \frac{\#A}{\
 \framesubtitle{}
 
 \begin{block}{Lemma}
-Sei $(\Omega, \mathcal{A}, P)$ ein diskreter Wahrscheinlichkeitsraum. Dann ist für $A \subset \mathcal{A}$ 
+Sei $(\Omega, \mathcal{A}, P)$ ein diskreter Wahrscheinlichkeitsraum. Dann ist für $A \in \mathcal{A}$ 
 \begin{align*}
-& P(A) = \sum_{\omega \in A} P(\{ \omega \}) \\
+& P(A) = \sum_{\omega \in A} P( \omega ) \\
 & P(A^c) = 1 - P(A) \\
 & P(\emptyset) = 0
 \end{align*}
