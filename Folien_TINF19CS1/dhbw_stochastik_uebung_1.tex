@@ -1,0 +1,134 @@
+\documentclass{beamer}
+\usetheme{Warsaw}
+
+\usepackage[utf8]{inputenc}
+\usepackage{fancybox}
+\usepackage{multimedia} 
+\usepackage{subfig}
+\usepackage{amsmath}
+\usepackage{hyperref}
+\usepackage[all]{xy}
+\begin{document}
+
+
+\title[Stochastik] % (optional, only for long titles)
+{Stochastik für Informatiker
+\\
+\includegraphics[scale=0.5]{img/craps}
+}
+\subtitle{}
+\author[Dr. Johannes Riesterer] % (optional, for multiple authors)
+{Dr.  rer. nat. Johannes Riesterer}
+
+\date[KPT 2004] % (optional)
+{}
+
+\subject{Stochastik}
+
+\frame{\titlepage}
+
+\begin{frame}
+    \frametitle{Übungsaufgaben}
+\framesubtitle{}
+\begin{block}{Aufgabe}
+Beim Lottospiel werden ohne zurücklegen $6$ Zahlen aus $49$ gezogen. Berechnen Sie die folgenden Wahrscheinlichkeiten:
+\begin{enumerate}
+\item Alle $6$ Gewinnzahlen richtig zu tippen.
+\item Genau $5$ richtige Gewinnzahlen zu tippen.
+\item Mindestens $3$ richtige Gewinnzahlen zu tippen.
+\item Alle $6$ Gewinnzahlen sind gerade.
+\end{enumerate}
+\end{block}
+ \end{frame}
+
+
+
+\begin{frame}
+    \frametitle{Übungsaufgaben}
+\framesubtitle{}
+\begin{block}{Aufgabe}
+Drei Bits werden über einen digitalen Nachrichtenkanal übertragen. Jedes Bit kann falsch oder richtig empfangen werden.
+\begin{enumerate}
+\item Geben Sie den Ereignisraum $\Omega$ an.
+\item Wie viele Elemente besitzt $\Omega$?
+\item Es sei $A_i := \{ \text{ i-tes Bit ist verfälscht}\}$. Geben Sie $A_1$ an.
+\end{enumerate}
+\end{block}
+
+ \end{frame}
+
+
+
+
+\begin{frame}
+    \frametitle{Übungsaufgaben}
+\framesubtitle{}
+\begin{block}{Aufgabe}
+Es sei $\Omega = \{ 1,2,3,4\}$. 
+\begin{enumerate}
+\item Welche der folgenden Mengen sind $\sigma$-Alegebren?
+\begin{align*}
+& A =  \{ \emptyset,  \Omega  \} \\
+& B=  \{ \emptyset,  \Omega , \{ 1\}, \{ 2,3\}, \{ 4\} \}  \\
+& C=  \{ \emptyset,  \Omega ,  \{ 1,2\}, \{ 3, 4\} \}  
+\end{align*}
+\item Geben Sie die kleinste Sigma-Algebra über $\Omega$ an, in der die Mengen $ \{ 1\}$ und $ \{ 2\}$ enthalten sind.
+\end{enumerate}
+\end{block}
+
+ \end{frame}
+
+
+
+
+\begin{frame}
+    \frametitle{Übungsaufgaben}
+\framesubtitle{}
+\begin{block}{Aufgabe}
+Bei einer Qualitätskontrolle können Werkstücke zwei Fehler haben, den Fehler $A$ und den Fehler $B$. Aus Erfahrung ist bekannt, dass ein Werkstück mit Wahrscheinlichkeit $0.05$  den Fehler $A$, mit Wahrscheinlichkeit $0.01$ beide Fehler und mit  Wahrscheinlichkeit $0.03$ nur den Fehler $B$ hat.
+\begin{enumerate}
+\item Mit welcher Wahrscheinlichkeit hat ein Werkstück den Fehler $B$?
+\item Mit welcher Wahrscheinlichkeit ist das Werkstücke fehlerfrei, beziehungsweise fehlerhaft?
+\item Bei einem Werkstück wurde der Fehler $A$ festgestellt, während die Untersuchung auf Fehler $B$ noch nicht erfolgt ist. Mit welcher Wahrscheinlichkeit hat es auch den Fehler $B$?
+\end{enumerate}
+\end{block}
+ \end{frame}
+
+\begin{frame}
+    \frametitle{Übungsaufgaben}
+\framesubtitle{}
+\begin{block}{Aufgabe}
+\begin{enumerate}
+\item Mit welcher Wahrscheinlichkeit ist ein Werkstücke fehlerfrei, falls es den Fehler $B$ nicht besitzt?
+\item Sind die Ereignisse Werkstück hat Fehler $A$ und Werkstück hat Fehler $B$ unabhängig?
+\end{enumerate}
+\end{block}
+ \end{frame}
+
+
+\begin{frame}
+    \frametitle{Übungsaufgaben}
+\framesubtitle{}
+\begin{block}{Aufgabe}
+
+In einer Urne befinden sich 4 schwarze und 6 weiße Kugeln.
+Es werden nacheinander zwei Kugeln gezogen, wobei die erste Kugel zurückgelegt wird, bevor die Zweite gezogen wird.
+Zeigen Sie, dass das ziehen einer Schwarzen oder Weißen Kugel im zweiten Zug stochastisch unabhängig davon ist, welche Kugel im ersten Zug  gezogen wurde.
+Gilt das auch, wenn nach dem ersten Zug die Kugel nicht zurückgelegt wird?
+
+
+\end{block}
+ \end{frame}
+
+
+\begin{frame}
+    \frametitle{Übungsaufgaben}
+\framesubtitle{}
+\begin{block}{Aufgabe}
+Es sei  $\Omega = \{1,2,3,4,5,6 \} \times \{1,2,3,4,5,6 \} $, $R = \{ 2,3,4,5,6,7,8,9,10, 11, 12\}$ und $X: \Omega \to R; X (a,b) := a +b$. 
+Berechnen Sie $\mathbb{E}(X)$.
+\end{block}
+
+ \end{frame}
+
+\end{document}
