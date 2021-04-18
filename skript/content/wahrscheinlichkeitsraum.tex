@@ -130,6 +130,130 @@ Mit der Formel von Bayes und der totalen Wahrscheinlichkeit  können wir somit b
 Bemerkung: $P(E=H |  A_1 \cap \cdots \cap A_n) = 1- P(E=S |  A_1 \cap \cdots \cap A_n) $
 
 
+\section{Zufalssvariablen}
+
+\begin{Definition}
+Ein Messraum ist ein Paar $(\Omega, \mathcal{A})$ bestehend aus einer Menge $\Omega$ und einer Sigma-Algebra $\mathcal{A} \subset \mathcal{P}(\Omega)$.
+\end{Definition}
+
+
+
+\begin{Definition}
+Sei $(\Omega, \mathcal{A}, P)$ ein Wahrscheinlichkeitsraum und $(\Omega', \mathcal{A}')$ ein Messraum. Eine Zufallsvariable ist eine Abbildung
+$$X : \Omega \to \Omega'$$ 
+so dass für alle Ereignisse $A' \in  \mathcal{A}'$
+$$ X^{-1} (A') \in \mathcal{A}$$
+ ein Ereignis in $\mathcal{A}$ ist. Urbilder von Ereignissen sind also Ereignisse.
+\end{Definition}
+
+\begin{Definition}
+Sei $(\Omega, \mathcal{A}, P)$ ein Wahrscheinlichkeitsraum, $(\Omega', \mathcal{A}')$ ein Messraum und  $X : \Omega \to \Omega'$  Eine Zufallsvariable. 
+Durch $P_X (A') := P(X^{-1} (A))$ für $A' \in \mathcal{A}'$ wird ein Wahrscheinlichkeitsmaß auf  $(\Omega', \mathcal{A}')$ definiert. Es wird Bildmaß genannt.
+\end{Definition}
+
+
+
+\subsection{Integration bezüglich eines Wahrscheinlichkeitsmaßes}
+in diesem Abschnitt ist  $(\Omega, \mathcal{A},P)$ ein fest gewählter Wahrscheinlichkeitsraum.
+
+\begin{Definition}
+Für eine Teilmenge $A \in \mathcal{A}$ heißt
+$$ 1_A (x): = \begin{cases} 1 \text{  falls }   x \in A  \\  0  \text{  sonst}  \end{cases}$$
+Indikatorfunktion.
+\end{Definition}
+
+\begin{Definition}
+Eine Funktion 
+$$ \varphi(x) := \sum_{k=1}^m c_k 1_{A_k}$$ mit $c_k \in \mathbb{R}$ und $A_k \in \mathcal{A}$ mit $A_l \cap A_h = \emptyset$ für $i \neq j$
+heißt Treppenfunktion.
+\end{Definition}
+
+
+
+
+
+\begin{Definition}
+Eine Hüllreihe zu einer Funktion $f :\Omega \to \mathbb{R}$ ist eine Reihe $\phi(x):= \sum_{k=1}^{\infty} c_k  1_{A_k} (x)$ mit den folgenden Eigenschaften:
+\begin{itemize}
+\item $c_k \in \mathbb{R}$ sind positive reelle Zahlen $c_k >0$.
+\item $A_k \subset \mathcal{A}$.
+\item Für alle $x \in \Omega$ gilt $|f(x) | \leq \phi(x)$.
+\end{itemize}
+\end{Definition}
+
+ 
+\begin{Definition}
+Für eine Treppenfunktion $ \varphi(x) := \sum_{k=1}^m c_k 1_{A_k}$ definieren wir das Integral durch
+$$\int_{\mathbb{R}^n} \varphi dP := \sum_{k =1}^m  c_k P(A_k) \; . $$
+\end{Definition}
+
+
+\begin{Definition}
+Der Innhalt einer Hüllreihe $\phi(x):= \sum_{k=1}^{\infty} c_k  1_{A_k} (x)$ ist definiert durch 
+$$I_P (\phi) := \sum_{k=1}^{\infty} c_k \;  P(A_k) \; .$$
+\end{Definition}
+
+
+\begin{Definition}
+Die $L_{P^1}$-Halbnorm einer Funktion $f :\mathbb{R}^n \to \mathbb{R}$ is definiert durch das Infimum der Inhalte der Hüllreihen zu $f$
+$$ || f ||_{P^1} : = \inf  \biggl \{   I(\phi) \; | \; \phi  \text{ ist Hüllreihe zu  }  f \biggr \} \; .$$
+\end{Definition}
+
+
+
+\begin{Definition}
+Eine Funktion $f : \Omega \to \mathbb{R}$ heißt integrierbar, falls eine Folge von Treppenfunktionen  $\varphi_k$ existiert mit
+$$ || f -  \varphi_k ||_1 \to 0 \text{ für } k \to \infty \;. $$
+In diesem Fall heißt
+$$ \int_{\mathbb{R}^n} f(x) dP := \lim_{k \to \infty}  \int_{\mathbb{R}^n}  \varphi_k d dP$$
+das Integral von $f$ über $\mathbb{R}^n$.
+\end{Definition}
+
+
+\subsection{Reelle Zufalssvariablen}
+
+\begin{Definition}
+Eine Menge $U \subset  \mathbb{R}^n$ heißt offen, falls für jeden Punkt $x \in U$ ein Radius $\epsilon > 0$ existiert, so dass der Ball $B_\epsilon (x)$ in $U$ enthalten ist, also 
+$B_\epsilon (x) \subset U$ gilt.
+\end{Definition}
+
+\begin{figure}[htp]
+      \centering
+    \includegraphics[width=0.45\textwidth]{images/openset}
+      \caption{Quelle: Wikipedia}
+\end{figure}
+
+
+\begin{Definition}
+Die Borel'sche   $\sigma$-Algebra über $\mathbb{R}^n$ ist die kleinste  $\sigma$-Algebra, die alle offenen Mengen $\mathcal{U}$ enthält, also 
+\begin{align*}
+A_\sigma (\mathcal{U}) := \bigcap \{  \mathcal{A} \subset \mathcal{P}(\mathbb{R}^n);  \;   \mathcal{U}  \subset  \mathcal{A},  \;  \mathcal{A} \text{ ist $\sigma$-Algebra} \}
+\end{align*}
+\end{Definition}
+
+\begin{Satz}
+Die Borel'sche   $\sigma$-Algebra existiert, da die Potenzmenge eine   $\sigma$-Algebra ist.
+\end{Satz}
+
+\begin{Satz}
+Die Borel'sche   $\sigma$-Algebra ist in der $\sigma$-Algebra der Lebesgue messbaren Mengen enthalten.
+\end{Satz}
+
+
+\begin{Satz}
+Eine reelle Zufallsvariable ist integrierbar.
+\end{Satz}
+
+
+\begin{Definition}
+Für eine reelle Zufallsvariable ist der Erwartungswert definiert durch
+$$ \mathbb{E} (X) := \int_{\Omega} X dP \; .$$
+\end{Definition}
+
+\begin{Satz}
+Ist $(\Omega, \mathcal{A}, P)$ ein diskreter Wahrscheinlichkeitsraum, so ist
+$$ \mathbb{E} (X) := \sum_{\omega \in \Omega}  \omega \cdot P(\omega)$$
+\end{Satz}
 
 
 
