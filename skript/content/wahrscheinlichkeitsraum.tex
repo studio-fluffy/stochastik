@@ -195,7 +195,7 @@ $$I_P (\phi) := \sum_{k=1}^{\infty} c_k \;  P(A_k) \; .$$
 
 
 \begin{Definition}
-Die $L_{P^1}$-Halbnorm einer Funktion $f :\mathbb{R}^n \to \mathbb{R}$ is definiert durch das Infimum der Inhalte der Hüllreihen zu $f$
+Die $L_{P^1}$-Halbnorm einer Funktion $f : \Omega\to \mathbb{R}$ is definiert durch das Infimum der Inhalte der Hüllreihen zu $f$
 $$ || f ||_{P^1} : = \inf  \biggl \{   I(\phi) \; | \; \phi  \text{ ist Hüllreihe zu  }  f \biggr \} \; .$$
 \end{Definition}
 
@@ -225,7 +225,7 @@ $B_\epsilon (x) \subset U$ gilt.
 
 
 \begin{Definition}
-Die Borel'sche   $\sigma$-Algebra über $\mathbb{R}^n$ ist die kleinste  $\sigma$-Algebra, die alle offenen Mengen $\mathcal{U}$ enthält, also 
+Die Borel'sche   $\sigma$-Algebra $\mathcal{B}(\mathbb{R}^n$über $\mathbb{R}^n$ ist die kleinste  $\sigma$-Algebra, die alle offenen Mengen $\mathcal{U}$ enthält, also 
 \begin{align*}
 A_\sigma (\mathcal{U}) := \bigcap \{  \mathcal{A} \subset \mathcal{P}(\mathbb{R}^n);  \;   \mathcal{U}  \subset  \mathcal{A},  \;  \mathcal{A} \text{ ist $\sigma$-Algebra} \}
 \end{align*}
@@ -238,6 +238,10 @@ Die Borel'sche   $\sigma$-Algebra existiert, da die Potenzmenge eine   $\sigma$-
 \begin{Satz}
 Die Borel'sche   $\sigma$-Algebra ist in der $\sigma$-Algebra der Lebesgue messbaren Mengen enthalten.
 \end{Satz}
+
+\begin{Definition}
+Unter einer reellen Zufallsvariable verstehen wir eine Zufallsvariable $X : \Omega \to \mathbb{R}$, wobei $(\Omega, \mathcal{A}, P)$ ein Wahrscheinlichkeitsraum ist und $(\mathbb{R}, \mathcal{B}(\mathbb{R}^n)$ die reellen Zahlen zusammen mit der Borell'schen Sigma-Algebra ist.
+\end{Definition}
 
 
 \begin{Satz}
