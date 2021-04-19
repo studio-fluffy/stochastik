@@ -51,7 +51,7 @@ $$ X^{-1} (A') \in \mathcal{A}$$
     \frametitle{Zufallsvariablen}
 \framesubtitle{}
 \begin{block}{Beispiel (Münzwurf)}
-$\Omega = \{\text{Kopf}, \text{Zahl} \} $, $R = \{ 0,1 \}$  mit jeweils Potenzmenge als Sigma-Algebra und 
+$\Omega = \{\text{Kopf}, \text{Zahl} \} $, $\Omega' = \{ 0,1 \}$  mit jeweils Potenzmenge als Sigma-Algebra und 
 \begin{align*}
 & X (\text{Kopf} ) = 0 \\
 & X (\text{Zahl} ) = 1 
@@ -59,7 +59,7 @@ $\Omega = \{\text{Kopf}, \text{Zahl} \} $, $R = \{ 0,1 \}$  mit jeweils Potenzme
 \end{block}
 
 \begin{block}{Beispiel (Summe zweier Würfel)}
-$\Omega = \{1,2,3,4,5,6 \} \times \{1,2,3,4,5,6 \} $, $R = \{ 2,3,4,5,6,7,8,9,10, 11, 12\}$   mit jeweils Potenzmenge als Sigma-Algebra und $X: \Omega \to R; X (a,b) := a +b$. 
+$\Omega = \{1,2,3,4,5,6 \} \times \{1,2,3,4,5,6 \} $, $\Omega' = \{ 2,3,4,5,6,7,8,9,10, 11, 12\}$   mit jeweils Potenzmenge als Sigma-Algebra und $X: \Omega \to \Omega'; X (a,b) := a +b$. 
 \end{block}
 
  \end{frame}
@@ -71,7 +71,7 @@ $\Omega = \{1,2,3,4,5,6 \} \times \{1,2,3,4,5,6 \} $, $R = \{ 2,3,4,5,6,7,8,9,10
 Sei $(\Omega, \mathcal{A}, P)$ ein Wahrscheinlichkeitsraum, $(\Omega', \mathcal{A}')$ ein Messraum und  $X : \Omega \to \Omega'$  Eine Zufallsvariable. 
 Durch 
 \begin{align*}
-P_X (A') := P(X^{-1} (A))
+P_X (A') := P(X^{-1} (A'))
 \end{align*}
  für $A' \in \mathcal{A}'$ wird ein Wahrscheinlichkeitsmaß auf  $(\Omega', \mathcal{A}')$ definiert. Es wird Bildmaß genannt. Anstelle von $P_X (A')$ wird auch die Schreibweise $P (X \in A'):= P_X (A')$ verwendet.
 \end{block}
@@ -84,8 +84,8 @@ P_X (A') := P(X^{-1} (A))
 \framesubtitle{}
 
 \begin{block}{Beispiel (Summe zweier Würfel)}
-$\Omega = \{1,2,3,4,5,6 \} \times \{1,2,3,4,5,6 \} $, $R = \{ 2,3,4,5,6,7,8,9,10, 11, 12\}$ und $X: \Omega \to R; X (a,b) := a +b$. Dann ist 
-$P_X(3) = P((1,2), (2,1)) = \frac{2}{36} = \frac{1}{18}$ 
+$\Omega = \{1,2,3,4,5,6 \} \times \{1,2,3,4,5,6 \} $, $\Omega' = \{ 2,3,4,5,6,7,8,9,10, 11, 12\}$ und $X: \Omega \to \Omega'; X (a,b) := a +b$. Dann ist 
+$P_X(3) = P(\{(1,2), (2,1)\}) = \frac{2}{36} = \frac{1}{18}$ 
 \end{block}
 
  \end{frame}
@@ -94,7 +94,7 @@ $P_X(3) = P((1,2), (2,1)) = \frac{2}{36} = \frac{1}{18}$
 
 
 \begin{frame}
-    \frametitle{Integration bezüglich eine WMaßes}
+    \frametitle{Integration bezüglich eines Wahrscheinlichkeitsmaßes}
 \framesubtitle{}
 
 \begin{block}{Indikatorfunktion}
@@ -105,7 +105,7 @@ Indikatorfunktion.
 
 \begin{block}{}
 Eine Funktion 
-$$ \varphi(x) := \sum_{k=1}^m c_k 1_{A_k}$$ mit $c_k \in \mathbb{R}$ und $A_k \in \mathcal{A}$ mit $A_i \cap A_j = \emptyset$ für $i \neq j$
+$$ \varphi(x) := \sum_{k=1}^m c_k 1_{A_k}(x)$$ mit $c_k \in \mathbb{R}$ und $A_k \in \mathcal{A}$ mit $A_i \cap A_j = \emptyset$ für $i \neq j$
 heißt Treppenfunktion.
 \end{block}
 
@@ -113,14 +113,14 @@ heißt Treppenfunktion.
 
 
 \begin{frame}
-    \frametitle{Integration bezüglich eine WMaßes}
+    \frametitle{Integration bezüglich eines Wahrscheinlichkeitsmaßes}
 \framesubtitle{}
 
 \begin{block}{Hüllreihe}
 Eine Hüllreihe zu einer Funktion $f :\Omega \to \mathbb{R}$ ist eine Reihe $\phi(x):= \sum_{k=1}^{\infty} c_k  1_{A_k} (x)$ mit den folgenden Eigenschaften:
 \begin{itemize}
 \item $c_k \in \mathbb{R}$ sind positive reelle Zahlen $c_k >0$.
-\item $A_k \subset \mathcal{A}$.
+\item $A_k \in \mathcal{A}$.
 \item Für alle $x \in \Omega$ gilt $|f(x) | \leq \phi(x)$.
 \end{itemize}
 \end{block}
@@ -130,17 +130,17 @@ Eine Hüllreihe zu einer Funktion $f :\Omega \to \mathbb{R}$ ist eine Reihe $\ph
 
 
 \begin{frame}
-    \frametitle{Integration bezüglich eine WMaßes}
+    \frametitle{Integration bezüglich eines Wahrscheinlichkeitsmaßes}
 \framesubtitle{}
 
 \begin{block}{}
-Für eine Treppenfunktion $ \varphi(x) := \sum_{k=1}^m c_k 1_{A_k}$ definieren wir das Integral durch
-$$\int_{\mathbb{R}^n} \varphi dP := \sum_{k =1}^m  c_k P(A_k) \; . $$
+Für eine Treppenfunktion $ \varphi(x) := \sum_{k=1}^m c_k 1_{A_k}(x)$ definieren wir das Integral durch
+$$\int_{\Omega} \varphi dP := \sum_{k =1}^m  c_k P(A_k) \; . $$
 \end{block}
 
 
 \begin{block}{}
-Der Innhalt einer Hüllreihe $\phi(x):= \sum_{k=1}^{\infty} c_k  1_{A_k} (x)$ ist definiert durch 
+Der Inhalt einer Hüllreihe $\phi(x):= \sum_{k=1}^{\infty} c_k  1_{A_k} (x)$ ist definiert durch 
 $$I_P (\phi) := \sum_{k=1}^{\infty} c_k \;  P(A_k) \; .$$
 \end{block}
 
@@ -150,7 +150,7 @@ $$I_P (\phi) := \sum_{k=1}^{\infty} c_k \;  P(A_k) \; .$$
 
 
 \begin{frame}
-    \frametitle{Integration bezüglich eine WMaßes}
+    \frametitle{Integration bezüglich eines Wahrscheinlichkeitsmaßes}
 \framesubtitle{}
 
 \begin{block}{}
@@ -160,10 +160,10 @@ $$ || f ||_{P^1} : = \inf  \biggl \{   I(\phi) \; | \; \phi  \text{ ist Hüllrei
 
 \begin{block}{}
 Eine Funktion $f : \Omega \to \mathbb{R}$ heißt integrierbar, falls eine Folge von Treppenfunktionen  $\varphi_k$ existiert mit
-$$ || f -  \varphi_k ||_1 \to 0 \text{ für } k \to \infty \;. $$
+$$ || f -  \varphi_k ||_{P^1} \to 0 \text{ für } k \to \infty \;. $$
 In diesem Fall heißt
-$$ \int_{\mathbb{R}^n} f(x) dP := \lim_{k \to \infty}  \int_{\mathbb{R}^n}  \varphi_k d dP$$
-das Integral von $f$ über $\mathbb{R}^n$.
+$$ \int_{\Omega} f(x) dP := \lim_{k \to \infty}  \int_{\Omega}  \varphi_k  dP$$
+das Integral von $f$ über $\Omega$.
 \end{block}
 
  \end{frame}
@@ -171,11 +171,11 @@ das Integral von $f$ über $\mathbb{R}^n$.
 
 
 \begin{frame}
-    \frametitle{Integration bezüglich eine WMaßes}
+    \frametitle{Integration bezüglich eines Wahrscheinlichkeitsmaßes}
 \framesubtitle{}
 
 \begin{block}{Neuer Wein in alten Schläuchen}
-Integration bezüglich eines Wahrscheinlichkeitsmaßes Maßes verhält sich analog zu Lebesguemaß von letztem Semester.
+Integration bezüglich eines Wahrscheinlichkeitsmaßes verhält sich analog zu Lebesguemaß von letztem Semester.
 \end{block}
 
  \end{frame}
