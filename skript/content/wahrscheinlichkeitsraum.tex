@@ -52,7 +52,7 @@ $\Omega$ endlich und $P(A) = \frac{\#A}{\#\Omega}$.
 
 
 \begin{Definition}{Bedingte  Wahrscheinlichkeit}
-Für $A,B \subset \mathcal{P}(\Omega)$ und $P(B) > 0$ heißt
+Für $A,B \in \mathcal{A}$ und $P(B) > 0$ heißt
 \begin{align*}
 & P(A \; | \;  B) = \frac{P(A \cap B)}{P(B)} \\
 \end{align*}
@@ -83,7 +83,7 @@ $A = A \cap B \cup A \cap \bar{B}$ und  $A \cap B \cap A \cap \bar{B} = \emptyse
 \end{proof}
 
 \begin{Satz}{Satz von Bayes}
-Für $A,B \subset \mathcal{P}(\Omega)$ mit  $P(B) > 0$ gilt
+Für $A,B \in  \mathcal{A}$ mit  $P(B) > 0$ gilt
 \begin{align*}
 & P(A \; | \;  B) = \frac{P(B \; | \; A) \cdot P(A)} {P(B)} \\
 \end{align*}
@@ -148,7 +148,11 @@ $$ X^{-1} (A') \in \mathcal{A}$$
 
 \begin{Definition}
 Sei $(\Omega, \mathcal{A}, P)$ ein Wahrscheinlichkeitsraum, $(\Omega', \mathcal{A}')$ ein Messraum und  $X : \Omega \to \Omega'$  Eine Zufallsvariable. 
-Durch $P_X (A') := P(X^{-1} (A))$ für $A' \in \mathcal{A}'$ wird ein Wahrscheinlichkeitsmaß auf  $(\Omega', \mathcal{A}')$ definiert. Es wird Bildmaß genannt.
+Durch 
+\begin{align*}
+P_X (A') := P(X^{-1} (A))
+\end{align*}
+ für $A' \in \mathcal{A}'$ wird ein Wahrscheinlichkeitsmaß auf  $(\Omega', \mathcal{A}')$ definiert. Es wird Bildmaß genannt. Anstelle von $P_X (A')$ wird auch die Schreibweise $P (X \in A'):= P_X (A')$ verwendet.
 \end{Definition}
 
 
@@ -164,7 +168,7 @@ Indikatorfunktion.
 
 \begin{Definition}
 Eine Funktion 
-$$ \varphi(x) := \sum_{k=1}^m c_k 1_{A_k}$$ mit $c_k \in \mathbb{R}$ und $A_k \in \mathcal{A}$ mit $A_l \cap A_h = \emptyset$ für $i \neq j$
+$$ \varphi(x) := \sum_{k=1}^m c_k 1_{A_k}$$ mit $c_k \in \mathbb{R}$ und $A_k \in \mathcal{A}$ mit $A_i \cap A_j = \emptyset$ für $i \neq j$
 heißt Treppenfunktion.
 \end{Definition}
 
@@ -225,7 +229,7 @@ $B_\epsilon (x) \subset U$ gilt.
 
 
 \begin{Definition}
-Die Borel'sche   $\sigma$-Algebra $\mathcal{B}(\mathbb{R}^n$über $\mathbb{R}^n$ ist die kleinste  $\sigma$-Algebra, die alle offenen Mengen $\mathcal{U}$ enthält, also 
+Die Borel'sche   $\sigma$-Algebra $\mathcal{B}(\mathbb{R}^n)$über $\mathbb{R}^n$ ist die kleinste  $\sigma$-Algebra, die alle offenen Mengen $\mathcal{U}$ enthält, also 
 \begin{align*}
 A_\sigma (\mathcal{U}) := \bigcap \{  \mathcal{A} \subset \mathcal{P}(\mathbb{R}^n);  \;   \mathcal{U}  \subset  \mathcal{A},  \;  \mathcal{A} \text{ ist $\sigma$-Algebra} \}
 \end{align*}
@@ -240,13 +244,32 @@ Die Borel'sche   $\sigma$-Algebra ist in der $\sigma$-Algebra der Lebesgue messb
 \end{Satz}
 
 \begin{Definition}
-Unter einer reellen Zufallsvariable verstehen wir eine Zufallsvariable $X : \Omega \to \mathbb{R}$, wobei $(\Omega, \mathcal{A}, P)$ ein Wahrscheinlichkeitsraum ist und $(\mathbb{R}, \mathcal{B}(\mathbb{R}^n)$ die reellen Zahlen zusammen mit der Borell'schen Sigma-Algebra ist.
+Unter einer reellen Zufallsvariable verstehen wir eine Zufallsvariable 
+\begin{align*}
+& X : \Omega \to \mathbb{R}^n \\
+& X(\omega) := \biggl(X_1(\omega), \cdots , X_n(\omega)  \biggr) \; ,
+\end{align*}
+wobei $(\Omega, \mathcal{A}, P)$ ein Wahrscheinlichkeitsraum ist und $(\mathbb{R}^n, \mathcal{B}(\mathbb{R}^n)$ der $\mathbb{R}^n$ zusammen mit der Borell'schen Sigma-Algebra ist. Das Integral ist komponentenweise definiert durch
+\begin{align*} 
+\int_{\Omega} X dP :=  \biggl( \int_{\Omega} X_1 dP, \cdots , \int_{\Omega} X_n dP    \biggr)
+\end{align*}
+
 \end{Definition}
 
 
+\subsection{Erwartungswert}
 \begin{Satz}
 Eine reelle Zufallsvariable ist integrierbar.
 \end{Satz}
+
+\begin{Definition}
+Für eine reelle Zufallsvariable heißt 
+\begin{align*} 
+& F_X : \Omega \to [0,1] \\
+& F_X (x) := P (X \leq x) := P_X (( -\infty, x ) = P(X^{-1} (-\infty, x))
+\end{align*}
+Verteilungsfunktion von $X$.
+\end{Definition}
 
 
 \begin{Definition}
@@ -254,10 +277,29 @@ Für eine reelle Zufallsvariable ist der Erwartungswert definiert durch
 $$ \mathbb{E} (X) := \int_{\Omega} X dP \; .$$
 \end{Definition}
 
+
+
+
+\begin{Bemerkung}
+Ist $(\Omega, \mathcal{A}, P)$ ein diskreter Wahrscheinlichkeitsraum und $X :\Omega \to \mathbb{R}$ eine eindimensionale reelle Zufallsvariable, so ist
+$$ \mathbb{E} (X) = \sum_{\omega \in \Omega}  X(\omega) \cdot P(\omega)$$
+\end{Bemerkung}
+
+
 \begin{Satz}
-Ist $(\Omega, \mathcal{A}, P)$ ein diskreter Wahrscheinlichkeitsraum, so ist
-$$ \mathbb{E} (X) := \sum_{\omega \in \Omega}  \omega \cdot P(\omega)$$
+Für eine reelle Zufallsvariable gilt
+$$ \mathbb{E} (X) := \int_{\Omega} X dP = \int_{\mathbb{R}^n}  x  dP_X$$
 \end{Satz}
+
+\subsection{Varianz}
+
+
+
+\begin{Definition}
+Für eine reelle Zufallsvariable ist die Varianz definiert durch
+$$ \mathbb{V} (X) :=  \mathbb{E}( (X - \mathbb{E}(X)^2)) \; .$$
+\end{Definition}
+
 
 
 
