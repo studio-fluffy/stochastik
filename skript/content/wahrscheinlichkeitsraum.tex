@@ -1,12 +1,12 @@
 
 \section{Diskrete Modelle}
 
-\begin{Definition}[Laplace Wahrscheinlichkeit]
-Sei $\Omega = \{ \omega_1, \cdots , \omega_n\}$ eine endliche Menge. Für $A \subset \Omega$ definieren wir die Wahrscheinlichkeit durch
+\begin{Definition}[Laplace Wahrscheinlichkeit]~
+Sei $\Omega = \{ \omega_1, \cdots , \omega_n\}$ eine endliche Menge. Für $A \subseteq \Omega$ definieren wir die Wahrscheinlichkeit durch
 \begin{align*}
 P(A) : = \frac{\#A}{ \# \Omega} \; . 
 \end{align*} 
-Die Elemente $ \omega_1, \cdots , \omega_n \in \Omega$ nennen wir Elementarereignisse und Teilmengen $A \subset \Omega$ Ereignisse. Die Abbildung
+Die Elemente $ \omega_1, \cdots , \omega_n \in \Omega$ nennen wir Elementarereignisse und Teilmengen $A \subseteq \Omega$ Ereignisse. Die Abbildung
 \begin{align*}
 P : \mathcal{P} (\Omega) \to [0,1]  
 \end{align*}  
@@ -14,31 +14,27 @@ nennen wir die Laplace-Verteilung bzw. Gleichverteilung auf $\Omega$.
 \end{Definition}
 
 
-\begin{Definition}[Permutationen und Kombinationen]
-
+\begin{Definition}[Variationen und Kombinationen]~
 \begin{itemize}
-\item $Perm_k^n(\Omega, m.W.) : = \{ \omega_1, \ldots, \omega_k \in \Omega^k \}$  Menge aller Permutationen mit Wiederholung.
-\item $Perm_k^n(\Omega, o.W.) : = \{ \omega_1, \ldots, \omega_k \in \Omega^k  | \omega_i \neq \omega_j\}$  Menge aller Permutationen ohne Wiederholung.
-\item $Kom_k^n(\Omega, m.W.) : = \{ \omega_{i_1}, \ldots, \omega_{i_k} \in \Omega^k  | 1  \leq i_1 \leq  \ldots  \leq i_k \}$  Menge aller Kombinationen  mit Wiederholung.
-\item $Kom_k^n(\Omega, o.W.) : = \{ \omega_{i_1}, \ldots, \omega_{i_k} \in \Omega^k  | 1 \leq i_1  \leq \ldots \leq i_k ;  \omega_{i_i} \neq \omega_{i_j} \}$  Menge aller Kombinationen  ohne  Wiederholung.
+\item $Var_k^n(\Omega, m.W.) : = \{ ( \omega_1, \ldots, \omega_k) \ |\  \omega_i \in \Omega \}$  Menge aller Variationen mit Wiederholung.
+\item $Var_k^n(\Omega, o.W.) : = \{ ( \omega_1, \ldots, \omega_k) \ |\  \omega_i \in \Omega; \;  \omega_i \neq \omega_j  \}$  Menge aller Variationen ohne Wiederholung.
+\item $Kom_k^n(\Omega, m.W.) : = \{ ( \omega_{i_1}, \ldots, \omega_{i_k})  \ |\  \omega_{i_l} \in \Omega; \; 1  \leq i_1 \leq  \ldots  \leq i_k  \}$  Menge aller Kombinationen  mit Wiederholung.
+\item $Kom_k^n(\Omega, o.W.) : = \{ ( \omega_{i_1}, \ldots, \omega_{i_k} ) \ |\  \omega_{i_l} \in \Omega; \; 1 \leq i_1  \leq \ldots \leq i_k; \;  \omega_{i_i} \neq \omega_{i_j} \} $  Menge aller Kombinationen  ohne  Wiederholung.
 \end{itemize}
 \end{Definition}
 
-\begin{Lemma}
+\begin{Lemma}~
 \begin{itemize}
-\item $\# Perm_k^n(\Omega, m.W.)  = n^k = \underbrace{n \cdot n \cdots n}_{\text{k-mal}}$
-\item $\# Perm_k^n(\Omega, o.W.)  = n_k = n \cdot (n-1) \cdots  (n-(k-1)) = \frac{n!}{(n-k)!}$  
+\item $\# Var_k^n(\Omega, m.W.)  = n^k = \underbrace{n \cdot n \cdots n}_{\text{k-mal}}$
+\item $\# Var_k^n(\Omega, o.W.)  = n_k = n \cdot (n-1) \cdots  (n-(k-1)) = \frac{n!}{(n-k)!}$  
 \item $\#Kom_k^n(\Omega, o.W.) = \binom{n}{k} = \frac{n!}{k! (n-k)!}$  
 \item $\#Kom_k^n(\Omega, m.W.)  = \binom{n + k -1}{k}$  
 \end{itemize}
 \end{Lemma}
-\begin{proof}
-\end{proof}
 
-
-\begin{Definition}{Diskrete Wahrscheinlichkeitsverteilung}
-Es sei $\Omega$ eine (nicht leere) albzählbare Menge. Eine Abbildung 
-$P :\mathcal{P}(\Omega) \to [0,1]$ heißt diskrete Wahrscheinlichkeitsverteilung (Wahrscheinlichkeismaß), falls gilt:
+\begin{Definition}[Diskrete Wahrscheinlichkeitsverteilung]~
+Es sei $\Omega$ eine (nicht leere) abzählbare Menge. Eine Abbildung 
+$P :\mathcal{P}(\Omega) \to [0,1]$ heißt diskrete Wahrscheinlichkeitsverteilung (Wahrscheinlichkeitsmaß), falls gilt:
 \begin{align*}
 & P(\Omega) = 1\\
 & P \Biggl( \bigcup_{n=1}^{\infty} A_n \biggr)= \sum_{n=1}^{\infty} P(A_n), \text{ mit } A_i \cap A_j = \emptyset \text{ für } i \neq j 
@@ -46,12 +42,12 @@ $P :\mathcal{P}(\Omega) \to [0,1]$ heißt diskrete Wahrscheinlichkeitsverteilung
 \end{Definition}
 
 
-\begin{Beispiel}{Beispiel: Laplace Wahrscheinlichkeit}
+\begin{Beispiel}[Laplace Wahrscheinlichkeit]~
 $\Omega$ endlich und $P(A) = \frac{\#A}{\#\Omega}$.
  \end{Beispiel}
 
 
-\begin{Definition}{Bedingte  Wahrscheinlichkeit}
+\begin{Definition}[Bedingte  Wahrscheinlichkeit]~
 Für $A,B \in \mathcal{A}$ und $P(B) > 0$ heißt
 \begin{align*}
 & P(A \; | \;  B) = \frac{P(A \cap B)}{P(B)} \\
@@ -69,7 +65,7 @@ die bedingte Wahrscheinlichkeit (von $A$ unter $B$).
 
 
 
-\begin{Satz}{Satz der totalen Wahrscheinlichkeit}
+\begin{Satz}[Satz der totalen Wahrscheinlichkeit]
 Für eine Zerlegung  $\Omega = \bigcup_{j=1}^{n} B_j, \text{ mit } B_i \cap B_k = \emptyset \text{ für } i \neq k $
 \begin{align*}
 & P(A ) = \sum_{j=1}^{n}  P(A \; | \;  B_j) \cdot P(B_j)
@@ -82,7 +78,7 @@ $A = A \cap B \cup A \cap \bar{B}$ und  $A \cap B \cap A \cap \bar{B} = \emptyse
 \end{align*}
 \end{proof}
 
-\begin{Satz}{Satz von Bayes}
+\begin{Satz}[Satz von Bayes]
 Für $A,B \in  \mathcal{A}$ mit  $P(B) > 0$ gilt
 \begin{align*}
 & P(A \; | \;  B) = \frac{P(B \; | \; A) \cdot P(A)} {P(B)} \\
@@ -96,8 +92,8 @@ Für $A,B \in  \mathcal{A}$ mit  $P(B) > 0$ gilt
 \end{proof}
 
 
-\begin{Definition}{Stochastische Unabhängigkeit}
-Zwei Ereignisse $A,B$ heißen stochastisch Unabhängig, falls
+\begin{Definition}[Stochastische Unabhängigkeit]
+Zwei Ereignisse $A,B$ heißen stochastisch unabhängig, falls
 \begin{align*}
 P(A \cap B) = P(A) \cdot P(B)
 \end{align*}
@@ -130,7 +126,7 @@ Mit der Formel von Bayes und der totalen Wahrscheinlichkeit  können wir somit b
 Bemerkung: $P(E=H |  A_1 \cap \cdots \cap A_n) = 1- P(E=S |  A_1 \cap \cdots \cap A_n) $
 
 
-\section{Zufalssvariablen}
+\section{Zufallsvariablen}
 
 \begin{Definition}
 Ein Messraum ist ein Paar $(\Omega, \mathcal{A})$ bestehend aus einer Menge $\Omega$ und einer Sigma-Algebra $\mathcal{A} \subset \mathcal{P}(\Omega)$.
@@ -150,7 +146,7 @@ $$ X^{-1} (A') \in \mathcal{A}$$
 Sei $(\Omega, \mathcal{A}, P)$ ein Wahrscheinlichkeitsraum, $(\Omega', \mathcal{A}')$ ein Messraum und  $X : \Omega \to \Omega'$  Eine Zufallsvariable. 
 Durch 
 \begin{align*}
-P_X (A') := P(X^{-1} (A))
+P_X (A') := P(X^{-1} (A'))
 \end{align*}
  für $A' \in \mathcal{A}'$ wird ein Wahrscheinlichkeitsmaß auf  $(\Omega', \mathcal{A}')$ definiert. Es wird Bildmaß genannt. Anstelle von $P_X (A')$ wird auch die Schreibweise $P (X \in A'):= P_X (A')$ verwendet.
 \end{Definition}
@@ -168,7 +164,7 @@ Indikatorfunktion.
 
 \begin{Definition}
 Eine Funktion 
-$$ \varphi(x) := \sum_{k=1}^m c_k 1_{A_k}$$ mit $c_k \in \mathbb{R}$ und $A_k \in \mathcal{A}$ mit $A_i \cap A_j = \emptyset$ für $i \neq j$
+$$ \varphi(x) := \sum_{k=1}^m c_k 1_{A_k}(x)$$ mit $c_k \in \mathbb{R}$ und $A_k \in \mathcal{A}$ mit $A_i \cap A_j = \emptyset$ für $i \neq j$
 heißt Treppenfunktion.
 \end{Definition}
 
@@ -180,26 +176,26 @@ heißt Treppenfunktion.
 Eine Hüllreihe zu einer Funktion $f :\Omega \to \mathbb{R}$ ist eine Reihe $\phi(x):= \sum_{k=1}^{\infty} c_k  1_{A_k} (x)$ mit den folgenden Eigenschaften:
 \begin{itemize}
 \item $c_k \in \mathbb{R}$ sind positive reelle Zahlen $c_k >0$.
-\item $A_k \subset \mathcal{A}$.
+\item $A_k \in \mathcal{A}$.
 \item Für alle $x \in \Omega$ gilt $|f(x) | \leq \phi(x)$.
 \end{itemize}
 \end{Definition}
 
  
 \begin{Definition}
-Für eine Treppenfunktion $ \varphi(x) := \sum_{k=1}^m c_k 1_{A_k}$ definieren wir das Integral durch
-$$\int_{\mathbb{R}^n} \varphi dP := \sum_{k =1}^m  c_k P(A_k) \; . $$
+Für eine Treppenfunktion $ \varphi(x) := \sum_{k=1}^m c_k 1_{A_k}(x)$ definieren wir das Integral durch
+$$\int_{\Omega} \varphi dP := \sum_{k =1}^m  c_k P(A_k) \; . $$
 \end{Definition}
 
 
 \begin{Definition}
-Der Innhalt einer Hüllreihe $\phi(x):= \sum_{k=1}^{\infty} c_k  1_{A_k} (x)$ ist definiert durch 
+Der Inhalt einer Hüllreihe $\phi(x):= \sum_{k=1}^{\infty} c_k  1_{A_k} (x)$ ist definiert durch 
 $$I_P (\phi) := \sum_{k=1}^{\infty} c_k \;  P(A_k) \; .$$
 \end{Definition}
 
 
 \begin{Definition}
-Die $L_{P^1}$-Halbnorm einer Funktion $f : \Omega\to \mathbb{R}$ is definiert durch das Infimum der Inhalte der Hüllreihen zu $f$
+Die $L_{P^1}$-Halbnorm einer Funktion $f : \Omega\to \mathbb{R}$ ist definiert durch das Infimum der Inhalte der Hüllreihen zu $f$
 $$ || f ||_{P^1} : = \inf  \biggl \{   I(\phi) \; | \; \phi  \text{ ist Hüllreihe zu  }  f \biggr \} \; .$$
 \end{Definition}
 
@@ -207,14 +203,14 @@ $$ || f ||_{P^1} : = \inf  \biggl \{   I(\phi) \; | \; \phi  \text{ ist Hüllrei
 
 \begin{Definition}
 Eine Funktion $f : \Omega \to \mathbb{R}$ heißt integrierbar, falls eine Folge von Treppenfunktionen  $\varphi_k$ existiert mit
-$$ || f -  \varphi_k ||_1 \to 0 \text{ für } k \to \infty \;. $$
+$$ || f -  \varphi_k ||_{P^1} \to 0 \text{ für } k \to \infty \;. $$
 In diesem Fall heißt
-$$ \int_{\mathbb{R}^n} f(x) dP := \lim_{k \to \infty}  \int_{\mathbb{R}^n}  \varphi_k d dP$$
-das Integral von $f$ über $\mathbb{R}^n$.
+$$ \int_{\Omega} f(x) dP := \lim_{k \to \infty}  \int_{\Omega}  \varphi_k  dP$$
+das Integral von $f$ über $\Omega$.
 \end{Definition}
 
 
-\subsection{Reelle Zufalssvariablen}
+\subsection{Reelle Zufallsvariablen}
 
 \begin{Definition}
 Eine Menge $U \subset  \mathbb{R}^n$ heißt offen, falls für jeden Punkt $x \in U$ ein Radius $\epsilon > 0$ existiert, so dass der Ball $B_\epsilon (x)$ in $U$ enthalten ist, also 

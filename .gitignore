@@ -141,3 +141,6 @@ dmypy.json
 *.nav
 *.out
 *.snm
+*.lof
+*.lot
+TSWLatexianTemp_*

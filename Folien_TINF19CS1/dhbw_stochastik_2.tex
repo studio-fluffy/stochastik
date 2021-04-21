@@ -198,7 +198,7 @@ Sei $(\Omega, \mathcal{A}, P)$ ein diskreter Wahrscheinlichkeitsraum. Dann ist f
 \begin{align*}
 & \tilde{\Omega} : = B \\
 & \tilde{\mathcal{A}} := \{ C \cap B  \; | \;  C \in \mathcal{A} \}  \\
-& \tilde{P} = \frac{P }{P(B)}
+& \tilde{P}(X) = \frac{P(X)}{P(B)} \quad \text{mit} \; X \in \tilde{\mathcal{A}}
 \end{align*}
 \end{block}
 
@@ -342,8 +342,8 @@ Aus einer Datenbank kann man das Vorkommen dieser Wörter in Spam und Ham Mails 
 \begin{block}{Naiver Bayes'scher Spam Filter}
  Wir machen zudem die (naive) Annahme, dass das Vorkommen der Wörter  stochastisch unabhängig ist, also 
 \begin{align*}
-P(A_1 \cap \cdots \cap A_n | S) = P(A_1 | S) \cdots P(A_n | S) \\
-P(A_1 \cap \cdots \cap A_n | H) = P(A_1 | H) \cdots P(A_n | H)
+P(A_1 \cap \cdots \cap A_n | S) = P(A_1 | S) \cdot P(A_2 | S) \cdots P(A_n | S) \\
+P(A_1 \cap \cdots \cap A_n | H) = P(A_1 | H) \cdot P(A_2 | H) \cdots P(A_n | H)
 \end{align*}
 gilt.
 \end{block}
