@@ -151,6 +151,14 @@ P_X (A') := P(X^{-1} (A'))
  für $A' \in \mathcal{A}'$ wird ein Wahrscheinlichkeitsmaß auf  $(\Omega', \mathcal{A}')$ definiert. Es wird Bildmaß genannt. Anstelle von $P_X (A')$ wird auch die Schreibweise $P (X \in A'):= P_X (A')$ verwendet.
 \end{Definition}
 
+\begin{Definition}
+Sei $(\Omega, \mathcal{A}, P)$ ein Wahrscheinlichkeitsraum, $(R, \mathcal{B})$ ein Messraum  und
+ $\{X_i\}_{i=1}^n$ ein Folge von Zufallsvariablen   $X_i :  \Omega \to R$.
+Die zufallsvariablen heissen identisch verteilt, falls
+ $P_{X_i} = P_{X_j}$ für alle $i,j$  und
+stochastisch unabhängig, falls
+ $P_{(X_1, \cdots X_n)} = \prod_{i=1}^n P_{X_i}$ gilt. 
+\end{Definition}
 
 
 \subsection{Integration bezüglich eines Wahrscheinlichkeitsmaßes}
@@ -253,6 +261,7 @@ wobei $(\Omega, \mathcal{A}, P)$ ein Wahrscheinlichkeitsraum ist und $(\mathbb{R
 \end{Definition}
 
 
+
 \subsection{Erwartungswert}
 \begin{Satz}
 Eine reelle Zufallsvariable ist integrierbar.
@@ -326,7 +335,7 @@ $$ \mathbb{E} (X) = \sum_{\omega \in \Omega}  X(\omega) \cdot P(\omega)$$
 
 \begin{Satz}
 Für eine reelle Zufallsvariable gilt
-$$ \mathbb{E} (g \circ X) := \int_{\Omega} g \circ X dP = \int_{\mathbb{R}^n}  g(x)  dP_X \;. $$
+$$ \mathbb{E} (g \circ X) := \int_{\Omega} g \circ X dP = \int_{\mathbb{R}^n}  g  dP_X \;. $$
 Ist insbesondere $f(x) : \mathbb{R}^n \to \mathbb{R}$ eine Dichte, so ist  
 $$\mathbb{E} (X) =  \int_{\mathbb{R}^n} x \cdot g(x) d\mu$$ das Lebesgue-Integral der Funktion $x \cdot g(x)$.
 \end{Satz}
