@@ -334,14 +334,19 @@ $$ \mathbb{E} (X) = \sum_{\omega \in \Omega}  X(\omega) \cdot P(\omega)$$
 
 
 \begin{Satz}
-Für eine reelle Zufallsvariable gilt
+Für eine reelle Zufallsvariable $X: \Omega \to \mathbb{R}^n$ und eine integrierbare Funktion $g:  \mathbb{R}^n \to \mathbb{R}$ gilt
 $$ \mathbb{E} (g \circ X) := \int_{\Omega} g \circ X dP = \int_{\mathbb{R}^n}  g  dP_X \;. $$
-Ist insbesondere $f(x) : \mathbb{R}^n \to \mathbb{R}$ eine Dichte, so ist  
-$$\mathbb{E} (X) =  \int_{\mathbb{R}^n} x \cdot g(x) d\mu$$ das Lebesgue-Integral der Funktion $x \cdot g(x)$.
+Ist insbesondere $f(x) : \mathbb{R}^n \to \mathbb{R}$ eine Dichte für $P_X$ , so ist  
+$$\mathbb{E} (X) =  \int_{\mathbb{R}^n} x \cdot f(x) d\mu$$ das Lebesgue-Integral der Funktion $x \cdot f(x)$.
+Für eine Treppenfunktion $g= \sum_{i= 1}^n c_i 1_{A_i} $folgt das Ergebnis aus der Liberalität des Integrals. Für integrierbares $g$ folgt das Resultat mit Hilfe von Konvergenzsätzen für das  Integral.
 \end{Satz}
 
 \begin{proof}
-Für 
+Für $g = 1_A$ mit $A \in \mathcal{B}(\mathbb{R}^n)$ ist
+\begin{align*}
+& \int 1_A dP_X = P_X(A) = P(X^{-1} (A)) = \int 1_{X^{-1}(A)} dP \\
+&= \int 1_{A} \circ X dP
+\end{align*}
 \end{proof}
 
 
