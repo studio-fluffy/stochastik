@@ -268,6 +268,48 @@ Verteilungsfunktion von $X$.
 \end{Definition}
 
 
+
+
+\begin{Definition}
+Sei $\Omega \subset \mathbb{R}^n$ und $(\Omega, \mathcal{A})$ ein Messraum wobei alle $A \in \mathcal{A}$ Lebebesgue-messbar sind.
+ Eine Funktion $f: \Omega \to \mathbb{R}$ heiß Dichte, falls für ihr Lebesgue-Integral $\int_{\Omega} f d \mu = 1$ gilt.
+\end{Definition}
+
+\begin{Beispiel}
+Die Funktion $f(x) = \frac{1}{\sqrt{\pi}} e^{- x^2}$ ist eine Dichte auf $ \mathbb{R}$.
+\begin{align*}
+& I := \int_{0}^{\infty} e^{-x^2} \; dx\\
+& I^2 = \int_{0}^{\infty} \int_{0}^{\infty} e^{-(x^2+y^2)} \; dx \;dy \\
+&x=r \cos \varphi ,y=r\sin \varphi ,r^2 = x^2 + y^2  \; (\text{ da } \cos^2 + \sin^2 = 1)\\
+ &\text{ \href{https://de.wikipedia.org/wiki/Polarkoordinaten\#Zylinderkoordinaten}{LINK: Polarkoordinatentransformation}} \\
+& = \int_{0}^{\frac{\pi}{2}}  \int_{0}^{\infty}r \cdot e^{-r^2} \; dr \;d\varphi \\
+&= \frac{\pi}{2} \int_{0}^{\infty}r \cdot e^{-r^2} \; dr \\
+&= -\frac{\pi}{4} [e^{-r^2} ]_0^{\infty} = \frac{\pi}{4} \Rightarrow I = \frac{\sqrt{\pi}}{2}
+\end{align*}
+Analog beweist man, dass für alle  $\mu \in \mathbb{R}, \sigma > 0 $ die Funktion $ f(x):=  \frac 1{\sigma \sqrt{2\pi}}e^{- \frac {1}{2} (\frac{x- \mu}{ \sigma})^2}dx$  eine  Dichte auf $ \mathbb{R}$ ist.
+\end{Beispiel}
+
+\begin{figure}[htp]
+      \centering
+    \includegraphics[width=0.96\textwidth]{images/normal}
+      \caption{Quelle: Wikipedia}
+\end{figure}
+
+
+\begin{Definition}[Normalverteilung]
+Eine reelle Zufallsvariable $X: \Omega \to \mathbb{R}$ heisst Normalverteilt, wenn 
+$F_X (x) = \int_{- \infty}^{x}  \frac 1{\sigma \sqrt{2\pi}}e^{- \frac {1}{2} (\frac{x- \mu}{ \sigma})^2}dx$ mit  $\mu \in \mathbb{R}, \sigma > 0 $gilt. Man schreibt auch $X \sim \mathcal{N}(\mu, \sigma^2)$.
+\end{Definition}
+\begin{figure}[htp]
+      \centering
+    \includegraphics[width=0.96\textwidth]{images/normal_distribution}
+      \caption{Quelle: Wikipedia}
+\end{figure}
+
+
+\subsection{Erwartungswert}
+
+
 \begin{Definition}
 Für eine reelle Zufallsvariable ist der Erwartungswert definiert durch
 $$ \mathbb{E} (X) := \int_{\Omega} X dP \; .$$
@@ -284,18 +326,110 @@ $$ \mathbb{E} (X) = \sum_{\omega \in \Omega}  X(\omega) \cdot P(\omega)$$
 
 \begin{Satz}
 Für eine reelle Zufallsvariable gilt
-$$ \mathbb{E} (X) := \int_{\Omega} X dP = \int_{\mathbb{R}^n}  x  dP_X$$
+$$ \mathbb{E} (g \circ X) := \int_{\Omega} g \circ X dP = \int_{\mathbb{R}^n}  g(x)  dP_X \;. $$
+Ist insbesondere $f(x) : \mathbb{R}^n \to \mathbb{R}$ eine Dichte, so ist  
+$$\mathbb{E} (X) =  \int_{\mathbb{R}^n} x \cdot g(x) d\mu$$ das Lebesgue-Integral der Funktion $x \cdot g(x)$.
 \end{Satz}
 
+\begin{proof}
+Für 
+\end{proof}
+
+
+
+\begin{Beispiel}
+$\Omega = \{ \text{Kopf},\text{Zahl}\}$, $P(\text{Kopf}) = P(\text{Zahl}) = \frac{1}{2}$, $X(\text{Kopf}) = 0,  X(\text{Zahl}) = 1$ 
+\begin{align*}
+& \mathbb{E}(X)  = 0 \cdot P(X^{-1}(0) ) + 1 \cdot P(X^{-1}(1)) \\
+& =0  \cdot P(\text{Kopf}) + 1 \cdot P(\text{Zahl}) = \frac{1}{2}  
+\end{align*}
+\end{Beispiel}
+
+\begin{Beispiel}
+Sei $X \sim \mathcal{N}(\mu, \sigma^2)$.
+\begin{align*}
+\mathbb{E}(X) & := \int_{\mathbb{R}}  x \cdot  \frac 1{\sigma \sqrt{2\pi}}e^{- \frac {1}{2 } (\frac{x- \mu}{ \sigma})^2} \; dx  \\
+&= \int_{\mathbb{R}}  (y + \mu) \cdot  \frac 1{\sigma \sqrt{2\pi}}e^{- \frac {1}{2 \sigma^2} y^2} \; dy \\
+ &  = \mu  \int_{\mathbb{R}}      \frac 1{\sigma \sqrt{2\pi}}e^{- \frac {1}{2 \sigma^2} y^2} \; dy  + \int_{\mathbb{R}}  y  \cdot  \frac 1{\sigma \sqrt{2\pi}}e^{- \frac {1}{2 \sigma^2} y^2} \; dy = \mu
+\end{align*}
+\end{Beispiel}
+
+\begin{Satz}
+Sind $X,Y : \Omega \to \mathbb{R}$   reelle, integrierbare  Zufallsvariablen und $a,b \in \mathbb{R}$ konstant, so gilt:
+\begin{align*}
+& \mathbb{E}(a \cdot X + b \cdot Y) = a \cdot \mathbb{E}(X) + b \cdot \mathbb{E}(Y) \\
+& X(x) \leq Y(x) \;  \forall x \in \Omega \Rightarrow \mathbb{E}(X) \leq \mathbb{E}(Y) \\
+& X ,Y \text{ stoch. unabhängig} \Rightarrow   \mathbb{E}(X \cdot Y) =  \mathbb{E}(X) \cdot  \mathbb{E}(Y) \\
+& \mathbb{E} (1_A) = P (A)
+\end{align*}
+\end{Satz}
+
+\begin{Satz}{Markov-Ungleichung }
+Sei $Y : \Omega \to \mathbb{R}$  eine  reelle, integrierbare  Zufallsvariablen und $f : [0, \infty) \to [0, \infty)$ monoton wachsend.
+Dann gilt für alle $\epsilon > 0$ mit $f(\epsilon) > 0$
+\begin{align*}
+P (|Y |  \geq \epsilon) \leq \frac{\mathbb{E} (f \circ |Y|)}{f(\epsilon)}
+\end{align*}
+\end{Satz}
+\begin{proof}
+Da $f(\epsilon) 1_{\{ |Y| \geq  \epsilon \} } \leq f \circ |Y|$ folgt
+\begin{align*}
+f(\epsilon) P(|Y| \geq \epsilon) = & f(\epsilon) \mathbb{E}(1_{\{ |Y| \geq  \epsilon \} }) = \mathbb{E}( f(\epsilon) 1_{\{ |Y| \geq  \epsilon \} }) \\
+\leq & \mathbb{E}( f \circ |Y|)
+\end{align*}
+\end{proof}
+
+
 \subsection{Varianz}
-
-
 
 \begin{Definition}
 Für eine reelle Zufallsvariable ist die Varianz definiert durch
 $$ \mathbb{V} (X) :=  \mathbb{E}( (X - \mathbb{E}(X)^2)) \; .$$
 \end{Definition}
 
+\begin{Satz}{Verschiebungssatz}
+\begin{align*}
+ \mathbb{V}(X) & = \mathbb{E}(X^2 - 2X \mathbb{E}(X) + \mathbb{E}(X)^2) = \mathbb{E}(X^2) - 2 \mathbb{E}(X)^2 +  \mathbb{E}(X)^2 \\
+& =  \mathbb{E}(X^2) -  \mathbb{E}(X)^2 \\
+\end{align*}
+\end{Satz}
+
+\begin{Beispiel}
+Sei $X \sim \mathcal{N}(\mu, \sigma^2)$.
+\begin{align*}
+&\mathbb{V} (X) =  \frac{1}{\sqrt{2 \pi}} \int_{- \infty}^{\infty} x^2 e^{- \frac{x^2}{2}} \; dx =   \frac{1}{\sqrt{2 \pi}} \int_{- \infty}^{\infty} x (xe^{- \frac{x^2}{2}}) \; dx \\
+& =  \frac{1}{\sqrt{2 \pi}} \biggl (\biggl [ x (e^{- \frac{x^2}{2}}) \biggr]_{- \infty}^{\infty}   - \int_{- \infty}^{\infty}  - e^{- \frac{x^2}{2}} \; dx  \biggr) = 0 + 1 = 1\\
+\end{align*}
+\href{https://de.wikipedia.org/wiki/Partielle_Integration}{LINK: Partielle Integration}. Mit "Verschiebungstrick"
+$\Rightarrow \mathbb{V}(X) = \sigma^2$.
+\end{Beispiel}
+
+
+
+
+\begin{Satz}{Tschebyscheff-Ungleichung }
+Für eine  eine  reelle, integrierbare und quadratintegrierbare  Zufallsvariablen $Y : \Omega \to \mathbb{R}$  gilt:
+\begin{align*}
+P (|Y  - \mathbb{E} (Y)|  \geq \epsilon) \leq \frac{\mathbb{V} (Y)}{ \epsilon^2} 
+\end{align*}
+\end{Satz}
+\begin{proof}
+Folgt direkt aus der Markov-Ungleichung mit $Y' = Y -\mathbb{E}(Y)$ und $f(x) = x^2$
+\end{proof}
+
+
+
+\begin{Satz}{Schwaches Gesetzt der großen Zahlen }
+Seien $\{X_i  \}_i: \Omega \to \mathbb{R}$ unabhängige, reelle Zufallsvariablen (uid, iid(englisch)) mit $\mathbb{E}(X_i) = \mu < \infty$ und $\mathbb{V}(X_i) = \sigma < \infty$, dann gilt
+\begin{align*}
+P \bigl  ( \bigl | \frac{1}{n} \sum_{i=1}^{n} X_i - \mu \bigr |  \geq \epsilon \bigr) \leq \frac{\sigma}{ n \cdot \epsilon^2} \; \; \underset{n \to \infty}{\longrightarrow} 0
+\end{align*}
+(stochastische Konvergenz). 
+\end{Satz}
+\begin{proof}
+Mit $Y_n =  \frac{1}{n} \sum_{i=1}^{n}  X_i - \mu$ ist $\mathbb{E}(Y_n) =  \frac{1}{n} \sum_{i=1}^{n} \mathbb{E}( X_i - \mu) = 0$ und 
+$\mathbb{V}(Y_n) =  \frac{1}{n^2} \sum_{i=1}^{n} \mathbb{V}( X_i ) = \frac{\sigma}{n}$. Aus der Tschebyscheff-Ungleichung folgt die Behauptung.
+\end{proof}
 
 
 
