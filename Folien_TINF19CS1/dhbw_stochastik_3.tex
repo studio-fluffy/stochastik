@@ -204,7 +204,7 @@ $B_\epsilon (x) \subset U$ gilt.
     \frametitle{Zufallsvariablen}
 \framesubtitle{}
 
-\begin{block}{Borell'sche Sigma-Algebra}
+\begin{block}{Borel'sche Sigma-Algebra}
 Die Borel'sche   $\sigma$-Algebra $\mathcal{B}(\mathbb{R}^n)$über $\mathbb{R}^n$ ist die kleinste  $\sigma$-Algebra, die alle offenen Mengen $\mathcal{U}$ enthält, also 
 \begin{align*}
 A_\sigma (\mathcal{U}) := \bigcap \{  \mathcal{A} \subset \mathcal{P}(\mathbb{R}^n);  \;   \mathcal{U}  \subset  \mathcal{A},  \;  \mathcal{A} \text{ ist $\sigma$-Algebra} \}
@@ -228,13 +228,13 @@ Die Borel'sche   $\sigma$-Algebra ist in der $\sigma$-Algebra der Lebesgue messb
     \frametitle{Zufallsvariablen}
 \framesubtitle{}
 
-\begin{block}{Reelle Zufalssvariable}
+\begin{block}{Reelle Zufallsvariablen}
 Unter einer reellen Zufallsvariable verstehen wir eine Zufallsvariable 
 \begin{align*}
 & X : \Omega \to \mathbb{R}^n \\
 & X(\omega) := \biggl(X_1(\omega), \cdots , X_n(\omega)  \biggr) \; ,
 \end{align*}
-wobei $(\Omega, \mathcal{A}, P)$ ein Wahrscheinlichkeitsraum ist und $(\mathbb{R}^n, \mathcal{B}(\mathbb{R}^n)$ der $\mathbb{R}^n$ zusammen mit der Borell'schen Sigma-Algebra ist. Das Integral ist komponentenweise definiert durch
+wobei $(\Omega, \mathcal{A}, P)$ ein Wahrscheinlichkeitsraum ist und $(\mathbb{R}^n, \mathcal{B}(\mathbb{R}^n))$ der $\mathbb{R}^n$ zusammen mit der Borel'schen Sigma-Algebra ist. Das Integral ist komponentenweise definiert durch
 \begin{align*} 
 \int_{\Omega} X dP :=  \biggl( \int_{\Omega} X_1 dP, \cdots , \int_{\Omega} X_n dP    \biggr)
 \end{align*}
@@ -251,7 +251,7 @@ wobei $(\Omega, \mathcal{A}, P)$ ein Wahrscheinlichkeitsraum ist und $(\mathbb{R
 Für eine reelle Zufallsvariable heißt 
 \begin{align*} 
 & F_X : \Omega \to [0,1] \\
-& F_X (x) := P (X \leq x) := P_X (( -\infty, x ) = P(X^{-1} (-\infty, x))
+& F_X (x) := P (X \leq x) := P_X (( -\infty, x )) = P(X^{-1} (-\infty, x))
 \end{align*}
 Verteilungsfunktion von $X$.
 \end{block}
@@ -262,8 +262,8 @@ Verteilungsfunktion von $X$.
 \framesubtitle{}
 
 \begin{block}{Dichte}
-Sei $\Omega \subset \mathbb{R}^n$ und $(\Omega, \mathcal{A})$ ein Messraum, wobei alle $A \in \mathcal{A}$ Lebebesgue-messbar sind.
- Eine Funktion $f: \Omega \to \mathbb{R}$ heiß Dichte, falls für ihr Lebesgue-Integral $\int_{\Omega} f d \mu = 1$ gilt.
+Sei $\Omega \subset \mathbb{R}^n$ und $(\Omega, \mathcal{A})$ ein Messraum, wobei alle $A \in \mathcal{A}$ Lebesgue-messbar sind.
+ Eine Funktion $f: \Omega \to \mathbb{R}$ heißt Dichte, falls für ihr Lebesgue-Integral $\int_{\Omega} f d \mu = 1$ gilt.
 \end{block}
  \end{frame}
 
@@ -289,7 +289,7 @@ Die Funktion $f(x) = \frac{1}{\sqrt{\pi}} e^{- x^2}$ ist eine Dichte auf $ \math
     \frametitle{Zufallsvariablen}
 \framesubtitle{}
 \begin{block}{Beispiel}
-Analog beweist man, dass für alle  $\mu \in \mathbb{R}, \sigma > 0 $ die Funktion $ f(x):=  \frac 1{\sigma \sqrt{2\pi}}e^{- \frac {1}{2} (\frac{x- \mu}{ \sigma})^2}dx$  eine  Dichte auf $ \mathbb{R}$ ist.
+Analog beweist man, dass für alle  $\mu \in \mathbb{R}, \sigma > 0 $ die Funktion $ f(x):=  \frac 1{\sigma \sqrt{2\pi}}e^{- \frac {1}{2} (\frac{x- \mu}{ \sigma})^2}$  eine  Dichte auf $ \mathbb{R}$ ist.
 \end{block}
 \begin{figure}[htp]
       \centering
@@ -301,9 +301,9 @@ Analog beweist man, dass für alle  $\mu \in \mathbb{R}, \sigma > 0 $ die Funkti
 \begin{frame}
     \frametitle{Zufallsvariablen}
 \framesubtitle{}
-\begin{block}{Beispiel}
-Eine reelle Zufallsvariable $X: \Omega \to \mathbb{R}$ heisst Normalverteilt, wenn 
-$F_X (x) = \int_{- \infty}^{x}  \frac 1{\sigma \sqrt{2\pi}}e^{- \frac {1}{2} (\frac{x- \mu}{ \sigma})^2}dx$ mit  $\mu \in \mathbb{R}, \sigma > 0 $gilt. Man schreibt auch $X \sim \mathcal{N}(\mu, \sigma^2)$.
+\begin{block}{Normalverteilung}
+Eine reelle Zufallsvariable $X: \Omega \to \mathbb{R}$ heißt normalverteilt, wenn 
+$F_X (x) = \int_{- \infty}^{x}  \frac 1{\sigma \sqrt{2\pi}}e^{- \frac {1}{2} (\frac{x- \mu}{ \sigma})^2}dx$ mit  $\mu \in \mathbb{R}, \sigma > 0 $ gilt. Man schreibt auch $X \sim \mathcal{N}(\mu, \sigma^2)$.
 \end{block}
 \begin{figure}[htp]
       \centering
@@ -317,10 +317,10 @@ $F_X (x) = \int_{- \infty}^{x}  \frac 1{\sigma \sqrt{2\pi}}e^{- \frac {1}{2} (\f
 \begin{frame}
     \frametitle{Zufallsvariablen}
 \framesubtitle{}
-\begin{block}{Beispiel}
+\begin{block}{Verteilung und Unabhängigkeit}
 Sei $(\Omega, \mathcal{A}, P)$ ein Wahrscheinlichkeitsraum, $(R, \mathcal{B})$ ein Messraum  und
  $\{X_i\}_{i=1}^n$ ein Folge von Zufallsvariablen   $X_i :  \Omega \to R$.
-Die zufallsvariablen heissen identisch verteilt, falls
+Die Zufallsvariablen heißen identisch verteilt, falls
  $P_{X_i} = P_{X_j}$ für alle $i,j$  und
 stochastisch unabhängig, falls
  $P_{(X_1, \cdots ,X_n)} = \prod_{i=1}^n P_{X_i}$ gilt. 
