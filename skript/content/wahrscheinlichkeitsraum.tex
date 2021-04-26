@@ -157,7 +157,7 @@ Sei $(\Omega, \mathcal{A}, P)$ ein Wahrscheinlichkeitsraum, $(R, \mathcal{B})$ e
 Die zufallsvariablen heissen identisch verteilt, falls
  $P_{X_i} = P_{X_j}$ für alle $i,j$  und
 stochastisch unabhängig, falls
- $P_{(X_1, \cdots X_n)} = \prod_{i=1}^n P_{X_i}$ gilt. 
+ $P_{(X_1, \cdots ,X_n)} = \prod_{i=1}^n P_{X_i}$ gilt. 
 \end{Definition}
 
 
@@ -338,7 +338,7 @@ Für eine reelle Zufallsvariable $X: \Omega \to \mathbb{R}^n$ und eine integrier
 $$ \mathbb{E} (g \circ X) := \int_{\Omega} g \circ X dP = \int_{\mathbb{R}^n}  g  dP_X \;. $$
 Ist insbesondere $f(x) : \mathbb{R}^n \to \mathbb{R}$ eine Dichte für $P_X$ , so ist  
 $$\mathbb{E} (X) =  \int_{\mathbb{R}^n} x \cdot f(x) d\mu$$ das Lebesgue-Integral der Funktion $x \cdot f(x)$.
-Für eine Treppenfunktion $g= \sum_{i= 1}^n c_i 1_{A_i} $folgt das Ergebnis aus der Liberalität des Integrals. Für integrierbares $g$ folgt das Resultat mit Hilfe von Konvergenzsätzen für das  Integral.
+
 \end{Satz}
 
 \begin{proof}
@@ -347,6 +347,7 @@ Für $g = 1_A$ mit $A \in \mathcal{B}(\mathbb{R}^n)$ ist
 & \int 1_A dP_X = P_X(A) = P(X^{-1} (A)) = \int 1_{X^{-1}(A)} dP \\
 &= \int 1_{A} \circ X dP
 \end{align*}
+Für eine Treppenfunktion $g= \sum_{i= 1}^n c_i 1_{A_i} $folgt das Ergebnis aus der Linearität des Integrals für Treppenfunktionen. Für integrierbares $g$ folgt das Resultat mit Hilfe von Konvergenzsätzen für das  Integral.
 \end{proof}
 
 
@@ -369,7 +370,7 @@ Sei $X \sim \mathcal{N}(\mu, \sigma^2)$.
 \end{Beispiel}
 
 \begin{Satz}
-Sind $X,Y : \Omega \to \mathbb{R}$   reelle, integrierbare  Zufallsvariablen und $a,b \in \mathbb{R}$ konstant, so gilt:
+Sind $X,Y : \Omega \to \mathbb{R}^n$   reelle, integrierbare  Zufallsvariablen und $a,b \in \mathbb{R}$ konstant, so gilt:
 \begin{align*}
 & \mathbb{E}(a \cdot X + b \cdot Y) = a \cdot \mathbb{E}(X) + b \cdot \mathbb{E}(Y) \\
 & X(x) \leq Y(x) \;  \forall x \in \Omega \Rightarrow \mathbb{E}(X) \leq \mathbb{E}(Y) \\
@@ -434,7 +435,7 @@ Folgt direkt aus der Markov-Ungleichung mit $Y' = Y -\mathbb{E}(Y)$ und $f(x) = 
 
 
 \begin{Satz}{Schwaches Gesetzt der großen Zahlen }
-Seien $\{X_i  \}_i: \Omega \to \mathbb{R}$ unabhängige, reelle Zufallsvariablen (uid, iid(englisch)) mit $\mathbb{E}(X_i) = \mu < \infty$ und $\mathbb{V}(X_i) = \sigma < \infty$, dann gilt
+Seien $X_i : \Omega \to \mathbb{R}$ unabhängige, reelle Zufallsvariablen (uid, iid(englisch)) mit $\mathbb{E}(X_i) = \mu < \infty$ und $\mathbb{V}(X_i) = \sigma < \infty$, dann gilt
 \begin{align*}
 P \bigl  ( \bigl | \frac{1}{n} \sum_{i=1}^{n} X_i - \mu \bigr |  \geq \epsilon \bigr) \leq \frac{\sigma}{ n \cdot \epsilon^2} \; \; \underset{n \to \infty}{\longrightarrow} 0
 \end{align*}
