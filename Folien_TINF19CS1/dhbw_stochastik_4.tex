@@ -37,7 +37,7 @@
 \framesubtitle{}
 \begin{block}{Erwartungswert}
 Eine reelle Zufallsvariable ist integrierbar und ihr Erwartungswert wird definiert durch
-$$ \mathbb{E} (X) := \int_{\Omega} X dP \; .$$
+$$ \mathbb{E} (X) := \int_{\Omega} X \; dP \; .$$
 \end{block}
  \end{frame}
 
@@ -57,9 +57,9 @@ $$ \mathbb{E} (X) = \sum_{\omega \in \Omega}  X(\omega) \cdot P(\omega)$$
 \framesubtitle{}
 \begin{block}{Transformationsformel}
 Für eine reelle Zufallsvariable $X: \Omega \to \mathbb{R}^n$ und eine integrierbare Funktion $g:  \mathbb{R}^n \to \mathbb{R}$ gilt
-$$ \mathbb{E} (g \circ X) := \int_{\Omega} g \circ X dP = \int_{\mathbb{R}^n}  g  dP_X \;. $$
+$$ \mathbb{E} (g \circ X) := \int_{\Omega} g \circ X \; dP = \int_{\mathbb{R}^n}  g \; dP_X \;. $$
 Ist insbesondere $f(x) : \mathbb{R}^n \to \mathbb{R}$ eine Dichte für $P_X$ , so ist  
-$$\mathbb{E} (X) =  \int_{\mathbb{R}^n} x \cdot f(x) d\mu$$ das Lebesgue-Integral der Funktion $x \cdot f(x)$.
+$$\mathbb{E} (X) =  \int_{\mathbb{R}^n} x \cdot f(x) \; d\mu$$ das Lebesgue-Integral der Funktion $x \cdot f(x)$.
 \end{block}
  \end{frame}
 
@@ -70,8 +70,8 @@ $$\mathbb{E} (X) =  \int_{\mathbb{R}^n} x \cdot f(x) d\mu$$ das Lebesgue-Integra
 \begin{block}{Transformationsformel}
 Für $g = 1_A$ mit $A \in \mathcal{B}(\mathbb{R}^n)$ ist
 \begin{align*}
-& \int 1_A dP_X = P_X(A) = P(X^{-1} (A)) = \int 1_{X^{-1}(A)} dP \\
-&= \int 1_{A} \circ X dP
+& \int 1_A \; dP_X = P_X(A) = P(X^{-1} (A)) = \int 1_{X^{-1}(A)} \; dP \\
+&= \int 1_{A} \circ X \; dP
 \end{align*}
 Für eine Treppenfunktion $g= \sum_{i= 1}^n c_i 1_{A_i} $folgt das Ergebnis aus der Linearität des Integrals  für Treppenfunktionen. Für integrierbares $g$ folgt das Resultat mit Hilfe von Konvergenzsätzen für das  Integral.
 \end{block}
