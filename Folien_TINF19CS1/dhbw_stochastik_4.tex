@@ -7,6 +7,10 @@
 \usepackage{subfig}
 \usepackage{amsmath}
 \usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,     
+    urlcolor=blue
+}
 \usepackage[all]{xy}
 \begin{document}
 
@@ -131,7 +135,7 @@ Sind $X,Y : \Omega \to \mathbb{R}^n$   reelle, integrierbare  Zufallsvariablen u
     \frametitle{Erwartungswert}
 \framesubtitle{}
 \begin{block}{Markov Ungleichung}
-Sei $Y : \Omega \to \mathbb{R}$  eine  reelle, integrierbare  Zufallsvariablen und $f : [0, \infty) \to [0, \infty)$ monoton wachsend.
+Sei $Y : \Omega \to \mathbb{R}$  eine  reelle, integrierbare  Zufallsvariable und $f : [0, \infty) \to [0, \infty)$ monoton wachsend.
 Dann gilt für alle $\epsilon > 0$ mit $f(\epsilon) > 0$
 \begin{align*}
 P (|Y |  \geq \epsilon) \leq \frac{\mathbb{E} (f \circ |Y|)}{f(\epsilon)}
@@ -152,7 +156,7 @@ f(\epsilon) P(|Y| \geq \epsilon) = & f(\epsilon) \mathbb{E}(1_{\{ |Y| \geq  \eps
 \framesubtitle{}
 \begin{block}{Varianz}
 Für eine reelle Zufallsvariable ist die Varianz definiert durch
-$$ \mathbb{V} (X) :=  \mathbb{E}( (X - \mathbb{E}(X)^2)) \; .$$
+$$ \mathbb{V} (X) :=  \mathbb{E}( (X - \mathbb{E}(X))^2) \; .$$
 \end{block}
 \begin{block}{Verschiebungssatz}
 
@@ -183,7 +187,7 @@ $\Rightarrow \mathbb{V}(X) = \sigma^2$.
     \frametitle{Erwartungswert}
 \framesubtitle{}
 \begin{block}{Tschebyscheff-Ungleichung}
-Für eine  eine  reelle, integrierbare und quadratintegrierbare  Zufallsvariablen $Y : \Omega \to \mathbb{R}$  gilt:
+Für eine reelle, integrierbare und quadratintegrierbare  Zufallsvariable $Y : \Omega \to \mathbb{R}$  gilt:
 \begin{align*}
 P (|Y  - \mathbb{E} (Y)|  \geq \epsilon) \leq \frac{\mathbb{V} (Y)}{ \epsilon^2} 
 \end{align*}
@@ -207,7 +211,7 @@ Folgt direkt aus der Markov-Ungleichung mit $Y' = Y -\mathbb{E}(Y)$ und $f(x) = 
 \begin{frame}
     \frametitle{Erwartungswert}
 \framesubtitle{}
-\begin{block}{Schwaches Gesetzt der großen Zahlen}
+\begin{block}{Schwaches Gesetz der großen Zahlen}
 Seien $X_i : \Omega \to \mathbb{R}$ unabhängige, reelle Zufallsvariablen (uid, iid(englisch)) mit $\mathbb{E}(X_i) = \mu < \infty$ und $\mathbb{V}(X_i) = \sigma < \infty$, dann gilt
 \begin{align*}
 P \bigl  ( \bigl | \frac{1}{n} \sum_{i=1}^{n} X_i - \mu \bigr |  \geq \epsilon \bigr) \leq \frac{\sigma}{ n \cdot \epsilon^2} \; \; \underset{n \to \infty}{\longrightarrow} 0
