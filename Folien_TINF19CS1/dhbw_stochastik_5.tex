@@ -191,12 +191,12 @@ Wir beschäftigen uns nun mit der Frage ob  man diese Größe abschätzen kann.
     \frametitle{Informationstheorie}
 \framesubtitle{}
 
-\begin{block}{Kraftsche Ungleichung }
+\begin{block}{Kraftsche Ungleichung a)}
 Sei $\kappa$ ein präfixfreier $\mathcal{A}$-Kode für $\mathcal{X}$ mit $\# \mathcal{X} = d$. Dann ist
 $$ \sum_{x \in \mathcal{X} }  d^{-l( \kappa(x))} \leq 1$$
 \end{block}
 
-\begin{block}{Kraftsche Ungleichung }
+\begin{block}{Kraftsche Ungleichung b)}
 Für $x \in \mathcal{X}$ sei $L : \mathcal{X} \to \mathbb{N}$ eine Abbildung, so dass $ \sum_{x \in \mathcal{X} }  d^{-L(x)} \leq 1$ gilt. Dann gibt es einen präfixfreien  $\mathcal{A}$-Kode für $\mathcal{X}$ mit 
 $$ l(\kappa(x)) = L(x) \; .$$
 \end{block}
@@ -208,13 +208,52 @@ $$ l(\kappa(x)) = L(x) \; .$$
     \frametitle{Informationstheorie}
 \framesubtitle{}
 
-\begin{block}{Beweis}
+\begin{block}{Beweis a)}
 Nehmen wir an, wir wählen zufällig ein Kodewort aus.
 In jedem Knoten gibt es maximal $d$ Kanten. Damit ist $P(\kappa(x)) \geq d^{-l(\kappa(x))}$ und somit
-$$ 1 = \sum_{x \in \mathcal{X}} P(\kappa(x)) \geq  \sum_{x \in \mathcal{X}} d^{-l(\kappa(x))}$$.
+$$ 1 = \sum_{x \in \mathcal{X}} P(\kappa(x)) \geq  \sum_{x \in \mathcal{X}} d^{-l(\kappa(x))} \; .$$
 \end{block}
-\begin{block}{Beweis}
-Huffman-Code
+
+\begin{block}{Beweis b)}
+Für $k \in \mathbb{N}$ sei $\mathcal{X}_k := \{ x \in \mathcal{X} \;  |  \; L(x) = k\}$  und $n_k := \# \mathcal{X}$.
+Damit ist 
+$$  \sum_{x \in \mathcal{X} }  d^{-L(x)} =   \sum_{k \in \mathbb{N}}  n_k d^{-k} \leq 1\;(*) .$$
+Wir wählen nun induktiv Kodewörter für alle $x_k \in \mathcal{X}_k$. 
+\end{block}
+
+ \end{frame}
+
+
+\begin{frame}
+    \frametitle{Informationstheorie}
+\framesubtitle{}
+
+\begin{block}{ Induktions Anfang}
+Nach $(*)$ ist $n_1d^{-1} \leq 1$. Daher können wir jedem $x \in \mathcal{X}_1$ einen einzelnen Buchstabe $\kappa(x) \in \mathcal{A}$ zuordnen.
+\end{block}
+
+\begin{block}{ Induktions Schritt}
+Haben für alle $x \in \mathcal{X}_1 \cup \cdots \cup \mathcal{X}_m$ ein Wort $\kappa(x)$ gewählt, so dass kein Wort präfix eines  anderen ist. Jedes bereits gewählte Kodewort $\kappa(x)$ hat $d^{m+1 - l(\kappa(x))}$ Fortsetzungen zu einem Wort in $\mathcal{X}_k$. Diese stehen nicht zur Verfügung, da man sonst keine präfixfreie Kodierung erhält. Es bleiben also noch 
+$$ d^{m+1} - \sum_{x \in \mathcal{X}_1 \cup \cdots \cup \mathcal{X}_m } d^{m+ 1 - L(x)} = d^{m+1} - \sum_{k=1}^{m} n_k d^{m+1-k}$$ 
+Wörter übrig, die für die präfixfreie Kodierung verwendet werden können.
+\end{block}
+
+ \end{frame}
+
+
+\begin{frame}
+    \frametitle{Informationstheorie}
+\framesubtitle{}
+
+
+
+\begin{block}{ Induktions Schritt}
+Mit $(*)$ folgt
+\begin{align*}
+& d^{m+1} - \sum_{k=1}^{n} n_k d^{m+1-k} = d^{m+1} (1 - \sum_{k=1}^{m} n_k d^{-k}) \\
+& \geq d^{m+1}(n_{m+1} d^{-(m+1)}) = n_{m+1}
+\end{align*}
+Es gibt also noch genügend Wörter, um alle Punkte $x_{m+1}$ präfixfrei zu kodieren.
 \end{block}
 
  \end{frame}
