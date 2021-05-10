@@ -315,7 +315,7 @@ $$ \frac{H(X)}{\log(d)} \leq H_d(X) \leq \frac{H(X)}{\log(d)} +1 \; .$$
 \framesubtitle{}
 
 \begin{block}{Beweis}
-Die untere Abschätzung erhalten wir, indem wir  anstatt der Menge Abbildungen $L: \mathcal{X} \to \mathbb{N}$ die Menge $D$ aller 
+Die untere Abschätzung erhalten wir, indem wir  anstatt der Menge der Abbildungen $L: \mathcal{X} \to \mathbb{N}$ die Menge $D$ aller 
 Abbildungen $L: \mathcal{X} \to [0, \infty)$ betrachten. Für eine solche Abbildung definieren wir $f(L): = \sum_{x \in \mathcal{X}} Q(x) L(x)$ und 
 $g(L):= \sum_{x \in \mathcal{X}} d^{-L(x)}$. Gesucht wir nun also das Minimum
 $$ \min_{L \in D : g(L) \leq 1} f(L)$$
@@ -377,7 +377,7 @@ $$ H_d(X) \geq f(L_0) = - \sum_{x \in \mathcal{X}} \log_d (Q(X)) = \frac{H(X)}{\
 
 \begin{block}{}
 Definieren wir $L(x) = \lceil L_0(x) \rceil$. Dann ist 
-$$ \sum_{x \in \mathcal{X}} d^{-L(x)} \leq \sum_{x \in \mathcal{X}} d^{-L_0(x)} \leq = 1$$
+$$ \sum_{x \in \mathcal{X}} d^{-L(x)} \leq \sum_{x \in \mathcal{X}} d^{-L_0(x)} \leq  1$$
 und mit $0 \leq L - L_0 < 1$ 
 $$ H_d(X) \leq  \sum_{x \in \mathcal{X}} Q(x) L(x) <  \sum_{x \in \mathcal{X}} Q(x) (L_0(x) +1) = \frac{H(Q)}{\log(d)} +1$$ 
 \end{block}
