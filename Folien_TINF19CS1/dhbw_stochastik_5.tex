@@ -379,7 +379,7 @@ $$ H_d(X) \geq f(L_0) = - \sum_{x \in \mathcal{X}} Q(x) \log_d (Q(X)) = \frac{H(
 Definieren wir $L(x) = \lceil L_0(x) \rceil$. Dann ist 
 $$ \sum_{x \in \mathcal{X}} d^{-L(x)} \leq \sum_{x \in \mathcal{X}} d^{-L_0(x)} \leq  1$$
 und mit $0 \leq L - L_0 < 1$ 
-$$ H_d(X) \leq  \sum_{x \in \mathcal{X}} Q(x) L(x) <  \sum_{x \in \mathcal{X}} Q(x) (L_0(x) +1) = \frac{H(Q)}{\log(d)} +1$$ 
+$$ H_d(X) \leq  \sum_{x \in \mathcal{X}} Q(x) L(x) <  \sum_{x \in \mathcal{X}} Q(x) (L_0(x) +1) = \frac{H(X)}{\log(d)} +1$$ 
 \end{block}
 
  \end{frame}
@@ -390,7 +390,7 @@ $$ H_d(X) \leq  \sum_{x \in \mathcal{X}} Q(x) L(x) <  \sum_{x \in \mathcal{X}} Q
 
 \begin{block}{Konstruktion fast optimaler Kodes}
 Berechne für $x \in \mathcal{X}$ die Funktion $L(x) := \lceil -\log_d(Q(x)) \rceil$. Damit erhält man einen präfixfreien $\mathcal{A}$-Kode
-$\kappa$ mit $l(\kappa(x)) = L(x)$. Wie eben gezeigt gilt dann $El(\kappa(X)) < H_d(Q) +1$.
+$\kappa$ mit $l(\kappa(x)) = L(x)$. Wie eben gezeigt gilt dann $El(\kappa(X)) < H_d(X) +1$.
 \end{block}
 
  \end{frame}
