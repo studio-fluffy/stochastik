@@ -360,11 +360,11 @@ Die Funktionen $\varphi_i'(x_0)$ erfüllen ebenfalls $<\varphi_i' (x_0),v> = 0$ 
 
 \begin{block}{Beweis Entropie-Ungleichung weiter }
 Wollen Minimum finden  
-$$ \min_{L \in D} \sum_{x \in \mathcal{X}} Q(x) L(x) + \lambda d^{-L(x)}$$
+$$ f(L): = \min_{L \in D} \sum_{x \in \mathcal{X}} Q(x) L(x) + \lambda d^{-L(x)}$$
 für ein $\lambda > 0$. Summandenweise ist
 $$\frac{d}{dr} Q(x) r + \lambda d^{-r} =  Q(x) - \lambda \log(d) e^{-\log(d)r}$$
 Somit ist  $L_0(x) := \frac{\frac{- \log Q(x)}{\lambda \log(d)}}{\log(d)}$ eine Nullstelle und damit ein Minimum. Mit $\lambda = \frac{1}{\log(d)}$ ist $L_0(x) = -\log_d Q(x)$  und damit $g(L_0) = 1$. Somit ist
-$$ H_d(X) \geq f(L_0) = - \sum_{x \in \mathcal{X}} \log_d (Q(X)) = \frac{H(X)}{\log(d)}$$ 
+$$ H_d(X) \geq f(L_0) = - \sum_{x \in \mathcal{X}} Q(x) \log_d (Q(X)) = \frac{H(X)}{\log(d)}$$ 
 
  \end{block}
 
