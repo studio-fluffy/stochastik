@@ -224,7 +224,6 @@ Wie und gegen was konvergiert $P_{S_n}$ für $n \to \infty$?
 
 
 
-
 \begin{frame}
     \frametitle{Zentraler Grenzwertsatz}
 \framesubtitle{}
@@ -304,6 +303,19 @@ Sei $(\Omega, \mathcal{A}, P)$ ein Wahrscheinlichkeitsraum so wie  $X$ und $X_n 
 
  \end{frame}
 
+
+\begin{frame}
+    \frametitle{Zentraler Grenzwertsatz}
+\framesubtitle{}
+
+\begin{block}{Stetigkeitssatz von Levy}
+Mit $\varphi_{X} := \mathbb{E}(e^{i tx})$  ist $\varphi _{X}(-it)=\psi_{X}(t)$ und der Stetigkeitssatz von Levy folgt aus dem Umkehrsatz.
+\end{block}
+ \end{frame}
+
+
+
+
 \begin{frame}
     \frametitle{Zentraler Grenzwertsatz}
 \framesubtitle{}
@@ -359,6 +371,7 @@ Für $T_n := \frac{\sqrt{n}}{\sigma}(S_n - \mu)$ erhält man damit
 Mit dem Stetigkeitssatz von Levy folgt der zentrale Grentzwertsatz.
 \end{block}
 
+
  \end{frame}
 
 
@@ -378,15 +391,6 @@ fast überall.
 
 
 
-\begin{frame}
-    \frametitle{Zentraler Grenzwertsatz}
-\framesubtitle{}
-
-\begin{block}{Stetigkeitssatz von Levy}
-Mit $\varphi_{X} := \mathbb{E}(e^{i tx})$  ist $\varphi _{X}(-it)=\psi_{X}(t)$ und der Stetigkeitssatz von Levy folgt aus dem Umkehrsatz.
-\end{block}
- \end{frame}
-
 
 
 \begin{frame}
@@ -405,7 +409,7 @@ Mit $\varphi_{X} := \mathbb{E}(e^{i tx})$  ist $\varphi _{X}(-it)=\psi_{X}(t)$ u
 
 
 \begin{block}{Sensorrauschen}
-Wir können annehmen, dass das Rauschen eines Sensor $N_S$ aus vielen kleinen, stochastisch unabhängigen Effekten $N_1, \cdots N_k$ Beruht, die sich aufsummieren, also $N_S = N_1 + \cdots + N_k$  Diese Summe ist nach dem zentralen Grenzwertsatz näherungsweise Normalverteilt.
+Wir können annehmen, dass das Rauschen eines Sensor $N_S$ aus vielen kleinen, stochastisch unabhängigen Effekten $N_1, \cdots N_k$ Beruht, die sich aufsummieren, also $N_S = N_1 + \cdots + N_k$.Wenn wir annehmen, dass jeder Effekt Gleichverteilt ist,  ist diese Summe nach dem zentralen Grenzwertsatz näherungsweise Normalverteilt.
 \end{block}
 
  \end{frame}
