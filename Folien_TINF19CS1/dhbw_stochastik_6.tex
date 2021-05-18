@@ -41,7 +41,7 @@
 \begin{block}{Gleichverteilung}
 Die Gleichverteilung $U{(a,b)}$ auf einem Intervall $(a,b) \subset \mathbb{R}$ ist definiert durch
 \begin{align*}
-& \text{Dichte: } f (x) : = \frac{1_{(a,b)}}{|a-b| } \\
+& \text{Dichte: } f (x) : = \frac{1_{(a,b)}}{|b-a| } \\
 & \Rightarrow \text{Verteilung: } F (x) =  P_f( (-\infty, x))  =  \int_{-\infty}^{x} \frac{1_{(a,b)}}{|b-a|} dt\\\
 & = \begin {cases} 0 \text{ für } x \leq a \\   \frac{x-a}{|b-a|} \text{ für } a \leq x \leq b \\ 1 \text{ für }  x \geq b \\  \end{cases}
 \end{align*}
@@ -71,7 +71,7 @@ Die Gleichverteilung $U{(a,b)}$ auf einem Intervall $(a,b) \subset \mathbb{R}$ i
 \begin{block}{Gleichverteilung}
 Sei $X \sim $U(a,b).
 \begin{align*}
-& \mathbb{E}(X) =\int\limits_{-\infty}^\infty xf(x)\,dx = \frac 1{b-a}\int\limits_a^b x\cdot 1\,dx = \frac 12\frac{b^2-a^2}{b-a} = \frac{a+b}2 \\
+& \mathbb{E}(X) =\int\limits_{-\infty}^\infty x \cdot f(x)\,dx = \frac 1{b-a}\int\limits_a^b x\cdot 1\,dx = \frac 12\frac{b^2-a^2}{b-a} = \frac{a+b}2 \\
 & \mathbb{V}(X) = \operatorname{E}(X^2) - \left({\operatorname{E}(X)} \right)^2  = \frac{1}{b - a}\int\limits_a^b {x^2 \cdot 1\,dx}  - \left( {\frac{a + b}{2}} \right)^2  \\
  & = \frac{1}{3}\frac{b^3  - a^3}{b - a} - \left( {\frac{a + b}{2}} \right)^2 \\
     &= \frac{1}{12}\left( {4b^2  + 4ab + 4a^2  - 3a^2  - 6ab - 3b^2 } \right) = \frac{1}{12}(b - a)^2
@@ -115,7 +115,7 @@ Die Normalverteilung $N{(\mu,\sigma^2)}$ auf $\mathbb{R}$ ist definiert durch
 \framesubtitle{}
 
 \begin{block}{Normalverteilung}
-Sei $X \sim N(\mu, \sigma)$.
+Sei $X \sim N(\mu, \sigma^2)$.
 \begin{align*}
 & \mathbb{E}(X) = \mu \\
 & \mathbb{V}(X) = \sigma^2
@@ -173,7 +173,7 @@ P (\omega) = p^{\omega} (1-p)^{1 -\omega}
 \end{align*}
 \end{block}
 
-\begin{block}
+\begin{block}{Beispiele}
 
 \begin{itemize}
 \item Werfen einer Münze: Kopf (Erfolg), $p=1/2$, und Zahl (Misserfolg), $q=1/2$.
@@ -231,8 +231,8 @@ Wie und gegen was konvergiert $P_{S_n}$ für $n \to \infty$?
 \begin{block}{Konvergenz von W-Maßen}
 Was bedeutet Konvergenz einer Folge von Wahrscheinlichkeitsmaßen?
 \end{block}
-\begin{block}{Inspiration: Gleichmässige Konvergenz von Funktionen}
-Eine Folge von Funktionen $f_n: A \subset \mathbb{R}^n \to \mathbb{R}$ konvergiert gleichmässig gegen eine Funktion $f$, falls 
+\begin{block}{Inspiration: Gleichmäßige Konvergenz von Funktionen}
+Eine Folge von Funktionen $f_n: A \subset \mathbb{R}^n \to \mathbb{R}$ konvergiert gleichmäßig gegen eine Funktion $f$, falls 
 \begin{align*}
 \lim_{n \to \infty} ||f_n(x) -f(x) || = 0
 \end{align*}
@@ -242,7 +242,7 @@ für alle $x \in A$.
  \end{frame}
 
 \begin{frame}
-    \frametitle{Allgemeine Wahrscheinlichketisräume/Nachtrag}
+    \frametitle{Allgemeine Wahrscheinlichkeitsräume/Nachtrag}
 \framesubtitle{}
 
 \begin{block}{Konvergenz von W-Maßen}
@@ -271,7 +271,7 @@ für alle messbaren Funktionen $f: \Omega \to \mathbb{R}$.
 
 
 \begin{block}{Zentraler Grenzwertsatz}
-Sei $(\Omega, \mathcal{A}, P)$ ein Wahrscheinlichkeitsraum und $X_n :  \Omega \to \mathbb{R}$  eine folge stochastisch unabhängiger, identisch verteilter, reeller Zufallsvariablen mit $E(X_n) = \mu$ und $V(X_n)= \sigma^2$. Dann gilt für das arithmetische Mittel $S_n:= \frac{1}{n} \sum_{i=1}^n X_i$
+Sei $(\Omega, \mathcal{A}, P)$ ein Wahrscheinlichkeitsraum und $X_n :  \Omega \to \mathbb{R}$  eine folge stochastisch unabhängiger, identisch verteilter, reeller Zufallsvariablen mit $\mathbb{E}(X_n) = \mu$ und $\mathbb{V}(X_n)= \sigma^2$. Dann gilt für das arithmetische Mittel $S_n:= \frac{1}{n} \sum_{i=1}^n X_i$
 \begin{align*}
 P_{ \frac{\sqrt{n}}{\sigma} (S_n-\mu)} \to P_{N(0,1)}
 \end{align*}
