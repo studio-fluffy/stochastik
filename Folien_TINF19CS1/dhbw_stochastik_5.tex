@@ -88,8 +88,18 @@ Wir suchen eine Strategie, so dass die mittlere Anzahl an Fragen  (Erwartungswer
 \end{block}
 
 \begin{block}{Strategie 1}
-$X = 1$, $j: X = 1, n: X = 2$; $j: X = 2, n:X= 3$; $j:X = 3, n:X= 4$; $j:X = 4, n:X= 5$; $j:X = 5, n:X= 6$ 
-Hier ist $L(x) = \min(x,5)$ und $EL(X) = \frac{10}{3}$.
+\begin{table}[]
+\begin{tabular}[h]{lll}
+Frage & Ja & Nein \\
+\hline
+$X = 1?$ & $X = 1$ & $X = 2?$ \\
+$X = 2?$ & $X = 2$ & $X = 3?$ \\
+$X = 3?$ & $X = 3$ & $X = 4?$ \\
+$X = 4?$ & $X = 4$ & $X = 5?$ \\
+$X = 5?$ & $X = 5$ & $X = 6$ \\
+\end{tabular}\\
+\end{table}
+Hier ist $L(x) = \min(x,5)$ und $EL(X) = \frac{10}{3} = 3,\overline{3}$.
 \end{block}
 
  \end{frame}
@@ -102,8 +112,8 @@ Hier ist $L(x) = \min(x,5)$ und $EL(X) = \frac{10}{3}$.
     \includegraphics[width=0.45\textwidth]{img/strategie2}
 \end{figure}
 
-\begin{block}{Strategie 1}
- $EL(X) = \frac{8}{3}$.
+\begin{block}{Strategie 2}
+ $EL(X) = \frac{8}{3} = 2,\overline{6}$.
 \end{block}
 
  \end{frame}
@@ -114,12 +124,12 @@ Hier ist $L(x) = \min(x,5)$ und $EL(X) = \frac{10}{3}$.
 
 \begin{block}{Wörter}
 Gegeben sei eine endliche Menge $\mathcal{A}$ mit $\# A \geq 2$, genannt Alphabet.
-Ein Wort der Länge $k$ ist gegeben durch ein Tupel $w = b_1b_2 \cdots b_k$ mit Buchstaben $b_k \in \mathcal {A}$.
+Ein Wort der Länge $k$ ist gegeben durch ein Tupel $w = b_1b_2 \cdots b_k$ mit Buchstaben $b_i \in \mathcal {A}$.
 \end{block}
 
 \begin{block}{Wortmenge}
 Die Menge aller Wörter bezeichnen wir mit 
-$$\mathcal{W} (\mathcal{A}) := \{  b_1 \cdots b_k \; | \; k \in \mathbb{N}, \; b_i \in \mathcal{A} \} $$
+$$\mathcal{W} (\mathcal{A}) := \{  b_1 \cdots b_k \; | \; i \in \mathbb{N}, \; b_i \in \mathcal{A} \} $$
  Mit $l(w):= k$ für $w=b_1 \cdots b_k  $ bezeichnen wir die Länge des Wortes.
 \end{block}
 
@@ -138,8 +148,8 @@ die jedem Wort $x \in \mathcal{X}$ eindeutig ein Kodewort $\kappa(x)$ zuordnet.
 
 
 \begin{block}{Präfixfreier Kode}
-Ein Wort $v = a_1 \cdots a_j$ heisst Präfix des Wortes $w = b_1 \cdots b_k$, wenn $j \leq k$ und $v = b_1 \cdots b_j$ ist. Das Wort $w$ heisst Fortsetzung von $v$. Ein Kode $$ \kappa : \mathcal{X} \to \mathcal{W} (\mathcal{A})$$
- heisst präfixfrei, wenn kein Codewort $\kappa(x)$ Präfix eines anderen Kodewortes $\kappa(y)$ ist. 
+Ein Wort $v = a_1 \cdots a_j$ heißt Präfix des Wortes $w = b_1 \cdots b_k$, wenn $j \leq k$ und $v = b_1 \cdots b_j$ ist. Das Wort $w$ heisst Fortsetzung von $v$. Ein Kode $$ \kappa : \mathcal{X} \to \mathcal{W} (\mathcal{A})$$
+ heißt präfixfrei, wenn kein Kodewort $\kappa(x)$ Präfix eines anderen Kodewortes $\kappa(y)$ ist. 
 \end{block}
 
  \end{frame}
@@ -170,7 +180,7 @@ $A \rightarrow 0, B  \rightarrow 100, C \rightarrow 101, D \rightarrow 11$
 \framesubtitle{}
 
 \begin{block}{Kodebaum}
-Die Knotenmenge besteht aus dem Wurzelknotem und Wörtern, die Präfix eines Kosewortes sind. Die Kantenmenge besteht aus Paaren von direkten Nachfolgern.
+Die Knotenmenge besteht aus dem Wurzelknoten und Wörtern, die Präfix eines Kodewortes sind. Die Kantenmenge besteht aus Paaren von direkten Nachfolgern.
 \end{block}
 \begin{figure}[htp]
       \centering
@@ -189,7 +199,7 @@ Jede Fragestrategie liefert einen präfixfreien Kode mit Alphabet $\mathcal{A :=
 \end{block}
 
 \begin{block}{Zusammenhang mit Fragestrategie}
-Maß für Informationsgehalt der Quelle $X$ ist nun also das Minimum von $El(\kappa (X))$ über alle präfixfreien Kodes $\kappa$ für $X$.
+Das Maß für Informationsgehalt der Quelle $X$ ist nun also das Minimum von $El(\kappa (X))$ über alle präfixfreien Kodes $\kappa$ für $X$.
 \end{block}
 
 \begin{block}{Zusammenhang mit Fragestrategie}
@@ -247,7 +257,7 @@ Nach $(*)$ ist $n_1d^{-1} \leq 1$. Daher können wir jedem $x \in \mathcal{X}_1$
 \end{block}
 
 \begin{block}{ Induktions Schritt}
-Haben für alle $x \in \mathcal{X}_1 \cup \cdots \cup \mathcal{X}_m$ ein Wort $\kappa(x)$ gewählt, so dass kein Wort präfix eines  anderen ist. Jedes bereits gewählte Kodewort $\kappa(x)$ hat $d^{m+1 - l(\kappa(x))}$ Fortsetzungen zu einem Wort in $\mathcal{X}_k$. Diese stehen nicht zur Verfügung, da man sonst keine präfixfreie Kodierung erhält. Es bleiben also noch 
+Wir haben für alle $x \in \mathcal{X}_1 \cup \cdots \cup \mathcal{X}_m$ ein Wort $\kappa(x)$ gewählt, so dass kein Wort Präfix eines  anderen ist. Jedes bereits gewählte Kodewort $\kappa(x)$ hat $d^{m+1 - l(\kappa(x))}$ Fortsetzungen zu einem Wort in $\mathcal{X}_{m+1}$. Diese stehen nicht zur Verfügung, da man sonst keine präfixfreie Kodierung erhält. Es bleiben also noch 
 $$ d^{m+1} - \sum_{x \in \mathcal{X}_1 \cup \cdots \cup \mathcal{X}_m } d^{m+ 1 - L(x)} = d^{m+1} - \sum_{k=1}^{m} n_k d^{m+1-k}$$ 
 Wörter übrig, die für die präfixfreie Kodierung verwendet werden können.
 \end{block}
@@ -332,7 +342,7 @@ $$ \min_{L \in D : g(L) \leq 1} f(L)$$
 \begin{block}{Lagrange Multiplikatoren}
 Seien $f$ und $\varphi = (\varphi_1, \cdots , \varphi_k)$ stetig differenzierbar auf einer offenen Menge $U \subset \mathbb{R}^n$ und
  $M := \{  x \in U | \varphi(x) = 0 \}$.
-Die Matrix $d \varphi(x)$ habe in jedem Punkt $x \in M$ den Rank $k$. Ist $x_0 \in M$ ein Extremum von $f$ auf $M$, dann gibt es Zahlen $\lambda_1, \cdots , \lambda_n \in \mathbb{R}$ mit
+Die Matrix $d \varphi(x)$ habe in jedem Punkt $x \in M$ den Rang $k$. Ist $x_0 \in M$ ein Extremum von $f$ auf $M$, dann gibt es Zahlen $\lambda_1, \cdots , \lambda_n \in \mathbb{R}$ mit
 $$ f'(x_0) = \sum_{i= 1}^k \lambda_i \varphi'_i(x_0) \; .$$ 
 \end{block}
 
@@ -362,7 +372,7 @@ Die Funktionen $\varphi_i'(x_0)$ erfüllen ebenfalls $<\varphi_i' (x_0),v> = 0$ 
 Wollen Minimum finden  
 $$  \min_{L \in D}  f(L): = \min_{L \in D} \sum_{x \in \mathcal{X}} Q(x) L(x) + \lambda d^{-L(x)}$$
 für ein $\lambda > 0$. Summandenweise ist
-$$\frac{d}{dr} Q(x) r + \lambda d^{-r} =  Q(x) - \lambda \log(d) e^{-\log(d)r}$$
+$$\frac{d}{dr} (Q(x) r + \lambda d^{-r}) =  Q(x) - \lambda \log(d) e^{-\log(d)r}$$
 Somit ist  $L_0(x) := \frac{\frac{- \log Q(x)}{\lambda \log(d)}}{\log(d)}$ eine Nullstelle und damit ein Minimum. Mit $\lambda = \frac{1}{\log(d)}$ ist $L_0(x) = -\log_d Q(x)$  und damit $g(L_0) = 1$. Somit ist
 $$ H_d(X) \geq f(L_0) = - \sum_{x \in \mathcal{X}} Q(x) \log_d (Q(X)) = \frac{H(X)}{\log(d)}$$ 
 
@@ -389,7 +399,7 @@ $$ H_d(X) \leq  \sum_{x \in \mathcal{X}} Q(x) L(x) <  \sum_{x \in \mathcal{X}} Q
 \framesubtitle{}
 
 \begin{block}{Konstruktion fast optimaler Kodes}
-Berechne für $x \in \mathcal{X}$ die Funktion $L(x) := \lceil -\log_d(Q(x)) \rceil$. Damit erhält man einen präfixfreien $\mathcal{A}$-Kode
+Berechne für $x \in \mathcal{X}$ die Funktion $L(x) := \lceil -\log_d(Q(x)) \rceil$. Damit existiert ein präfixfreier $\mathcal{A}$-Kode
 $\kappa$ mit $l(\kappa(x)) = L(x)$. Wie eben gezeigt gilt dann $El(\kappa(X)) < H_d(X) +1$.
 \end{block}
 
