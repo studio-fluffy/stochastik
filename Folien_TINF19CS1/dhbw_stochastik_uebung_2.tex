@@ -1,0 +1,128 @@
+\documentclass[a4paper,12pt]{article}
+
+%\usepackage[latin1]{inputenc}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{color}
+\usepackage[ngerman]{babel}
+\usepackage[pdftex]{graphicx}
+%\usepackage[T1]{fontenc}
+\usepackage{gauss}
+
+\pagestyle{empty}
+\usepackage[utf8]{inputenc}
+\usepackage{listings}
+\definecolor{Brown}{cmyk}{0,0.81,1,0.60}
+\definecolor{OliveGreen}{cmyk}{0.64,0,0.95,0.40}
+\definecolor{CadetBlue}{cmyk}{0.62,0.57,0.23,0}
+\definecolor{lightlightgray}{gray}{0.9}
+\lstset{
+    language=C,                             % Code langugage
+    basicstyle=\rm\ttfamily,                % Code font, Examples: \footnotesize, \ttfamily
+    keywordstyle=\color{OliveGreen},        % Keywords font ('*' = uppercase)
+    commentstyle=\color{gray},              % Comments font
+    numbers=left,                           % Line nums position
+    numberstyle=\tiny,                      % Line-numbers fonts
+    stepnumber=1,                           % Step between two line-numbers
+    numbersep=5pt,                          % How far are line-numbers from code
+    backgroundcolor=\color{lightlightgray}, % Choose background color
+    frame=none,                             % A frame around the code
+    tabsize=2,                              % Default tab size
+    captionpos=b,                           % Caption-position = bottom
+    breaklines=true,                        % Automatic line breaking?
+    breakatwhitespace=false,                % Automatic breaks only at whitespace?
+    showspaces=false,                       % Dont make spaces visible
+    showtabs=false,                         % Dont make tabls visible
+    %columns=flexible,                       % Column format
+    %morekeywords={someword, otherword},     % specific keywords
+}
+
+
+
+%\topmargin20mm
+\oddsidemargin0mm
+\parindent0mm
+\parskip2mm
+\textheight24cm
+\textwidth15.8cm
+\unitlength1mm
+
+\usepackage{pdfpages}
+
+\begin{document}
+
+
+{\bf Aufgabe 1: Kombinatorik}
+
+In einem Raum gibt es acht Lampen, die unabhängig voneinander ein- und ausgeschaltet werden können.
+Wie viele Beleuchtungsarten gibt es
+
+{\bf a)  }
+
+wenn fünf Lampen brennen sollen?
+
+{\bf b) }
+
+wenn mindestens fünf Lampen brennen sollen?
+
+\hspace{10mm}
+
+{\bf Aufgabe 2: Bedingte Wahrscheinlichkeiten}
+
+In einer Fabrik werden die produzierten Werkstücke vor der Auslieferung überprüft. Hierfür werden für jedes Werkstück   zwei Funktionstest durchgeführt.  Die Wahrscheinlichkeit, dass ein Werkstück beide Tests besteht, betrage $0,55$. Die Wahrscheinlichkeit, dass ein Werkstück  den ersten Test besteht betrage $0,72$. 
+
+{\bf a)  }
+
+Berechnen Sie die Wahrscheinlichkeit, dass ein Werkstück den zweiten Test besteht, wenn er bereits den ersten bestanden hat.
+
+{\bf b) }
+
+Angenommen, die beiden Tests sind stochastisch unabhängig. Wie hoch ist dann die Wahrscheinlichkeit, dass ein Werkstück den zweiten Test besteht?
+
+\hspace{10mm}
+
+{\bf Aufgabe 3: Wahrscheinlichkeitsraum und Verteilungen}
+
+{\bf a) }
+
+Geben Sie die Axiome für einen Wahrscheinlichkeitsraum an. 
+
+{\bf b)  }
+
+Geben Sie eine Konstante $c  \in \mathbb{R}$ an, so dass die Funktion 
+\begin{align*}
+f(x) = \begin{cases} c x^2 \text{ für }  0\leq x \leq 1 \\ 0 \text{ sonst}\end{cases}
+\end{align*}
+ein Dichte auf $\mathbb{R}$ definiert.
+
+\newpage
+
+{\bf Aufgabe 4: Zufallsvariable und Erwartungswert}
+
+{\bf a)  }
+
+Die Zufallsvariablen $X_1$ und $X_2$ seien stochastisch unabhängig   und im Intervall $[0,1]$ gleichverteilt.
+Berechnen Sie den Erwartungswert der Zufallsvariablen $Y = X_1 \cdot (X_2 - X_1)$.
+
+{\bf b) }
+
+Formulieren Sie das schwache Gesetz  der grossen Zahlen und erläutern Sie die Aussage.
+\hspace{10mm}
+
+
+
+
+{\bf Aufgabe 5: Hypothesentest }
+
+In der Zeitung lesen Sie, dass es im sonnigen Mannheim im Schnitt höchstens an 10 von 100 Tagen regnet. Sie möchten diese Hypothese überprüfen und beobachten hierfür an $n=20$ Tagen das Wetter. Erstellen Sie einen geeigneten Hypothesentest. 
+Wie sollte Ihre Entscheidungsregel dann lauten, wenn Sie sicherstellen möchten, dass die Hypothese mit einer Irrtumswahrscheinlichkeit von $0,05$ unberechtigter Weise abgelehnt wird.
+
+
+\newpage
+Verteilungsfunktion für die Binomialfunktion  $P(x \leq k ) =  \sum_{i=0}^k \begin{pmatrix} n \\ i \end{pmatrix} \rho^i (1-\rho)^{n-i}$ \\
+
+%\includepdf[pages={4}, scale=0.75]{binomialverteilung_verteilungsfunktion.pdf}
+\includegraphics[scale=0.5,page=4] {bv}
+{\end{document}
