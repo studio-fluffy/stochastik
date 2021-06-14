@@ -264,11 +264,11 @@ ein Neyman-Pearson-Test mit $\mathbb{E}_0(\varphi) = P_0(R > c) + \gamma P_0(R=c
     \frametitle{Statistik - Hypothesentest}
 \framesubtitle{}
 \begin{block}{Beweis}
-Sei $\varphi$ ein Neyman-Pearson-Test  mit $\mathbb{E}_0(\varphi) = \alpha$ und Schwellenwert $c$ sowie $\psi$ ein beliebiger Test zum Niveau $\alpha$. Ist $\varphi(x) > \psi(X)$, so ist $\varphi(x) > 0$, also $R(x) \geq c$ und daher $p_1(x) \geq c p_0(x)$. Ist $\varphi(x) < \psi(x)$ ist $\varphi(x) <1$ und also $p_1(x) \leq c p_0(x)$. Es gilt also immer
+Sei $\varphi$ ein Neyman-Pearson-Test  mit $\mathbb{E}_0(\varphi) = \alpha$ und Schwellenwert $c$ sowie $\psi$ ein beliebiger Test zum Niveau $\alpha$. Ist $\varphi(x) > \psi(x)$, so ist $\varphi(x) > 0$, also $R(x) \geq c$ und daher $p_1(x) \geq c p_0(x)$. Ist $\varphi(x) < \psi(x)$ ist $\varphi(x) <1$ und also $p_1(x) \leq c p_0(x)$. Es gilt also immer
 \begin{align*}
 f_1(x) := (\varphi(x) - \psi(x))p_1(x) \geq c ( \varphi(x) - \psi(x))p_0(x) ) := c \; f_0(x)
 \end{align*}
-Integration (bzw. Summtion im diskreten Fall) liefert
+Integration (bzw. Summation im diskreten Fall) liefert
 \begin{align*}
 \mathbb{E}_1(\varphi) - \mathbb{E}_1(\psi) = \int_{\mathcal{X}} f_1(x) dx \geq c   \int_{\mathcal{X}} f_0(x) dx = c(\alpha -  \mathbb{E}_0(\psi)  ) \geq 0
 \end{align*}
@@ -359,7 +359,7 @@ Sei   $(\mathcal{X}, \mathcal{F}, P_\rho :  \rho \in \Theta \subset \mathbb{R})$
 \begin{align*}
  \varphi(x) = \begin{cases} 1 \text{ falls } T(x) > c \\  \gamma  \text{ falls } T(x) = c \\ 0 \text{ falls } T(x) < c  \end{cases}
 \end{align*}
-ein optimaler Test für die Nullhypothese $H_0 : \rho \leq \rho_0$ gegen die Alternative  $H_1 : \rho \geq \rho_1$. 
+ein optimaler Test für die Nullhypothese $H_0 : \rho \leq \rho_0$ gegen die Alternative  $H_1 : \rho > \rho_0$. 
 $c$ und $\gamma$ lassen sich aus der Beziehung
 \begin{align}
 G_\varphi(\rho_0) = \alpha  \Leftrightarrow P_{\rho_0}(T  > c) + \gamma P_{\rho_0}(T = c) = \alpha
