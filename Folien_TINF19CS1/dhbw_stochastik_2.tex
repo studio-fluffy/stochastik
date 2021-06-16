@@ -360,11 +360,11 @@ gilt.
 \framesubtitle{}
 
 \begin{block}{Naiver Bayes'scher Spam Filter}
-Mit der Formel von Bayes und der totalen Wahrscheinlichkeit  können wir somit berechnen
+Mit der Formel von Bayes, der totalen Wahrscheinlichkeit  und kürzen, da $P(S) = P(H)$ können wir somit berechnen
 \begin{align*}
 & P(E=S |  A_1 \cap \cdots \cap A_n) = \frac{P(A_1 \cap \cdots \cap A_n | S) \cdot P(S)}{P(A_1 \cap \cdots \cap A_n)} \\
-&=  \frac{P(A_1 | S) \cdots P(A_n | S) \cdot P(S)}{P(A_1 \cap \cdots \cap A_n | H) + P(A_1 \cap \cdots \cap A_n | S)} \\
-&=  \frac{P(A_1 | S) \cdots P(A_n | S) \cdot P(S)}{P(A_1 | H) \cdots P(A_n | H)  + P(A_1 | S) \cdots P(A_n | S) } \\
+&=  \frac{P(A_1 | S) \cdots P(A_n | S) }{P(A_1 \cap \cdots \cap A_n | H) + P(A_1 \cap \cdots \cap A_n | S)} \\
+&=  \frac{P(A_1 | S) \cdots P(A_n | S) }{P(A_1 | H) \cdots P(A_n | H)  + P(A_1 | S) \cdots P(A_n | S) } \\
 \end{align*}
 Bemerkung: $P(E=H |  A_1 \cap \cdots \cap A_n) = 1- P(E=S |  A_1 \cap \cdots \cap A_n) $
 \end{block}
