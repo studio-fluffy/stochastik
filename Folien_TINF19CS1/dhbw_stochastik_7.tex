@@ -248,12 +248,12 @@ Für eine parametrisierte Dichte $p_\rho : \mathcal{X}   \to  [0,1]$ heißt die 
 & p  : \mathcal{X}  \times  \Theta  \to  [0,1] \\
 & p(x, \rho) := p_\rho (x)
 \end{align*}
-die zugehörige Likelyhood Funktion und 
+die zugehörige Likelihood Funktion und 
 \begin{align*}
 & p_x  : \Theta   \to  [0,1] \\
 & p_x(\rho):=  p(x, \rho) 
 \end{align*}
-die Liekelyhood Funktion zum Beobachtungswert $x \in \mathcal{X}$.
+die Likelihood Funktion zum Beobachtungswert $x \in \mathcal{X}$.
 
 Im diskreten Fall setzten wir $ p(x, \rho) := P_\rho (\{ x\})$
 \end{block}
@@ -280,7 +280,7 @@ also der Schätzwert $T(x)$ eine Maximalstelle der Funktion  $p_x$ auf $\Theta$ 
     \frametitle{Statistik - Parameterschätzung}
 \framesubtitle{}
 \begin{block}{Erraten des Bereichs von Zufallsvariablen - Maximum Likelyhood-Schätzer}
-Die Likelyhood Funktion ist hier gegeben durch
+Die Likelihood Funktion ist hier gegeben durch
 \begin{align*}
 p_x (\rho) =  \begin{cases}  \frac{1}{\rho^n}  \text{ falls }  x_1, \cdots , x_n \leq \rho  \\  0  \text{ sonst}\end {cases}
 \end{align*}
@@ -309,7 +309,7 @@ wobei der Erwartungswert (Messwert) und die Varianz (Streuung um Messwert) unbek
     \frametitle{Statistik - Parameterschätzung}
 \framesubtitle{}
 \begin{block}{Physikalische Messung - Maximum Likelyhood-Schätzer}
-Die Likelyhood-Funktion ist gegeben durch
+Die Likelihood-Funktion ist gegeben durch
 \begin{align*}
 p_x(\rho) =  \prod_{i=1}^n \frac {1}{ \sqrt{2 \pi v }} e^{- \frac{(x_i- m)^2}{ 2v}} =  \frac {1}{ \sqrt{2 \pi v }} e^{- \sum_{i=1}^n \bigl( \frac{(x_i- m)^2}{ 2v} \bigr)} 
 \end{align*} 
