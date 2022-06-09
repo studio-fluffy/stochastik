@@ -293,9 +293,9 @@ Ist  $\psi$ ein beliebiger bester Test, so gilt in obigen Ungleichungen überall
 \begin{block}{Beispiel Entscheidungsfindung - Lösung}
 Im Beispiel der Orangenlieferung  setzen wir $\Theta_0 = \{ 0, \cdots \rho_0 \}$ und $\Theta_1 = \{\rho_0 +1 , \cdots N \}$ mit $\rho_0 = 500$ und betrachten den Test
 \begin{align*}
- \varphi(x) = \begin{cases} 1 \text{ falls } A(x) > c \\  \gamma  \text{ falls } A(x) = c \\ 0 \text{ falls }A(x) < c  \end{cases}
+ \varphi(x) = \begin{cases} 1 \text{ falls } x > c \\ 0 \text{ falls } x \leq c  \end{cases}
 \end{align*}
-zur Hypothese $H_0: \rho \in \Theta_0$ und der Alternative $H_1: \rho \in \Theta_1$. Hierbei ist $A$ die Funktion, die die Anzahl an faulen Orangen zählt. 
+zur Hypothese $H_0: \rho \in \Theta_0$ und der Alternative $H_1: \rho \in \Theta_1$. 
 Wir möchten $c$ nach Möglichkeit  so bestimmen, dass der Test $\varphi$ optimal ist. Wir wählen  $c$ als $\alpha$-Fraktil von $P_{\rho_0}$.  $\gamma$ ergibt sich dann aus
 \begin{align*}
 G_{\varphi}(\rho_0) = P_{\rho_0} (\{ c+1, \cdots, n \}) + \gamma  P_{\rho_0}(\{ c\}) = \alpha 
