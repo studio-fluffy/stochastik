@@ -91,7 +91,7 @@ Auf der anderen Seite möchte man auch, dass die Wahrscheinlichkeit für einen  
 \begin{block}{Beispiel Entscheidungsfindung - Modell}
 Wir modellieren die Anzahl $x$ der faulen Orangen einer Stichprobe $n$ aus der Grundmenge $N$ als "hypergeometrische" Verteilung, wobei die Zahl  $\omega$ der insgesamt faulen  Orangen innerhalb $N$ unbekannt is.
 \begin{align*}
-P_\omega (x = c)= \frac{\begin{pmatrix} \omega \\ c \end{pmatrix} \cdot  \begin{pmatrix} N - \omega \\ n - c \end{pmatrix}}{\begin{pmatrix} N \\ n \end{pmatrix} }
+P_\omega (x = m)= \frac{\begin{pmatrix} \omega \\ m \end{pmatrix} \cdot  \begin{pmatrix} N - \omega \\ n - m \end{pmatrix}}{\begin{pmatrix} N \\ n \end{pmatrix} }
 \end{align*} 
 \end{block}
 
@@ -127,9 +127,20 @@ Sei   $(\mathcal{X}, \mathcal{F}, P_\rho :  \rho \in \Theta)$ ein statistisches 
 und eine Statistik $\varphi: \mathcal{X} \to [0,1]$ einen Test von $H_0$ gegen $H_1$. $\{ x \in \mathcal{X}  : \varphi(x) = 1\}$ heißt Ablehnungsbereich und  $\{ x \in \mathcal{X}  : \varphi(x) = 0\}$   Annahmebereich des Tests $\varphi$
 \end{block}
 \begin{block}{Gütefunktion}
-Die Funktion $G_{\varphi}: \Theta \to [0,1], G_{\varphi}(\rho) = \mathbb{E}_{\rho}(\varphi)$ heißt Gütefunktion des Tests.
+Die Funktion $G_{\varphi}: \Theta \to [0,\infty), G_{\varphi}(\rho) = \mathbb{E}_{\rho}(\varphi)$ heißt Gütefunktion des Tests.
 \end{block}
  \end{frame}
+
+\begin{frame}
+\begin{block}{Beispiel}
+Im Beispiel der Orangenlieferung  ist $\mathcal{X}:= \{0, \cdots, n \}$ und wir wählen $\Theta_0 = \{ 0, \cdots \omega_0 \}$ und $\Theta_1 = \{\omega_0 +1 , \cdots N \}$ mit $\omega_0 = 500$ und betrachten den Test
+\begin{align*}
+ \varphi(x) = \begin{cases} 1 \text{ falls } x > c \\ 0 \text{ falls } x \leq c  \end{cases}
+\end{align*}
+zur Hypothese $H_0: \rho \in \Theta_0$ und der Alternative $H_1: \rho \in \Theta_1$. 
+\end{block}
+ \end{frame}
+
 
 \begin{frame}
     \frametitle{Statistik - Hypothesentest}
@@ -172,6 +183,7 @@ Er erkennt also von allen Tests am Besten die Alternative unter Einhaltung  des 
 \end{block}
 
  \end{frame}
+
 
 
 \begin{frame}
