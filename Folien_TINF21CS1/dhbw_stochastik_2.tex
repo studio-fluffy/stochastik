@@ -71,7 +71,8 @@ $A^c_{k,n} = Var^n_k(\Omega, o.W.)$,  wobei $\Omega$ die Menge der verfügbaren 
 
 \begin{block}{Beispiel: Hash Kollision}
 \begin{align*}
- P(A^c_{k,n} ) & = \frac{\# Var^n_k(\Omega, o.W.)}{ \# Var^n_k(\Omega, m.W.)} = \frac{n_k}{n^k} = \prod_{i=0}^{k-1} (1- \frac{i}{n}) \\
+ P(A^c_{k,n} ) & = \frac{\# Var^n_k(\Omega, o.W.)}{ \# Var^n_k(\Omega, m.W.)} = \\
+ & \frac{n_k}{n^k} = \frac{n \cdot (n-1) \cdots (n-(k -1))}{n^k} = \prod_{i=0}^{k-1} (1- \frac{i}{n}) \\
 & = \exp (\sum_{i=0}^{k-1} \ln {(1- \frac{i}{n})}) \leq  \exp (\sum_{i=0}^{k-1} (- \frac{i}{n})) \\
  & (ln(1-x) \leq -x \text{ für } x < 1) \\
 &= \exp(- \frac{(k-1)k } {2n})
