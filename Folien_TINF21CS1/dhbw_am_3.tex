@@ -186,12 +186,24 @@ Da die letzte Aussage für beliebiges $\epsilon > 0$ gilt, folgt die Behauptung.
  \end{frame}
 
 
+
 \begin{frame}
     \frametitle{Stochastik}
-\framesubtitle{Messbare Mengen}
+\framesubtitle{Meßbare Mengen}
+    \begin{block}{Meßbare Menge}
+Für einen Quader $I$ gilt $\mu(I) =  \text{vol} $.
+\end{block}
+ \end{frame}
+
+
+
+
+\begin{frame}
+    \frametitle{Stochastik}
+\framesubtitle{Meßbare Mengen}
     \begin{block}{Maßproblem}
-Das Maßproblem ist nicht lösbar auf $\mathbb{R}^n$. 
-\href{https://www.youtube.com/watch?v=SJ8YoV6YZFA}{--Vitali Mengen}
+Es gibt disjunkte Mengen  $A,B \in \mathcal{P}(\mathbb{R}^n)$ mit $\mu(A \cup B) \neq \mu(A) + \mu(B)$. Konstruiert werde diese mit Hilfe der 
+\href{https://www.youtube.com/watch?v=SJ8YoV6YZFA}{Vitali Mengen}. Hierfür wird das Auswahlaxiom benötigt.
 \end{block}
 
     \begin{block}{Lösung}
@@ -199,6 +211,97 @@ $\mu$ Einschränken auf "kleinere" $\sigma$-Algebren.
 \end{block}
 
  \end{frame}
+
+
+\begin{frame}
+    \frametitle{Stochastik}
+\framesubtitle{Meßbare Mengen}
+    \begin{block}{Meßbare Menge}
+Eine Menge $A$ heißt Lebesgue meßbar, wenn für alle $Q \subset \mathbb{R}^n$
+\begin{align*}
+\mu(Q) = \mu(Q \cap A) + \mu(Q \cap A^c)  
+\end{align*}
+gilt. Die Menge der Lebesgue meßbaren Mengen wird mit $\mathcal{L}^n$ bezeichnet.
+\end{block}
+
+
+    \begin{block}{Meßbare Menge}
+$\mathcal{L}^n$ ist eine $\sigma$-Algebra und für  zwei Lebesgue meßbare Mengen  $A,B \in \mathcal{L}^n$ ist
+\begin{align*}
+ \mu(A \cup B) = \mu(A) + \mu(B)
+\end{align*}
+
+\end{block}
+
+ \end{frame}
+
+
+
+
+\begin{frame}
+    \frametitle{Reelle Zufallsvariablen}
+\framesubtitle{}
+
+\begin{block}{}
+Eine Menge $U \subset  \mathbb{R}^n$ heißt offen, falls für jeden Punkt $x \in U$ ein Radius $\epsilon > 0$ existiert, so dass der Ball $B_\epsilon (x)$ in $U$ enthalten ist, also 
+$B_\epsilon (x) \subset U$ gilt.
+\end{block}
+
+\begin{figure}[htp]
+      \centering
+    \includegraphics[width=0.45\textwidth]{img/openset}
+      \caption{Quelle: Wikipedia}
+\end{figure}
+
+
+ \end{frame}
+
+
+
+\begin{frame}
+    \frametitle{Stochastik}
+\framesubtitle{Meßbare Mengen}
+    \begin{block}{Meßbare Menge}
+Eine Menge ist genau dann Lebesgue meßbar, wenn es für jedes $\epsilon > 0$ eine offene 
+\end{block}
+
+ \end{frame}
+
+\begin{frame}
+    \frametitle{Zufallsvariablen}
+\framesubtitle{}
+
+\begin{block}{Borel'sche Sigma-Algebra}
+Die Borel'sche   $\sigma$-Algebra $\mathcal{B}(\mathbb{R}^n)$über $\mathbb{R}^n$ ist die kleinste  $\sigma$-Algebra, die alle offenen Mengen $\mathcal{U}$ enthält, also 
+\begin{align*}
+A_\sigma (\mathcal{U}) := \bigcap \{  \mathcal{A} \subset \mathcal{P}(\mathbb{R}^n);  \;   \mathcal{U}  \subset  \mathcal{A},  \;  \mathcal{A} \text{ ist $\sigma$-Algebra} \}
+\end{align*}
+\end{block}
+
+\begin{block}{Existenz}
+Die Borel'sche   $\sigma$-Algebra existiert, da die Potenzmenge eine   $\sigma$-Algebra ist.
+\end{block}
+
+\begin{block}{Messbarkeit}
+Die Borel'sche   $\sigma$-Algebra ist in der $\sigma$-Algebra der Lebesgue messbaren Mengen enthalten.
+\end{block}
+ \end{frame}
+
+
+
+\begin{frame}
+    \frametitle{Stochastik}
+\framesubtitle{Meßbare Mengen}
+    \begin{block}{Meßbare Menge}
+
+\end{block}
+
+
+
+
+ \end{frame}
+
+
 
 \end{document}
 
