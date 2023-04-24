@@ -85,11 +85,11 @@ Archimedes approximierte den Flächeninhalt einer Kreisscheibe durch Vielecke, d
     \frametitle{Stochastik}
 \framesubtitle{Lebesgue Maß}
     \begin{block}{Quader}
-Für offene Intervalle $(a_i,b_i) \subset \mathbb{R}$ mit $a_i \leq b_i$ nennen wir 
-$$I := (a_1,b_1) \times \cdots \times (a_n,b_n)$$ 
+Für abgeschlossene Intervalle $[a_i,b_i] \subset \mathbb{R}$ mit $a_i \leq b_i$ nennen wir 
+$$I := [a_1,b_1] \times \cdots \times [a_n,b_n]$$ 
 einen $n$-dimensionalen Quader und 
-$$\bar{I}:= [a_1, b_1] \times \cdots \times [a_n,b_n]$$
- seinen Abschluss. Wir definieren das Volumen 
+$$\overset{\circ}{I}:= [a_1, b_1] \times \cdots \times [a_n,b_n]$$
+ sein Inneres. Wir definieren das Volumen 
 \begin{align*}
 \text{vol} (I):=   \prod_{i = 1}^n (b_i -a_i)  \; .
 \end{align*}
@@ -103,13 +103,14 @@ $$\bar{I}:= [a_1, b_1] \times \cdots \times [a_n,b_n]$$
     \frametitle{Stochastik}
 \framesubtitle{Lebesgue Maß}
     \begin{block}{Quader}
-Mit $$\mathbb{I}(n): = \{   (a_1,b_1) \times \cdots \times (a_n,b_n) \; | \;  (a_i, b_i) \subset \mathbb{R} \}$$ bezeichnen wir die Menge aller $n$-dimensionalen Quader. 
+Mit $$\mathbb{I}(n): = \{   [a_1,b_1] \times \cdots \times [a_n,b_n] \; | \;  [a_i, b_i] \subset \mathbb{R} \}$$ bezeichnen wir die Menge aller $n$-dimensionalen Quader. 
 \end{block}
     \begin{block}{Degenerierte Quader}
-Mit $$\mathbb{I}^0(n): = \{   (a_1,b_1) \times \cdots \times (a_n,b_n) \; | \;  (a_i, b_i) \subset \mathbb{R}  \text { und } a_k = b_k \text{ für ein k}\}$$ bezeichnen wir die Menge aller $n$-dimensionalen degenerierten Quader. 
+Mit $$\mathbb{I}^0(n): = \{   [a_1,b_1] \times \cdots \times [a_n,b_n] \; | \;  [a_i, b_i] \subset \mathbb{R}  \text { und } a_k = b_k \text{ für ein k}\}$$ bezeichnen wir die Menge aller $n$-dimensionalen degenerierten Quader. 
 \end{block}
  
  \end{frame}
+
 
 
 
@@ -187,13 +188,13 @@ Da die letzte Aussage für beliebiges $\epsilon > 0$ gilt, folgt die Behauptung.
 
 
 
-\begin{frame}
-    \frametitle{Stochastik}
-\framesubtitle{Meßbare Mengen}
-    \begin{block}{Meßbare Menge}
-Für einen Quader $I$ gilt $\mu(I) =  \text{vol} $.
-\end{block}
- \end{frame}
+%\begin{frame}
+%    \frametitle{Stochastik}
+%\framesubtitle{Meßbare Mengen}
+%    \begin{block}{Meßbare Menge}
+%Für einen Quader $I$ gilt $\mu(I) =  \text{vol}(I) $.
+%\end{block}
+% \end{frame}
 
 
 
@@ -236,10 +237,65 @@ $\mathcal{L}^n$ ist eine $\sigma$-Algebra und für  zwei Lebesgue meßbare Menge
  \end{frame}
 
 
+ \begin{frame}
+    \frametitle{Stochastik}
+\framesubtitle{Meßbare Mengen}
+Aufgrund der $\sigma$-subadditivität gilt immer
+$$ \mu(Q) = \mu(Q \cap A \cup Q \cap A^c) \leq \mu(Q \cap A) +  \mu(Q \cap A^c) $$
+Um zu zeigen, dass eine Menge mesßbar ist, reicht es also zu zeigen, dass 
+$$\mu(Q)  \geq \mu(Q \cap A) +  \mu(Q \cap A^c) $$
+gilt.
+\end{frame}
+
 
 
 \begin{frame}
-    \frametitle{Reelle Zufallsvariablen}
+    \frametitle{Stochastik}
+\framesubtitle{Meßbare Mengen}
+$\mathcal{L}^n$ ist eine $\sigma$-Algebra: \\
+Ist $A$ messbar, so ist $A^c$ messbar, da die Bedingung symmetrisch ist in $A$ und $A^c$. \\
+Sind $A, B \in \mathcal{L}^n$ messbar, so gilt 
+\begin{align*}
+    \mu(Q)  & \geq \mu(Q \cap A) +  \mu(Q \cap A^c) \\
+    & \geq \mu(Q \cap A ) + \mu(Q \cap A^c  \cap B) + \mu(Q \cap A^c  \cap B^c) \\
+    & [\text{Messbarkeit von B angew. auf $Q\cap A^c$}] \\
+    & \geq \mu((Q \cap A)  \cup (Q \cap A^c  \cap B)) + \mu(Q \cap A^c  \cap B^c) \\
+    & [\text{$\sigma$-subadditivität}] \\
+= & \mu(Q \cap (A \cup B))+  \mu(Q \cap (A \cup B)^c) 
+\end{align*}
+\; \; \; \; \; \; \; \; [\href{https://de.wikipedia.org/wiki/Mengenlehre}{Mengenlehre}]    
+\end{frame}
+
+\begin{frame}
+    \frametitle{Stochastik}
+\framesubtitle{Meßbare Mengen}
+$\sigma$-additivität: \\
+Für $M,N \in \mathcal{L}^n$ mit $M \cap N = \emptyset$ folgt aus Meßbarkeitsbedingung für $Q' = Q \cap (M \cup N)$
+$$ \mu (Q \cap (M \cup N)) = \mu (Q \cap M) +  \mu (Q \cap N)$$
+und via Induktion für eine Folge disjunkter, messbarer Mengen $A_j$
+$$ \mu (Q \cap (\bigcup_j A_j)) = \sum_j \mu (Q \cap A_j)$$
+
+\end{frame}
+
+
+
+\begin{frame}
+    \frametitle{Stochastik}
+\framesubtitle{Meßbare Mengen}
+$\sigma$-additivität: \\
+Wir erhalten 
+\begin{align*}
+    \mu(Q) & \geq \mu(Q \cap (\bigcup_j A_j)) + \mu(Q \cap (\bigcup_j A_j)^c) \\
+    & \geq \sum_j \mu(Q \cap A_j) + \mu(Q \cap A_j^c) \\
+    & \geq \mu(Q \cap A) + \mu(Q \cap A^c) \\
+    & \text{[$\sigma$-subadditivität]}
+\end{align*}
+\end{frame}
+
+
+
+\begin{frame}
+    \frametitle{Meßbare Mengen}
 \framesubtitle{}
 
 \begin{block}{}
@@ -257,12 +313,35 @@ $B_\epsilon (x) \subset U$ gilt.
  \end{frame}
 
 
+ \begin{frame}
+    \frametitle{Stochastik}
+\framesubtitle{Meßbare Mengen}
+
+    \begin{block}{Meßbare Menge}
+        Offene Mengen sind meßbar.
+\end{block}
+
+\end{frame}
+
+ \begin{frame}
+    \frametitle{Stochastik}
+\framesubtitle{Meßbare Mengen}
+Wir zeigen: Jede offene Menge $U$ ist abzählbare Vereinigung nicht überlappender Quader. 
+
+\includegraphics[scale=0.04]{img/openmeasurable.jpg}
+ \end{frame}
+
 
 \begin{frame}
     \frametitle{Stochastik}
 \framesubtitle{Meßbare Mengen}
-    \begin{block}{Meßbare Menge}
-Eine Menge ist genau dann Lebesgue meßbar, wenn es für jedes $\epsilon > 0$ eine offene 
+
+\begin{block}{Meßbare Menge}
+Eine Menge $A$ ist genau dann Lebesgue meßbar, 
+wenn es für bel. $\epsilon > 0$ 
+eine abgeschlossene Menge $C$ und eine offene Menge $U$ gibt 
+mit $C \subset A \subset U$ und 
+$\mu (U \setminus C ) < \epsilon $
 \end{block}
 
  \end{frame}
@@ -281,24 +360,9 @@ A_\sigma (\mathcal{U}) := \bigcap \{  \mathcal{A} \subset \mathcal{P}(\mathbb{R}
 \begin{block}{Existenz}
 Die Borel'sche   $\sigma$-Algebra existiert, da die Potenzmenge eine   $\sigma$-Algebra ist.
 \end{block}
-
 \begin{block}{Messbarkeit}
-Die Borel'sche   $\sigma$-Algebra ist in der $\sigma$-Algebra der Lebesgue messbaren Mengen enthalten.
-\end{block}
- \end{frame}
-
-
-
-\begin{frame}
-    \frametitle{Stochastik}
-\framesubtitle{Meßbare Mengen}
-    \begin{block}{Meßbare Menge}
-
-\end{block}
-
-
-
-
+    Die Borel'sche   $\sigma$-Algebra ist in der $\sigma$-Algebra der Lebesgue messbaren Mengen enthalten.
+    \end{block}
  \end{frame}
 
 
