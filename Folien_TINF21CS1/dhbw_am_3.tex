@@ -112,6 +112,23 @@ Mit $$\mathbb{I}^0(n): = \{   [a_1,b_1] \times \cdots \times [a_n,b_n] \; | \;  
  \end{frame}
 
 
+ \begin{frame}
+    \frametitle{Meßbare Mengen}
+\framesubtitle{}
+
+\begin{block}{}
+Eine Menge $U \subset  \mathbb{R}^n$ heißt offen, falls für jeden Punkt $x \in U$ ein Radius $\epsilon > 0$ existiert, so dass der Ball $B_\epsilon (x)$ in $U$ enthalten ist, also 
+$B_\epsilon (x) \subset U$ gilt. Eine Menge heißt abgeschlossen, wenn ihr Komplement offen ist.
+\end{block}
+
+\begin{figure}[htp]
+      \centering
+    \includegraphics[width=0.45\textwidth]{img/openset}
+      \caption{Quelle: Wikipedia}
+\end{figure}
+
+
+ \end{frame}
 
 
 \begin{frame}
@@ -188,14 +205,40 @@ Da die letzte Aussage für beliebiges $\epsilon > 0$ gilt, folgt die Behauptung.
 
 
 
-%\begin{frame}
-%    \frametitle{Stochastik}
-%\framesubtitle{Meßbare Mengen}
-%    \begin{block}{Meßbare Menge}
-%Für einen Quader $I$ gilt $\mu(I) =  \text{vol}(I) $.
-%\end{block}
-% \end{frame}
+\begin{frame}
+    \frametitle{Stochastik}
+\framesubtitle{Meßbare Mengen}
+    \begin{block}{Meßbare Menge}
+Für einen Quader $I$ gilt $\mu(I) =  \text{vol}(I) $.
+\end{block}
+ \end{frame}
 
+ \begin{frame}
+    \frametitle{Stochastik}
+\framesubtitle{Meßbare Mengen}
+Da $I$ eine Überdeckung von $I$ mit Hüllquadern ist, folgt $\mu(I) \leq \text{vol}(I)$.
+\\ Müssen also noch $\mu(I) \geq \text{vol}(I)$ zeigen: \\
+Dazu Sei $I' := \{ I_k \}_k$ eine abzählbare überdeckung von $I$ mit Hüllquadern.
+Vergrößere die Quader $I_k$ etwas, so dass man $I_k^*$ erhält mit 
+$I_k \subset \overset{\circ}{I_k^*}$ und $\text{vol}(I_k^*) \leq (1+ \epsilon)\text{vol}(I_k)$.
+\\
+Da $I$ kompakt ist (beschränkt und abgeschlossen), gibt es eine endliche Auswahl mit 
+$$I \subset \bigcup_{i=1}^n I_i^*$$
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{Stochastik}
+\framesubtitle{Meßbare Mengen}
+Damit erhlten wir
+\begin{align*}
+    \text{vol}(I) & \leq \sum_{i=1}^n  \text{vol}(I_i^*) \\
+& (1 + \epsilon) \sum_{i=1}^n  \text{vol}(I_i) \\
+& \leq (1 + \epsilon) \sum_{i=1}^{\infty}  \text{vol}(I_i) \\
+ & = (1 + \epsilon) \mu(S)
+\end{align*}
+
+\end{frame}
 
 
 
@@ -294,23 +337,6 @@ Wir erhalten
 
 
 
-\begin{frame}
-    \frametitle{Meßbare Mengen}
-\framesubtitle{}
-
-\begin{block}{}
-Eine Menge $U \subset  \mathbb{R}^n$ heißt offen, falls für jeden Punkt $x \in U$ ein Radius $\epsilon > 0$ existiert, so dass der Ball $B_\epsilon (x)$ in $U$ enthalten ist, also 
-$B_\epsilon (x) \subset U$ gilt.
-\end{block}
-
-\begin{figure}[htp]
-      \centering
-    \includegraphics[width=0.45\textwidth]{img/openset}
-      \caption{Quelle: Wikipedia}
-\end{figure}
-
-
- \end{frame}
 
 
  \begin{frame}
