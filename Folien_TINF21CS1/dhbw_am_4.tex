@@ -266,7 +266,7 @@ Damit gilt $u_n(x) \leq f(x) \leq u_n(x) +2^{-n}$.
 
 \begin{frame}
     \frametitle{Stochastik}
-    Sei $v = \sum_{i=1}^{m} a_i 1_{A_j}$.  
+    Sei $v = \sum_{i=1}^{m} a_i 1_{A_i}$.  
     Für festes $\beta > 1$ setze $B_n: = \{\beta u_n \geq v \}$.
     Damit gilt $B_n \uparrow \Omega$ und $\beta u_n \geq v \cdot 1_{B_n}$ und man erhält
     \begin{align*}
@@ -276,7 +276,6 @@ Damit gilt $u_n(x) \leq f(x) \leq u_n(x) +2^{-n}$.
     \end{align*}
     Mit $\beta \to 1$ folgt die Behauptung.
 \framesubtitle{}
-
 \end{frame}
 
 
@@ -368,12 +367,10 @@ Schnittmenge von $A$ zu $y$.
 
 \begin{block}{Schnittmenge}
     Für $A \subset \mathbb{R}^n $ erhält man ein Maß
-    $$ \mu(A)' := \int_{\mathbb{R}^k} \mu_{n-k}(A_y) d \mu_k$$ 
+    $$ \mu'(A) := \int_{\mathbb{R}^k} \mu_{n-k}(A_y) d \mu_k$$ 
 \end{block}
 Aufgrund der Eindeutigkeit des Lebesgue Maßes folgt die Behauptung.
 \end{frame}
-
-
 
 
 \end{document}
