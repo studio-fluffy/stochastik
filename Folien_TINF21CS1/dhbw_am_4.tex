@@ -335,7 +335,7 @@ Damit gilt $u_n(x) \leq f(x) \leq u_n(x) +2^{-n}$.
     \begin{block}{Beispiel}
 Sei $K := B^2_1(0) := \{   (x,y) \in \mathbb{R}^2 \; | \; \sqrt{x^2 + y^2 } \leq 1\}$. Anschaulich ist
 \begin{align*}
-\mu_2(K) &  = \int_K 1 d \mu =  \int_{-1}^{1} \biggl ( \int_{-\sqrt{1- y^2}}^{\sqrt{1- y^2}} 1 dx \biggr ) dy = \\ 
+\mu_2(K) &  = \int_{\mathbb{R}^2} 1_K  d \mu =  \int_{-1}^{1} \biggl ( \int_{-\sqrt{1- y^2}}^{\sqrt{1- y^2}} 1 dx \biggr ) dy = \\ 
 & =  2 \int_{-1}^{1}  \sqrt{1 - y^2}   \; dy  \\ 
  & (substitution \;   y = sin(u)) =   2 \int_{-\frac{\pi}{2}}^{\frac{\pi}{2}}   \cos(u)^2   \; du = 2 \cdot \frac{\pi}{2} = \pi
 \end{align*}
