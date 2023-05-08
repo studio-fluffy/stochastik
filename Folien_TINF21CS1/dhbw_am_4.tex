@@ -35,11 +35,11 @@
     \frametitle{Stochastik}
 \framesubtitle{Inegrierbare Funktionen}
     \begin{block}{Maßraum}
-     Ein Maßraum $(\Omega, \mathcal{A})$ ist ein Tupel bestehend aus der Grundmenge $\Omega$ und einer $\sigma$-Algebra $\mathcal{A} \subset  \mathcal{P}(\Omega)$ 
+     Ein Meßraum $(\Omega, \mathcal{A})$ ist ein Tupel bestehend aus der Grundmenge $\Omega$ und einer $\sigma$-Algebra $\mathcal{A} \subset  \mathcal{P}(\Omega)$ 
 \end{block}
 
 \begin{block}{Maß}
-    Ein Maß auf einem Maßraum $(\Omega, \mathcal{A})$ ist Abbildung
+    Ein Maß auf einem Meßraum $(\Omega, \mathcal{A})$ ist Abbildung
     $\mu : \mathcal{A} \to \mathbb{R}_{\geq 0}$
     \begin{align*}
     \mu \biggl(  \bigcup_i A_i  \biggr) = \sum_i \mu(A_i), \text{ mit } A_i \cap A_j = \emptyset \text{ für } i \neq j
@@ -172,7 +172,7 @@
     \begin{block}{Integral einer Treppenfunktion}
         Für eine Treppenfunktion $u \in \mathcal{T}^+$ definieren wir
 \begin{align*}
-    \int_\Omega u = \sum_{i=1}^n a_i \mu(A_i)
+    \int_\Omega u \; d\mu= \sum_{i=1}^n a_i \mu(A_i)
 \end{align*}
 Diese ist unabhängig von der Darstellung.
     \end{block}
@@ -244,7 +244,7 @@ Damit gilt $u_n(x) \leq f(x) \leq u_n(x) +2^{-n}$.
         
     \end{block}
     \begin{block}{!!}
-    Müssen zeigen, dass diese Definition unabhängig ist von der Treppenfunktion.
+    Müssen zeigen, dass diese Definition unabhängig ist von der Folge der Treppenfunktionen.
 \end{block}
 \end{frame}
 
@@ -286,7 +286,7 @@ Damit gilt $u_n(x) \leq f(x) \leq u_n(x) +2^{-n}$.
           $\lim_{n \to \infty} u_n = \lim_{n \to \infty} v_n$ so gilt
           $\int_{\Omega} v_k \; d \mu \leq \lim_{n \to \infty} \int_{\Omega} v_k \; d \mu$ und damit 
           $\lim_{k \to \infty} \int_{\Omega} v_k \; d \mu  \leq \lim_{n \to \infty} \int_{\Omega} v_k \; d \mu$. 
-          Aus Symmetriegründen folgt die Unabhängikeit der Definition von der Wahl der Folgen von Treppenfunktionen.
+          Aus Symmetriegründen folgt die Unabhängigkeit der Definition von der Wahl der Folgen von Treppenfunktionen.
 \end{frame}
 
 
@@ -296,7 +296,7 @@ Damit gilt $u_n(x) \leq f(x) \leq u_n(x) +2^{-n}$.
 \framesubtitle{}
     \begin{block}{Integral für meßbare Funktionen}
         Für eine meßbare Funktion  $f \in \mathcal{M}$ setzen wir
-        $$ \int_{\Omega} f \; d\mu = \int_{\Omega}f^+ \; d\mu  - \int_{\Omega}f^- \; d\mu$$
+        $$ \int_{\Omega} f \; d\mu = \int_{\Omega}f^+ \; d\mu  - \int_{\Omega}-f^- \; d\mu$$
         wobei $f^+(x) := \max (0, f(x))$ und $f^-(x) := \min (0, f(x))$
     \end{block}
 
