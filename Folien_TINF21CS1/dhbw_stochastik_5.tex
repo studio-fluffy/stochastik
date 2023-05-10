@@ -131,16 +131,12 @@ $\det T'(r, \varphi, \psi) = r^2 \cos(\psi)$
     \frametitle{Zufallsvariablen}
 \framesubtitle{}
 
-\begin{block}{Messraum}
-Ein Messraum ist ein Paar $(\Omega, \mathcal{A})$ bestehend aus einer Menge $\Omega$ und einer Sigma-Algebra $\mathcal{A} \subset \mathcal{P}(\Omega)$.
-\end{block}
-
 \begin{block}{Zufallsvariablen}
-Sei $(\Omega, \mathcal{A}, P)$ ein Wahrscheinlichkeitsraum und $(\Omega', \mathcal{A}')$ ein Messraum. Eine Zufallsvariable ist eine Abbildung
+Sei $(\Omega, \mathcal{A}, P)$ ein Wahrscheinlichkeitsraum und $(\Omega', \mathcal{A}')$ ein Messraum. Eine Zufallsvariable ist eine messbare Abbildung 
 $$X : \Omega \to \Omega'$$ 
-so dass für alle Ereignisse $A' \in  \mathcal{A}'$
+D.h. für alle Ereignisse $A' \in  \mathcal{A}'$ ist 
 $$ X^{-1} (A') \in \mathcal{A}$$
- ein Ereignis in $\mathcal{A}$ ist. Urbilder von Ereignissen sind also Ereignisse.
+ ein Ereignis in $\mathcal{A}$. Urbilder von Ereignissen sind also Ereignisse.
 \end{block}
 
  \end{frame}
@@ -191,24 +187,7 @@ $P_X(3) = P(\{(1,2), (2,1)\}) = \frac{2}{36} = \frac{1}{18}$
 
 
 
- \begin{frame}
-    \frametitle{Zufallsvariablen}
-\framesubtitle{}
 
-\begin{block}{Reelle Zufallsvariablen}
-Unter einer reellen Zufallsvariable verstehen wir eine Zufallsvariable 
-\begin{align*}
-& X : \Omega \to \mathbb{R}^n \\
-& X(\omega) := \biggl(X_1(\omega), \cdots , X_n(\omega)  \biggr) \; ,
-\end{align*}
-wobei $(\Omega, \mathcal{A}, P)$ ein Wahrscheinlichkeitsraum ist und $(\mathbb{R}^n, \mathcal{B}(\mathbb{R}^n))$ der $\mathbb{R}^n$ zusammen mit der Borel'schen Sigma-Algebra ist. Das Integral ist komponentenweise definiert durch
-\begin{align*} 
-\int_{\Omega} X dP :=  \biggl( \int_{\Omega} X_1 dP, \cdots , \int_{\Omega} X_n dP    \biggr)
-\end{align*}
-
-\end{block}
-
- \end{frame}
 
 \begin{frame}
     \frametitle{Zufallsvariablen}
@@ -217,7 +196,7 @@ wobei $(\Omega, \mathcal{A}, P)$ ein Wahrscheinlichkeitsraum ist und $(\mathbb{R
 \begin{block}{Verteilungsfunktion}
 Für eine reelle Zufallsvariable heißt 
 \begin{align*} 
-& F_X : \Omega \to [0,1] \\
+& F_X : \mathbb{R}^n \to [0,1] \\
 & F_X (x) := P (X \leq x) := P_X (( -\infty, x )) = P(X^{-1} (-\infty, x))
 \end{align*}
 Verteilungsfunktion von $X$.
@@ -229,8 +208,11 @@ Verteilungsfunktion von $X$.
 \framesubtitle{}
 
 \begin{block}{Dichte}
-Sei $\Omega \subset \mathbb{R}^n$ und $(\Omega, \mathcal{A})$ ein Messraum, wobei alle $A \in \mathcal{A}$ Lebesgue-messbar sind.
- Eine Funktion $f: \Omega \to \mathbb{R}$ heißt Dichte, falls für ihr Lebesgue-Integral $\int_{\Omega} f d \mu = 1$ gilt.
+ Eine Funktion $f:\mathbb{R}^n \to \mathbb{R}$ heißt Dichte, falls für ihr Lebesgue-Integral $\int_{\Omega} f d \mu = 1$ gilt.
+\end{block}
+\begin{block}{Dichte}
+ Eine  Funktion $f:\Omega \to \mathbb{R}$ heißt Dichte der  Verteilungsfunktio $F_X : \Omega \to [0,1]$ falls für ihr Lebesgue-Integral $\int_{\Omega} f d \mu = 1$ ist und 
+$F_X (x) = \int_{\{X \leq x \}} f d \mu$
 \end{block}
  \end{frame}
 
@@ -300,17 +282,11 @@ stochastisch unabhängig, falls
     \frametitle{Erwartungswert}
 \framesubtitle{}
 \begin{block}{Erwartungswert}
-Eine reelle Zufallsvariable ist integrierbar und ihr Erwartungswert wird definiert durch
+Für eine reelle integrierbare Zufallsvariableist ihr  Erwartungswert  definiert durch
 $$ \mathbb{E} (X) := \int_{\Omega} X \; dP \; .$$
 \end{block}
- \end{frame}
-
-
-\begin{frame}
-    \frametitle{Erwartungswert}
-\framesubtitle{}
-\begin{block}{Erwartungswert}
-Ist $(\Omega, \mathcal{A}, P)$ ein diskreter Wahrscheinlichkeitsraum und $X :\Omega \to \mathbb{R}$ eine eindimensionale reelle Zufallsvariable, so ist
+ \begin{block}{Erwartungswert}
+Ist $(\Omega, \mathcal{A}, P)$ ein diskreter Wahrscheinlichkeitsraum und $X :\Omega \to \mathbb{R}$ eine reelle Zufallsvariable, so ist
 $$ \mathbb{E} (X) = \sum_{\omega \in \Omega}  X(\omega) \cdot P(\omega)$$
 \end{block}
  \end{frame}
@@ -320,26 +296,13 @@ $$ \mathbb{E} (X) = \sum_{\omega \in \Omega}  X(\omega) \cdot P(\omega)$$
     \frametitle{Erwartungswert}
 \framesubtitle{}
 \begin{block}{Transformationsformel}
-Für eine reelle Zufallsvariable $X: \Omega \to \mathbb{R}^n$ und eine integrierbare Funktion $g:  \mathbb{R}^n \to \mathbb{R}$ gilt
+Für eine reelle Zufallsvariable $X: \mathbb{R}^n \to \mathbb{R}$ und eine integrierbare Funktion $g:  \mathbb{R}^n \to \mathbb{R}$ gilt
 $$ \mathbb{E} (g \circ X) := \int_{\Omega} g \circ X \; dP = \int_{\mathbb{R}^n}  g \; dP_X \;. $$
 Ist insbesondere $f(x) : \mathbb{R}^n \to \mathbb{R}$ eine Dichte für $P_X$ , so ist  
 $$\mathbb{E} (X) =  \int_{\mathbb{R}^n} x \cdot f(x) \; d\mu$$ das Lebesgue-Integral der Funktion $x \cdot f(x)$.
 \end{block}
  \end{frame}
 
-
-\begin{frame}
-    \frametitle{Erwartungswert}
-\framesubtitle{}
-\begin{block}{Transformationsformel}
-Für $g = 1_A$ mit $A \in \mathcal{B}(\mathbb{R}^n)$ ist
-\begin{align*}
-& \int 1_A \; dP_X = P_X(A) = P(X^{-1} (A)) = \int 1_{X^{-1}(A)} \; dP \\
-&= \int 1_{A} \circ X \; dP
-\end{align*}
-Für eine Treppenfunktion $g= \sum_{i= 1}^n c_i 1_{A_i} $folgt das Ergebnis aus der Linearität des Integrals  für Treppenfunktionen. Für integrierbares $g$ folgt das Resultat mit Hilfe von Konvergenzsätzen für das  Integral.
-\end{block}
- \end{frame}
 
 \begin{frame}
     \frametitle{Erwartungswert}
