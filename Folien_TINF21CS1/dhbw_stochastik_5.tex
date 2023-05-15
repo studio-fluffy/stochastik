@@ -303,6 +303,18 @@ $$\mathbb{E} (X) =  \int_{\mathbb{R}^n} x \cdot f(x) \; d\mu$$ das Lebesgue-Inte
 \end{block}
  \end{frame}
 
+ \begin{frame}
+    \frametitle{Erwartungswert}
+\framesubtitle{}
+\begin{block}{Transformationsformel}
+Für $g = 1_A$ mit $A \in \mathcal{B}(\mathbb{R}^n)$ ist
+\begin{align*}
+& \int 1_A \; dP_X = P_X(A) = P(X^{-1} (A)) = \int 1_{X^{-1}(A)} \; dP \\
+&= \int 1_{A} \circ X \; dP
+\end{align*}
+Für eine Treppenfunktion $g= \sum_{i= 1}^n c_i 1_{A_i} $folgt das Ergebnis aus der Linearität des Integrals  für Treppenfunktionen. Für integrierbares $g$ folgt das Resultat mit Hilfe von Konvergenzsätzen für das  Integral.
+\end{block}
+ \end{frame}
 
 \begin{frame}
     \frametitle{Erwartungswert}
