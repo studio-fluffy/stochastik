@@ -1,0 +1,114 @@
+\documentclass[a4paper,12pt]{article}
+
+%\usepackage[latin1]{inputenc}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{color}
+\usepackage[ngerman]{babel}
+\usepackage[pdftex]{graphicx}
+%\usepackage[T1]{fontenc}
+\usepackage{gauss}
+\newtheorem{Algorithmus}{Algorithmus}
+\usepackage{xcolor}
+\pagestyle{empty}
+\usepackage[utf8]{inputenc}
+\usepackage{listings}
+\definecolor{Brown}{cmyk}{0,0.81,1,0.60}
+\definecolor{OliveGreen}{cmyk}{0.64,0,0.95,0.40}
+\definecolor{CadetBlue}{cmyk}{0.62,0.57,0.23,0}
+\definecolor{lightlightgray}{gray}{0.9}
+\lstset{
+    language=C,                             % Code langugage
+    basicstyle=\rm\ttfamily,                % Code font, Examples: \footnotesize, \ttfamily
+    keywordstyle=\color{OliveGreen},        % Keywords font ('*' = uppercase)
+    commentstyle=\color{gray},              % Comments font
+    numbers=left,                           % Line nums position
+    numberstyle=\tiny,                      % Line-numbers fonts
+    stepnumber=1,                           % Step between two line-numbers
+    numbersep=5pt,                          % How far are line-numbers from code
+    backgroundcolor=\color{lightlightgray}, % Choose background color
+    frame=none,                             % A frame around the code
+    tabsize=2,                              % Default tab size
+    captionpos=b,                           % Caption-position = bottom
+    breaklines=true,                        % Automatic line breaking?
+    breakatwhitespace=false,                % Automatic breaks only at whitespace?
+    showspaces=false,                       % Dont make spaces visible
+    showtabs=false,                         % Dont make tabls visible
+    %columns=flexible,                       % Column format
+    %morekeywords={someword, otherword},     % specific keywords
+}
+
+
+
+%\topmargin20mm
+\oddsidemargin0mm
+\parindent0mm
+\parskip2mm
+\textheight24cm
+\textwidth15.8cm
+\unitlength1mm
+\usepackage{pdfpages}
+
+\begin{document}
+
+
+{\bf Beispiele Integration}
+
+{\bf a) }
+
+Berechnen Sie das Integral $\int_{M} f \; d \mu$ der Funktion 
+\begin{align*}
+& f : \mathbb{R}^2 \to  \mathbb{R} \\
+ & f(x_1, x_2) =x_1  x_2
+\end{align*}
+über der Menge 
+$M := \{ (x_1, x_2)  \in \mathbb{R}^2 \; | \; 0 \leq x_1  \leq 1; 0 \leq x_2 \leq 1 -x_1 \}$.
+
+\hspace{5mm}
+
+
+{\bf Lösung} 
+
+\begin{align*}
+& \int_{M} f \; d \mu = \int_{0}^{1}  \int_{0}^{1 -x_1}  x_1 x_2 \; dx_2  dx_1 =  \int_{0}^{1} [ x_1 \frac{1}{2}(x_2^2) ]_{0}^{1-x_1} dx_1 \\
+& = \frac{1}{2}  \int_{0}^{1}x_1 \dot (1 - x_1)^2 \; dx_1 = \frac{1}{2}  \int_{0}^{1}x_1 - 2x_1^2 + x_1^3 \; dx_1\\
+& =  \frac{1}{2}  ( \frac{1}{2}   -  \frac{2}{3}  +  \frac{1}{4}   ) =  \frac{1}{24} 
+\end{align*}
+
+{\bf b) }
+
+Berechnen Sie das Integral   $\int_{N} h \; d \mu$ der Funktion 
+\begin{align*}
+& h : \mathbb{R}^2 \to  \mathbb{R} \\
+& h(x_1, x_2) =  x_1^2 + x_2^2
+\end{align*}
+über der Menge
+$N := \{  (x_1, x_2)   \in \mathbb{R}^2 \; | \;  x_1^2 + x_2^2 \leq 2 x_2   + 2x_1 -1 \}$
+(Tipp: Transformationsformel).
+
+{\bf Lösung} 
+\hspace{5mm}
+Die Gleichung $ x_1^2 + x_2^2 \leq 2 x_2   + 2x_1 -1$ lässt sich umformen zu
+\begin{align*}
+ &  x_1^2  - 2x_1 + x_2^2 - 2x_2 \leq  -1 \Leftrightarrow  (x_1 -1)^2 -1  + (x_2-1)^2 -1 \leq -1 \\
+ & \Leftrightarrow  (x_1 -1)^2   + (x_2-1)^2 \leq 1 
+\end{align*}
+Es handelt sich bei der Menge $N$ also um eine um den Vektor $(1,1)$ verschobene Kreisscheibe
+ $K :=  \{  (x_1, x_2)   \in \mathbb{R}^2 \; | \;   x_1^2   + x_2^2 \leq 1 \}$ mit Radius $1$. Somit definiert 
+\begin{align*}
+& T: [0,1] \times [0, 2 \pi] \to N \\
+& T(r, \varphi) := (r \cos (\varphi) +1, r \sin(\varphi) +1) 
+ \end{align*}
+einen Diffeomorphismus (Polarkoordinaten + Verschiebung). Da $\det(T' (r, \varphi) ) = r$   erhalten wir
+mit dem Transformationssatz 
+\begin{align*}
+& \int_{N}  x_1^2 + x_2^2 \; d \mu = \int_{0}^{2 \pi} \int_{0}^{1} ((r \cos (\varphi) +1)^2 +  (r \sin(\varphi) +1)^2) r \; dr \; d \; \varphi   \\
+& = \int_{0}^{2 \pi} \int_{0}^{1} r^3\cos^2 (\varphi) + 2r^2  \cos (\varphi) + r + r^3 \sin(\varphi)^2 + 2 r^2 \sin(\varphi) +r  \;  dr \; d \; \varphi  \\
+& =  \int_{0}^{2 \pi} \int_{0}^{1} r^3+ 2r^2  \cos (\varphi)  + 2 r^2 \sin(\varphi) + 2r  \;  dr \; d \; \varphi \\
+& = \int_{0}^{2 \pi}  \frac{1}{4} +  \frac{2}{3}  \cos (\varphi)  +  \frac{2}{3}   \sin(\varphi) + 1 \; d \; \varphi \\ 
+& =   \frac{\pi}{2} + 2 \pi =   \frac{5\pi }{2} 
+ \end{align*}
+
+{\end{document}
