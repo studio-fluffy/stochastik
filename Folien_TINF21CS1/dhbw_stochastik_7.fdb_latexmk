@@ -1,7 +1,7 @@
 # Fdb version 3
-["pdflatex"] 1684135128 "/home/johannes/code/stochastik/Folien_TINF21CS1/dhbw_stochastik_7.tex" "dhbw_stochastik_7.pdf" "dhbw_stochastik_7" 1684135130
+["pdflatex"] 1684739748 "/home/johannes/code/stochastik/Folien_TINF21CS1/dhbw_stochastik_7.tex" "dhbw_stochastik_7.pdf" "dhbw_stochastik_7" 1684739751
   "/etc/texmf/web2c/texmf.cnf" 1668009509 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/johannes/code/stochastik/Folien_TINF21CS1/dhbw_stochastik_7.tex" 1682316607 11430 40f27cc6422f52203442be94409ffab0 ""
+  "/home/johannes/code/stochastik/Folien_TINF21CS1/dhbw_stochastik_7.tex" 1684739748 11578 2ee7e03d92142d58239345fa282b7df1 ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1246382020 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -241,12 +241,13 @@
   "/usr/share/texmf/web2c/texmf.cnf" 1644012257 39432 7155514e09a3d69036fac785183a21c2 ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1669016583 4379155 98693266ff65f58d9f98aff394de12d2 ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1669016614 2803457 2647f323bc49d152205687fab69000c5 ""
-  "dhbw_stochastik_7.aux" 1684135130 3149 834e1a87625e2103a14defe67e0546b7 "pdflatex"
-  "dhbw_stochastik_7.nav" 1684135130 1760 80a68e95556c790f6368970db289fcf5 "pdflatex"
-  "dhbw_stochastik_7.out" 1684135129 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
-  "dhbw_stochastik_7.tex" 1682316607 11430 40f27cc6422f52203442be94409ffab0 ""
+  "dhbw_stochastik_7.aux" 1684739751 3278 7413a3b0ad38dd8ccdcba1e13dc7f319 "pdflatex"
+  "dhbw_stochastik_7.nav" 1684739751 1853 3d3af853e0752fc75bf550a83110b9cc "pdflatex"
+  "dhbw_stochastik_7.out" 1684739749 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "dhbw_stochastik_7.tex" 1684739748 11578 2ee7e03d92142d58239345fa282b7df1 ""
   "img/Craps.png" 1682316607 13839 914501b67b77f2372f92caa6dba1b1c1 ""
   "img/flux.jpg" 1682316607 63065 0db621bf65766fb6a6b409d3b50debbd ""
+  "img/schätzer.png" 1684739662 10222763 a94fea428f6c133e1b338154554bf594 ""
   (generated)
   "dhbw_stochastik_7.aux"
   "dhbw_stochastik_7.log"
