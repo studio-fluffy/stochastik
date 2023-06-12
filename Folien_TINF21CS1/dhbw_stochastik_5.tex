@@ -296,10 +296,10 @@ $$ \mathbb{E} (X) = \sum_{\omega \in \Omega}  X(\omega) \cdot P(\omega)$$
     \frametitle{Erwartungswert}
 \framesubtitle{}
 \begin{block}{Transformationsformel}
-Für eine reelle Zufallsvariable $X: \mathbb{R}^n \to \mathbb{R}$ und eine integrierbare Funktion $g:  \mathbb{R}^n \to \mathbb{R}$ gilt
-$$ \mathbb{E} (g \circ X) := \int_{\Omega} g \circ X \; dP = \int_{\mathbb{R}^n}  g \; dP_X \;. $$
-Ist insbesondere $f(x) : \mathbb{R}^n \to \mathbb{R}$ eine Dichte für $P_X$ , so ist  
-$$\mathbb{E} (X) =  \int_{\mathbb{R}^n} x \cdot f(x) \; d\mu$$ das Lebesgue-Integral der Funktion $x \cdot f(x)$.
+Für eine reelle Zufallsvariable $X: \mathbb{R}^n \to \mathbb{R}^m$ und eine integrierbare Funktion $g:  \mathbb{R}^m \to \mathbb{R}$ gilt
+$$ \mathbb{E} (g \circ X) := \int_{\mathbb{R}^n} g \circ X \; dP = \int_{\mathbb{R}^m}  g \; dP_X \;. $$
+Ist $f(x) : \mathbb{R}^m \to \mathbb{R}$ eine Dichte für $P_X$ , so ist  
+$$\mathbb{E} (g \circ X) =  \int_{\mathbb{R}^m} g(x) \cdot f(x) \; d\mu$$.
 \end{block}
  \end{frame}
 
