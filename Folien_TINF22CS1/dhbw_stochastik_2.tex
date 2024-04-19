@@ -51,7 +51,7 @@
 
 \begin{block}{Beispiel: Hash Kollision}
 
-Beim Hashing werden zufällig $k \leq n$ Daten auf $n$ Speicherplätze  verteilt. Bezeichnen wir mit $A_{k,n}$ die Möglichkeiten der Mehrfachbelegungen von Feldern, so ist das komplementäre Ereignis
+Beim Hashing werden zufällig $k$ Daten auf $n$ Speicherplätze  verteilt. Bezeichnen wir mit $A_{k,n}$ die Möglichkeiten der Mehrfachbelegungen von Feldern, so ist das komplementäre Ereignis
 $A^c_{k,n} = Var^n_k(\Omega, o.W.)$,  wobei $\Omega$ die Menge der verfügbaren Speicherplätze darstellt. 
 \end{block}
 
@@ -165,9 +165,9 @@ $\mathcal{A} := \{  \{ 1,2,3\}, \{4,5,6 \}, \{ 1,2,3,4,5,6 \}, \{\}   \} $ entsp
     \frametitle{Diskrete Wahrscheinlichkeitsverteilungen}
 \framesubtitle{}
 \begin{block}{Diskreter Wahrscheinlichkeitsraum}
-Ein diskreter Wahrscheinlichkeitsraum ist ein Wahrscheinlichkeitsraum $(\Omega, \mathcal{A}, P)$, bei dem die Grundmenge $\Omega$ abzählbar ist und die Menge der Ereignisse $\mathcal{A} := \mathcal{P}(\Omega)$ der Potenzmenge entspricht.
+Ein diskreter Wahrscheinlichkeitsraum ist ein Wahrscheinlichkeitsraum $(\Omega, \mathcal{A}, P)$, bei dem die Grundmenge $\Omega$ abzählbar.
 \end{block}
-\begin{block}{Beispiel: Laplace Wahrscheinlichkeit}
+\begin{block}{Beispiel: Laplace Experiment}
 $\Omega$ endlich, $ \mathcal{A} = \mathcal{P}(\Omega)$,  und $P(A) := \frac{\#A}{\#\Omega}$.
 \end{block}
 
@@ -180,9 +180,8 @@ $\Omega$ endlich, $ \mathcal{A} = \mathcal{P}(\Omega)$,  und $P(A) := \frac{\#A}
 \framesubtitle{}
 
 \begin{block}{Lemma}
-Sei $(\Omega, \mathcal{A}, P)$ ein diskreter Wahrscheinlichkeitsraum. Dann ist für $A \in \mathcal{A}$ 
+Sei $(\Omega, \mathcal{A}, P)$ ein  Wahrscheinlichkeitsraum. Dann ist für $A \in \mathcal{A}$ 
 \begin{align*}
-& P(A) = \sum_{\omega \in A} P( \omega ) \\
 & P(A^c) = 1 - P(A) \\
 & P(\emptyset) = 0
 \end{align*}
