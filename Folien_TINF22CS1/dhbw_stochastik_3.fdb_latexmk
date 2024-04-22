@@ -1,6 +1,6 @@
 # Fdb version 4
-["pdflatex"] 1713779479 "/Users/johannesriesterer/Documents/code/stochastik/Folien_TINF22CS1/dhbw_stochastik_3.tex" "dhbw_stochastik_3.pdf" "dhbw_stochastik_3" 1713779481 0
-  "/Users/johannesriesterer/Documents/code/stochastik/Folien_TINF22CS1/dhbw_stochastik_3.tex" 1713779479 11670 ccfd167ccf7c287658589fc9742d38bc ""
+["pdflatex"] 1713787126 "/Users/johannesriesterer/Documents/code/stochastik/Folien_TINF22CS1/dhbw_stochastik_3.tex" "dhbw_stochastik_3.pdf" "dhbw_stochastik_3" 1713787127 0
+  "/Users/johannesriesterer/Documents/code/stochastik/Folien_TINF22CS1/dhbw_stochastik_3.tex" 1713787125 11670 0cb7659235bbf91be5c0ca6f2eea7014 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/usr/local/texlive/2023/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1246382020 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -251,10 +251,10 @@
   "/usr/local/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1698836375 4623355 b8cad38412faebe1ce5b780a45db67bd ""
   "/usr/local/texlive/2023/texmf-var/web2c/pdftex/pdflatex.fmt" 1698836342 7883462 8a4d061ad2ccf4b7ea70dd63c461eb78 ""
   "/usr/local/texlive/2023/texmf.cnf" 1678822455 577 1b2b1af17af2508fb20dd85783af4050 ""
-  "dhbw_stochastik_3.aux" 1713779481 3795 3b96dbc1c28a81b5bc510a0d18889ffc "pdflatex"
-  "dhbw_stochastik_3.nav" 1713779481 2322 e003a1289cf9d4f40d16f582c76880e4 "pdflatex"
-  "dhbw_stochastik_3.out" 1713779480 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
-  "dhbw_stochastik_3.tex" 1713779479 11670 ccfd167ccf7c287658589fc9742d38bc ""
+  "dhbw_stochastik_3.aux" 1713787127 3795 3b96dbc1c28a81b5bc510a0d18889ffc "pdflatex"
+  "dhbw_stochastik_3.nav" 1713787127 2322 e003a1289cf9d4f40d16f582c76880e4 "pdflatex"
+  "dhbw_stochastik_3.out" 1713787126 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "dhbw_stochastik_3.tex" 1713787125 11670 0cb7659235bbf91be5c0ca6f2eea7014 ""
   "img/750px-Archimedes_pi.png" 1712490409 49023 03a9b005bb57e21f7d40cde617c96552 ""
   "img/leb1-2.jpg" 1712490409 36492 33c7128a829b1137d76835399080684b ""
   "img/leb2-11.jpg" 1712490409 65172 41ba30fd363670cddf59c7692cf86aa8 ""
