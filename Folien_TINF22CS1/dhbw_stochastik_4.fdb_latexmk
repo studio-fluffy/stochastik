@@ -1,6 +1,6 @@
 # Fdb version 4
-["pdflatex"] 1714394706 "/Users/johannesriesterer/Documents/code/stochastik/Folien_TINF22CS1/dhbw_stochastik_4.tex" "dhbw_stochastik_4.pdf" "dhbw_stochastik_4" 1714394707 0
-  "/Users/johannesriesterer/Documents/code/stochastik/Folien_TINF22CS1/dhbw_stochastik_4.tex" 1714394705 11997 64d786821b784df074298f47ffbfcda2 ""
+["pdflatex"] 1714396774 "/Users/johannesriesterer/Documents/code/stochastik/Folien_TINF22CS1/dhbw_stochastik_4.tex" "dhbw_stochastik_4.pdf" "dhbw_stochastik_4" 1714396776 0
+  "/Users/johannesriesterer/Documents/code/stochastik/Folien_TINF22CS1/dhbw_stochastik_4.tex" 1714396775 12006 b463ad6b40729e421b6d1f42fbd6ea08 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/usr/local/texlive/2023/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1246382020 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -249,10 +249,10 @@
   "/usr/local/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1698836375 4623355 b8cad38412faebe1ce5b780a45db67bd ""
   "/usr/local/texlive/2023/texmf-var/web2c/pdftex/pdflatex.fmt" 1698836342 7883462 8a4d061ad2ccf4b7ea70dd63c461eb78 ""
   "/usr/local/texlive/2023/texmf.cnf" 1678822455 577 1b2b1af17af2508fb20dd85783af4050 ""
-  "dhbw_stochastik_4.aux" 1714394707 3533 93861f27799d0c8cc8134d9147db2e5e "pdflatex"
-  "dhbw_stochastik_4.nav" 1714394707 2132 9ecbcfc9f7de68c052dc9846a033acac "pdflatex"
-  "dhbw_stochastik_4.out" 1714394706 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
-  "dhbw_stochastik_4.tex" 1714394705 11997 64d786821b784df074298f47ffbfcda2 ""
+  "dhbw_stochastik_4.aux" 1714396776 3533 93861f27799d0c8cc8134d9147db2e5e "pdflatex"
+  "dhbw_stochastik_4.nav" 1714396776 2132 9ecbcfc9f7de68c052dc9846a033acac "pdflatex"
+  "dhbw_stochastik_4.out" 1714396775 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "dhbw_stochastik_4.tex" 1714396775 12006 b463ad6b40729e421b6d1f42fbd6ea08 ""
   "img/640px-Indicator_function_illustration.png" 1712490409 44879 3abacd413111b090cfc847068f79bfae ""
   "img/640px-Stepfunction1.png" 1712490409 7719 40bdf80707d00d5e8aa3c866e1737d72 ""
   "img/Kreis.jpeg" 1712490409 353088 a35504c0ba898c37b43eb0021ad27792 ""
