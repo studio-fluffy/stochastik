@@ -397,6 +397,19 @@ Sei $X \sim \mathcal{N}(\mu, \sigma^2)$.
 
 
 
+ \begin{frame}
+    \frametitle{Erwartungswert}
+\framesubtitle{}
+\begin{block}{Beispiel}
+Sei $X \sim \mathcal{N}(\mu, \sigma^2)$.
+\begin{align*}
+&\mathbb{V} (X) =  \frac{1}{\sqrt{2 \pi}} \int_{- \infty}^{\infty} x^2 e^{- \frac{x^2}{2}} \; dx =   \frac{1}{\sqrt{2 \pi}} \int_{- \infty}^{\infty} x (xe^{- \frac{x^2}{2}}) \; dx \\
+& =  \frac{1}{\sqrt{2 \pi}} \biggl (\biggl [ x (e^{- \frac{x^2}{2}}) \biggr]_{- \infty}^{\infty}   - \int_{- \infty}^{\infty}  - e^{- \frac{x^2}{2}} \; dx  \biggr) = 0 + 1 = 1\\
+\end{align*}
+\href{https://de.wikipedia.org/wiki/Partielle_Integration}{LINK: Partielle Integration}. Mit "Verschiebungstrick"
+$\Rightarrow \mathbb{V}(X) = \sigma^2$.
+\end{block}
+ \end{frame}
 
 
 
@@ -422,19 +435,6 @@ f(\epsilon) P(|Y| \geq \epsilon) = & f(\epsilon) \mathbb{E}(1_{\{ |Y| \geq  \eps
 
 
 
-\begin{frame}
-    \frametitle{Erwartungswert}
-\framesubtitle{}
-\begin{block}{Beispiel}
-Sei $X \sim \mathcal{N}(\mu, \sigma^2)$.
-\begin{align*}
-&\mathbb{V} (X) =  \frac{1}{\sqrt{2 \pi}} \int_{- \infty}^{\infty} x^2 e^{- \frac{x^2}{2}} \; dx =   \frac{1}{\sqrt{2 \pi}} \int_{- \infty}^{\infty} x (xe^{- \frac{x^2}{2}}) \; dx \\
-& =  \frac{1}{\sqrt{2 \pi}} \biggl (\biggl [ x (e^{- \frac{x^2}{2}}) \biggr]_{- \infty}^{\infty}   - \int_{- \infty}^{\infty}  - e^{- \frac{x^2}{2}} \; dx  \biggr) = 0 + 1 = 1\\
-\end{align*}
-\href{https://de.wikipedia.org/wiki/Partielle_Integration}{LINK: Partielle Integration}. Mit "Verschiebungstrick"
-$\Rightarrow \mathbb{V}(X) = \sigma^2$.
-\end{block}
- \end{frame}
 
 
 \begin{frame}
