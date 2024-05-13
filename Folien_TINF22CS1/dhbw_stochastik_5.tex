@@ -292,12 +292,58 @@ $$ \mathbb{E} (X) = \sum_{\omega \in \Omega}  X(\omega) \cdot P(\omega)$$
 \end{block}
  \end{frame}
 
+ \begin{frame}
+    \frametitle{Erwartungswert}
+\framesubtitle{}
+\begin{block}{Eigenschaften}
+Sind $X,Y : \Omega \to \mathbb{R}^n$   reelle, integrierbare  Zufallsvariablen und $a,b \in \mathbb{R}$ konstant, so gilt:
+\begin{align*}
+& \mathbb{E}(a \cdot X + b \cdot Y) = a \cdot \mathbb{E}(X) + b \cdot \mathbb{E}(Y) \\
+& X(x) \leq Y(x) \;  \forall x \in \Omega \Rightarrow \mathbb{E}(X) \leq \mathbb{E}(Y) \\
+& X ,Y \text{ stoch. unabhängig} \Rightarrow   \mathbb{E}(X \cdot Y) =  \mathbb{E}(X) \cdot  \mathbb{E}(Y) \\
+& \mathbb{E} (1_A) = P (A)
+\end{align*}
+\end{block}
+ \end{frame}
+
+ \begin{frame}
+    \frametitle{Erwartungswert}
+\framesubtitle{}
+\begin{block}{Varianz}
+Für eine reelle Zufallsvariable ist die Varianz definiert durch
+$$ \mathbb{V} (X) :=  \mathbb{E}( (X - \mathbb{E}(X))^2) \; .$$
+\end{block}
+\begin{block}{Verschiebungssatz}
+
+\begin{align*}
+ \mathbb{V}(X) & = \mathbb{E}(X^2 - 2X \mathbb{E}(X) + \mathbb{E}(X)^2) = \mathbb{E}(X^2) - 2 \mathbb{E}(X)^2 +  \mathbb{E}(X)^2 \\
+& =  \mathbb{E}(X^2) -  \mathbb{E}(X)^2 \\
+\end{align*}
+\end{block}
+ \end{frame}
+
+ \begin{frame}
+    \frametitle{Erwartungswert}
+\framesubtitle{}
+\begin{block}{Kovarianz}
+Für  reelle Zufallsvariable $X,Y$ ist die Kovarianz definiert durch
+$$ \mathcal{C} (X,Y) :=  \mathbb{E}( (X - \mathbb{E}(X)) (Y - \mathbb{E}(Y))) \; .$$
+\end{block}
+
+\begin{block}{Kovarianz}
+    Per Definition ist
+    $$ \mathcal{C} (X,X) :=  \mathbb{V}(X).$$
+    \end{block}
+ \end{frame}
+
+
+
 
 \begin{frame}
     \frametitle{Erwartungswert}
 \framesubtitle{}
 \begin{block}{Transformationsformel}
-Für eine reelle Zufallsvariable $X: \mathbb{R}^n \to \mathbb{R}^m$ und eine integrierbare Funktion $g:  \mathbb{R}^m \to \mathbb{R}$ gilt
+Für eine reelle Zufallsvariablen $X: \mathbb{R}^n \to \mathbb{R}^m$ und eine integrierbare Funktion $g:  \mathbb{R}^m \to \mathbb{R}$ gilt
 $$ \mathbb{E} (g \circ X) := \int_{\mathbb{R}^n} g \circ X \; dP = \int_{\mathbb{R}^m}  g \; dP_X \;. $$
 Ist $f(x) : \mathbb{R}^m \to \mathbb{R}$ eine Dichte für $P_X$ , so ist  
 $$\mathbb{E} (g \circ X) =  \int_{\mathbb{R}^m} g(x) \cdot f(x) \; d\mu$$.
@@ -352,19 +398,6 @@ Sei $X \sim \mathcal{N}(\mu, \sigma^2)$.
 
 
 
-\begin{frame}
-    \frametitle{Erwartungswert}
-\framesubtitle{}
-\begin{block}{Eigenschaften}
-Sind $X,Y : \Omega \to \mathbb{R}^n$   reelle, integrierbare  Zufallsvariablen und $a,b \in \mathbb{R}$ konstant, so gilt:
-\begin{align*}
-& \mathbb{E}(a \cdot X + b \cdot Y) = a \cdot \mathbb{E}(X) + b \cdot \mathbb{E}(Y) \\
-& X(x) \leq Y(x) \;  \forall x \in \Omega \Rightarrow \mathbb{E}(X) \leq \mathbb{E}(Y) \\
-& X ,Y \text{ stoch. unabhängig} \Rightarrow   \mathbb{E}(X \cdot Y) =  \mathbb{E}(X) \cdot  \mathbb{E}(Y) \\
-& \mathbb{E} (1_A) = P (A)
-\end{align*}
-\end{block}
- \end{frame}
 
 
 \begin{frame}
@@ -387,21 +420,6 @@ f(\epsilon) P(|Y| \geq \epsilon) = & f(\epsilon) \mathbb{E}(1_{\{ |Y| \geq  \eps
  \end{frame}
 
 
-\begin{frame}
-    \frametitle{Erwartungswert}
-\framesubtitle{}
-\begin{block}{Varianz}
-Für eine reelle Zufallsvariable ist die Varianz definiert durch
-$$ \mathbb{V} (X) :=  \mathbb{E}( (X - \mathbb{E}(X))^2) \; .$$
-\end{block}
-\begin{block}{Verschiebungssatz}
-
-\begin{align*}
- \mathbb{V}(X) & = \mathbb{E}(X^2 - 2X \mathbb{E}(X) + \mathbb{E}(X)^2) = \mathbb{E}(X^2) - 2 \mathbb{E}(X)^2 +  \mathbb{E}(X)^2 \\
-& =  \mathbb{E}(X^2) -  \mathbb{E}(X)^2 \\
-\end{align*}
-\end{block}
- \end{frame}
 
 
 \begin{frame}
