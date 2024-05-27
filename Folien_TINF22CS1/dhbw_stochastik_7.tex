@@ -252,19 +252,13 @@ Durch Teilen beider Seiten durch $n-1$ folgt die Behauptung.
 \framesubtitle{}
 
 \begin{block}{Likelyhood Funktion}
-Für eine parametrisierte Dichte $p_\rho : \mathcal{X}   \to  [0,1]$ heißt die Funktion
-\begin{align*}
-& p  : \mathcal{X}  \times  \Theta  \to  [0,1] \\
-& p(x, \rho) := p_\rho (x)
-\end{align*}
-die zugehörige Likelihood Funktion und 
+Für eine parametrisierte Dichte $p_\rho : \mathcal{X}   \to  [0,1]$ heißt 
 \begin{align*}
 & p_x  : \Theta   \to  [0,1] \\
 & p_x(\rho):=  p(x, \rho) 
 \end{align*}
 die Likelihood Funktion zum Beobachtungswert $x \in \mathcal{X}$.
 
-Im diskreten Fall setzten wir $ p(x, \rho) := P_\rho (\{ x\})$
 \end{block}
  \end{frame}
 
@@ -274,9 +268,10 @@ Im diskreten Fall setzten wir $ p(x, \rho) := P_\rho (\{ x\})$
     \frametitle{Statistik - Parameterschätzung}
 \framesubtitle{}
 \begin{block}{Maximum Likelyhood Schätzer}
-Ein Schätzer $T: \mathcal{X} \to \Sigma$ heißt Maximum-Likelyhood-Schätzer, falls
+Ein Schätzer $T: \mathcal{X} \to \Sigma$ heißt Maximum-Likelyhood-Schätzer
+ bezüglich des Beobachtungswerte $x \in \mathcal{X}$, falls
 \begin{align*}
-p(x , T(x)) = \max_{\rho \in \Theta} p (x, \rho) \text{ für alle } x \in \mathcal{X}
+p_x(T(x)) = \max_{\rho \in \Theta} p_x (\rho) 
 \end{align*}
 also der Schätzwert $T(x)$ eine Maximalstelle der Funktion  $p_x$ auf $\Theta$ ist.
 \end{block}
