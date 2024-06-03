@@ -210,7 +210,7 @@ heißt Neyman-Pearson-Test zum Schwellwert $c$. $R(x) = c$ kann hierbei beliebig
 \begin{block}{Neyman-Pearson Lemma}
 Sei   $(\mathcal{X}, \mathcal{F}, P_0, P_1)$ ein statistisches Modell. Dann gilt:
 \begin{enumerate}
-\item Zu gegebenen $\alpha$ gibt es einen Neyman-Pearson-Test  $\varphi$ mit Niveau $\mathbb{E}_0(\varphi) = \alpha$.
+\item Zu gegebenen $\alpha$ gibt es einen Neyman-Pearson-Test  $\varphi$ mit Niveau $\mathbb{E}_0(\varphi) \leq \alpha$.
 \item Dieser Test ist ein bester Test zum Niveau $\alpha$. Jeder Beste Test   zum Niveau $\alpha$ ist nicht unterscheidbar von diesem.
 \end{enumerate}
 \end{block}
@@ -245,7 +245,7 @@ Sei $Q$ ein Wahrscheinlichkeitsmass auf $(\mathbb{R}, \mathcal{B}(\mathbb{R}) )$
 \begin{block}{Beweis}
 Sei $c$ ein $\alpha$-Fraktil des Wahrscheinlichkeitsmasses $P_0 \circ R^{-1}$. Definitionsgemäß gilt also $P_0(R \geq c) \geq \alpha$ und $P_0 (R > c) = 1 - \underbrace{P_0(R \leq \alpha)}_{\geq 1 - \alpha} \leq \alpha$. Folglich gilt
 $\alpha - P_0(R >c) \leq P_0(R \geq c) - P_0(R > c) = P_0(R = c) $. \\
-Ist $ P_0(R = c)  = 0$ so ist $ P_0(R >c) = \alpha$ und $\varphi = 1_{R > c}$ ein Neyman-Pearson-Test mit $\mathbb{E}_0(\varphi) = \alpha$. 
+Ist $ P_0(R = c)  = 0$ so ist $ P_0(R >c) \leq \alpha$ und $\varphi = 1_{R > c}$ ein Neyman-Pearson-Test mit $\mathbb{E}_0(\varphi) \leq\alpha$. 
 \\ Ist $ P_0(R = c) > 0$, so ist
 \begin{align*}
 \gamma := \frac{\alpha - P_0(R > c)}{ P_0(R=c)} \in [0,1]
@@ -263,7 +263,7 @@ Damit ist
 \begin{align*}
  \varphi(x) = \begin{cases} 1 \text{ falls } R(x) > c \\  \gamma  \text{ falls } R(x) = c \\ 0 \text{ falls } R(x) < c  \end{cases}
 \end{align*}
-ein Neyman-Pearson-Test mit $\mathbb{E}_0(\varphi) = P_0(R > c) + \gamma P_0(R=c) = \alpha$.
+ein Neyman-Pearson-Test mit $\mathbb{E}_0(\varphi) = P_0(R > c) + \gamma P_0(R=c) \leq \alpha$.
 \end{block}
 
  \end{frame}
@@ -274,7 +274,7 @@ ein Neyman-Pearson-Test mit $\mathbb{E}_0(\varphi) = P_0(R > c) + \gamma P_0(R=c
     \frametitle{Statistik - Hypothesentest}
 \framesubtitle{}
 \begin{block}{Beweis}
-Sei $\varphi$ ein Neyman-Pearson-Test  mit $\mathbb{E}_0(\varphi) = \alpha$ und Schwellenwert $c$ sowie $\psi$ ein beliebiger Test zum Niveau $\alpha$. Ist $\varphi(x) > \psi(x)$, so ist $\varphi(x) > 0$, also $R(x) \geq c$ und daher $p_1(x) \geq c p_0(x)$. Ist $\varphi(x) < \psi(x)$ ist $\varphi(x) <1$ und also $p_1(x) \leq c p_0(x)$. Es gilt also immer
+Sei $\varphi$ ein Neyman-Pearson-Test  mit $\mathbb{E}_0(\varphi) \leq \alpha$ und Schwellenwert $c$ sowie $\psi$ ein beliebiger Test zum Niveau $\alpha$. Ist $\varphi(x) > \psi(x)$, so ist $\varphi(x) > 0$, also $R(x) \geq c$ und daher $p_1(x) \geq c p_0(x)$. Ist $\varphi(x) < \psi(x)$ ist $\varphi(x) <1$ und also $p_1(x) \leq c p_0(x)$. Es gilt also immer
 \begin{align*}
 f_1(x) := (\varphi(x) - \psi(x))p_1(x) \geq c ( \varphi(x) - \psi(x))p_0(x) ) := c \; f_0(x)
 \end{align*}
