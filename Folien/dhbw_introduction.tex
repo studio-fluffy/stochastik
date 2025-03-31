@@ -35,6 +35,29 @@
 
 \frame{\titlepage}
 
+
+\begin{frame}
+    \frametitle{Einleitung}
+\framesubtitle{}
+
+\begin{block}{Motivation}
+Maschinelles Lernen. Maschinelle Vorhersage. Informationstheorie. Prozesstheorie. Optimierungstheorie. Mustererkennung. Komplexitätstheorie, bildgebende Verfahren, Physik.
+\end{block}
+
+\begin{block}{Motivation}
+
+Wie programmiere und trainiere ich einen "intelligenten" Spam-Filter?
+Ab wie vielen richtig beantworteten Ja-Nein-Fragen ist der  von meinem Kommilitonen gebaute Roboter wirklich intelligent und  hat nicht nur zufällig die richige Antwort gewählt?
+Wie bewertet Google Webseiten?
+Warum wird das Rauschen von Sensoren ständig als Normalverteilt angenommen?
+Macht es Sinn auf Rot zu setzen, nachdem 100 mal Schwarz im Roulette fiel?
+Kann man Geschwafel quantifizieren?
+Wie kann man mit einer Münze Integrale lösen und was hat das mit Hollywood zu tun? 
+\end{block}
+
+ \end{frame}
+
+
 \begin{frame}
     \frametitle{Einleitung}
 \framesubtitle{Was ist Stochastik?}
@@ -74,6 +97,7 @@ Keine kausale Erklärung für den Ausgang eines Vorganges vorhanden (Nicht-Deter
 
    \begin{block}{Kausalität (Wikipedia)}
 Kausalität ist die Beziehung zwischen Ursache und Wirkung. Sie betrifft die Abfolge von Ereignissen und Zuständen, die aufeinander bezogen sind. Demnach ist A die Ursache für die Wirkung B, wenn B von A herbeigeführt wird.
+Eine Ursache ist zeitlich immer vor der Wirkung.
 \end{block}
 
 \begin{figure}[htp]
@@ -90,7 +114,25 @@ Kausalität ist die Beziehung zwischen Ursache und Wirkung. Sie betrifft die Abf
 \begin{frame}
     \frametitle{Einleitung}
 \framesubtitle{}
-   \begin{block}{Stochastik vs. Kausalität}
+
+\begin{block}{Korrelation}
+Die Korrelation beschreibt den statistischen Zusammenhang zwischen zwei Variablen – also, wie stark und in welcher Richtung sie gemeinsam variieren
+\end{block}
+
+\begin{block}{Korrelation vs. Kausalität}
+Gibt es einen kausalen Zusammenhang zwischen zwei Variablen, so ist auch eine Korrelation gegeben. 
+\end{block}
+    
+\end{frame}
+
+
+
+
+
+\begin{frame}
+    \frametitle{Einleitung}
+\framesubtitle{}
+   \begin{block}{Korrelation vs. Kausalität}
 In den seltensten Fällen lassen sich aus stochastischen Zusammenhängen kausale Zusammenhänge ableiten. ACHTUNG: Populisten tun dies jedoch ständig!
 \end{block}
 
@@ -101,7 +143,7 @@ In den seltensten Fällen lassen sich aus stochastischen Zusammenhängen kausale
     \frametitle{Einleitung}
 \framesubtitle{}
 
-    \begin{block}{Stochastik vs. Kausalität}
+    \begin{block}{Korellation vs. Kausalität}
 Beobachtung: Bei Regen tragen die Menschen einen Regenschirm.
 Es folgt NICHT: Wenn man einen Regenschirm aufspannt, fängt es an zu regnen.
 Ebenso folgt NICHT: Wenn es regnet, sieht man Menschen mit Regenschirmen. 
@@ -119,13 +161,66 @@ Ebenso folgt NICHT: Wenn es regnet, sieht man Menschen mit Regenschirmen.
 \end{frame}
 
 
+\begin{frame}
+    \frametitle{Einleitung}
+\framesubtitle{}
+
+    \begin{block}{kreuzkorrelation}
+Zwei Ereignisse treten zusammen auf, haben jedoch andere gemeinsame Ursachen.
+\end{block}
+
+%\begin{block}{Korellation vs. Kausalität}
+%Um aus einer Korrelation einen kausalen Zusammenhang  ableiten zu können,  muss man alle anderen möglichen Ursachen ausschliessen.    
+%\end{block} 
+
+\begin{figure}[htp]
+      \centering
+    \includegraphics[width=0.33\textwidth]{img/kreuzkorrelation-2.png}
+
+\end{figure}
+\end{frame}
+
+
+
+\begin{frame}
+    \frametitle{Einleitung}
+\framesubtitle{}
+
+\begin{block}{Beispiel}
+    Behauptung (falsch): Größere Füße führen zu besserem Leseverständnis.
+
+Korrelation: Bei kleinen Kindern mit wachsendem Alter steigen sowohl Schuhgröße als auch Lesekompetenz.
+
+Tatsächlicher Grund: Alter ist die dritte Variable – ältere Kinder können besser lesen und haben größere Füße.
+
+\end{block}
+
+
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{Einleitung}
+\framesubtitle{}
+
+\begin{block}{Kontrolliertes Experiment}
+    Ein kontrolliertes Experiment ist eine Untersuchungsmethode, 
+    bei der eine Variable (die unabhängige Variable) gezielt manipuliert wird, 
+    um deren Einfluss auf eine andere Variable (die abhängige Variable) zu beobachten. 
+    Dabei werden alle anderen Einflussgrößen konstant gehalten oder verteilt (durch Randomisierung).
+    Dies ermöglicht eine klare Zuordnung von Ursache und Wirkung.    
+\end{block}
+
+
+\end{frame}
+
 
 
 \begin{frame}
     \frametitle{Einleitung}
 \framesubtitle{}
 \begin{block}{}
-Gibt es überhaupt Zufall? 
+Gibt es überhaupt Zufall oder steht alles in einem kausalen Zusammenhang? 
 \end{block}
 
 \begin{figure}[htp]
@@ -148,27 +243,6 @@ Physik $\Rightarrow$ Skalen können nicht beliebig klein werden.
 \end{frame}
 
 
-
-\begin{frame}
-    \frametitle{Einleitung}
-\framesubtitle{}
-
-\begin{block}{Motivation}
-Maschinelles Lernen. Maschinelle Vorhersage. Informationstheorie. Prozesstheorie. Optimierungstheorie. Mustererkennung. Komplexitätstheorie, bildgebende Verfahren, Physik.
-\end{block}
-
-\begin{block}{Motivation}
-
-Wie programmiere und trainiere ich einen "intelligenten" Spam-Filter?
-Ab wie vielen richtig beantworteten Ja-Nein-Fragen ist der  von meinem Kommilitonen gebaute Roboter wirklich intelligent und  hat nicht nur zufällig die richige Antwort gewählt?
-Wie bewertet Google Webseiten?
-Warum wird das Rauschen von Sensoren ständig als Normalverteilt angenommen?
-Macht es Sinn auf Rot zu setzen, nachdem 100 mal Schwarz im Roulette fiel?
-Kann man Geschwafel quantifizieren?
-Wie kann man mit einer Münze Integrale lösen und was hat das mit Hollywood zu tun? 
-\end{block}
-
- \end{frame}
 
 \begin{frame}
     \frametitle{Einleitung}
