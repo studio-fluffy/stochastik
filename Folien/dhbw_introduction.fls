@@ -1478,6 +1478,11 @@ INPUT ./img/Monty_open_1.png
 INPUT img/Monty_open_1.png
 INPUT ./img/Monty_open_1.png
 INPUT ./img/Monty_open_1.png
+INPUT ./img/montyhall.jpg
+INPUT ./img/montyhall.jpg
+INPUT img/montyhall.jpg
+INPUT ./img/montyhall.jpg
+INPUT ./img/montyhall.jpg
 OUTPUT dhbw_introduction.nav
 OUTPUT dhbw_introduction.toc
 OUTPUT dhbw_introduction.snm

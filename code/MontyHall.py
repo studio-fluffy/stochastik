@@ -58,13 +58,13 @@ win_rates_stay   = simulate_monty_hall_progress(num_trials, switch=False)
 
 # Endergebnisse ausgeben
 print("Anzahl der Durchläufe:", num_trials)
-print("Endgültige Gewinnchance bei Wechsel (Switch): {:.2%}".format(win_rates_switch[-1]))
-print("Endgültige Gewinnchance bei Beibehalten (Stay): {:.2%}".format(win_rates_stay[-1]))
+print("Endgültige Gewinnchance bei Wechsel (Bleiben): {:.2%}".format(win_rates_switch[-1]))
+print("Endgültige Gewinnchance bei Beibehalten (Wechseln): {:.2%}".format(win_rates_stay[-1]))
 
 # Visualisierung des zeitlichen Verlaufs
 plt.figure(figsize=(10, 6))
-plt.plot(win_rates_switch, label='Switch', lw=1)
-plt.plot(win_rates_stay, label='Stay', lw=1)
+plt.plot(win_rates_switch, label='Bleiben', lw=1)
+plt.plot(win_rates_stay, label='Wechseln', lw=1)
 plt.xlabel('Anzahl der Durchläufe')
 plt.ylabel('Kumulative Gewinnwahrscheinlichkeit')
 plt.title('Zeitlicher Verlauf der Gewinnwahrscheinlichkeit im Monty-Hall-Problem')
