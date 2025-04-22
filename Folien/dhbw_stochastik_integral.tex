@@ -258,16 +258,23 @@
         Die Menge der Treppenfunktionen bezeichnen wir mit $\mathcal{T}$ und die Treppenfunktionen mit $a_i > 0$ mit $\mathcal{T}^+$.        
     \end{block}
     
+
+
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{Stochastik}
+\framesubtitle{}
+
     \begin{block}{Eindeutigkeit der Darstellung}
         Sind $u = \sum_{i= 1}^n a_i 1_{A_i} = \sum_{j= 1}^m b_j 1_{B_j}$ zwei verschiedene Darstellungen einer Treppenfunktion 
         $u \in \mathcal{T}^+$
         so ist $\sum_{i= 1}^n a_i \mu (A_i) = \sum_{j= 1}^m b_j \mu (B_j)$
     \end{block}
 
-
-
-
 \end{frame}
+
 
 
 \begin{frame}
@@ -310,6 +317,20 @@ Diese ist unabhängig von der Darstellung.
 \end{block}
 \end{frame}
 
+\begin{frame}
+    \frametitle{Stochastik}
+\framesubtitle{}
+    \begin{block}{Eigenschaften des Integrals nicht negativer meßbarer Funktionen}
+        Seien $f,g :\Omega \to \mathbb{R}_{\geq 0}$ meßbar.
+        Dann gilt:
+        \begin{itemize}
+        \item Ist $f \leq g$ punktweise, dann ist $\int_{\Omega} f  d\mu  \leq \int_{\Omega} g  d\mu$
+            \item      Ist   $f_n \in \mathcal{T}^+$ eine punktweise konvergente Folge $f_n \uparrow f$, dann konergierten die Integrale 
+            $\int_{\Omega} f  d\mu \uparrow  \int_{\Omega} g  d\mu$
+    \end{itemize}
+        \end{block}
+\end{frame}
+
 
 
 
@@ -339,7 +360,8 @@ und damit
 \begin{align*}
     f_n : =  \sum_{j= 0}^{n2^n} \frac{j}{2^n} 1_{A_{j,n}}
 \end{align*}
-Damit gilt $f_n(x) \leq f(x) \leq f_n(x) +2^{-n}$.
+Damit gilt für festes $x$ immer $f_n(x) \leq f(x)$ und man kann $n$ immer so wählen, dass 
+$ f(x) \leq f_n(x) +2^{-n}$ gilt.
 \end{frame}
 
 \begin{frame}
@@ -434,6 +456,50 @@ Sei
 \begin{block}{Reelle Zufallssvariable}
 \end{block} 
 \end{frame}
+
+
+
+\begin{frame}{Definition des Bildmaßes}
+    \begin{block}{Bildmaß}
+
+    Sei
+ $(\Omega,\mathcal{F},\mathbb{P})$ ein Wahrscheinlichkeitsraum,
+    $(E,\mathcal{E})$ ein messbarer Raum,
+    $X:\Omega\to E$ eine messbare Abbildung.  
+  Dann definiert man das \emph{Bildmaß}  $\mathbb{P}_X$ von $\mathbb{P}$ unter $X$ durch
+  \[
+    \mathbb{P}_X(B) 
+    := \mathbb{P}(X \in B) 
+    = \mathbb{P}(\{\omega \in \Omega : X(\omega) \in B\}),
+    \quad B \in \mathcal{E}.
+  \]
+\end{block}
+\end{frame}
+
+
+
+\begin{frame}
+    \frametitle{Erwartungswert}
+\framesubtitle{}
+\begin{block}{Transformationsformel}
+Für eine reelle Zufallsvariablen $X: \mathbb{R}^n \to \mathbb{R}^m$ und eine integrierbare Funktion $g:  \mathbb{R}^m \to \mathbb{R}$ gilt
+$$ \mathbb{E} (g \circ X) := \int_{\mathbb{R}^n} g \circ X \; dP = \int_{\mathbb{R}^m}  g \; dP_X \;. $$Ist $f(x) : \mathbb{R}^m \to \mathbb{R}$ eine Dichte für $P_X$ , so ist  
+$$\mathbb{E} (g \circ X) =  \int_{\mathbb{R}^m} g(x) \cdot f(x) \; d\mu$$.
+\end{block}
+ \end{frame}
+
+ \begin{frame}
+    \frametitle{Erwartungswert}
+\framesubtitle{}
+\begin{block}{Transformationsformel}
+Für $g = 1_A$ mit $A \in \mathcal{B}(\mathbb{R}^n)$ ist
+\begin{align*}
+& \int 1_A \; dP_X = P_X(A) = P(X^{-1} (A)) = \int 1_{X^{-1}(A)} \; dP \\
+&= \int 1_{A} \circ X \; dP
+\end{align*}
+Für eine Treppenfunktion $g= \sum_{i= 1}^n c_i 1_{A_i} $folgt das Ergebnis aus der Linearität des Integrals  für Treppenfunktionen. Für integrierbares $g$ folgt das Resultat mit Hilfe von Konvergenzsätzen für das  Integral.
+\end{block}
+ \end{frame}
 
 
 

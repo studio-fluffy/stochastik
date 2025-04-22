@@ -1,6 +1,6 @@
 # Fdb version 4
-["pdflatex"] 1745306607 "/Users/johannesriesterer/Documents/code/stochastik/Folien/dhbw_stochastik_integral.tex" "dhbw_stochastik_integral.pdf" "dhbw_stochastik_integral" 1745306610 0
-  "/Users/johannesriesterer/Documents/code/stochastik/Folien/dhbw_stochastik_integral.tex" 1745306607 17990 64ab3c91b26b870c6422d232eb80a744 ""
+["pdflatex"] 1745313428 "/Users/johannesriesterer/Documents/code/stochastik/Folien/dhbw_stochastik_integral.tex" "dhbw_stochastik_integral.pdf" "dhbw_stochastik_integral" 1745313431 0
+  "/Users/johannesriesterer/Documents/code/stochastik/Folien/dhbw_stochastik_integral.tex" 1745313427 20307 c0bfcb3755881cb94adafca4ebd72ca4 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/usr/local/texlive/2023/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1246382020 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -47,6 +47,7 @@
   "/usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi10.pfb" 1248133631 25150 e0d09798d232ab9d00c5c0a8df6cc22d ""
   "/usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi8.pfb" 1248133631 25168 33771b85f45c82138dd7745db7092d1c ""
   "/usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb" 1248133631 32569 5e5ddc8df908dea60932f3c484a54c0d ""
+  "/usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb" 1248133631 32587 1788b0c1c5b39540c96f5e42ccd6dae8 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb" 1248133631 32626 4f5c1b83753b1dd3a97d1b399a005b4b ""
   "/usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb" 1248133631 34694 ad62b13721ee8eda1dcc8993c8bd7041 ""
   "/usr/local/texlive/2023/texmf-dist/tex/context/base/mkii/supp-pdf.mkii" 1461363279 71627 94eb9990bed73c364d7f53f960cc8c5b ""
@@ -253,10 +254,10 @@
   "/usr/local/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1698836375 4623355 b8cad38412faebe1ce5b780a45db67bd ""
   "/usr/local/texlive/2023/texmf-var/web2c/pdftex/pdflatex.fmt" 1698836342 7883462 8a4d061ad2ccf4b7ea70dd63c461eb78 ""
   "/usr/local/texlive/2023/texmf.cnf" 1678822455 577 1b2b1af17af2508fb20dd85783af4050 ""
-  "dhbw_stochastik_integral.aux" 1745306610 5210 094d349987ae1067cad9a9f5f1c9695d "pdflatex"
-  "dhbw_stochastik_integral.nav" 1745306610 3341 7d73de7ff642878dd6c36c12ea38837e "pdflatex"
-  "dhbw_stochastik_integral.out" 1745306608 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
-  "dhbw_stochastik_integral.tex" 1745306607 17990 64ab3c91b26b870c6422d232eb80a744 ""
+  "dhbw_stochastik_integral.aux" 1745313431 5855 950488d0a6f7203bb63d36d1f37da614 "pdflatex"
+  "dhbw_stochastik_integral.nav" 1745313431 3806 dc6cd9bd11b5862db379b6b87555791e "pdflatex"
+  "dhbw_stochastik_integral.out" 1745313429 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "dhbw_stochastik_integral.tex" 1745313427 20307 c0bfcb3755881cb94adafca4ebd72ca4 ""
   "img/640px-Indicator_function_illustration.png" 1712490409 44879 3abacd413111b090cfc847068f79bfae ""
   "img/640px-Stepfunction1.png" 1712490409 7719 40bdf80707d00d5e8aa3c866e1737d72 ""
   "img/coinflip.png" 1744666436 790783 7064a66bb6538fa25bf9f8af6c27783b ""
