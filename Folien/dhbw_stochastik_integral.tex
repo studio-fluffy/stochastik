@@ -1,0 +1,614 @@
+\documentclass{beamer}
+\usetheme{Warsaw}
+
+\usepackage[utf8]{inputenc}
+\usepackage{fancybox}
+\usepackage{multimedia} 
+\usepackage{subfig}
+\usepackage{amsmath}
+\usepackage{hyperref}
+\usepackage[all]{xy}
+\usepackage{algorithm}
+%\usepackage{arevmath}     % For math symbols
+\usepackage[noend]{algpseudocode}
+\setbeamertemplate{footline}[frame number]
+
+% Define custom commands for \EE, \Tau, and \MM
+\newcommand{\EE}{\mathcal{E}}
+\newcommand{\Tau}{\mathcal{T}}
+\newcommand{\MM}{\mathcal{M}}
+
+\begin{document}
+
+
+
+\title[Stochastik] % (optional, only for long titles)
+{Stochastik für Informatiker
+\\
+\includegraphics[scale=0.5]{img/craps}
+}
+\subtitle{}
+\author[Dr. Johannes Riesterer] % (optional, for multiple authors)
+{Dr.  rer. nat. Johannes Riesterer}
+
+\date[KPT 2004] % (optional)
+{}
+
+\subject{Stochastik}
+
+\begin{frame}
+    \frametitle{Highlight}
+\framesubtitle{}
+\begin{figure}[htp]
+      \centering
+    \includegraphics[width=0.6\textwidth]{img/coinflip.png}
+\end{figure}
+ \end{frame}
+
+
+\begin{frame}
+    \frametitle{Stochastik}
+\framesubtitle{Inegrierbare Funktionen}
+    \begin{block}{Maßraum}
+     Ein Meßraum $(\Omega, \mathcal{A})$ ist ein Tupel bestehend aus der Grundmenge $\Omega$ und einer $\sigma$-Algebra $\mathcal{A} \subset  \mathcal{P}(\Omega)$ 
+\end{block}
+
+\begin{block}{Maß}
+    Ein Maß auf einem Meßraum $(\Omega, \mathcal{A})$ ist Abbildung
+    $\mu : \mathcal{A} \to \mathbb{R}_{\geq 0}$
+    \begin{align*}
+    \mu \biggl(  \bigcup_i A_i  \biggr) = \sum_i \mu(A_i), \text{ mit } A_i \cap A_j = \emptyset \text{ für } i \neq j
+    \end{align*}
+    \end{block}
+    
+    \begin{block}{Wahrscheinlichkeitsmaß}
+     Ein Maß mit $\mu (\Omega) = 1$ ist ein Wahrscheinlichkeitsmaß.
+   \end{block}
+
+ \end{frame}
+
+
+  
+ \begin{frame}{Stochastik}
+    \framesubtitle{Sigma-Algebra}
+    \begin{block}{erzeugte Sigma-Algebra}
+    Sei $X$ eine Menge und $\mathcal{C}\subseteq\mathcal{P}(X)$ ein Mengensystem.\\[0.5em]
+    Die von $\mathcal{C}$ erzeugte $\sigma$‑Algebra ist definiert als
+    \[
+      \sigma(\mathcal{C})
+      =
+      \bigcap\bigl\{\mathcal{F}\subseteq\mathcal{P}(X)\;\bigm|\;
+        \mathcal{F}\text{ ist eine $\sigma$‑Algebra und }\mathcal{C}\subseteq\mathcal{F}\bigr\}.
+    \]
+    \end{block}
+  \end{frame}
+  
+  \begin{frame}{Stochastik}
+    \framesubtitle{Sigma-Algebra}
+    \begin{itemize}
+      \item $\mathcal{P}(X)$ selbst ist eine $\sigma$‑Algebra und enthält $\mathcal{C}$.  
+      \item Daher ist die Menge aller $\sigma$‑Algebren, die $\mathcal{C}$ enthalten, nicht leer.  
+      \item Der Schnitt beliebig vieler $\sigma$‑Algebren ist wieder eine $\sigma$‑Algebra.  
+      \item Damit existiert und ist eindeutig die kleinste $\sigma$‑Algebra mit $\mathcal{C}\subseteq\sigma(\mathcal{C})$.
+
+      \item $\sigma(\mathcal{C})$ enthält genau diejenigen Mengen, die aus $\mathcal{C}$ gewonnen werden können durch
+      
+          \item Komplementbildung,
+          \item abzählbare Vereinigungen,
+          \item (und folglich abzählbare Durchschnitte).
+       \end{itemize}
+  \end{frame}
+  
+  \begin{frame}{}
+    \frametitle{Stochastik}
+    \framesubtitle{Sigma-Algebra}
+\begin{block}{Borellsche Sigma-Algebra auf $\mathbb{R}$}
+    Die \emph{Borel‑$\sigma$‑Algebra} $\mathcal B(\mathbb R)$ ist definiert als
+    \[
+      \mathcal B(\mathbb R)
+      =
+      \sigma\bigl(\{\text{offene Teilmengen von }\mathbb R\}\bigr).
+    \]
+    Äquivalent:
+    \begin{align*}
+      \mathcal B(\mathbb R)
+      &= \sigma\bigl(\{(a,b):a<b\}\bigr)
+      = \sigma\bigl(\{(-\infty,a):a\in\mathbb R\}\bigr).
+    \end{align*}
+\end{block}
+  \end{frame}
+
+  
+
+  \begin{frame}{Inklusion 2: offene Intervalle}
+    Jede offene Menge $U$ lässt sich darstellen als
+    \[
+      U=\bigcup_{k=1}^\infty(a_k,b_k),\quad a_k,b_k\in\mathbb Q.
+    \]
+   
+    \[
+      (a,b)=(-\infty,b)\cap(( -\infty,a])^c
+    \]
+    \[
+      (-\infty,a]=\bigcap_{n=1}^\infty(-\infty,a+\tfrac1n)\in\sigma(\mathcal H)
+    \]
+  
+
+    
+  \end{frame}
+
+  
+ \begin{frame}
+    \frametitle{Stochastik}
+\framesubtitle{Inegrierbare Funktionen}
+    \begin{block}{Meßbare Abbildung}
+     Eine Abbildung $f:\Omega \to \Omega'$ zwischen zwei Maßräumen 
+      $(\Omega, \mathcal{A})$ und $(\Omega', \mathcal{A}')$ heißt meßbar, falls
+    \begin{align*}
+        f^{-1}(A') \in \mathcal{A} \; \text{für alle } A' \in \mathcal{A}'
+    \end{align*}
+    \end{block}
+
+    \begin{block}{Meßbare Abbildung}
+    Das Urbild jedes Ereignisses ist ein Ereignis
+    \end{block}
+
+    \begin{block}{Beispiel}
+        Bei endlichen Mengen mit der Potenzmenge als Sigma-Algebra ist jede Funktion Meßbar.
+    \end{block}
+
+    
+ \end{frame}
+
+
+
+
+
+\begin{frame}
+    \frametitle{Stochastik}
+\framesubtitle{}
+    \begin{block}{Meßbare Funktionen }
+        Die Menge der meßbaren Funktionen $f: \Omega \to \mathbb{R}$ bezeichnen wir mit $\mathcal{M}_\Omega$ oder einfach $\mathcal{M}$
+        wenn der Kontext klar ist. 
+        Mit $\mathcal{M}^+$ bezeichnen wir die meßbaren Funktionen $f: \Omega \to \mathbb{R}$ mit $f(\omega) \geq 0$. 
+    \end{block}
+
+\end{frame}
+
+\begin{frame}{Satz}
+    \frametitle{Stochastik}
+    \framesubtitle{}
+    \begin{block}{Messbarkeit von Abbildungen}
+      Sei $(X,\Sigma)$ ein Messraum, $Y$ eine Menge und
+      \[
+        \EE \;\subseteq\;\mathcal P(Y),
+        \quad
+        \Tau = \sigma(\EE)
+      \]
+      die von $\EE$ erzeugte $\sigma$‑Algebra auf $Y$. Dann ist
+      \[
+        f\colon (X,\Sigma)\;\longrightarrow\;(Y,\Tau)
+      \]
+      genau dann messbar, wenn
+      \[
+        f^{-1}(E)\in\Sigma
+        \quad\text{für alle }E\in\EE.
+      \]
+    \end{block}
+  \end{frame}
+  
+
+
+
+\begin{frame}
+    \frametitle{Stochastik}
+\framesubtitle{}
+\begin{block}{Indikatorfunktion}
+    Für eine Teilmenge $A \subset \Omega$ heißt
+    $$ 1_A (x): = \begin{cases} 1 \text{  falls }   x \in A  \\  0  \text{  sonst}  \end{cases}$$
+    Indikatorfunktion.
+    \end{block}
+    
+    \begin{figure}[H]
+          \centering
+        \includegraphics[width=0.5\textwidth]{img/640px-Indicator_function_illustration}
+          \caption{Quelle: Wikipedia: https://commons.wikimedia.org/wiki/File:Indicator\_function\_illustration.png}
+    
+    \end{figure}
+\end{frame}
+
+
+
+\begin{frame}
+    \frametitle{Stochastik}
+\framesubtitle{}
+    \begin{block}{Treppenfunktion}
+        Eine meßbare Funktion $u: \Omega \to \mathbb{R}$ 
+        heißt Treppenfunktion, 
+        falls sie nur endlich viele verschiedene Werte annimmt.
+    \end{block}
+
+
+\begin{figure}[H]
+    \centering
+  \includegraphics[width=0.6\textwidth]{img/640px-Stepfunction1}
+    \caption{Quelle: Wikipedia: https://commons.wikimedia.org/wiki/File:Stepfunction1.png}
+
+\end{figure}
+\end{frame}
+
+
+
+\begin{frame}
+    \frametitle{Stochastik}
+\framesubtitle{}
+
+    \begin{block}{Beispiel  einer Treppenfuntkion}
+         $u(x) = \sum_{i= 1}^n a_i \cdot  1_{A_i}(x)$ mit $A_i \cap A_j = \emptyset$ für $i \neq j$ ist eine Treppenfunktion.
+    \end{block}
+
+
+    \begin{block}{Treppenfuntkion}
+        Eine Treppenfunktion  $u$ hat eine Darstellung
+        $u(x) = \sum_{i= 1}^n a_i \cdot  1_{A_i}(x)$ mit $A_i \cap A_j = \emptyset$ für $i \neq j$ ist eine Treppenfunktion.
+   \end{block}
+
+
+    \begin{block}{Treppenfuntkion}
+        Die Menge der Treppenfunktionen bezeichnen wir mit $\mathcal{T}$ und die Treppenfunktionen mit $a_i > 0$ mit $\mathcal{T}^+$.        
+    \end{block}
+    
+    \begin{block}{Eindeutigkeit der Darstellung}
+        Sind $u = \sum_{i= 1}^n a_i 1_{A_i} = \sum_{j= 1}^m b_j 1_{B_j}$ zwei verschiedene Darstellungen einer Treppenfunktion 
+        $u \in \mathcal{T}^+$
+        so ist $\sum_{i= 1}^n a_i \mu (A_i) = \sum_{j= 1}^m b_j \mu (B_j)$
+    \end{block}
+
+
+
+
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{Stochastik}
+\framesubtitle{}
+    \begin{block}{Integral einer Treppenfunktion}
+        Für eine Treppenfunktion $u \in \mathcal{T}^+$ definieren wir
+\begin{align*}
+    \int_\Omega u \; d\mu= \sum_{i=1}^n a_i \mu(A_i)
+\end{align*}
+Diese ist unabhängig von der Darstellung.
+    \end{block}
+
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{Stochastik}
+\framesubtitle{}
+\begin{block}{Eigenschaften des Integrals von Treppenfunktionen}
+    Sind $u$ und $v$ zwei Treppenfunktionen, dann gilt:
+    \begin{itemize}
+    \item $\int_{\Omega} 1_A  d\mu  = \mu (A)$  
+    \item $\int_{\Omega} \alpha u  + \beta v d\mu = \alpha \int_{\Omega}  u d\mu + \beta  \int_{\Omega}  v d\mu$
+    \item Ist $u(x) \leq v(x)$ für alle $x$, so ist $\int_{\Omega} u d\mu \leq \int_{\Omega} v d\mu$ 
+    \end{itemize}
+    \end{block}
+\end{frame}
+
+
+
+\begin{frame}
+    \frametitle{Stochastik}
+\framesubtitle{}
+    \begin{block}{Integral nicht negativer meßbarer Funktionen}
+        Für eine Funktion $f \in \mathcal{M}^+$ definieren wir
+        \begin{align*}
+            \int_{\Omega} f \;  d \mu := sup \biggl \{ \int_{\Omega} u \; d\mu \; | \; u \in \mathcal{T}^+, u(x) \leq f(x) \text{ für alle } x \in \Omega  \biggr  \}   
+        \end{align*}
+\end{block}
+\end{frame}
+
+
+
+
+\begin{frame} 
+    \frametitle{Stochastik}
+\framesubtitle{}
+    \begin{block}{Meßbare Abbildungen}
+        Eine nicht negative messbare Funktion $f:\Omega \to \mathbb{R}_{\geq 0}$ ist genau dann meßbar, wenn
+        es eine Folge $f_n \in \mathcal{T}^+$ gibt mit $f_n \uparrow f$.
+    \end{block}
+
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{Stochastik}
+\framesubtitle{}
+Sei  $f \in \mathcal{M}^+$ meßbar: \\
+definiere
+\begin{align*}
+    A_{j,n} : = \begin{cases} 
+        \{ \frac{j}{2^n} \leq f \leq \frac{j+1}{2^n} \} \text{ für } j= 0, \dots, n \cdot 2^n -1 \\
+        \{  f \geq n \} \text{ für } j= n \cdot 2^n 
+    \end{cases}
+\end{align*}
+und damit 
+\begin{align*}
+    f_n : =  \sum_{j= 0}^{n2^n} \frac{j}{2^n} 1_{A_{j,n}}
+\end{align*}
+Damit gilt $f_n(x) \leq f(x) \leq f_n(x) +2^{-n}$.
+\end{frame}
+
+\begin{frame}
+    \frametitle{Stochastik}
+\framesubtitle{}
+Sei 
+\[
+  f_n(x) \;=\; \sum_{i=1}^{k_n} a_{n,i}\,\mathbf{1}_{A_{n,i}}(x),
+\]
+ eine punktweise konvergente folge $f_n \uparrow f$ von Treppenfunktionen.
+
+\begin{enumerate}
+    \item[\textbf{1.}] \emph{Treppenfunktionen sind messbar.} \\
+      Für feste $n$ und $\alpha\in\mathbb{R}$ gilt
+      \[
+        \{x: f_n(x)<\alpha\}
+        = \bigcup_{\substack{1\le i\le k_n \\ a_{n,i}<\alpha}} A_{n,i}
+        \;\in\;\Sigma,
+      \]
+      da endliche und abzählbare Vereinigungen sowie Komplemente in $\Sigma$ liegen. Also ist $f_n$ messbar.
+  
+    \item[\textbf{2.}] \emph{Charakterisierung der Messbarkeit.} \\
+      Eine Funktion $g\colon X\to\mathbb{R}$ ist genau dann messbar, wenn für alle $\alpha\in\mathbb{R}$
+      \[
+        \{x:g(x)<\alpha\}\;\in\;\Sigma.
+      \]
+  
+    
+     
+    \end{enumerate}
+    \end{frame}
+
+    \begin{frame}
+        \frametitle{Stochastik}
+    \framesubtitle{}
+       Da $f_n(x)\to f(x)$ punktweise, gilt für jedes $x\in X$ und jedes $\alpha\in\mathbb{R}$:
+      \[
+        f(x)<\alpha
+        \quad\Longleftrightarrow\quad
+        \exists\,k\;\forall\,n\ge k:\;f_n(x)<\alpha.
+      \]
+    Daher
+    \[
+      \{x:f(x)<\alpha\}
+      = \bigcup_{k=1}^{\infty}\bigcap_{n=k}^{\infty}\{x:f_n(x)<\alpha\}.
+    \]
+
+\end{frame}
+ 
+
+
+
+\begin{frame}
+    \frametitle{Stochastik}
+\framesubtitle{}
+    \begin{block}{Integral für meßbare Funktionen}
+        Für eine meßbare Funktion  $f \in \mathcal{M}$ setzen wir
+        $$ \int_{\Omega} f \; d\mu = \int_{\Omega}f^+ \; d\mu  - \int_{\Omega}-f^- \; d\mu$$
+        wobei $f^+(x) := \max (0, f(x))$ und $f^-(x) := \min (0, f(x))$
+    \end{block}
+
+    \begin{block}{Integral für meßbare Funktionen}
+       Eine meßbare Funktion heißt integrierbar, falls ihr Integral endlich ist.
+    \end{block}
+
+\end{frame}
+
+\begin{frame}
+    \frametitle{Stochastik}
+\framesubtitle{}
+\begin{block}{Eigenschaften des Integrals}
+    Sind $f$ und $g$ zwei meßbare Funktionen, dann gilt:
+    \begin{itemize}
+        \item $\int_{\Omega} 1_A  d\mu  = \mu (A)$  
+    \item $\int_{\Omega} \alpha f  + \beta g d\mu = \alpha \int_{\Omega}  f d\mu + \beta  \int_{\Omega}  g d\mu$
+    \item Ist $f(x) \leq g(x)$ für alle $x$, so ist $\int_{\Omega} f d\mu \leq \int_{\Omega} g d\mu$ 
+    \item $ \biggl | \int_{\Omega} f \; d\mu \biggr | \leq \int_{\Omega} |f| \; d\mu $
+    \end{itemize}
+    \end{block}
+\end{frame}
+
+
+
+
+\begin{frame}
+    \frametitle{Zufallsvariablen}
+\framesubtitle{}
+\begin{block}{Zufallssvariable}
+    Sei $(\Omega, \mathcal{A}, P)$ ein Wahrscheinlichkeitsraum, $(R, \mathcal{B})$ ein Messraum.
+    Eine  Zufallsvariable ist eine messbare Abbildung  $X :  \Omega \to R$.
+\end{block}
+\begin{block}{Reelle Zufallssvariable}
+\end{block} 
+\end{frame}
+
+
+
+\begin{frame}
+    \frametitle{Zufallsvariablen}
+\framesubtitle{}
+\begin{block}{Verteilung und Unabhängigkeit}
+Sei $(\Omega, \mathcal{A}, P)$ ein Wahrscheinlichkeitsraum, $(R, \mathcal{B})$ ein Messraum  und
+ $\{X_i\}_{i=1}^n$ ein Folge von Zufallsvariablen   $X_i :  \Omega \to R$.
+Die Zufallsvariablen heißen identisch verteilt, falls
+ $P_{X_i} = P_{X_j}$ für alle $i,j$  und
+stochastisch unabhängig, falls
+ $P_{(X_1, \cdots ,X_n)} = \prod_{i=1}^n P_{X_i}$ gilt. 
+\end{block}
+ \end{frame}
+
+
+
+\begin{frame}
+    \frametitle{Erwartungswert}
+\framesubtitle{}
+\begin{block}{Erwartungswert}
+Für eine reelle integrierbare Zufallsvariableist ihr  Erwartungswert  definiert durch
+$$ \mathbb{E} (X) := \int_{\Omega} X \; dP \; .$$
+\end{block}
+ \begin{block}{Erwartungswert}
+Ist $(\Omega, \mathcal{A}, P)$ ein diskreter Wahrscheinlichkeitsraum und $X :\Omega \to \mathbb{R}$ eine reelle Zufallsvariable, so ist
+$$ \mathbb{E} (X) = \sum_{\omega \in \Omega}  X(\omega) \cdot P(\omega)$$
+\end{block}
+ \end{frame}
+
+ \begin{frame}
+    \frametitle{Erwartungswert}
+\framesubtitle{}
+\begin{block}{Eigenschaften}
+Sind $X,Y : \Omega \to \mathbb{R}^n$   reelle, integrierbare  Zufallsvariablen und $a,b \in \mathbb{R}$ konstant, so gilt:
+\begin{align*}
+& \mathbb{E}(a \cdot X + b \cdot Y) = a \cdot \mathbb{E}(X) + b \cdot \mathbb{E}(Y) \\
+& X(x) \leq Y(x) \;  \forall x \in \Omega \Rightarrow \mathbb{E}(X) \leq \mathbb{E}(Y) \\
+& X ,Y \text{ stoch. unabhängig} \Rightarrow   \mathbb{E}(X \cdot Y) =  \mathbb{E}(X) \cdot  \mathbb{E}(Y) \\
+& \mathbb{E} (1_A) = P (A)
+\end{align*}
+\end{block}
+ \end{frame}
+
+ \begin{frame}
+    \frametitle{Erwartungswert}
+\framesubtitle{}
+\begin{block}{Varianz}
+Für eine reelle Zufallsvariable ist die Varianz definiert durch
+$$ \mathbb{V} (X) :=  \mathbb{E}( (X - \mathbb{E}(X))^2) \; .$$
+\end{block}
+\begin{block}{Verschiebungssatz}
+
+\begin{align*}
+ \mathbb{V}(X) & = \mathbb{E}(X^2 - 2X \mathbb{E}(X) + \mathbb{E}(X)^2) = \mathbb{E}(X^2) - 2 \mathbb{E}(X)^2 +  \mathbb{E}(X)^2 \\
+& =  \mathbb{E}(X^2) -  \mathbb{E}(X)^2 \\
+\end{align*}
+\end{block}
+ \end{frame}
+
+ \begin{frame}
+    \frametitle{Erwartungswert}
+\framesubtitle{}
+\begin{block}{Kovarianz}
+Für  reelle Zufallsvariable $X,Y$ ist die Kovarianz definiert durch
+$$ \mathcal{C} (X,Y) :=  \mathbb{E}( (X - \mathbb{E}(X)) (Y - \mathbb{E}(Y))) \; .$$
+\end{block}
+
+\begin{block}{Kovarianz}
+    Per Definition ist
+    $$ \mathcal{C} (X,X) :=  \mathbb{V}(X).$$
+    \end{block}
+ \end{frame}
+
+
+
+
+
+\begin{frame}
+    \frametitle{Erwartungswert}
+\framesubtitle{}
+\begin{block}{Beispiel}
+$\Omega = \{ \text{Kopf},\text{Zahl}\}$, $P(\text{Kopf}) = P(\text{Zahl}) = \frac{1}{2}$, $X(\text{Kopf}) = 0,  X(\text{Zahl}) = 1$ 
+\begin{align*}
+& \mathbb{E}(X)  = 0 \cdot P(X^{-1}(0) ) + 1 \cdot P(X^{-1}(1)) \\
+& =0  \cdot P(\text{Kopf}) + 1 \cdot P(\text{Zahl}) = \frac{1}{2}  
+\end{align*}
+\end{block}
+ \end{frame}
+
+
+
+\begin{frame}
+    \frametitle{Erwartungswert}
+\framesubtitle{}
+\begin{block}{Markov Ungleichung}
+Sei $Y : \Omega \to \mathbb{R}$  eine  reelle, integrierbare  Zufallsvariable und $f : [0, \infty) \to [0, \infty)$ monoton wachsend.
+Dann gilt für alle $\epsilon > 0$ mit $f(\epsilon) > 0$
+\begin{align*}
+P (|Y |  \geq \epsilon) \leq \frac{\mathbb{E} (f \circ |Y|)}{f(\epsilon)}
+\end{align*}
+\end{block}
+\begin{block}{Beweis}
+Da $f(\epsilon) 1_{\{ |Y| \geq  \epsilon \} } \leq f \circ |Y|$ folgt
+\begin{align*}
+f(\epsilon) P(|Y| \geq \epsilon) = & f(\epsilon) \mathbb{E}(1_{\{ |Y| \geq  \epsilon \} }) = \mathbb{E}( f(\epsilon) 1_{\{ |Y| \geq  \epsilon \} }) \\
+\leq & \mathbb{E}( f \circ |Y|)
+\end{align*}
+\end{block}
+ \end{frame}
+
+
+
+
+
+
+\begin{frame}
+    \frametitle{Erwartungswert}
+\framesubtitle{}
+\begin{block}{Tschebyscheff-Ungleichung}
+Für eine reelle, integrierbare und quadratintegrierbare  Zufallsvariable $Y : \Omega \to \mathbb{R}$  gilt:
+\begin{align*}
+P (|Y  - \mathbb{E} (Y)|  \geq \epsilon) \leq \frac{\mathbb{V} (Y)}{ \epsilon^2} 
+\end{align*}
+\end{block}
+\begin{block}{Beweis}
+Folgt direkt aus der Markov-Ungleichung mit $Y' = Y -\mathbb{E}(Y)$ und $f(x) = x^2$
+\end{block}
+ \end{frame}
+
+
+\begin{frame}
+    \frametitle{Highlight}
+\framesubtitle{}
+\begin{figure}[htp]
+      \centering
+    \includegraphics[width=0.9\textwidth]{img/firework}
+\end{figure}
+ \end{frame}
+
+
+\begin{frame}
+    \frametitle{Erwartungswert}
+\framesubtitle{}
+\begin{block}{Schwaches Gesetz der großen Zahlen}
+Seien $X_i : \Omega \to \mathbb{R}$ unabhängige, reelle Zufallsvariablen (uiv, iid(englisch)) mit $\mathbb{E}(X_i) = \mu < \infty$ und $\mathbb{V}(X_i) = \sigma < \infty$, dann gilt
+\begin{align*}
+P \bigl ( \bigl | \frac{1}{n} \sum_{i=1}^{n} X_i - \mu \bigr |  \geq \epsilon \bigr ) \leq \frac{\sigma}{ n \cdot \epsilon^2} \; \; \underset{n \to \infty}{\longrightarrow} 0
+\end{align*}
+(stochastische Konvergenz). 
+\end{block}
+ \end{frame}
+
+
+\begin{frame}
+    \frametitle{Erwartungswert}
+\framesubtitle{}
+\begin{block}{Beweis}
+Mit $Y_n =  \frac{1}{n} \sum_{i=1}^{n}  X_i - \mu$ ist $\mathbb{E}(Y_n) =  \frac{1}{n} \sum_{i=1}^{n} \mathbb{E}( X_i - \mu) = 0$ und 
+$\mathbb{V}(Y_n) =  \frac{1}{n^2} \sum_{i=1}^{n} \mathbb{V}( X_i ) = \frac{\sigma}{n}$. Aus der Tschebyscheff-Ungleichung folgt die Behauptung.
+\end{block}
+ \end{frame}
+
+
+\begin{frame}
+    \frametitle{Erwartungswert}
+\framesubtitle{}
+
+\begin{figure}[htp]
+      \centering
+    \includegraphics[width=0.86\textwidth]{img/sgdz}
+      \caption{Quelle: Wikipedia}
+\end{figure}
+ \end{frame}
+
+\end{document}
+
