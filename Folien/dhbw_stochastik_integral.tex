@@ -37,13 +37,26 @@
 \subject{Stochastik}
 
 \begin{frame}
-    \frametitle{Highlight}
+    \frametitle{Motivation}
 \framesubtitle{}
 \begin{figure}[htp]
       \centering
     \includegraphics[width=0.6\textwidth]{img/coinflip.png}
 \end{figure}
  \end{frame}
+
+
+ \begin{frame}
+    \frametitle{Integration}
+\framesubtitle{}
+Archimedes von Syrakus  um 287 v. Chr. vermutlich in Syrakus; † 212 v. Chr. ebenda) war ein griechischer Mathematiker, Physiker und Ingenieur. Er gilt als einer der bedeutendsten Mathematiker der Antike. Seine Werke waren auch noch im 16. und 17. Jahrhundert bei der Entwicklung der höheren Analysis von Bedeutung. 
+
+\begin{figure}[htp]
+      \centering
+    \includegraphics[width=0.6\textwidth]{img/750px-Archimedes_pi.png}
+\end{figure}
+ \end{frame}
+
 
 
 \begin{frame}
@@ -161,9 +174,6 @@
  \end{frame}
 
 
-
-
-
 \begin{frame}
     \frametitle{Stochastik}
 \framesubtitle{}
@@ -272,7 +282,13 @@
         $u \in \mathcal{T}^+$
         so ist $\sum_{i= 1}^n a_i \mu (A_i) = \sum_{j= 1}^m b_j \mu (B_j)$
     \end{block}
-
+    \begin{block}{Beweis}
+        \begin{align*}
+         u =& \sum_{i= 1}^n a_i \mu (A_i) = \sum_{i= 1}^n \sum_{j= 1}^m a_i \mu (A_i \cap B_j) 
+        \\ = & \sum_{i= 1}^n \sum_{j= 1}^m b_j \mu (A_i \cap B_j) = \sum_{j= 1}^m b_j \mu (B_j)       
+    \end{align*}
+       
+    \end{block}    
 \end{frame}
 
 
@@ -454,6 +470,7 @@ Sei
     Eine  Zufallsvariable ist eine messbare Abbildung  $X :  \Omega \to R$.
 \end{block}
 \begin{block}{Reelle Zufallssvariable}
+    Die Zufallsvariable heisst reell, falls $R = \mathbb{R}$ und $\mathcal{B} = \mathcal{B}(\mathbb{R})$ ist.
 \end{block} 
 \end{frame}
 
