@@ -357,7 +357,11 @@ Diese ist unabhängig von der Darstellung.
         Eine nicht negative messbare Funktion $f:\Omega \to \mathbb{R}_{\geq 0}$ ist genau dann meßbar, wenn
         es eine Folge $f_n \in \mathcal{T}^+$ gibt mit $f_n \uparrow f$.
     \end{block}
-
+    \begin{figure}[H]
+        \centering
+      \includegraphics[width=0.6\textwidth]{img/RiemannVsLebesgue.png}
+    
+    \end{figure}
 \end{frame}
 
 
@@ -539,7 +543,7 @@ stochastisch unabhängig, falls
     \frametitle{Erwartungswert}
 \framesubtitle{}
 \begin{block}{Erwartungswert}
-Für eine reelle integrierbare Zufallsvariableist ihr  Erwartungswert  definiert durch
+Für eine reelle integrierbare Zufallsvariable ist ihr  Erwartungswert  definiert durch
 $$ \mathbb{E} (X) := \int_{\Omega} X \; dP \; .$$
 \end{block}
  \begin{block}{Erwartungswert}
@@ -590,10 +594,97 @@ $$ \mathcal{C} (X,Y) :=  \mathbb{E}( (X - \mathbb{E}(X)) (Y - \mathbb{E}(Y))) \;
     Per Definition ist
     $$ \mathcal{C} (X,X) :=  \mathbb{V}(X).$$
     \end{block}
+    \begin{block}{Kovarianz}
+        $X,Y$ stoch. unabhängig
+        $ \Rightarrow \mathcal{C} (X,Y) =  0$
+        \end{block}
+            \begin{align*}
+            \operatorname{Cov}(X,Y)
+            = &\mathbb{E}\bigl[(X - \mathbb{E}[X])\,(Y - \mathbb{E}[Y])\bigr] 
+            = \mathbb{E}[X\,Y] \;-\; \mathbb{E}[X]\,\mathbb{E}[Y].\\
+             = &\mathbb{E}[X]\,\mathbb{E}[Y] \;-\; \mathbb{E}[X]\,\mathbb{E}[Y]
+            = 0.
+        \end{align*}
  \end{frame}
 
+ \begin{frame}
+    \frametitle{Erwartungswert}
+\framesubtitle{}
+
+    \begin{block}{Kovarianz}
+        $ \mathcal{C} (X,Y) =  0    \nRightarrow     X,Y$ stoch. unabhängig.
+        \end{block}
+
+        \begin{itemize}
+            \item Sei $X$ eine Zufallsvariable mit
+              \[
+                \Pr(X=0)=\tfrac12,\quad \Pr(X=1)=\tfrac12.
+              \]
+            \item Sei $Y$ eine von $X$ unabhängige Zufallsvariable mit
+              \[
+                \Pr(Y=-1)=\tfrac12,\quad \Pr(Y=1)=\tfrac12.
+              \]
+            \item Definiere
+              \[
+                U = X\,Y.
+              \]
+          \end{itemize}
+          
+          Behauptung: $U$ und $X$ haben Nullkovarianz (sind also unkorreliert), sind aber nicht unabhängig.
+          
+          \medskip
+          
+          Da
+          \[
+            \mathbb{E}[U]
+            = \mathbb{E}[X\,Y]
+            = \mathbb{E}[X]\,\mathbb{E}[Y]
+            = \mathbb{E}[X]\cdot 0
+            = 0,
+          \]
+          wobei die zweite Gleichheit auf der Unabhängigkeit von $X$ und $Y$ beruht, gilt
+          
+                  
+\end{frame}
+ 
+
+\begin{frame}
+    \frametitle{Erwartungswert}
+\framesubtitle{}
 
 
+          \begin{align}
+            \operatorname{Cov}(U,X)
+            &= \mathbb{E}\bigl[(U - \mathbb{E}[U])\,(X - \mathbb{E}[X])\bigr]
+             = \mathbb{E}\bigl[U\,(X - \tfrac12)\bigr] \\[6pt]
+            &= \mathbb{E}\bigl[X^2 Y - \tfrac12\,X Y\bigr]
+             = \mathbb{E}\bigl[(X^2 - \tfrac12 X)\,Y\bigr]
+             = \mathbb{E}\bigl[X^2 - \tfrac12 X\bigr]\,\mathbb{E}[Y]
+             = 0.
+          \end{align}
+          
+          Somit sind $U$ und $X$ unkorreliert.
+          
+          
+          Für Unabhängigkeit müsste gelten
+          \[
+            \Pr(U=a \mid X=b) = \Pr(U=a)
+            \quad\forall\,a,b,
+          \]
+          was z.\,B. für $a=1$, $b=0$ versagt, da
+          \[
+            \Pr(U=1\mid X=0)
+            = \Pr(XY=1\mid X=0)
+            = 0,
+            \quad
+            \Pr(U=1)
+            = \Pr(XY=1)
+            = \tfrac14.
+          \]
+          Also ist $\Pr(U=1\mid X=0)\neq\Pr(U=1)$ und somit $U$ und $X$ nicht unabhängig.```
+          
+\end{frame}
+ 
 
 
 \begin{frame}
@@ -610,6 +701,179 @@ $\Omega = \{ \text{Kopf},\text{Zahl}\}$, $P(\text{Kopf}) = P(\text{Zahl}) = \fra
 
 
 
+ \begin{frame}
+    \frametitle{Verteilungen}
+\framesubtitle{}
+
+\begin{block}{Gleichverteilung}
+Die Gleichverteilung $U{(a,b)}$ auf einem Intervall $(a,b) \subset \mathbb{R}$ ist definiert durch
+\begin{align*}
+& \text{Dichte: } f (x) : = \frac{1_{(a,b)}}{|b-a| } \\
+& \Rightarrow \text{Verteilung: } F (x) =  P_f( (-\infty, x))  =  \int_{-\infty}^{x} \frac{1_{(a,b)}}{|b-a|} dt\\\
+& = \begin {cases} 0 \text{ für } x \leq a \\   \frac{x-a}{|b-a|} \text{ für } a \leq x \leq b \\ 1 \text{ für }  x \geq b \\  \end{cases}
+\end{align*}
+\end{block}
+
+ \end{frame}
+
+\begin{frame}
+    \frametitle{Verteilungen}
+\framesubtitle{}
+
+\begin{figure}[htp]
+      \centering
+    \includegraphics[width=0.42\textwidth]{img/gleichverteilung1}
+    \includegraphics[width=0.42\textwidth]{img/gleichverteilung2}
+      \caption{Quelle: Wikipedia}
+\end{figure}
+ \end{frame}
+
+
+
+
+\begin{frame}
+    \frametitle{Verteilungen}
+\framesubtitle{}
+
+\begin{block}{Gleichverteilung}
+Sei $X \sim $U(a,b).
+\begin{align*}
+& \mathbb{E}(X) =\int\limits_{-\infty}^\infty x \cdot f(x)\,dx = \frac 1{b-a}\int\limits_a^b x\cdot 1\,dx = \frac 12\frac{b^2-a^2}{b-a} = \frac{a+b}2 \\
+& \mathbb{V}(X) = \operatorname{E}(X^2) - \left({\operatorname{E}(X)} \right)^2  = \frac{1}{b - a}\int\limits_a^b {x^2 \cdot 1\,dx}  - \left( {\frac{a + b}{2}} \right)^2  \\
+ & = \frac{1}{3}\frac{b^3  - a^3}{b - a} - \left( {\frac{a + b}{2}} \right)^2 \\
+    &= \frac{1}{12}\left( {4b^2  + 4ab + 4a^2  - 3a^2  - 6ab - 3b^2 } \right) = \frac{1}{12}(b - a)^2
+\end{align*}
+\end{block}
+ \end{frame}
+
+
+
+\begin{frame}
+    \frametitle{Verteilungen}
+\framesubtitle{}
+
+\begin{block}{Normalverteilung}
+Die Normalverteilung $N{(\mu,\sigma^2)}$ auf $\mathbb{R}$ ist definiert durch
+\begin{align*}
+& \text{Dichte: } f (x) : = \frac 1{\sigma \sqrt{2\pi}}e^{- \frac {1}{2} (\frac{x- \mu}{ \sigma})^2} \\
+&  \Rightarrow \text{Verteilung: } F(x) = N{(\mu,\sigma^2)}(-\infty , x) =  \int_{-\infty}^{x}  \frac 1{\sigma \sqrt{2\pi}}e^{- \frac {1}{2} (\frac{t- \mu}{ \sigma})^2}dt\\
+\end{align*}
+
+\end{block}
+ \end{frame}
+
+
+
+\begin{frame}
+    \frametitle{ Verteilungen}
+\framesubtitle{}
+\begin{figure}[htp]
+      \centering
+    \includegraphics[width=0.45\textwidth]{img/normal}
+    \includegraphics[width=0.45\textwidth]{img/normaldist}
+      \caption{Quelle: Wikipedia}
+\end{figure}
+
+ \end{frame}
+
+
+\begin{frame}
+    \frametitle{Verteilungen}
+\framesubtitle{}
+
+\begin{block}{Normalverteilung}
+Sei $X \sim N(\mu, \sigma^2)$.
+\begin{align*}
+& \mathbb{E}(X) = \mu \\
+& \mathbb{V}(X) = \sigma^2
+\end{align*}
+\end{block}
+ \end{frame}
+
+
+
+\begin{frame}
+    \frametitle{ Verteilungen}
+\framesubtitle{}
+
+\begin{block}{Poissonverteilung}
+Die Poissonverteilung  $Pois (\lambda)$ auf $\mathbb{N}_{\geq 0}$ ist definiert durch
+\begin{align*}
+& P_\lambda (k) = \frac{\lambda^k}{k!}\, \mathrm{e}^{-\lambda} \\
+& \Rightarrow F_{\lambda}(n)=\sum_{k=0}^n P_\lambda (k) = \mathrm{e}^{-\lambda} \sum_{k=0}^n \frac{\lambda^k}{k!}
+\end{align*}
+\end{block}
+\begin{figure}[htp]
+      \centering
+    \includegraphics[width=0.55\textwidth]{img/Poisson}
+      \caption{Quelle: Wikipedia}
+\end{figure}
+ \end{frame}
+
+
+
+\begin{frame}
+    \frametitle{ Verteilungen}
+\framesubtitle{}
+
+\begin{block}{Poisson Verteilung}
+Die Poisson Verteilung beschreibt das Auftreten von seltenen Ereignissen und spielt bei Zählprozessen eine wichtige Rolle.
+\end{block}
+\begin{block}{Poisson Verteilung}
+$X\sim Pois (\lambda)$ 
+\begin{align*}
+& \mathbb{E}(X) = \lambda \\
+& \mathbb{V}(X) = \lambda
+\end{align*}
+\end{block}
+ \end{frame}
+
+
+\begin{frame}
+    \frametitle{Verteilungen}
+\framesubtitle{}
+
+\begin{block}{Bernoulliverteilung}
+Die Bernoulliverteilung  Für $\Omega = \{ 0, 1\}$ und $p \in [0,1]$ ist definiert durch
+\begin{align*}
+P (\omega) = p^{\omega} (1-p)^{1 -\omega}
+\end{align*}
+\end{block}
+
+\begin{block}{Beispiele}
+
+\begin{itemize}
+\item Werfen einer Münze: Kopf (Erfolg), $p=1/2$, und Zahl (Misserfolg), $q=1/2$.
+\item Werfen eines Würfels, wobei nur eine 6 als Erfolg gewertet wird: $p=1/6, q=5/6$.
+\item Qualitätsprüfung (einwandfrei, nicht einwandfrei).
+\item Betrachte sehr kleines Raum/Zeit-Intervall: Ereignis tritt ein $(p \gtrapprox 0)$, tritt nicht ein $(q\lessapprox 1)$.
+\end{itemize}
+
+\end{block}
+ \end{frame}
+
+
+
+
+\begin{frame}
+    \frametitle{ Verteilungen}
+\framesubtitle{}
+
+\begin{block}{Binomialverteilung}
+$B(k,  p,n)= \binom nk p^k (1-p)^{n-k} $
+\end{block}
+\begin{block}{Binomialverteilung}
+$X_1, \cdots ,X_n \sim B \Rightarrow \sum X_i  \sim B$
+\end{block}
+
+\begin{figure}[htp]
+      \centering
+    \includegraphics[width=0.25\textwidth]{img/Galton}
+      \caption{Quelle: Wikipedia}
+\end{figure}
+ \end{frame}
+
+
 \begin{frame}
     \frametitle{Erwartungswert}
 \framesubtitle{}
@@ -620,6 +884,50 @@ Dann gilt für alle $\epsilon > 0$ mit $f(\epsilon) > 0$
 P (|Y |  \geq \epsilon) \leq \frac{\mathbb{E} (f \circ |Y|)}{f(\epsilon)}
 \end{align*}
 \end{block}
+
+ \end{frame}
+
+
+ \begin{frame}
+    \frametitle{Erwartungswert}
+\framesubtitle{}
+
+\begin{block}{Beweis}
+    Für $f(x)=x$ und $ X > 0$
+\begin{itemize}
+   
+  \item Zerlegung in zwei Teile:
+    \[
+      X = X \,\mathbf{1}_{\{X<a\}} \;+\; X \,\mathbf{1}_{\{X\ge a\}},
+    \]
+    wobei $\mathbf{1}_{\{\cdot\}}$ die Indikatorfunktion ist.
+  \item Beachte, dass
+    \[
+      X\,\mathbf{1}_{\{X<a\}} < a,
+      \qquad
+      X\,\mathbf{1}_{\{X\ge a\}} \;\ge\; a\,\mathbf{1}_{\{X\ge a\}}.
+    \]
+  \item Daher
+    \[
+      \begin{aligned}
+        \mathbb{E}[X]
+        &= \mathbb{E}\bigl[X\,\mathbf{1}_{\{X<a\}}\bigr]
+         + \mathbb{E}\bigl[X\,\mathbf{1}_{\{X\ge a\}}\bigr] \\
+        &\ge 0 \;+\; a\,\mathbb{E}\bigl[\mathbf{1}_{\{X\ge a\}}\bigr]
+         = a\,\Pr(X \ge a).
+      \end{aligned}
+    \]
+  \item Daraus folgt unmittelbar die \emph{Markov‐Ungleichung}:
+      $\Pr(X \ge a) \;\le\; \frac{\mathbb{E}[X]}{a}$.
+\end{itemize}
+\end{block}
+ \end{frame}
+
+
+ \begin{frame}
+    \frametitle{Erwartungswert}
+\framesubtitle{}
+
 \begin{block}{Beweis}
 Da $f(\epsilon) 1_{\{ |Y| \geq  \epsilon \} } \leq f \circ |Y|$ folgt
 \begin{align*}
@@ -628,11 +936,6 @@ f(\epsilon) P(|Y| \geq \epsilon) = & f(\epsilon) \mathbb{E}(1_{\{ |Y| \geq  \eps
 \end{align*}
 \end{block}
  \end{frame}
-
-
-
-
-
 
 \begin{frame}
     \frametitle{Erwartungswert}
