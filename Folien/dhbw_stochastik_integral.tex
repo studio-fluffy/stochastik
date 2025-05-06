@@ -483,10 +483,10 @@ Sei
 \begin{frame}{Definition des Bildmaßes}
     \begin{block}{Bildmaß}
 
-    Sei
+Sei
  $(\Omega,\mathcal{F},\mathbb{P})$ ein Wahrscheinlichkeitsraum,
     $(E,\mathcal{E})$ ein messbarer Raum,
-    $X:\Omega\to E$ eine messbare Abbildung.  
+    $X:\Omega\to E$ eine Zufallssvariable.  
   Dann definiert man das \emph{Bildmaß}  $\mathbb{P}_X$ von $\mathbb{P}$ unter $X$ durch
   \[
     \mathbb{P}_X(B) 
@@ -494,8 +494,30 @@ Sei
     = \mathbb{P}(\{\omega \in \Omega : X(\omega) \in B\}),
     \quad B \in \mathcal{E}.
   \]
+  $ \mathbb{P}_X$ heißt auch Verteilung von $X$.
+\end{block}
+\begin{block}{Dichte}
+    Ist
+        $(E,\mathcal{E}, \mu)$ zusätzlich ein Maßraum, 
+        so heißt eine Messbare Funktion 
+        $f:E \to \mathbb{R}$ dichte für $\mathbb{P}_X$, falls  
+      \[
+        \mathbb{P}_X(E) = \int_E f \; d\mu
+      \]
+      für alle $E \in \mathcal{E}$ gilt.
+    \end{block}
+
+\end{frame}
+
+
+\begin{frame}{Definition des Bildmaßes}
+
+\begin{block}{Bildmaß}
+    Ist $X$ eine reelle Zufallsvariable, so heißt 
+    $F(x) = \mathbb{P}(X \leq x)$ Verteilungsfunktion.
 \end{block}
 \end{frame}
+
 
 
 
@@ -503,9 +525,10 @@ Sei
     \frametitle{Erwartungswert}
 \framesubtitle{}
 \begin{block}{Transformationsformel}
-Für eine reelle Zufallsvariablen $X: \mathbb{R}^n \to \mathbb{R}^m$ und eine integrierbare Funktion $g:  \mathbb{R}^m \to \mathbb{R}$ gilt
-$$ \mathbb{E} (g \circ X) := \int_{\mathbb{R}^n} g \circ X \; dP = \int_{\mathbb{R}^m}  g \; dP_X \;. $$Ist $f(x) : \mathbb{R}^m \to \mathbb{R}$ eine Dichte für $P_X$ , so ist  
-$$\mathbb{E} (g \circ X) =  \int_{\mathbb{R}^m} g(x) \cdot f(x) \; d\mu$$.
+Für eine reelle Zufallsvariable $X:\mathcal{\Omega} \mathcal{E}$ und eine integrierbare Funktion $g:   \mathcal{E} \to \mathbb{R}$ gilt
+$$ \mathbb{E} (g \circ X) := \int_{\Omega} g \circ X \; dP = \int_{\mathcal{E}}  g \; dP_X \;. $$
+Ist $f(x)$ eine Dichte für $P_X$ , so ist  
+$$\mathbb{E} (g \circ X) =  \int_{\mathcal{E}} g(x) \cdot f(x) \; d\mu$$.
 \end{block}
  \end{frame}
 
