@@ -17,6 +17,7 @@
 \newcommand{\EE}{\mathcal{E}}
 \newcommand{\Tau}{\mathcal{T}}
 \newcommand{\MM}{\mathcal{M}}
+\renewcommand{\Pr}{\mathbb{P}}
 
 \begin{document}
 
@@ -658,13 +659,13 @@ $$ \mathcal{C} (X,Y) :=  \mathbb{E}( (X - \mathbb{E}(X)) (Y - \mathbb{E}(Y))) \;
           \medskip
           
           Da
-          \[
+          \begin{align*}
             \mathbb{E}[U]
-            = \mathbb{E}[X\,Y]
+            = \mathbb{E}[X\,Y] \\
             = \mathbb{E}[X]\,\mathbb{E}[Y]
             = \mathbb{E}[X]\cdot 0
             = 0,
-          \]
+          \end{align*}
           wobei die zweite Gleichheit auf der Unabhängigkeit von $X$ und $Y$ beruht, gilt
           
                   
@@ -679,10 +680,10 @@ $$ \mathcal{C} (X,Y) :=  \mathbb{E}( (X - \mathbb{E}(X)) (Y - \mathbb{E}(Y))) \;
           \begin{align}
             \operatorname{Cov}(U,X)
             &= \mathbb{E}\bigl[(U - \mathbb{E}[U])\,(X - \mathbb{E}[X])\bigr]
-             = \mathbb{E}\bigl[U\,(X - \tfrac12)\bigr] \\[6pt]
+             = \mathbb{E}\bigl[U\,(X - \tfrac12)\bigr] \\
             &= \mathbb{E}\bigl[X^2 Y - \tfrac12\,X Y\bigr]
-             = \mathbb{E}\bigl[(X^2 - \tfrac12 X)\,Y\bigr]
-             = \mathbb{E}\bigl[X^2 - \tfrac12 X\bigr]\,\mathbb{E}[Y]
+             = \mathbb{E}\bigl[(X^2 - \tfrac12 X)\,Y\bigr] \\
+             & = \mathbb{E}\bigl[X^2 - \tfrac12 X\bigr]\,\mathbb{E}[Y]
              = 0.
           \end{align}
           
@@ -695,16 +696,15 @@ $$ \mathcal{C} (X,Y) :=  \mathbb{E}( (X - \mathbb{E}(X)) (Y - \mathbb{E}(Y))) \;
             \quad\forall\,a,b,
           \]
           was z.\,B. für $a=1$, $b=0$ versagt, da
-          \[
+          \begin{align*}          
             \Pr(U=1\mid X=0)
             = \Pr(XY=1\mid X=0)
-            = 0,
-            \quad
+            = 0,\\
             \Pr(U=1)
             = \Pr(XY=1)
             = \tfrac14.
-          \]
-          Also ist $\Pr(U=1\mid X=0)\neq\Pr(U=1)$ und somit $U$ und $X$ nicht unabhängig.```
+          \end{align*}
+          Also ist $\Pr(U=1\mid X=0)\neq\Pr(U=1)$ und somit $U$ und $X$ nicht unabhängig.
           
 \end{frame}
  
