@@ -526,7 +526,7 @@ Sei
     \frametitle{Erwartungswert}
 \framesubtitle{}
 \begin{block}{Transformationsformel}
-Für eine reelle Zufallsvariable $X:\mathcal{\Omega} \mathcal{E}$ und eine integrierbare Funktion $g:   \mathcal{E} \to \mathbb{R}$ gilt
+Für eine  Zufallsvariable $X:\Omega \to E$ und eine reelle, integrierbare Funktion $g:   \mathcal{E} \to \mathbb{R}$ gilt
 $$ \mathbb{E} (g \circ X) := \int_{\Omega} g \circ X \; dP = \int_{\mathcal{E}}  g \; dP_X \;. $$
 Ist $f(x)$ eine Dichte für $P_X$ , so ist  
 $$\mathbb{E} (g \circ X) =  \int_{\mathcal{E}} g(x) \cdot f(x) \; d\mu$$.
@@ -537,7 +537,7 @@ $$\mathbb{E} (g \circ X) =  \int_{\mathcal{E}} g(x) \cdot f(x) \; d\mu$$.
     \frametitle{Erwartungswert}
 \framesubtitle{}
 \begin{block}{Transformationsformel}
-Für $g = 1_A$ mit $A \in \mathcal{B}(\mathbb{R}^n)$ ist
+Für $g = 1_A$ mit $A \in \mathcal{E}$ ist
 \begin{align*}
 & \int 1_A \; dP_X = P_X(A) = P(X^{-1} (A)) = \int 1_{X^{-1}(A)} \; dP \\
 &= \int 1_{A} \circ X \; dP
@@ -580,7 +580,7 @@ $$ \mathbb{E} (X) = \sum_{\omega \in \Omega}  X(\omega) \cdot P(\omega)$$
     \frametitle{Erwartungswert}
 \framesubtitle{}
 \begin{block}{Eigenschaften}
-Sind $X,Y : \Omega \to \mathbb{R}^n$   reelle, integrierbare  Zufallsvariablen und $a,b \in \mathbb{R}$ konstant, so gilt:
+Sind $X,Y : \Omega \to \mathbb{R}$   reelle, integrierbare  Zufallsvariablen und $a,b \in \mathbb{R}$ konstant, so gilt:
 \begin{align*}
 & \mathbb{E}(a \cdot X + b \cdot Y) = a \cdot \mathbb{E}(X) + b \cdot \mathbb{E}(Y) \\
 & X(x) \leq Y(x) \;  \forall x \in \Omega \Rightarrow \mathbb{E}(X) \leq \mathbb{E}(Y) \\

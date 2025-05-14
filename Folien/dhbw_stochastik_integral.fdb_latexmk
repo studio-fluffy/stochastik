@@ -1,6 +1,6 @@
 # Fdb version 4
-["pdflatex"] 1747129343 "/Users/johannesriesterer/Documents/code/stochastik/Folien/dhbw_stochastik_integral.tex" "dhbw_stochastik_integral.pdf" "dhbw_stochastik_integral" 1747129346 0
-  "/Users/johannesriesterer/Documents/code/stochastik/Folien/dhbw_stochastik_integral.tex" 1747129343 30252 3d9f60ea1f8665bec29df29937bacb60 ""
+["pdflatex"] 1747205833 "/Users/johannesriesterer/Documents/code/stochastik/Folien/dhbw_stochastik_integral.tex" "dhbw_stochastik_integral.pdf" "dhbw_stochastik_integral" 1747205836 0
+  "/Users/johannesriesterer/Documents/code/stochastik/Folien/dhbw_stochastik_integral.tex" 1747205833 30222 bc686bd14118e05ecdc8710639f2e6e8 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1136849721 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/tfm/jknappen/ec/tcss1095.tfm" 1136768653 1536 f0fa079cdc83a6ffeda21e42352cf1ea ""
@@ -262,10 +262,10 @@
   "/usr/local/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1698836375 4623355 b8cad38412faebe1ce5b780a45db67bd ""
   "/usr/local/texlive/2023/texmf-var/web2c/pdftex/pdflatex.fmt" 1698836342 7883462 8a4d061ad2ccf4b7ea70dd63c461eb78 ""
   "/usr/local/texlive/2023/texmf.cnf" 1678822455 577 1b2b1af17af2508fb20dd85783af4050 ""
-  "dhbw_stochastik_integral.aux" 1747129346 7919 ac06372b51a3695d0ee2116c72caa5f0 "pdflatex"
-  "dhbw_stochastik_integral.nav" 1747129346 5294 35fbb9a2310ab0842a0b30d917d5f59e "pdflatex"
-  "dhbw_stochastik_integral.out" 1747129344 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
-  "dhbw_stochastik_integral.tex" 1747129343 30252 3d9f60ea1f8665bec29df29937bacb60 ""
+  "dhbw_stochastik_integral.aux" 1747205836 7919 ac06372b51a3695d0ee2116c72caa5f0 "pdflatex"
+  "dhbw_stochastik_integral.nav" 1747205836 5294 35fbb9a2310ab0842a0b30d917d5f59e "pdflatex"
+  "dhbw_stochastik_integral.out" 1747205834 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "dhbw_stochastik_integral.tex" 1747205833 30222 bc686bd14118e05ecdc8710639f2e6e8 ""
   "img/640px-Indicator_function_illustration.png" 1712490409 44879 3abacd413111b090cfc847068f79bfae ""
   "img/640px-Stepfunction1.png" 1712490409 7719 40bdf80707d00d5e8aa3c866e1737d72 ""
   "img/750px-Archimedes_pi.png" 1712490409 49023 03a9b005bb57e21f7d40cde617c96552 ""
