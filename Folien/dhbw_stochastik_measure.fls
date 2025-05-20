@@ -1533,6 +1533,18 @@ INPUT ./img/openmeasurable.jpg
 INPUT img/openmeasurable.jpg
 INPUT ./img/openmeasurable.jpg
 INPUT ./img/openmeasurable.jpg
+INPUT ./img/Kreis.jpeg
+INPUT img/Kreis.jpeg
+INPUT ./img/Kreis.jpeg
+INPUT ./img/Kreis.jpeg
+INPUT ./img/640px-Parallelepiped-0.png
+INPUT img/640px-Parallelepiped-0.png
+INPUT ./img/640px-Parallelepiped-0.png
+INPUT ./img/640px-Parallelepiped-0.png
+INPUT ./img/500px-Kugelkoord-def.png
+INPUT img/500px-Kugelkoord-def.png
+INPUT ./img/500px-Kugelkoord-def.png
+INPUT ./img/500px-Kugelkoord-def.png
 OUTPUT dhbw_stochastik_measure.nav
 OUTPUT dhbw_stochastik_measure.toc
 OUTPUT dhbw_stochastik_measure.snm
@@ -1541,6 +1553,7 @@ INPUT ./dhbw_stochastik_measure.out
 INPUT ./dhbw_stochastik_measure.out
 INPUT /usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb
 INPUT /usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb
+INPUT /usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb
 INPUT /usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb
 INPUT /usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb
 INPUT /usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb
@@ -1550,5 +1563,6 @@ INPUT /usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10
 INPUT /usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi10.pfb
 INPUT /usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi8.pfb
 INPUT /usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb
+INPUT /usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb
 INPUT /usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb
 INPUT /usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb
