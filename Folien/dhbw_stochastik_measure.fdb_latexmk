@@ -1,6 +1,6 @@
 # Fdb version 4
-["pdflatex"] 1747726521 "/Users/johannesriesterer/Documents/code/stochastik/Folien/dhbw_stochastik_measure.tex" "dhbw_stochastik_measure.pdf" "dhbw_stochastik_measure" 1747726522 0
-  "/Users/johannesriesterer/Documents/code/stochastik/Folien/dhbw_stochastik_measure.tex" 1747726520 15951 dbf7fdff8bd25763312688162371df01 ""
+["pdflatex"] 1747734401 "/Users/johannesriesterer/Documents/code/stochastik/Folien/dhbw_stochastik_measure.tex" "dhbw_stochastik_measure.pdf" "dhbw_stochastik_measure" 1747734403 0
+  "/Users/johannesriesterer/Documents/code/stochastik/Folien/dhbw_stochastik_measure.tex" 1747734401 16028 6173e1b8473ca457cc61c9384ea9f0c1 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/usr/local/texlive/2023/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1246382020 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -253,10 +253,10 @@
   "/usr/local/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1698836375 4623355 b8cad38412faebe1ce5b780a45db67bd ""
   "/usr/local/texlive/2023/texmf-var/web2c/pdftex/pdflatex.fmt" 1698836342 7883462 8a4d061ad2ccf4b7ea70dd63c461eb78 ""
   "/usr/local/texlive/2023/texmf.cnf" 1678822455 577 1b2b1af17af2508fb20dd85783af4050 ""
-  "dhbw_stochastik_measure.aux" 1747726522 5214 f0595f4b00b958528a62e4a36b135320 "pdflatex"
-  "dhbw_stochastik_measure.nav" 1747726522 3345 37c11ef4037c6e11d474c9df89e0133b "pdflatex"
-  "dhbw_stochastik_measure.out" 1747726521 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
-  "dhbw_stochastik_measure.tex" 1747726520 15951 dbf7fdff8bd25763312688162371df01 ""
+  "dhbw_stochastik_measure.aux" 1747734403 5214 f0595f4b00b958528a62e4a36b135320 "pdflatex"
+  "dhbw_stochastik_measure.nav" 1747734403 3345 37c11ef4037c6e11d474c9df89e0133b "pdflatex"
+  "dhbw_stochastik_measure.out" 1747734402 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "dhbw_stochastik_measure.tex" 1747734401 16028 6173e1b8473ca457cc61c9384ea9f0c1 ""
   "img/500px-Kugelkoord-def.png" 1712490409 43644 77af61bb4695540508c81da36a6b10f5 ""
   "img/640px-Parallelepiped-0.png" 1712490409 33563 12ab67e69da9b8e29fc59c49b231c755 ""
   "img/750px-Archimedes_pi.png" 1712490409 49023 03a9b005bb57e21f7d40cde617c96552 ""
