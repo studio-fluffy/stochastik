@@ -298,10 +298,44 @@ Bayesianer fragen: ``Wie plausibel ist eine Hypothese nach den Daten?''
 Frequentisten fragen: ``Wie verhält sich ein Verfahren bei vielen Wiederholungen?''
 \end{block}
 
-\begin{block}{Praktische Konsequenz}
-Ein bayesianisches Intervall beschreibt Plausibilität nach den Daten.
-Ein frequentistisches Konfidenzintervall ist ein Verfahren mit kontrollierter Trefferquote.
-Es bedeutet also nicht direkt: ``Der Parameter liegt mit Wahrscheinlichkeit $95\%$ darin.''
+\begin{block}{Was ist zufällig?}
+Bayesianisch: Auch Hypothesen dürfen Wahrscheinlichkeiten tragen, zum Beispiel
+\[
+P(H \mid D).
+\]
+Frequentistisch: Eine Hypothese ist nicht zufällig, sondern entweder wahr oder falsch; zufällig sind nur die Daten und damit das statistische Verfahren.
+\end{block}
+
+ \end{frame}
+
+
+\begin{frame}
+    \frametitle{Diskrete Wahrscheinlichkeitsverteilung}
+\framesubtitle{}
+
+\begin{block}{Was bedeuten $95\%$?}
+Bayesianisch kann man sinnvoll sagen:
+\[
+P(H \mid D)=0.95.
+\]
+Das bedeutet: Nach dem Modell und den beobachteten Daten hat die Hypothese \(H\) eine Plausibilität von $95\%$.
+\end{block}
+
+ \end{frame}
+
+
+\begin{frame}
+    \frametitle{Diskrete Wahrscheinlichkeitsverteilung}
+\framesubtitle{}
+
+\begin{block}{Frequentistische Deutung von $95\%$}
+Frequentistisch bezieht sich $95\%$ typischerweise auf ein Verfahren, also auf eine Fehlerquote oder Trefferquote bei vielen gedachten Wiederholungen.
+\end{block}
+
+\begin{block}{Wichtige Folgerung}
+Ein frequentistisches Signifikanzniveau von $5\%$ bedeutet daher nicht:
+``Die Nullhypothese ist mit Wahrscheinlichkeit $5\%$ wahr.''
+Gemeint ist vielmehr: Wenn die Nullhypothese wahr ist, produziert das Verfahren langfristig nur in etwa $5\%$ der Fälle einen falschen Alarm.
 \end{block}
 
 \begin{block}{Einordnung}
