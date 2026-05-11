@@ -143,10 +143,10 @@ Für $A,B \in \mathcal{A}$ mit  $P(B) > 0$ gilt
 \framesubtitle{}
 
 \begin{block}{Das Ziegenproblem (Monty Hall)}
-Es gibt drei Tueren. Hinter genau einer steht das Auto, hinter den beiden anderen je eine Ziege.
-Der Spieler waehlt zunaechst irgendeine der drei Tueren.
-Danach oeffnet der Moderator, der die Lage des Autos kennt, immer eine andere Tuer mit Ziege.
-Anschliessend darf der Spieler zur einzig verbleibenden geschlossenen Tuer wechseln.
+Es gibt drei Türen. Hinter genau einer steht das Auto, hinter den beiden anderen je eine Ziege.
+Der Spieler wählt zunächst irgendeine der drei Türen.
+Danach öffnet der Moderator, der die Lage des Autos kennt, immer eine andere Tür mit Ziege.
+Anschließend darf der Spieler zur einzig verbleibenden geschlossenen Tür wechseln.
 \end{block}
 
  \end{frame}
@@ -162,7 +162,7 @@ Wir definieren
 &A = \{\text{die erste Wahl des Spielers ist richtig}\},\\
 &W = \{\text{der Spieler gewinnt beim Wechseln}\}.
 \end{align*}
-Da genau eine von drei Tueren das Auto enthaelt, gilt sofort
+Da genau eine von drei Türen das Auto enthält, gilt sofort
 \begin{align*}
 P(A)=\frac13.
 \end{align*}
@@ -183,7 +183,7 @@ P(W \mid A)=0,
 P(W \mid A^c)=1.
 \end{align*}
 Denn im Fall \(A\) ist die erste Wahl bereits richtig, also verliert Wechseln.
-Im Fall \(A^c\) ist die erste Wahl falsch; der Moderator muss dann die einzige Ziegentuer unter den beiden anderen oeffnen, und die verbleibende geschlossene Tuer enthaelt das Auto.
+Im Fall \(A^c\) ist die erste Wahl falsch; der Moderator muss dann die einzige Ziegentür unter den beiden anderen öffnen, und die verbleibende geschlossene Tür enthält das Auto.
 \end{block}
 
  \end{frame}
@@ -205,7 +205,7 @@ Die Gewinnchance beim Bleiben ist dagegen
 \begin{align*}
 P(A)=\frac13.
 \end{align*}
-Also ist Wechseln optimal. Die genaue Auswahlregel des Moderators unter mehreren moeglichen Ziegentueren ist dabei egal, solange er immer eine Ziegentuer oeffnet und Wechseln anbietet.
+Also ist Wechseln optimal. Die genaue Auswahlregel des Moderators unter mehreren möglichen Ziegentüren ist dabei egal, solange er immer eine Ziegentür öffnet und Wechseln anbietet.
 \end{block}
 
  \end{frame}
@@ -262,6 +262,185 @@ Wichtig: Die Likelihood ist nicht $P(H \mid D)$, sondern $P(D \mid H)$. Sie bewe
  \end{frame}
 
 
+\begin{frame}
+    \frametitle{Diskrete Wahrscheinlichkeitsverteilung}
+\framesubtitle{}
+
+\begin{columns}[T]
+\begin{column}{0.48\textwidth}
+\begin{block}{Bayesianische Sicht}
+Wahrscheinlichkeit misst Unsicherheit.
+Darum dürfen auch Hypothesen oder Parameter Wahrscheinlichkeiten tragen:
+\begin{align*}
+P(H), \qquad P(H \mid D), \\
+p(\theta \mid x).
+\end{align*}
+Neue Daten aktualisieren dieses Wissen durch Bayes.
+\end{block}
+\end{column}
+\begin{column}{0.48\textwidth}
+\begin{block}{Frequentistische Sicht}
+Wahrscheinlichkeit beschreibt relative Häufigkeiten.
+Ein Parameter \(\theta\) ist fest; zufällig sind Daten, Schätzer, Tests und Intervalle.
+\end{block}
+\end{column}
+\end{columns}
+
+ \end{frame}
+
+
+\begin{frame}
+    \frametitle{Diskrete Wahrscheinlichkeitsverteilung}
+\framesubtitle{}
+
+\begin{block}{Wissenschaftsphilosophische Differenz}
+Bayesianer fragen: ``Wie plausibel ist eine Hypothese nach den Daten?''
+Frequentisten fragen: ``Wie verhält sich ein Verfahren bei vielen Wiederholungen?''
+\end{block}
+
+\begin{block}{Praktische Konsequenz}
+Ein bayesianisches Intervall beschreibt Plausibilität nach den Daten.
+Ein frequentistisches Konfidenzintervall ist ein Verfahren mit kontrollierter Trefferquote.
+Es bedeutet also nicht direkt: ``Der Parameter liegt mit Wahrscheinlichkeit $95\%$ darin.''
+\end{block}
+
+\begin{block}{Einordnung}
+Bayesianische Verfahren sind stark bei explizitem Vorwissen.
+Frequentistische Verfahren sind stark bei Fehlerkontrolle und Kalibrierung.
+Oft sind das zwei komplementäre Perspektiven.
+\end{block}
+
+ \end{frame}
+
+
+\begin{frame}
+    \frametitle{Diskrete Wahrscheinlichkeitsverteilung}
+\framesubtitle{}
+
+\begin{block}{Black-Swan-Paradoxon in bayesianischer Sicht}
+Sei \(H=\{\text{alle Schwäne sind weiß}\}\),
+\(D_n=\{\text{die ersten } n \text{ beobachteten Schwäne sind weiß}\}\)
+und \(B=\{\text{ein beobachteter Schwan ist schwarz}\}\).
+Dann gilt nach Bayes
+\[
+P(H \mid D_n)=\frac{P(D_n \mid H)P(H)}{P(D_n)}.
+\]
+Unter \(H\) ist jede weiße Beobachtung sicher, also \(P(D_n \mid H)=1\).
+Weiße Schwäne sprechen daher für \(H\), aber sie beweisen \(H\) nicht, weil auch andere Hypothesen viele weiße Schwäne gut erklären können.
+\end{block}
+
+ \end{frame}
+
+
+\begin{frame}
+    \frametitle{Diskrete Wahrscheinlichkeitsverteilung}
+\framesubtitle{}
+
+\begin{block}{Asymmetrie der Evidenz}
+Beobachten wir dagegen einen schwarzen Schwan \(B\), so gilt unter \(H\):
+\[
+P(B \mid H)=0.
+\]
+Damit folgt sofort
+\[
+P(H \mid B)=0.
+\]
+Viele bestätigende Beobachtungen machen eine All-Aussage also nur schrittweise plausibler; ein echtes Gegenbeispiel zerstört sie sofort.
+\end{block}
+
+ \end{frame}
+
+
+\begin{frame}
+    \frametitle{Diskrete Wahrscheinlichkeitsverteilung}
+\framesubtitle{}
+
+\begin{block}{Konkretes bayesianisches Beispiel}
+Vergleichen wir zwei Hypothesen mit gleichem Prior:
+\[
+P(H)=P(H')=\frac12,
+\]
+wobei
+\begin{align*}
+H&=\{\text{alle Schwäne sind weiß}\}, \\
+H'&=\{95\% \text{ aller Schwäne sind weiß}\}.
+\end{align*}
+Dann gilt für \(n\) weiße Beobachtungen:
+\[
+P(D_n \mid H)=1,
+\qquad
+P(D_n \mid H')=0.95^n.
+\]
+\end{block}
+
+ \end{frame}
+
+
+\begin{frame}
+    \frametitle{Diskrete Wahrscheinlichkeitsverteilung}
+\framesubtitle{}
+
+\begin{block}{Posterior ausrechnen}
+Da wir nur die beiden Hypothesen \(H\) und \(H'\) zulassen, ist
+\[
+P(D_n)=P(D_n \mid H)P(H)+P(D_n \mid H')P(H').
+\]
+Mit Bayes folgt daher
+\begin{align*}
+P(H \mid D_n)
+&= \frac{P(D_n \mid H)P(H)}{P(D_n \mid H)P(H)+P(D_n \mid H')P(H')} \\
+&= \frac{1 \cdot \frac12}{1 \cdot \frac12 + 0.95^n \cdot \frac12}.
+\end{align*}
+Im Zähler und Nenner kann man den gemeinsamen Faktor \(\frac12\) kürzen. Also
+\[
+P(H \mid D_n)
+= \frac{1}{1+0.95^n}.
+\]
+\end{block}
+
+ \end{frame}
+
+
+\begin{frame}
+    \frametitle{Diskrete Wahrscheinlichkeitsverteilung}
+\framesubtitle{}
+
+\begin{block}{Bedeutung der Formel}
+Zum Beispiel:
+\[
+P(H \mid D_{10}) \approx 0.625,
+\qquad
+P(H \mid D_{100}) \approx 0.994.
+\]
+Mit wachsendem \(n\) wird der Term \(0.95^n\) immer kleiner.
+Damit fällt die Konkurrenzhypothese \(H'\) im Nenner immer weniger ins Gewicht.
+Viele weiße Schwäne machen \(H\) also sehr plausibel, aber nicht durch logische Notwendigkeit, sondern relativ zu den zugelassenen Konkurrenzhypothesen.
+\end{block}
+
+ \end{frame}
+
+
+\begin{frame}
+    \frametitle{Diskrete Wahrscheinlichkeitsverteilung}
+\framesubtitle{}
+
+\begin{block}{Philosophische Pointe}
+Bayesianisch ist das kein Widerspruch, sondern eine Folge von Likelihood und Prior.
+Die Daten allein erzeugen keine Theorie aus dem Nichts, sondern aktualisieren nur, was vorher als möglich modelliert war.
+\end{block}
+
+\begin{block}{Induktion braucht Vorannahmen}
+Wenn der Prior \(P(H)=0\) wäre, dann bliebe für alle \(n\)
+\[
+P(H \mid D_n)=0.
+\]
+Auch unendlich viele weiße Schwäne könnten \(H\) dann nie plausibel machen.
+Gerade darin zeigt sich die philosophische Tiefe: Induktives Lernen funktioniert nur relativ zu einem Modellraum und zu Vorannahmen.
+\end{block}
+
+ \end{frame}
+
+
 \begin{frame}[shrink=5]
     \frametitle{Diskrete Wahrscheinlichkeitsverteilung}
 \framesubtitle{}
@@ -276,7 +455,7 @@ Angenommen:
 \end{align*}
 Dann ist der Prior klein: Nur $1\%$ der Personen sind krank. Die Likelihood $P(D \mid H)=0.99$ sagt: Wenn jemand krank ist, ist der Test fast immer positiv.
 
-Wichtig: $P(D \mid H)$ und $P(D \mid H^c)$ sind keine Gegenwahrscheinlichkeiten, weil unterschiedlich konditioniert wird. Komplementaer waeren hier zum Beispiel $P(D \mid H)$ und $P(D^c \mid H)$.
+Wichtig: $P(D \mid H)$ und $P(D \mid H^c)$ sind keine Gegenwahrscheinlichkeiten, weil unterschiedlich konditioniert wird. Komplementär wären hier zum Beispiel $P(D \mid H)$ und $P(D^c \mid H)$.
 \end{block}
 
 \begin{block}{Posterior berechnen}
