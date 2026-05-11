@@ -357,6 +357,12 @@ INPUT /usr/share/texlive/texmf-dist/tex/latex/grfext/grfext.sty
 INPUT /usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 INPUT /usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 INPUT /usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+INPUT ./dhbw_stochastik_estimation.out
+INPUT ./dhbw_stochastik_estimation.out
+INPUT dhbw_stochastik_estimation.out
+INPUT dhbw_stochastik_estimation.out
+INPUT ./dhbw_stochastik_estimation.out
+INPUT ./dhbw_stochastik_estimation.out
 OUTPUT dhbw_stochastik_estimation.out
 INPUT /usr/share/texlive/texmf-dist/tex/latex/translator/translator-basic-dictionary-English.dict
 INPUT /usr/share/texlive/texmf-dist/tex/latex/translator/translator-basic-dictionary-English.dict
@@ -412,6 +418,10 @@ INPUT ./img/Craps.png
 INPUT ./img/Craps.png
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmss8.tfm
 INPUT /var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map
+INPUT ./img/flux.jpg
+INPUT ./img/flux.jpg
+INPUT ./img/flux.jpg
+INPUT ./img/flux.jpg
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmss10.tfm
 OUTPUT dhbw_stochastik_estimation.nav
 OUTPUT dhbw_stochastik_estimation.toc
