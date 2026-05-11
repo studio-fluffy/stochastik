@@ -2034,6 +2034,82 @@ hei\ss{}en stochastisch unabhängig, wenn für alle \(A\in\mathcal E\), \(B\in\m
 \end{block}
 \end{frame}
 
+\begin{frame}{Unabhängigkeit und Erwartungswert}
+\begin{block}{Satz}
+Sind \(X,Y\colon\Omega\to\mathbb R\) stochastisch unabhängig und integrierbar, also
+\[
+\mathbb E[|X|]<\infty,
+\qquad
+\mathbb E[|Y|]<\infty,
+\]
+so gilt
+\[
+\mathbb E[XY]=\mathbb E[X]\,\mathbb E[Y].
+\]
+\end{block}
+
+\begin{block}{Start des Beweises}
+Für \(A,B\in\mathcal B(\mathbb R)\) gilt wegen der Unabhängigkeit
+\[
+\mathbb E[\mathbf 1_{\{X\in A\}}\mathbf 1_{\{Y\in B\}}]
+=
+\mathbb P(X\in A,\,Y\in B)
+=
+\mathbb P(X\in A)\mathbb P(Y\in B).
+\]
+Durch Linearität folgt dieselbe Faktorisierung dann auch für
+nichtnegative einfache Funktionen \(f\) und \(g\):
+\[
+\mathbb E[f(X)g(Y)]=\mathbb E[f(X)]\,\mathbb E[g(Y)].
+\]
+\end{block}
+\end{frame}
+
+\begin{frame}{Unabhängigkeit und Erwartungswert: Beweis I}
+\begin{block}{Schritt 1: nichtnegative Zufallsvariablen}
+Seien zunächst \(X,Y\ge 0\). Wähle nichtnegative einfache Funktionen
+\(f_n\uparrow \mathrm{id}_{[0,\infty)}\) und \(g_n\uparrow \mathrm{id}_{[0,\infty)}\).
+Dann gilt
+\[
+f_n(X)g_n(Y)\uparrow XY,
+\qquad
+f_n(X)\uparrow X,
+\qquad
+g_n(Y)\uparrow Y.
+\]
+Mit dem Satz von der monotonen Konvergenz folgt
+\begin{align*}
+\mathbb E[XY]
+&=\lim_{n\to\infty}\mathbb E[f_n(X)g_n(Y)]\\
+&=\lim_{n\to\infty}\mathbb E[f_n(X)]\,\mathbb E[g_n(Y)]\\
+&=\mathbb E[X]\,\mathbb E[Y].
+\end{align*}
+\end{block}
+\end{frame}
+
+\begin{frame}{Unabhängigkeit und Erwartungswert: Beweis II}
+\begin{block}{Schritt 2: allgemeiner Fall}
+Für integrierbare \(X,Y\) sind auch \(|X|\) und \(|Y|\) unabhängig. Also gilt
+\[
+\mathbb E[|XY|]=\mathbb E[|X|]\,\mathbb E[|Y|]<\infty,
+\]
+und damit ist \(XY\) integrierbar. Mit
+\[
+X=X^+-X^-,
+\qquad
+Y=Y^+-Y^-
+\]
+folgt aus Schritt 1 für die vier nichtnegativen Produkte
+\begin{align*}
+\mathbb E[XY]
+&=\mathbb E[X^+Y^+]-\mathbb E[X^+Y^-]-\mathbb E[X^-Y^+]+\mathbb E[X^-Y^-]\\
+&=\mathbb E[X^+]\mathbb E[Y^+]-\mathbb E[X^+]\mathbb E[Y^-]\\
+&\qquad -\mathbb E[X^-]\mathbb E[Y^+]+\mathbb E[X^-]\mathbb E[Y^-]\\
+&=\mathbb E[X]\,\mathbb E[Y].
+\end{align*}
+\end{block}
+\end{frame}
+
 \begin{frame}{Unabhängigkeit von Ereignissen}
 \begin{block}{Definition}
 Zwei Ereignisse \(A,B\in\mathcal A\) hei\ss{}en stochastisch unabhängig, wenn
@@ -2113,6 +2189,7 @@ also
 \end{block}
 \end{frame}
 
+\begin{frame}{Klassische Definition als Spezialfall (Schluss)}
 \begin{block}{Einsetzen: \(C=\{1\}\), \(D=\{1\}\)}
 \[
 X^{-1}(\{1\})\cap Y^{-1}(\{1\})=A\cap B,

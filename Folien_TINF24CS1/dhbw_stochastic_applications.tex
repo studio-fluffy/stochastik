@@ -142,6 +142,79 @@ Für $A,B \in \mathcal{A}$ mit  $P(B) > 0$ gilt
     \frametitle{Diskrete Wahrscheinlichkeitsverteilung}
 \framesubtitle{}
 
+\begin{block}{Das Ziegenproblem (Monty Hall)}
+Es gibt drei Tueren. Hinter genau einer steht das Auto, hinter den beiden anderen je eine Ziege.
+Der Spieler waehlt zunaechst irgendeine der drei Tueren.
+Danach oeffnet der Moderator, der die Lage des Autos kennt, immer eine andere Tuer mit Ziege.
+Anschliessend darf der Spieler zur einzig verbleibenden geschlossenen Tuer wechseln.
+\end{block}
+
+ \end{frame}
+
+
+\begin{frame}
+    \frametitle{Diskrete Wahrscheinlichkeitsverteilung}
+\framesubtitle{}
+
+\begin{block}{Abstrakte Ereignisse}
+Wir definieren
+\begin{align*}
+&A = \{\text{die erste Wahl des Spielers ist richtig}\},\\
+&W = \{\text{der Spieler gewinnt beim Wechseln}\}.
+\end{align*}
+Da genau eine von drei Tueren das Auto enthaelt, gilt sofort
+\begin{align*}
+P(A)=\frac13.
+\end{align*}
+\end{block}
+
+ \end{frame}
+
+
+\begin{frame}
+    \frametitle{Diskrete Wahrscheinlichkeitsverteilung}
+\framesubtitle{}
+
+\begin{block}{Rigoroser Beweis}
+Aus der Spielregel folgt unmittelbar
+\begin{align*}
+P(W \mid A)=0,
+\qquad
+P(W \mid A^c)=1.
+\end{align*}
+Denn im Fall \(A\) ist die erste Wahl bereits richtig, also verliert Wechseln.
+Im Fall \(A^c\) ist die erste Wahl falsch; der Moderator muss dann die einzige Ziegentuer unter den beiden anderen oeffnen, und die verbleibende geschlossene Tuer enthaelt das Auto.
+\end{block}
+
+ \end{frame}
+
+
+\begin{frame}
+    \frametitle{Diskrete Wahrscheinlichkeitsverteilung}
+\framesubtitle{}
+
+\begin{block}{Schlussfolgerung mit bedingter Wahrscheinlichkeit}
+Mit dem Satz der totalen Wahrscheinlichkeit folgt
+\begin{align*}
+P(W)
+&= P(W \mid A)P(A) + P(W \mid A^c)P(A^c) \\
+&= 0 \cdot \frac13 + 1 \cdot \frac23
+= \frac23.
+\end{align*}
+Die Gewinnchance beim Bleiben ist dagegen
+\begin{align*}
+P(A)=\frac13.
+\end{align*}
+Also ist Wechseln optimal. Die genaue Auswahlregel des Moderators unter mehreren moeglichen Ziegentueren ist dabei egal, solange er immer eine Ziegentuer oeffnet und Wechseln anbietet.
+\end{block}
+
+ \end{frame}
+
+
+\begin{frame}
+    \frametitle{Diskrete Wahrscheinlichkeitsverteilung}
+\framesubtitle{}
+
 \begin{block}{Bayes'sche Inferenz (Bayesian Inference)}
 Die Formel von Bayes beschreibt, wie wir eine Hypothese $H$ nach Beobachtung von Daten $D$ aktualisieren:
 \begin{align*}
@@ -202,6 +275,8 @@ Angenommen:
 &P(D \mid H^c)=0.05.
 \end{align*}
 Dann ist der Prior klein: Nur $1\%$ der Personen sind krank. Die Likelihood $P(D \mid H)=0.99$ sagt: Wenn jemand krank ist, ist der Test fast immer positiv.
+
+Wichtig: $P(D \mid H)$ und $P(D \mid H^c)$ sind keine Gegenwahrscheinlichkeiten, weil unterschiedlich konditioniert wird. Komplementaer waeren hier zum Beispiel $P(D \mid H)$ und $P(D^c \mid H)$.
 \end{block}
 
 \begin{block}{Posterior berechnen}
