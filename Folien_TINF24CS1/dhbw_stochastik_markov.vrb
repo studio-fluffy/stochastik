@@ -1,0 +1,22 @@
+\frametitle{Markov-Ketten}
+\framesubtitle{Lean -- Detailed Balance}
+    \begin{block}{Definition und Satz in Lean}
+\begin{verbatim}
+def DetailedBalance (P : S N -> S N -> Real)
+    (pi : S N -> Real) : Prop :=
+  forall i j, pi i * P i j = pi j * P j i
+
+theorem detailedBalance_implies_invariant
+    (hP : IsTransitionMatrix P)
+    (hdb : DetailedBalance P pi) :
+    IsInvariant P pi := by
+  intro j
+  calc Sum i, pi i * P i j
+      = Sum i, pi j * P j i := by
+        congr 1; ext i; exact hdb i j
+    _ = pi j * Sum i, P j i := by
+        rw [Finset.mul_sum]
+    _ = pi j := by rw [hP.2 j, mul_one]
+\end{verbatim}
+\end{block}
+Dieser Beweis ist in Lean \textbf{vollständig} -- kein \texttt{sorry}!
