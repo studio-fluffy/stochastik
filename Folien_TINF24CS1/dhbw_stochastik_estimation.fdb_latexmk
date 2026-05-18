@@ -1,7 +1,7 @@
 # Fdb version 4
-["pdflatex"] 1778484302.54636 "/home/johannes/code/stochastik/Folien_TINF24CS1/dhbw_stochastik_estimation.tex" "dhbw_stochastik_estimation.pdf" "dhbw_stochastik_estimation" 1778484304.08734 0
+["pdflatex"] 1779091473.62381 "/home/johannes/code/stochastik/Folien_TINF24CS1/dhbw_stochastik_estimation.tex" "dhbw_stochastik_estimation.pdf" "dhbw_stochastik_estimation" 1779091475.71132 0
   "/etc/texmf/web2c/texmf.cnf" 1733989132.21817 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/johannes/code/stochastik/Folien_TINF24CS1/dhbw_stochastik_estimation.tex" 1778484300.61348 11381 c0bf91df6eb1c1076a3caecf4fbf1e53 ""
+  "/home/johannes/code/stochastik/Folien_TINF24CS1/dhbw_stochastik_estimation.tex" 1779091389.83985 17733 ecdcd8eeaa868d8837227f7ffc596e43 ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1246382020 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -17,6 +17,7 @@
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmss10.tfm" 1136768653 1316 b636689f1933f24d1294acdf6041daaa ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmss12.tfm" 1136768653 1324 37b971caf729d7edd9cbb9f9b0ea76eb ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmss8.tfm" 1136768653 1296 d77f431d10d47c8ea2cc18cf45346274 ""
+  "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmssbx10.tfm" 1136768653 1272 e2d13f0df30bf3ad990bb9d028e37f34 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmssi10.tfm" 1136768653 1520 ca2bb4b78ac9800bd686e30c6d19ef95 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmssi8.tfm" 1136768653 1500 7f49257eca65a87057f17452e9fe3ef5 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmsy10.tfm" 1136768653 1124 6c73e740cf17375f03eec0ee63599741 ""
@@ -37,6 +38,7 @@
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb" 1248133631 24457 5cbb7bdf209d5d1ce9892a9b80a307cc ""
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb" 1248133631 24393 3b7eb51a67a0a62aec5849271bdb9c2e ""
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb" 1248133631 24420 52dbb8e8aa0069a1b987309557f8d303 ""
+  "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb" 1248133631 28902 2f5c04fd2884d1878057baa5aad22765 ""
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi10.pfb" 1248133631 25150 e0d09798d232ab9d00c5c0a8df6cc22d ""
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi8.pfb" 1248133631 25168 33771b85f45c82138dd7745db7092d1c ""
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb" 1248133631 32569 5e5ddc8df908dea60932f3c484a54c0d ""
@@ -236,10 +238,10 @@
   "/usr/share/texmf/web2c/texmf.cnf" 1707919699 40399 f2c302f7d2af602abb742093540a5834 ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1767443022.6559 165012 f177baa1c39a3ebd62c3096a43521a0d ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1767443185 7356332 5fe4910e5cfa247a0fd1174dacbabfdb ""
-  "dhbw_stochastik_estimation.aux" 1778484304.00551 2625 f8e0a9ea7952996c072cc1d7157f803e "pdflatex"
-  "dhbw_stochastik_estimation.nav" 1778484304.00551 1760 80a68e95556c790f6368970db289fcf5 "pdflatex"
-  "dhbw_stochastik_estimation.out" 1778484303.10751 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
-  "dhbw_stochastik_estimation.tex" 1778484300.61348 11381 c0bf91df6eb1c1076a3caecf4fbf1e53 ""
+  "dhbw_stochastik_estimation.aux" 1779091475.6252 3786 27b42bfa0e767eaa46e89b97e7f759c4 "pdflatex"
+  "dhbw_stochastik_estimation.nav" 1779091475.6252 2597 8d929ff01d0e977ef9f19206c5472659 "pdflatex"
+  "dhbw_stochastik_estimation.out" 1779091474.22419 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "dhbw_stochastik_estimation.tex" 1779091389.83985 17733 ecdcd8eeaa868d8837227f7ffc596e43 ""
   "img/Craps.png" 1777875380.49866 13839 914501b67b77f2372f92caa6dba1b1c1 ""
   "img/flux.jpg" 1713767175.90895 63065 0db621bf65766fb6a6b409d3b50debbd ""
   (generated)
