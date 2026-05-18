@@ -684,6 +684,57 @@ Sind $X,Y : \Omega \to \mathbb{R}^n$   reelle, integrierbare  Zufallsvariablen u
  \begin{frame}
     \frametitle{Erwartungswert}
 \framesubtitle{}
+\begin{block}{Verschiebungssatz (Erwartungswert)}
+Sei $X : \Omega \to \mathbb{R}$ eine reelle Zufallsvariable und $g : \mathbb{R} \to \mathbb{R}$ messbar. Dann gilt:
+\begin{align*}
+\mathbb{E}(g(X)) = \int_{\mathbb{R}} g(x) \, dP_X(x)
+\end{align*}
+wobei $P_X$ die Verteilung von $X$ ist. Für eine Dichte $f_X$:
+\begin{align*}
+\mathbb{E}(g(X)) = \int_{\mathbb{R}} g(x) \, f_X(x) \, dx
+\end{align*}
+Man muss also \textbf{nicht} die Verteilung von $g(X)$ bestimmen, sondern kann direkt mit der Verteilung von $X$ rechnen.
+\end{block}
+ \end{frame}
+
+ \begin{frame}
+    \frametitle{Erwartungswert}
+\framesubtitle{}
+\begin{block}{Beweis des Verschiebungssatzes (Schritt 1: Indikatorfunktionen)}
+Für $g = 1_B$ mit einer Borel-Menge $B \subseteq \mathbb{R}$:
+\begin{align*}
+\mathbb{E}(1_B(X)) = P(X \in B) = P_X(B) = \int_{\mathbb{R}} 1_B(x) \, dP_X(x) \; \checkmark
+\end{align*}
+Dies folgt direkt aus der Definition des Bildmaßes $P_X(B) = P(X^{-1}(B))$.
+\end{block}
+
+\begin{block}{Beweis (Schritt 2: Einfache Funktionen)}
+Für $g = \sum_{i=1}^n a_i \cdot 1_{B_i}$ folgt aus Schritt 1 und der Linearität des Integrals:
+\begin{align*}
+\mathbb{E}(g(X)) = \sum_{i=1}^n a_i \, P_X(B_i) = \int_{\mathbb{R}} g(x) \, dP_X(x)
+\end{align*}
+\end{block}
+ \end{frame}
+
+ \begin{frame}
+    \frametitle{Erwartungswert}
+\framesubtitle{}
+\begin{block}{Beweis (Schritt 3: Allgemeine messbare $g \geq 0$)}
+Es existieren einfache Funktionen $g_n \nearrow g$ (monoton wachsend). Mit dem Satz der monotonen Konvergenz:
+\begin{align*}
+\mathbb{E}(g(X)) = \lim_n \mathbb{E}(g_n(X)) \overset{\text{Schritt 2}}{=} \lim_n \int g_n \, dP_X = \int g \, dP_X
+\end{align*}
+\end{block}
+
+\begin{block}{Beweis (Schritt 4: Allgemeines $g$)}
+Zerlege $g = g^+ - g^-$ mit $g^+ = \max(g,0)$ und $g^- = \max(-g,0)$.
+Wende Schritt 3 auf $g^+$ und $g^-$ an und nutze die Linearität. $\qed$
+\end{block}
+ \end{frame}
+
+ \begin{frame}
+    \frametitle{Erwartungswert}
+\framesubtitle{}
 \begin{block}{Varianz}
 Für eine reelle Zufallsvariable ist die Varianz definiert durch
 $$ \mathbb{V} (X) :=  \mathbb{E}( (X - \mathbb{E}(X))^2) \; .$$
@@ -693,6 +744,20 @@ $$ \mathbb{V} (X) :=  \mathbb{E}( (X - \mathbb{E}(X))^2) \; .$$
 \begin{align*}
  \mathbb{V}(X) & = \mathbb{E}(X^2 - 2X \mathbb{E}(X) + \mathbb{E}(X)^2) = \mathbb{E}(X^2) - 2 \mathbb{E}(X)^2 +  \mathbb{E}(X)^2 \\
 & =  \mathbb{E}(X^2) -  \mathbb{E}(X)^2 \\
+\end{align*}
+\end{block}
+ \end{frame}
+
+ \begin{frame}
+    \frametitle{Varianz}
+\framesubtitle{}
+\begin{block}{Eigenschaften der Varianz}
+Sind $X,Y : \Omega \to \mathbb{R}$ reelle, quadratintegrierbare Zufallsvariablen und $a,b \in \mathbb{R}$ konstant, so gilt:
+\begin{align*}
+& \mathbb{V}(a \cdot X + b) = a^2 \cdot \mathbb{V}(X) \\
+& \mathbb{V}(X) \geq 0, \quad \mathbb{V}(X) = 0 \Leftrightarrow X = \mathbb{E}(X) \text{ f.s.} \\
+& X, Y \text{ stoch. unabhängig} \Rightarrow \mathbb{V}(X + Y) = \mathbb{V}(X) + \mathbb{V}(Y) \\
+& \mathbb{V}(X + Y) = \mathbb{V}(X) + \mathbb{V}(Y) + 2\,\mathcal{C}(X,Y) \quad \text{(allgemein)}
 \end{align*}
 \end{block}
  \end{frame}
