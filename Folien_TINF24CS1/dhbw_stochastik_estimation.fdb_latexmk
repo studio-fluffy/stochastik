@@ -1,7 +1,7 @@
 # Fdb version 4
-["pdflatex"] 1779091473.62381 "/home/johannes/code/stochastik/Folien_TINF24CS1/dhbw_stochastik_estimation.tex" "dhbw_stochastik_estimation.pdf" "dhbw_stochastik_estimation" 1779091475.71132 0
+["pdflatex"] 1779092762.23044 "/home/johannes/code/stochastik/Folien_TINF24CS1/dhbw_stochastik_estimation.tex" "dhbw_stochastik_estimation.pdf" "dhbw_stochastik_estimation" 1779092764.46325 0
   "/etc/texmf/web2c/texmf.cnf" 1733989132.21817 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/johannes/code/stochastik/Folien_TINF24CS1/dhbw_stochastik_estimation.tex" 1779091389.83985 17733 ecdcd8eeaa868d8837227f7ffc596e43 ""
+  "/home/johannes/code/stochastik/Folien_TINF24CS1/dhbw_stochastik_estimation.tex" 1779092762.04243 17822 a85b1a619688ab7d178610d3e8a8130e ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1246382020 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -238,12 +238,13 @@
   "/usr/share/texmf/web2c/texmf.cnf" 1707919699 40399 f2c302f7d2af602abb742093540a5834 ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1767443022.6559 165012 f177baa1c39a3ebd62c3096a43521a0d ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1767443185 7356332 5fe4910e5cfa247a0fd1174dacbabfdb ""
-  "dhbw_stochastik_estimation.aux" 1779091475.6252 3786 27b42bfa0e767eaa46e89b97e7f759c4 "pdflatex"
-  "dhbw_stochastik_estimation.nav" 1779091475.6252 2597 8d929ff01d0e977ef9f19206c5472659 "pdflatex"
-  "dhbw_stochastik_estimation.out" 1779091474.22419 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
-  "dhbw_stochastik_estimation.tex" 1779091389.83985 17733 ecdcd8eeaa868d8837227f7ffc596e43 ""
+  "dhbw_stochastik_estimation.aux" 1779092764.37346 3786 27b42bfa0e767eaa46e89b97e7f759c4 "pdflatex"
+  "dhbw_stochastik_estimation.nav" 1779092764.37446 2597 8d929ff01d0e977ef9f19206c5472659 "pdflatex"
+  "dhbw_stochastik_estimation.out" 1779092762.85544 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "dhbw_stochastik_estimation.tex" 1779092762.04243 17822 a85b1a619688ab7d178610d3e8a8130e ""
   "img/Craps.png" 1777875380.49866 13839 914501b67b77f2372f92caa6dba1b1c1 ""
   "img/flux.jpg" 1713767175.90895 63065 0db621bf65766fb6a6b409d3b50debbd ""
+  "img/maximumlikelyhood.png" 1779090698.0385 134180 927044191f0c2c5f0b21ad8153c4feff ""
   (generated)
   "dhbw_stochastik_estimation.aux"
   "dhbw_stochastik_estimation.log"

@@ -424,6 +424,11 @@ INPUT ./img/flux.jpg
 INPUT ./img/flux.jpg
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmss10.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmssbx10.tfm
+INPUT ./img/maximumlikelyhood.png
+INPUT ./img/maximumlikelyhood.png
+INPUT ./img/maximumlikelyhood.png
+INPUT ./img/maximumlikelyhood.png
+INPUT ./img/maximumlikelyhood.png
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmssbx10.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmssbx10.tfm
 OUTPUT dhbw_stochastik_estimation.nav
