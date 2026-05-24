@@ -57,6 +57,7 @@ Viele Prozesse in der Informatik und im Alltag können als Folge von Zuständen 
 \begin{itemize}
 \item Websurfen: Die nächste Seite hängt nur von der aktuellen ab (PageRank).
 \item Wetter: Morgen Regen/Sonne hängt nur vom heutigen Wetter ab.
+\item Kartenmischen: Die nächste Anordnung hängt nur von der aktuellen ab.
 \item Warteschlangen: Anzahl Kunden hängt nur vom aktuellen Zustand ab.
 \end{itemize}
 \end{block}
@@ -623,29 +624,6 @@ Aber: $\pi_1 p_{12} = 1/3 \neq 0 = \pi_2 p_{21}$ -- Detailed Balance verletzt!
 
 
 %% =============================================
-%% ZUSAMMENFASSUNG
-%% =============================================
-
-\begin{frame}
-    \frametitle{Markov-Ketten}
-\framesubtitle{Zusammenfassung}
-    \begin{block}{Zentrale Begriffe}
-\begin{itemize}
-\item \textbf{Markov-Kette:} Zukunft hängt nur von Gegenwart ab.
-\item \textbf{Stochastische Matrix:} Zeilensummen $= 1$, Einträge $\geq 0$.
-\item \textbf{Invariante Verteilung:} $\pi P = \pi$ (Gleichgewicht).
-\item \textbf{Irreduzibel:} Jeder Zustand von jedem erreichbar.
-\item \textbf{Aperiodisch:} Keine periodischen Zyklen.
-\end{itemize}
-\end{block}
-\begin{block}{Hauptsatz}
-\textbf{Irreduzibel + endlich} $\Rightarrow$ genau eine invariante Verteilung $\pi > 0$.\\
-\textbf{+ Aperiodisch} $\Rightarrow$ Konvergenz: $P^n \to$ Matrix mit Zeilen $\pi$.
-\end{block}
- \end{frame}
-
-
-%% =============================================
 %% PAGERANK: IDEE
 %% =============================================
 
@@ -742,6 +720,55 @@ Iteriere: $\mu_{n+1} = \mu_n \cdot G$ (Power-Iteration), bis Konvergenz.
 \]
 \textbf{Ranking:} $A > C > B > D$\\[0.2cm]
 Seite $A$ hat den höchsten PageRank, weil $C$ (selbst wichtig) auf $A$ verlinkt.
+\end{block}
+ \end{frame}
+
+
+%% =============================================
+%% KARTENMISCHEN: MODELL
+%% =============================================
+
+\begin{frame}
+    \frametitle{Markov-Ketten}
+\framesubtitle{Anwendung: Kartenmischen}
+    \begin{block}{Modell}
+Ein Kartendeck mit $n$ Karten = eine Permutation $\sigma \in S_n$.\\[0.2cm]
+Zustandsraum: $S = S_n$ (alle $n!$ Permutationen).\\[0.1cm]
+Ein Mischvorgang $\hat{=}$ ein Übergang $\sigma \to \sigma'$.
+\end{block}
+\begin{block}{Beispiel: Top-to-Random Shuffle}
+Nimm die oberste Karte und stecke sie an eine zufällige Position:
+\[
+p_{\sigma, \sigma'} = \begin{cases} \frac{1}{n} & \text{falls } \sigma' \text{ durch Einfügen der Top-Karte entsteht} \\ 0 & \text{sonst} \end{cases}
+\]
+\end{block}
+\textbf{Markov-Eigenschaft:} Die nächste Anordnung hängt nur von der aktuellen ab!
+ \end{frame}
+
+
+%% =============================================
+%% KARTENMISCHEN: ANALYSE
+%% =============================================
+
+\begin{frame}
+    \frametitle{Markov-Ketten}
+\framesubtitle{Kartenmischen -- Analyse}
+    \begin{block}{Eigenschaften der Misch-Kette}
+\begin{itemize}
+\item \textbf{Irreduzibel:} Jede Permutation ist von jeder anderen erreichbar.
+\item \textbf{Aperiodisch:} Top-Karte kann an gleicher Stelle bleiben ($p_{\sigma\sigma} = 1/n > 0$).
+\item $\Rightarrow$ Hauptsatz anwendbar!
+\end{itemize}
+\end{block}
+\begin{block}{Invariante Verteilung}
+Durch \textbf{Detailed Balance} (Symmetrie des Mischens):
+\[
+\pi(\sigma) = \frac{1}{n!} \quad \text{für alle } \sigma \in S_n
+\]
+Die Gleichverteilung ist die eindeutige invariante Verteilung.
+\end{block}
+\begin{block}{Konvergenz}
+Nach genügend vielen Mischvorgängen ist das Deck ``gut gemischt''\\(nahe an Gleichverteilung). Für Top-to-Random: $\approx n \ln n$ Schritte.
 \end{block}
  \end{frame}
 
