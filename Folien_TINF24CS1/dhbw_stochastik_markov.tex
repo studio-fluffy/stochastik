@@ -761,14 +761,12 @@ p_{\sigma, \sigma'} = \begin{cases} \frac{1}{n} & \text{falls } \sigma' \text{ d
 \end{itemize}
 \end{block}
 \begin{block}{Invariante Verteilung}
-Durch \textbf{Detailed Balance} (Symmetrie des Mischens):
-\[
-\pi(\sigma) = \frac{1}{n!} \quad \text{für alle } \sigma \in S_n
-\]
-Die Gleichverteilung ist die eindeutige invariante Verteilung.
+Die Gleichverteilung $\pi(\sigma) = \frac{1}{n!}$ ist invariant (Symmetrie).
+Da irreduzibel: sie ist die \textbf{eindeutige} invariante Verteilung.
 \end{block}
-\begin{block}{Konvergenz}
-Nach genügend vielen Mischvorgängen ist das Deck ``gut gemischt''\\(nahe an Gleichverteilung). Für Top-to-Random: $\approx n \ln n$ Schritte.
+\begin{block}{Mischzeit (Mixing Time)}
+Wie viele Schritte bis ``gut gemischt'' ($\|\mu_n - \pi\|_{TV} < \varepsilon$)?\\
+Top-to-Random: $\approx n \ln n$ Schritte (für $n=52$: ca.\ $200$).
 \end{block}
  \end{frame}
 
@@ -792,6 +790,212 @@ Nach genügend vielen Mischvorgängen ist das Deck ``gut gemischt''\\(nahe an Gl
 \begin{block}{Hauptsatz}
 \textbf{Irreduzibel + endlich} $\Rightarrow$ genau eine invariante Verteilung $\pi > 0$.\\
 \textbf{+ Aperiodisch} $\Rightarrow$ Konvergenz: $P^n \to$ Matrix mit Zeilen $\pi$.
+\end{block}
+ \end{frame}
+
+
+%% #############################################
+%% KAPITEL: MCMC
+%% #############################################
+
+\begin{frame}
+    \frametitle{Markov Chain Monte Carlo (MCMC)}
+\framesubtitle{}
+\begin{center}
+{\Large \textbf{Markov Chain Monte Carlo}}\\[0.5cm]
+{\large Zufallszahlen, Simulation und Integration}
+\end{center}
+ \end{frame}
+
+
+%% =============================================
+%% ZUFALLSZAHLEN AM COMPUTER
+%% =============================================
+
+\begin{frame}
+    \frametitle{MCMC}
+\framesubtitle{Zufallszahlen am Computer}
+    \begin{block}{Problem}
+Computer sind deterministisch -- wie erzeugt man ``Zufall''?
+\end{block}
+\begin{block}{Pseudozufallszahlen}
+\begin{itemize}
+\item Lineare Kongruenzgeneratoren: $x_{n+1} = (a x_n + c) \mod m$
+\item Erzeugen gleichverteilte Zahlen in $\{0, 1, \ldots, m-1\}$.
+\item Periodisch, aber Periode kann sehr groß sein.
+\end{itemize}
+\end{block}
+\begin{block}{Andere Verteilungen?}
+Gleichverteilung ist einfach -- aber wie sampelt man aus komplizierten Verteilungen $\pi$ (z.B.\ Normalverteilung, Boltzmann, Posterior)?
+\end{block}
+ \end{frame}
+
+
+%% =============================================
+%% IDEE MCMC
+%% =============================================
+
+\begin{frame}
+    \frametitle{MCMC}
+\framesubtitle{Idee: Sampling durch Markov-Ketten}
+    \begin{block}{Grundidee}
+Konstruiere eine Markov-Kette, deren \textbf{invariante Verteilung} genau die gewünschte Zielverteilung $\pi$ ist.
+\end{block}
+\begin{block}{Vorgehen}
+\begin{enumerate}
+\item Wähle Startzustand $X_0$ beliebig.
+\item Simuliere die Kette: $X_0, X_1, X_2, \ldots$
+\item Nach genügend Schritten (Burn-in): $X_n \sim \pi$ (approximativ).
+\item Verwende $X_n, X_{n+1}, \ldots$ als Stichprobe aus $\pi$.
+\end{enumerate}
+\end{block}
+\begin{block}{Warum funktioniert das?}
+Hauptsatz: Irreduzibel + aperiodisch $\Rightarrow$ $X_n \to \pi$ in Verteilung!
+\end{block}
+ \end{frame}
+
+
+%% =============================================
+%% METROPOLIS-HASTINGS
+%% =============================================
+
+\begin{frame}
+    \frametitle{MCMC}
+\framesubtitle{Der Metropolis-Hastings-Algorithmus}
+    \begin{block}{Gegeben}
+\begin{itemize}
+\item Zielverteilung $\pi$ (bis auf Normierung bekannt): $\pi(x) \propto f(x)$
+\item Vorschlagsverteilung $q(y \mid x)$ (leicht zu sampeln)
+\end{itemize}
+\end{block}
+\begin{block}{Algorithmus}
+Gegeben $X_n = x$:
+\begin{enumerate}
+\item Schlage $y \sim q(\cdot \mid x)$ vor.
+\item Berechne Akzeptanzwahrscheinlichkeit:
+\[
+\alpha(x, y) = \min\!\left(1, \;\frac{\pi(y)\, q(x \mid y)}{\pi(x)\, q(y \mid x)}\right)
+\]
+\item Mit W'keit $\alpha$: setze $X_{n+1} = y$. Sonst: $X_{n+1} = x$.
+\end{enumerate}
+\end{block}
+ \end{frame}
+
+
+%% =============================================
+%% METROPOLIS-HASTINGS: WARUM FUNKTIONIERT ES?
+%% =============================================
+
+\begin{frame}
+    \frametitle{MCMC}
+\framesubtitle{Metropolis-Hastings -- Korrektheit}
+    \begin{block}{Satz: $\pi$ erfüllt Detailed Balance}
+Die Übergangsmatrix $P$ des Metropolis-Hastings-Algorithmus erfüllt:
+\[
+\pi(x)\, P(x,y) = \pi(y)\, P(y,x) \quad \text{für alle } x \neq y
+\]
+\end{block}
+\begin{block}{Beweis}
+Für $x \neq y$: $P(x,y) = q(y\mid x) \cdot \alpha(x,y)$. O.B.d.A.\ $\pi(x)q(y|x) \geq \pi(y)q(x|y)$:
+\begin{align*}
+\pi(x) P(x,y) &= \pi(x)\, q(y|x) \cdot \frac{\pi(y)\,q(x|y)}{\pi(x)\,q(y|x)} = \pi(y)\,q(x|y) \\
+\pi(y) P(y,x) &= \pi(y)\, q(x|y) \cdot \min\!\left(1, \frac{\pi(x)q(y|x)}{\pi(y)q(x|y)}\right) = \pi(y)\,q(x|y)
+\end{align*}
+$\Rightarrow$ Detailed Balance $\Rightarrow$ $\pi$ ist invariant! \hfill $\square$
+\end{block}
+ \end{frame}
+
+
+%% =============================================
+%% SPEZIALFALL: METROPOLIS
+%% =============================================
+
+\begin{frame}
+    \frametitle{MCMC}
+\framesubtitle{Spezialfall: Metropolis-Algorithmus}
+    \begin{block}{Symmetrischer Vorschlag: $q(y \mid x) = q(x \mid y)$}
+Dann vereinfacht sich die Akzeptanzwahrscheinlichkeit zu:
+\[
+\alpha(x, y) = \min\!\left(1, \;\frac{\pi(y)}{\pi(x)}\right)
+\]
+\end{block}
+\begin{block}{Interpretation}
+\begin{itemize}
+\item $\pi(y) \geq \pi(x)$: Vorschlag wird \textbf{immer} akzeptiert (bergauf).
+\item $\pi(y) < \pi(x)$: Vorschlag wird mit W'keit $\pi(y)/\pi(x)$ akzeptiert (bergab).
+\end{itemize}
+$\Rightarrow$ Die Kette besucht häufiger Zustände mit hohem $\pi$-Wert!
+\end{block}
+\begin{block}{Typischer Vorschlag}
+$q(y \mid x) = \mathcal{N}(x, \sigma^2)$ \quad (Random Walk Metropolis)
+\end{block}
+ \end{frame}
+
+
+%% =============================================
+%% MCMC INTEGRATION
+%% =============================================
+
+\begin{frame}
+    \frametitle{MCMC}
+\framesubtitle{Monte-Carlo-Integration}
+    \begin{block}{Problem}
+Berechne $\E_\pi[g] = \sum_{x \in S} g(x)\, \pi(x)$ \quad (oder $\int g(x)\,\pi(x)\,dx$)\\[0.1cm]
+Oft ist $|S|$ riesig oder $\pi$ nur bis auf Normierung bekannt.
+\end{block}
+\begin{block}{Lösung: Ergodentheorem}
+Ist $(X_n)$ eine irreduzible, aperiodische Markov-Kette mit invarianter Verteilung $\pi$, so gilt:
+\[
+\frac{1}{N} \sum_{n=1}^{N} g(X_n) \;\xrightarrow{N \to \infty}\; \E_\pi[g] \quad \text{(fast sicher)}
+\]
+\end{block}
+\begin{block}{Praxis}
+Simuliere Kette, berechne Durchschnitt $\Rightarrow$ approximiert Erwartungswert!
+\end{block}
+ \end{frame}
+
+
+%% =============================================
+%% MCMC: BEISPIEL
+%% =============================================
+
+\begin{frame}
+    \frametitle{MCMC}
+\framesubtitle{Beispiel: Normalverteilung sampeln}
+    \begin{block}{Ziel}
+Sample aus $\pi(x) \propto e^{-x^2/2}$ (Standardnormalverteilung).
+\end{block}
+\begin{block}{Random Walk Metropolis}
+\begin{enumerate}
+\item Start: $X_0 = 0$.
+\item Vorschlag: $y = X_n + \varepsilon$, \quad $\varepsilon \sim \text{Uniform}(-\delta, \delta)$.
+\item Akzeptanz: $\alpha = \min\!\left(1, \frac{e^{-y^2/2}}{e^{-X_n^2/2}}\right) = \min\!\left(1, e^{(X_n^2 - y^2)/2}\right)$.
+\item $U \sim \text{Uniform}(0,1)$: Falls $U < \alpha$, setze $X_{n+1} = y$, sonst $X_{n+1} = X_n$.
+\end{enumerate}
+\end{block}
+Nach Burn-in: Histogramm von $(X_n)$ $\approx$ Glockenkurve!
+ \end{frame}
+
+
+%% =============================================
+%% MCMC: ANWENDUNGEN
+%% =============================================
+
+\begin{frame}
+    \frametitle{MCMC}
+\framesubtitle{Anwendungen}
+    \begin{block}{Wo wird MCMC eingesetzt?}
+\begin{itemize}
+\item \textbf{Bayessche Statistik:} Sampling aus Posterior-Verteilungen.
+\item \textbf{Statistische Physik:} Simulation von Ising-Modellen, Boltzmann-Verteilungen.
+\item \textbf{Machine Learning:} Training von Boltzmann-Maschinen, Variational Inference.
+\item \textbf{Kombinatorische Optimierung:} Simulated Annealing.
+\item \textbf{Numerische Integration:} Hochdimensionale Integrale.
+\end{itemize}
+\end{block}
+\begin{block}{Zusammenhang zu Markov-Ketten}
+MCMC \textbf{konstruiert} eine Markov-Kette mit gewünschtem $\pi$.\\
+Hauptsatz garantiert Konvergenz. Detailed Balance liefert Korrektheit.
 \end{block}
  \end{frame}
 
