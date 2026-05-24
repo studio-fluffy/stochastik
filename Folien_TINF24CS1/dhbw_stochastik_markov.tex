@@ -53,12 +53,11 @@ Markov-Ketten
     \begin{block}{Idee}
 Viele Prozesse in der Informatik und im Alltag können als Folge von Zuständen modelliert werden, bei denen der nächste Zustand nur vom aktuellen Zustand abhängt -- nicht von der gesamten Vergangenheit.
 \end{block}
-\pause
 \begin{block}{Beispiele}
 \begin{itemize}
-\item Websurfen: Die nächste Seite hängt nur von der aktuellen Seite ab (PageRank).
-\item Wetter: Morgen Regen/Sonne hängt (vereinfacht) nur vom heutigen Wetter ab.
-\item Warteschlangen: Anzahl der Kunden hängt nur vom aktuellen Zustand ab.
+\item Websurfen: Die nächste Seite hängt nur von der aktuellen ab (PageRank).
+\item Wetter: Morgen Regen/Sonne hängt nur vom heutigen Wetter ab.
+\item Warteschlangen: Anzahl Kunden hängt nur vom aktuellen Zustand ab.
 \end{itemize}
 \end{block}
  \end{frame}
@@ -75,39 +74,11 @@ Viele Prozesse in der Informatik und im Alltag können als Folge von Zuständen 
 Eine Matrix $P = (p_{ij})_{i,j \in S}$ mit Zustandsraum $S$ heißt \textbf{stochastische Matrix}, falls:
 \begin{enumerate}
 \item $p_{ij} \geq 0$ für alle $i, j \in S$
-\item $\sum_{j \in S} p_{ij} = 1$ für alle $i \in S$ \quad (Zeilensumme = 1)
+\item $\sum_{j \in S} p_{ij} = 1$ für alle $i \in S$ \quad (Zeilensumme $= 1$)
 \end{enumerate}
 \end{block}
-\pause
 \begin{block}{Interpretation}
 $p_{ij}$ ist die Wahrscheinlichkeit, vom Zustand $i$ in den Zustand $j$ zu wechseln.
-\end{block}
- \end{frame}
-
-
-%% =============================================
-%% LEAN: STOCHASTISCHE MATRIX
-%% =============================================
-
-\begin{frame}[fragile]
-    \frametitle{Markov-Ketten}
-\framesubtitle{Lean -- Stochastische Matrix}
-    \begin{block}{Formalisierung in Lean 4 / Mathlib}
-\begin{verbatim}
-abbrev S (N : Nat) := Fin N
-
-def IsTransitionMatrix (P : S N -> S N -> Real) : Prop :=
-  (forall x y, 0 <= P x y) /\
-  (forall x, (Sum y, P x y) = 1)
-\end{verbatim}
-\end{block}
-\pause
-\begin{block}{Korrespondenz}
-\begin{tabular}{lcl}
-$S = \{1, \ldots, N\}$ & $\longleftrightarrow$ & \texttt{Fin N} \\
-$p_{ij} \geq 0$ & $\longleftrightarrow$ & \texttt{$\forall$ x y, 0 $\leq$ P x y} \\
-$\sum_j p_{ij} = 1$ & $\longleftrightarrow$ & \texttt{$\forall$ x, ($\sum$ y, P x y) = 1}
-\end{tabular}
 \end{block}
  \end{frame}
 
@@ -144,38 +115,6 @@ Zeile 1: Wenn heute Sonne, dann morgen Sonne mit $0.8$, Regen mit $0.2$.
 
 
 %% =============================================
-%% LEAN: WETTER-BEISPIEL
-%% =============================================
-
-\begin{frame}[fragile]
-    \frametitle{Markov-Ketten}
-\framesubtitle{Lean -- Wetter-Beispiel}
-    \begin{block}{Konkrete Definition in Lean}
-\begin{verbatim}
-def weatherP : S 2 -> S 2 -> Real
-  | <0, _>, <0, _> => 0.8
-  | <0, _>, <1, _> => 0.2
-  | <1, _>, <0, _> => 0.4
-  | <1, _>, <1, _> => 0.6
-\end{verbatim}
-\end{block}
-\pause
-\begin{block}{Beweis: weatherP ist stochastische Matrix}
-\begin{verbatim}
-lemma weatherP_isTransition :
-    IsTransitionMatrix weatherP := by
-  constructor
-  . intro x y
-    fin_cases x <;> fin_cases y <;>
-      simp [weatherP] <;> norm_num
-  . intro x
-    fin_cases x <;> simp [weatherP] <;> norm_num
-\end{verbatim}
-\end{block}
- \end{frame}
-
-
-%% =============================================
 %% DEFINITION MARKOV-KETTE
 %% =============================================
 
@@ -183,45 +122,14 @@ lemma weatherP_isTransition :
     \frametitle{Markov-Ketten}
 \framesubtitle{Definition}
     \begin{block}{Definition (Markov-Kette)}
-Eine Folge von Zufallsvariablen $(X_n)_{n \in \N_0}$ mit Werten in einem abzählbaren Zustandsraum $S$ heißt \textbf{Markov-Kette} mit Übergangsmatrix $P$, falls:
+Eine Folge $(X_n)_{n \in \N_0}$ von Zufallsvariablen mit Werten in $S$ heißt \textbf{Markov-Kette} mit Übergangsmatrix $P$, falls:
 \[
-\PP(X_{n+1} = j \mid X_n = i, X_{n-1} = i_{n-1}, \ldots, X_0 = i_0) = \PP(X_{n+1} = j \mid X_n = i) = p_{ij}
+\PP(X_{n+1} = j \mid X_n = i, X_{n-1}, \ldots, X_0) = p_{ij}
 \]
-für alle $n \in \N_0$ und alle $i, j, i_0, \ldots, i_{n-1} \in S$.
+für alle $n \in \N_0$ und alle $i, j \in S$.
 \end{block}
-\pause
 \begin{block}{Markov-Eigenschaft (Gedächtnislosigkeit)}
 Die Zukunft hängt nur von der Gegenwart ab, nicht von der Vergangenheit!
-\end{block}
- \end{frame}
-
-
-%% =============================================
-%% LEAN: MARKOV-EIGENSCHAFT
-%% =============================================
-
-\begin{frame}[fragile]
-    \frametitle{Markov-Ketten}
-\framesubtitle{Lean -- Markov-Eigenschaft}
-    \begin{block}{Formalisierung über bedingte Erwartung}
-\begin{verbatim}
-noncomputable def stepOp (P : S N -> S N -> Real)
-    (f : S N -> Real) : S N -> Real :=
-  fun x => Sum y, P x y * f y
-
-def IsHomogeneousMarkov (mu : Measure Omega)
-    (F : Filtration Nat _) (X : Nat -> Omega -> S N)
-    (P : S N -> S N -> Real) : Prop :=
-  Adapted F X /\
-  forall n (f : S N -> Real), Measurable f ->
-    mu[fun w => f (X (n+1) w)|F n] =a.e.[mu]
-      fun w => stepOp P f (X n w)
-\end{verbatim}
-\end{block}
-\pause
-\begin{block}{Bedeutung}
-$\E[f(X_{n+1}) | \mathcal{F}_n] = (Pf)(X_n)$ \quad fast sicher.\\
-Dies ist die maßtheoretische Version der Markov-Eigenschaft.
 \end{block}
  \end{frame}
 
@@ -268,13 +176,12 @@ P = \begin{pmatrix} 0.5 & 0.4 & 0.1 \\ 0.3 & 0.4 & 0.3 \\ 0.2 & 0.3 & 0.5 \end{p
     \frametitle{Markov-Ketten}
 \framesubtitle{$n$-Schritt Übergangswahrscheinlichkeiten}
     \begin{block}{Satz (Chapman-Kolmogorov)}
-Die Wahrscheinlichkeit, in $n$ Schritten von $i$ nach $j$ zu gelangen, ist:
+Die Wahrscheinlichkeit, in $n$ Schritten von $i$ nach $j$ zu gelangen:
 \[
 p_{ij}^{(n)} = \PP(X_n = j \mid X_0 = i) = (P^n)_{ij}
 \]
 Also: Einfach die Matrix $n$-mal mit sich selbst multiplizieren!
 \end{block}
-\pause
 \begin{block}{Beispiel (Wetter)}
 Wie ist das Wetter übermorgen, wenn heute Sonne?
 \[
@@ -286,30 +193,21 @@ $\Rightarrow$ Wahrscheinlichkeit für Sonne übermorgen: $0.72$.
 
 
 %% =============================================
-%% LEAN: MATRIXPOTENZ
+%% BEWEIS CHAPMAN-KOLMOGOROV
 %% =============================================
 
-\begin{frame}[fragile]
+\begin{frame}
     \frametitle{Markov-Ketten}
-\framesubtitle{Lean -- Matrixpotenz}
-    \begin{block}{Rekursive Definition}
-\begin{verbatim}
-noncomputable def matMul (P Q : S N -> S N -> Real) :=
-  fun x z => Sum y, P x y * Q y z
-
-noncomputable def matPow (P : S N -> S N -> Real) :
-    Nat -> S N -> S N -> Real
-  | 0     => fun x z => if x = z then 1 else 0
-  | n + 1 => matMul (matPow P n) P
-\end{verbatim}
-\end{block}
-\pause
-\begin{block}{Korrespondenz}
-\begin{tabular}{lcl}
-$P^0 = I$ (Einheitsmatrix) & $\longleftrightarrow$ & \texttt{if x = z then 1 else 0} \\
-$P^{n+1} = P^n \cdot P$ & $\longleftrightarrow$ & \texttt{matMul (matPow P n) P} \\
-$(P^n)_{xz} = \sum_y P^n_{xy} P_{yz}$ & $\longleftrightarrow$ & \texttt{$\sum$ y, P x y * Q y z}
-\end{tabular}
+\framesubtitle{Beweis: Chapman-Kolmogorov}
+    \begin{block}{Beweis ($P^{m+n} = P^m \cdot P^n$)}
+\small
+\begin{align*}
+p_{ij}^{(m+n)} &= \PP(X_{m+n} = j \mid X_0 = i) & &\text{(Definition)}\\
+&= \sum_{k \in S} \PP(X_{m+n} = j, X_m = k \mid X_0 = i) & &\text{(Tot.\ W'keit)}\\
+&= \sum_{k \in S} \PP(X_{m+n}\! =\! j \mid X_m\! =\! k, X_0\! =\! i) \cdot p_{ik}^{(m)} & &\text{(Def.\ bed.\ W'keit)}\\
+&= \sum_{k \in S} \PP(X_{m+n} = j \mid X_m = k) \cdot p_{ik}^{(m)} & &\text{(Markov-Eig.)}\\
+&= \sum_{k \in S} p_{ik}^{(m)} \cdot p_{kj}^{(n)} & &\text{(Homogenität)} \quad \square
+\end{align*}
 \end{block}
  \end{frame}
 
@@ -328,13 +226,11 @@ Die Verteilung von $X_0$ wird als \textbf{Anfangsverteilung} $\mu_0$ bezeichnet:
 \]
 Als Zeilenvektor: $\mu_0 = (\mu_0(1), \mu_0(2), \ldots)$
 \end{block}
-\pause
 \begin{block}{Verteilung nach $n$ Schritten}
 \[
 \mu_n = \mu_0 \cdot P^n
 \]
 \end{block}
-\pause
 \begin{block}{Beispiel (Wetter)}
 Start: $\mu_0 = (1, 0)$ (heute sicher Sonne). Nach 2 Tagen:
 \[
@@ -350,48 +246,20 @@ Start: $\mu_0 = (1, 0)$ (heute sicher Sonne). Nach 2 Tagen:
 
 \begin{frame}
     \frametitle{Markov-Ketten}
-\framesubtitle{Invariante (stationäre) Verteilung -- Definition}
+\framesubtitle{Invariante (stationäre) Verteilung}
     \begin{block}{Definition (Invariante Verteilung)}
-Ein Wahrscheinlichkeitsvektor $\pi = (\pi_1, \pi_2, \ldots)$ heißt \textbf{invariante} (oder \textbf{stationäre}) \textbf{Verteilung} der Markov-Kette mit Übergangsmatrix $P$, falls:
+Ein Wahrscheinlichkeitsvektor $\pi = (\pi_1, \pi_2, \ldots)$ heißt \textbf{invariante} (oder \textbf{stationäre}) \textbf{Verteilung}, falls:
 \[
 \pi \cdot P = \pi
 \]
 d.h. $\pi$ ist ein Linkseigenvektor von $P$ zum Eigenwert $1$.
 \end{block}
-\pause
 \begin{block}{Interpretation}
-Startet die Kette mit Verteilung $\pi$, so bleibt die Verteilung für alle Zeiten $\pi$:
+Startet die Kette mit Verteilung $\pi$, bleibt sie für alle Zeiten bei $\pi$:
 \[
 \mu_0 = \pi \;\Rightarrow\; \mu_n = \pi \cdot P^n = \pi \quad \text{für alle } n.
 \]
-Das System befindet sich im ``Gleichgewicht''.
-\end{block}
- \end{frame}
-
-
-%% =============================================
-%% LEAN: INVARIANTE VERTEILUNG
-%% =============================================
-
-\begin{frame}[fragile]
-    \frametitle{Markov-Ketten}
-\framesubtitle{Lean -- Invariante Verteilung}
-    \begin{block}{Definitionen in Lean}
-\begin{verbatim}
-def IsDistribution (pi : S N -> Real) : Prop :=
-  (forall i, 0 <= pi i) /\ (Sum i, pi i) = 1
-
-def IsInvariant (P : S N -> S N -> Real)
-    (pi : S N -> Real) : Prop :=
-  forall j, (Sum i, pi i * P i j) = pi j
-\end{verbatim}
-\end{block}
-\pause
-\begin{block}{Korrespondenz}
-\[
-(\pi P)_j = \sum_i \pi_i \cdot P_{ij} = \pi_j \quad \longleftrightarrow \quad \texttt{$\forall$ j, ($\sum$ i, $\pi$ i * P i j) = $\pi$ j}
-\]
-Man beachte: Die Summe $\sum_i \pi_i P_{ij}$ über die Spalte $j$ entspricht der Linksmultiplikation $\pi P$.
+Das System befindet sich im Gleichgewicht.
 \end{block}
  \end{frame}
 
@@ -406,52 +274,18 @@ Man beachte: Die Summe $\sum_i \pi_i P_{ij}$ über die Spalte $j$ entspricht der
     \begin{block}{Wetter-Beispiel}
 Gesucht: $\pi = (\pi_S, \pi_R)$ mit $\pi P = \pi$ und $\pi_S + \pi_R = 1$.
 \end{block}
-\pause
 \begin{align*}
 \pi P = \pi &\Leftrightarrow \begin{cases} 0.8 \pi_S + 0.4 \pi_R = \pi_S \\ 0.2 \pi_S + 0.6 \pi_R = \pi_R \end{cases} \\
-&\Leftrightarrow \begin{cases} -0.2 \pi_S + 0.4 \pi_R = 0 \\ 0.2 \pi_S - 0.4 \pi_R = 0 \end{cases} \\
+&\Leftrightarrow -0.2 \pi_S + 0.4 \pi_R = 0 \\
 &\Leftrightarrow \pi_S = 2 \pi_R
 \end{align*}
-\pause
-Mit $\pi_S + \pi_R = 1$: \quad $2\pi_R + \pi_R = 1$ \quad $\Rightarrow$ \quad $\pi_R = \frac{1}{3}$, \quad $\pi_S = \frac{2}{3}$.
+Mit $\pi_S + \pi_R = 1$: \quad $2\pi_R + \pi_R = 1$ \quad $\Rightarrow$ \quad $\pi_R = \frac{1}{3}$, \; $\pi_S = \frac{2}{3}$.
 
 \[
 \boxed{\pi = \left(\frac{2}{3}, \frac{1}{3}\right)}
 \]
 
-\textbf{Interpretation:} Langfristig ist es $2/3$ der Zeit sonnig und $1/3$ der Zeit regnerisch.
- \end{frame}
-
-
-%% =============================================
-%% LEAN: INVARIANZ VERIFIZIEREN
-%% =============================================
-
-\begin{frame}[fragile]
-    \frametitle{Markov-Ketten}
-\framesubtitle{Lean -- Invarianz verifizieren}
-    \begin{block}{Definition und Beweis in Lean}
-\begin{verbatim}
-def weatherPi : S 2 -> Real
-  | <0, _> => 2/3
-  | <1, _> => 1/3
-
-lemma weatherPi_isInvariant :
-    IsInvariant weatherP weatherPi := by
-  intro j
-  fin_cases j <;>
-    simp [weatherP, weatherPi, Fin.sum_univ_two]
-    <;> ring
-\end{verbatim}
-\end{block}
-\pause
-\begin{block}{Was passiert hier?}
-\begin{itemize}
-\item \texttt{fin\_cases j}: Fallunterscheidung über $j \in \{0, 1\}$.
-\item \texttt{simp}: Vereinfacht die Summe $\sum_{i} \pi_i P_{ij}$.
-\item \texttt{ring}: Verifiziert die arithmetische Gleichung.
-\end{itemize}
-\end{block}
+\textbf{Interpretation:} Langfristig ist es $2/3$ der Zeit sonnig und $1/3$ regnerisch.
  \end{frame}
 
 
@@ -463,12 +297,11 @@ lemma weatherPi_isInvariant :
     \frametitle{Markov-Ketten}
 \framesubtitle{Irreduzibilität}
     \begin{block}{Definition (Irreduzibel)}
-Eine Markov-Kette heißt \textbf{irreduzibel}, falls man von jedem Zustand $i$ jeden anderen Zustand $j$ mit positiver Wahrscheinlichkeit in endlich vielen Schritten erreichen kann:
+Eine Markov-Kette heißt \textbf{irreduzibel}, falls man von jedem Zustand $i$ jeden anderen Zustand $j$ erreichen kann:
 \[
 \forall\, i,j \in S \;\exists\, n \geq 1: \quad p_{ij}^{(n)} > 0
 \]
 \end{block}
-\pause
 \begin{columns}
 \begin{column}{0.5\textwidth}
 \begin{center}
@@ -498,35 +331,6 @@ Eine Markov-Kette heißt \textbf{irreduzibel}, falls man von jedem Zustand $i$ j
 
 
 %% =============================================
-%% LEAN: IRREDUZIBILITÄT
-%% =============================================
-
-\begin{frame}[fragile]
-    \frametitle{Markov-Ketten}
-\framesubtitle{Lean -- Irreduzibilität}
-    \begin{block}{Definition in Lean}
-\begin{verbatim}
-def IsIrreducible (P : S N -> S N -> Real) : Prop :=
-  forall i j, exists n, 0 < n /\ 0 < matPow P n i j
-\end{verbatim}
-\end{block}
-\pause
-\begin{block}{Beweis: Wetter-Kette ist irreduzibel}
-\begin{verbatim}
-lemma weatherP_irreducible :
-    IsIrreducible weatherP := by
-  intro i j
-  exact <1, Nat.one_pos, by
-    fin_cases i <;> fin_cases j <;>
-      simp [matPow, matMul, weatherP,
-            Fin.sum_univ_two] <;> norm_num>
-\end{verbatim}
-\end{block}
-Alle Einträge von $P^1$ sind positiv $\Rightarrow$ jeder Zustand ist in einem Schritt erreichbar.
- \end{frame}
-
-
-%% =============================================
 %% APERIODIZITÄT
 %% =============================================
 
@@ -540,7 +344,6 @@ d(i) = \gcd\{n \geq 1 : p_{ii}^{(n)} > 0\}
 \]
 Die Kette heißt \textbf{aperiodisch}, falls $d(i) = 1$ für alle $i \in S$.
 \end{block}
-\pause
 \begin{columns}
 \begin{column}{0.5\textwidth}
 \begin{center}
@@ -587,41 +390,11 @@ Die Kette springt \emph{immer} zwischen den Zuständen hin und her:
 \[
 1 \to 2 \to 1 \to 2 \to \ldots
 \]
-\pause
 \begin{itemize}
 \item Rückkehr zu Zustand 1 nur nach $2, 4, 6, \ldots$ Schritten.
 \item $d(1) = \gcd\{2, 4, 6, \ldots\} = 2$. \quad $\Rightarrow$ Periodisch!
-\item Die invariante Verteilung ist $\pi = (1/2, 1/2)$, aber $P^n$ konvergiert \textbf{nicht}!
+\item Invariante Verteilung: $\pi = (1/2, 1/2)$, aber $P^n$ konvergiert \textbf{nicht}!
 \end{itemize}
- \end{frame}
-
-
-%% =============================================
-%% LEAN: PERIODISCHES BEISPIEL
-%% =============================================
-
-\begin{frame}[fragile]
-    \frametitle{Markov-Ketten}
-\framesubtitle{Lean -- Periodisches Beispiel}
-    \begin{block}{Periodische Kette in Lean}
-\begin{verbatim}
-def periodicP : S 2 -> S 2 -> Real
-  | <0, _>, <0, _> => 0  | <0, _>, <1, _> => 1
-  | <1, _>, <0, _> => 1  | <1, _>, <1, _> => 0
-
-def periodicPi : S 2 -> Real
-  | <0, _> => 1/2
-  | <1, _> => 1/2
-
-lemma periodicPi_isInvariant :
-    IsInvariant periodicP periodicPi := by
-  intro j
-  fin_cases j <;>
-    simp [periodicP, periodicPi,
-          Fin.sum_univ_two] <;> ring
-\end{verbatim}
-\end{block}
-$\pi = (1/2, 1/2)$ ist invariant, aber $P^n$ oszilliert!
  \end{frame}
 
 
@@ -633,44 +406,16 @@ $\pi = (1/2, 1/2)$ ist invariant, aber $P^n$ oszilliert!
     \frametitle{Markov-Ketten}
 \framesubtitle{Hauptsatz über invariante Verteilungen}
     \begin{block}{Satz (Existenz und Eindeutigkeit)}
-Sei $(X_n)$ eine \textbf{irreduzible} Markov-Kette mit endlichem Zustandsraum $S$. Dann gilt:
+Sei $(X_n)$ eine \textbf{irreduzible} Markov-Kette mit endlichem Zustandsraum $S$. Dann:
 \begin{enumerate}
 \item Es existiert \textbf{genau eine} invariante Verteilung $\pi$.
 \item $\pi_i > 0$ für alle $i \in S$.
-\item Ist die Kette zusätzlich \textbf{aperiodisch}, so gilt für jede Anfangsverteilung $\mu_0$:
+\item Ist die Kette zusätzlich \textbf{aperiodisch}, so gilt:
 \[
 \lim_{n \to \infty} \mu_0 P^n = \pi
 \]
-d.h. die Verteilung konvergiert gegen $\pi$, unabhängig vom Startzustand.
+d.h. Konvergenz gegen $\pi$, unabhängig vom Startzustand.
 \end{enumerate}
-\end{block}
- \end{frame}
-
-
-%% =============================================
-%% LEAN: HAUPTSATZ STATEMENT
-%% =============================================
-
-\begin{frame}[fragile]
-    \frametitle{Markov-Ketten}
-\framesubtitle{Lean -- Hauptsatz (Statement)}
-    \begin{block}{Formales Statement in Lean}
-\begin{verbatim}
-theorem stationary_unique
-    (P : S N -> S N -> Real)
-    (hP : IsTransitionMatrix P)
-    (hirr : IsIrreducible P)
-    (pi1 pi2 : S N -> Real)
-    (hpi1_dist : IsDistribution pi1)
-    (hpi2_dist : IsDistribution pi2)
-    (hpi1_inv : IsInvariant P pi1)
-    (hpi2_inv : IsInvariant P pi2) :
-    pi1 = pi2
-\end{verbatim}
-\end{block}
-\pause
-\begin{block}{Beweis-Strategie}
-Definiere $f = \pi_1 - \pi_2$. Dann ist $f$ harmonisch ($Pf = f$) und $\sum f_i = 0$. Das Maximumsprinzip + Irreduzibilität erzwingt $f = 0$.
 \end{block}
  \end{frame}
 
@@ -682,23 +427,18 @@ Definiere $f = \pi_1 - \pi_2$. Dann ist $f$ harmonisch ($Pf = f$) und $\sum f_i 
 \begin{frame}
     \frametitle{Markov-Ketten}
 \framesubtitle{Beweis -- Teil 1: Existenz}
-    \begin{block}{Existenz einer invarianten Verteilung}
-Betrachte die Cesàro-Mittel der Übergangsmatrizen:
-\[
-\overline{P}_n := \frac{1}{n} \sum_{k=0}^{n-1} P^k
-\]
+    \begin{block}{Cesàro-Mittel}
+$\overline{P}_n := \frac{1}{n} \sum_{k=0}^{n-1} P^k$ \quad (Konvexkombination stochastischer Matrizen $\Rightarrow$ stochastisch)
 \end{block}
-\pause
 \begin{itemize}
-\item Da $S$ endlich ist, liegt jede Zeile von $\overline{P}_n$ in einem kompakten Raum (Simplex der Wahrscheinlichkeitsvektoren).
-\pause
-\item Nach dem Satz von Bolzano-Weierstraß existiert eine konvergente Teilfolge $\overline{P}_{n_k} \to Q$.
-\pause
-\item Jede Zeile $q_i$ von $Q$ ist ein Wahrscheinlichkeitsvektor mit $q_i \cdot P = q_i$:
+\item Jede Zeile von $\overline{P}_n$ liegt im \textbf{Simplex} $\Delta = \{x \in \R^{|S|} : x_i \geq 0,\; \sum x_i = 1\} \subset [0,1]^{|S|}$.
+\item $|S| < \infty$ $\Rightarrow$ $\Delta$ beschränkt + abgeschlossen $\Rightarrow$ \textbf{kompakt} (Heine-Borel).
+\item \textbf{Bolzano-Weierstraß}: $\exists$ konvergente Teilfolge $\overline{P}_{n_k} \to Q$.
+\item Jede Zeile $q_i$ von $Q$ ist invariant, denn:
 \[
-\overline{P}_n \cdot P = \frac{1}{n} \sum_{k=0}^{n-1} P^{k+1} = \overline{P}_n + \frac{1}{n}(P^n - I) \to Q
+\overline{P}_n \cdot P = \overline{P}_n + \tfrac{1}{n}(P^n - I) \;\xrightarrow{n\to\infty}\; Q
 \]
-Also $Q \cdot P = Q$, d.h. jede Zeile von $Q$ ist invariant.
+Also $Q \cdot P = Q$, d.h. $q_i \cdot P = q_i$. \hfill $\square$
 \end{itemize}
  \end{frame}
 
@@ -713,47 +453,14 @@ Also $Q \cdot P = Q$, d.h. jede Zeile von $Q$ ist invariant.
     \begin{block}{Alle Einträge von $\pi$ sind positiv}
 Sei $\pi$ eine invariante Verteilung und $i \in S$ beliebig.
 \end{block}
-\pause
 \begin{itemize}
-\item Da die Kette irreduzibel ist, gibt es für jedes $j$ mit $\pi_j > 0$ ein $m \geq 1$ mit $p_{ji}^{(m)} > 0$.
-\pause
+\item Da die Kette irreduzibel ist, gibt es $j$ mit $\pi_j > 0$ und $m \geq 1$ mit $p_{ji}^{(m)} > 0$.
 \item Aus $\pi = \pi P^m$ folgt:
 \[
 \pi_i = \sum_{k \in S} \pi_k \cdot p_{ki}^{(m)} \geq \pi_j \cdot p_{ji}^{(m)} > 0
 \]
-\pause
-\item Da mindestens ein $\pi_j > 0$ existieren muss ($\pi$ ist Wahrscheinlichkeitsvektor), folgt $\pi_i > 0$ für alle $i$.
+\item Da mindestens ein $\pi_j > 0$ existiert ($\pi$ ist W-Vektor), folgt $\pi_i > 0$ für alle $i$.
 \end{itemize}
- \end{frame}
-
-
-%% =============================================
-%% LEAN: POSITIVITÄT
-%% =============================================
-
-\begin{frame}[fragile]
-    \frametitle{Markov-Ketten}
-\framesubtitle{Lean -- Positivität}
-    \begin{block}{Schlüssel-Lemma: $\pi = \pi P^n$}
-\begin{verbatim}
-lemma invariant_of_pow (P : S N -> S N -> Real)
-    (pi : S N -> Real) (hInv : IsInvariant P pi) :
-    forall n, forall j, (Sum i, pi i * matPow P n i j) = pi j
-\end{verbatim}
-\end{block}
-\pause
-\begin{block}{Positivität}
-\begin{verbatim}
-theorem stationary_pos (P : S N -> S N -> Real)
-    (hP : IsTransitionMatrix P)
-    (hirr : IsIrreducible P) (pi : S N -> Real)
-    (hpi_dist : IsDistribution pi)
-    (hpi_inv : IsInvariant P pi) :
-    forall i, 0 < pi i
-\end{verbatim}
-Beweis: $\exists\, j$ mit $\pi_j > 0$.  Irreduzibilität liefert $n$ mit $P^n_{ji} > 0$. \\
-Dann $\pi_i = \sum_k \pi_k P^n_{ki} \geq \pi_j P^n_{ji} > 0$.
-\end{block}
  \end{frame}
 
 
@@ -767,18 +474,16 @@ Dann $\pi_i = \sum_k \pi_k P^n_{ki} \geq \pi_j P^n_{ji} > 0$.
     \begin{block}{Die invariante Verteilung ist eindeutig}
 Angenommen, $\pi$ und $\tilde{\pi}$ sind zwei invariante Verteilungen.
 \end{block}
-\pause
 Definiere $f := \pi - \tilde{\pi}$. Dann gilt:
 \begin{itemize}
 \item $f \cdot P = f$ \quad (Differenz zweier Fixpunkte ist Fixpunkt)
 \item $\sum_i f_i = 1 - 1 = 0$
 \end{itemize}
-\pause
 Sei $i^* = \arg\max_i f_i$. Aus $f = fP$ folgt:
 \[
 f_{i^*} = \sum_j p_{i^* j} f_j \leq f_{i^*} \cdot \underbrace{\sum_j p_{i^* j}}_{= 1} = f_{i^*}
 \]
-Gleichheit gilt nur, wenn $f_j = f_{i^*}$ für alle $j$ mit $p_{i^* j} > 0$.
+Gleichheit nur wenn $f_j = f_{i^*}$ für alle $j$ mit $p_{i^* j} > 0$.
  \end{frame}
 
 
@@ -786,48 +491,15 @@ Gleichheit gilt nur, wenn $f_j = f_{i^*}$ für alle $j$ mit $p_{i^* j} > 0$.
     \frametitle{Markov-Ketten}
 \framesubtitle{Beweis -- Teil 3: Eindeutigkeit (Fortsetzung)}
     \begin{block}{Schluss per Irreduzibilität}
-Wir haben gezeigt: $f_j = f_{i^*}$ für alle $j$ mit $p_{i^*j} > 0$.
+Wir haben: $f_j = f_{i^*}$ für alle $j$ mit $p_{i^*j} > 0$.
 \end{block}
-\pause
 \begin{itemize}
-\item Wiederhole das Argument: Wenn $f_j = f_{i^*}$ und $p_{jk} > 0$, dann auch $f_k = f_{i^*}$.
-\pause
-\item Da die Kette \textbf{irreduzibel} ist, kann man von $i^*$ jeden Zustand $k \in S$ in endlich vielen Schritten erreichen.
-\pause
+\item Wenn $f_j = f_{i^*}$ und $p_{jk} > 0$, dann auch $f_k = f_{i^*}$.
+\item Da die Kette \textbf{irreduzibel} ist, erreicht man von $i^*$ jeden Zustand.
 \item Also: $f_k = f_{i^*}$ für \textbf{alle} $k \in S$.
-\pause
-\item Da $\sum_k f_k = 0$ und alle $f_k$ gleich sind: $|S| \cdot f_{i^*} = 0$, also $f_{i^*} = 0$.
-\pause
+\item Da $\sum_k f_k = 0$ und alle $f_k$ gleich: $|S| \cdot f_{i^*} = 0 \Rightarrow f_{i^*} = 0$.
 \item Damit $f = 0$, d.h. $\pi = \tilde{\pi}$. \hfill $\square$
 \end{itemize}
- \end{frame}
-
-
-%% =============================================
-%% LEAN: EINDEUTIGKEIT
-%% =============================================
-
-\begin{frame}[fragile]
-    \frametitle{Markov-Ketten}
-\framesubtitle{Lean -- Maximumsprinzip \& Eindeutigkeit}
-    \begin{block}{Harmonische Funktionen}
-\begin{verbatim}
-def IsHarmonic (P : S N -> S N -> Real) (f : S N -> Real) :=
-  forall x, stepOp P f x = f x
-
-theorem harmonic_const_of_irreducible
-    (P : S N -> S N -> Real) (hP : IsTransitionMatrix P)
-    (hirr : IsIrreducible P)
-    (f : S N -> Real) (hf : IsHarmonic P f) :
-    forall i j, f i = f j
-\end{verbatim}
-\end{block}
-\pause
-\begin{block}{Beweisstruktur}
-$f$ harmonisch $\Rightarrow$ $f(i^*) = \sum_j P_{i^* j} f(j)$, wobei $f(i^*) = \max f$.\\
-Da $f(i^*) \geq f(j)$ und Konvexkombination: $f(j) = f(i^*)$ für $P_{i^*j}>0$.\\
-Irreduzibilität propagiert dies auf alle $j \in S$.
-\end{block}
  \end{frame}
 
 
@@ -838,19 +510,16 @@ Irreduzibilität propagiert dies auf alle $j \in S$.
 \begin{frame}
     \frametitle{Markov-Ketten}
 \framesubtitle{Beweis -- Teil 4: Konvergenz (Skizze)}
-    \begin{block}{Bei Aperiodizität: $P^n \to \Pi$ (alle Zeilen = $\pi$)}
+    \begin{block}{Bei Aperiodizität: $P^n \to \Pi$ (alle Zeilen $= \pi$)}
 \end{block}
-\pause
 \begin{itemize}
-\item Definiere den \textbf{Variationsabstand}: $\|u - v\|_{TV} = \frac{1}{2}\sum_i |u_i - v_i|$.
-\pause
-\item Für jede Zeile $e_i P^n$ (Verteilung nach $n$ Schritten, Start in $i$):
+\item \textbf{Variationsabstand}: $\|u - v\|_{TV} = \frac{1}{2}\sum_i |u_i - v_i|$.
+\item Für die Verteilung $e_i P^n$ (Start in $i$):
 \[
-\|e_i P^n - \pi\|_{TV} = \|e_i P^{n} - \pi P^n\|_{TV} \leq \|e_i - \pi\|_{TV} \cdot \rho^n
+\|e_i P^n - \pi\|_{TV} \leq \|e_i - \pi\|_{TV} \cdot \rho^n
 \]
-wobei $\rho < 1$ (Kontraktionseigenschaft bei Irreduzibilität + Aperiodizität).
-\pause
-\item Da $\rho^n \to 0$: Konvergenz gegen $\pi$ für jede Anfangsverteilung. \hfill $\square$
+wobei $\rho < 1$ (Kontraktion bei Irreduzibilität + Aperiodizität).
+\item Da $\rho^n \to 0$: Konvergenz gegen $\pi$ für jeden Startzustand. \hfill $\square$
 \end{itemize}
  \end{frame}
 
@@ -864,19 +533,18 @@ wobei $\rho < 1$ (Kontraktionseigenschaft bei Irreduzibilität + Aperiodizität)
 \framesubtitle{Konvergenz -- Beispiel}
     \begin{block}{Wetter-Beispiel: Potenzen von $P$}
 \[
-P = \begin{pmatrix} 0.8 & 0.2 \\ 0.4 & 0.6 \end{pmatrix}, \quad
 P^5 \approx \begin{pmatrix} 0.672 & 0.328 \\ 0.656 & 0.344 \end{pmatrix}, \quad
 P^{20} \approx \begin{pmatrix} 0.667 & 0.333 \\ 0.667 & 0.333 \end{pmatrix}
 \]
 \end{block}
-\pause
 \begin{itemize}
 \item Die Zeilen von $P^n$ konvergieren beide gegen $\pi = (2/3, 1/3)$.
 \item Egal ob Start in Sonne oder Regen -- langfristig gleiche Verteilung!
 \end{itemize}
-\pause
-\begin{block}{Numerische Verifikation}
-$\pi P = (2/3, 1/3) \begin{pmatrix} 0.8 & 0.2 \\ 0.4 & 0.6 \end{pmatrix} = (2/3 \cdot 0.8 + 1/3 \cdot 0.4, \; 2/3 \cdot 0.2 + 1/3 \cdot 0.6) = (2/3, 1/3) \;\checkmark$
+\begin{block}{Verifikation}
+\[
+\pi P = \left(\tfrac{2}{3} \cdot 0.8 + \tfrac{1}{3} \cdot 0.4, \; \tfrac{2}{3} \cdot 0.2 + \tfrac{1}{3} \cdot 0.6\right) = \left(\tfrac{2}{3}, \tfrac{1}{3}\right) \;\checkmark
+\]
 \end{block}
  \end{frame}
 
@@ -892,17 +560,15 @@ $\pi P = (2/3, 1/3) \begin{pmatrix} 0.8 & 0.2 \\ 0.4 & 0.6 \end{pmatrix} = (2/3 
 \[
 P = \begin{pmatrix} 0.5 & 0.4 & 0.1 \\ 0.3 & 0.4 & 0.3 \\ 0.2 & 0.3 & 0.5 \end{pmatrix}
 \]
-Gesucht: $\pi = (\pi_G, \pi_N, \pi_S)$ mit $\pi P = \pi$, $\pi_G + \pi_N + \pi_S = 1$.
+Gesucht: $\pi = (\pi_G, \pi_N, \pi_S)$ mit $\pi P = \pi$, \; $\sum \pi_i = 1$.
 \end{block}
-\pause
 Gleichungssystem:
 \begin{align*}
 0.5\pi_G + 0.3\pi_N + 0.2\pi_S &= \pi_G \\
 0.4\pi_G + 0.4\pi_N + 0.3\pi_S &= \pi_N \\
 \pi_G + \pi_N + \pi_S &= 1
 \end{align*}
-\pause
-Lösung: $\pi = \left(\frac{1}{3}, \frac{11}{30}, \frac{3}{10}\right) \approx (0.333, \; 0.367, \; 0.300)$
+Lösung: $\pi = \left(\frac{1}{3},\; \frac{11}{30},\; \frac{3}{10}\right) \approx (0.333,\; 0.367,\; 0.300)$
  \end{frame}
 
 
@@ -914,52 +580,19 @@ Lösung: $\pi = \left(\frac{1}{3}, \frac{11}{30}, \frac{3}{10}\right) \approx (0
     \frametitle{Markov-Ketten}
 \framesubtitle{Detailed Balance -- Reversibilität}
     \begin{block}{Definition (Detailed Balance)}
-Eine Verteilung $\pi$ erfüllt die \textbf{Detailed-Balance-Bedingung} bzgl. $P$, falls:
+$\pi$ erfüllt die \textbf{Detailed-Balance-Bedingung} bzgl. $P$, falls:
 \[
 \pi_i \cdot p_{ij} = \pi_j \cdot p_{ji} \quad \text{für alle } i, j \in S
 \]
 \end{block}
-\pause
 \begin{block}{Satz}
 Erfüllt $\pi$ die Detailed-Balance-Bedingung, so ist $\pi$ invariant.
 \end{block}
-\pause
 \begin{block}{Beweis}
 \[
 (\pi P)_j = \sum_i \pi_i p_{ij} = \sum_i \pi_j p_{ji} = \pi_j \underbrace{\sum_i p_{ji}}_{=1} = \pi_j \quad \checkmark
 \]
 \end{block}
-\textbf{Interpretation:} Im Gleichgewicht ist der ``Fluss'' von $i$ nach $j$ gleich dem Fluss von $j$ nach $i$.
- \end{frame}
-
-
-%% =============================================
-%% LEAN: DETAILED BALANCE
-%% =============================================
-
-\begin{frame}[fragile]
-    \frametitle{Markov-Ketten}
-\framesubtitle{Lean -- Detailed Balance}
-    \begin{block}{Definition und Satz in Lean}
-\begin{verbatim}
-def DetailedBalance (P : S N -> S N -> Real)
-    (pi : S N -> Real) : Prop :=
-  forall i j, pi i * P i j = pi j * P j i
-
-theorem detailedBalance_implies_invariant
-    (hP : IsTransitionMatrix P)
-    (hdb : DetailedBalance P pi) :
-    IsInvariant P pi := by
-  intro j
-  calc Sum i, pi i * P i j
-      = Sum i, pi j * P j i := by
-        congr 1; ext i; exact hdb i j
-    _ = pi j * Sum i, P j i := by
-        rw [Finset.mul_sum]
-    _ = pi j := by rw [hP.2 j, mul_one]
-\end{verbatim}
-\end{block}
-Dieser Beweis ist in Lean \textbf{vollständig} -- kein \texttt{sorry}!
  \end{frame}
 
 
@@ -973,20 +606,19 @@ Dieser Beweis ist in Lean \textbf{vollständig} -- kein \texttt{sorry}!
     \begin{block}{Wetter-Beispiel: Prüfe Detailed Balance}
 $\pi = (2/3, 1/3)$, \quad $P = \begin{pmatrix} 0.8 & 0.2 \\ 0.4 & 0.6\end{pmatrix}$
 \end{block}
-\pause
 Prüfe $\pi_S \cdot p_{SR} = \pi_R \cdot p_{RS}$:
 \[
 \frac{2}{3} \cdot 0.2 = \frac{2}{15} \qquad \text{und} \qquad \frac{1}{3} \cdot 0.4 = \frac{2}{15} \quad \checkmark
 \]
-\pause
 $\Rightarrow$ Das Wetter-Modell ist \textbf{reversibel}.
 
-\vspace{0.3cm}
-\textbf{Nicht jede Kette ist reversibel!} Beispiel: Kreislauf $1 \to 2 \to 3 \to 1$ mit
+\vspace{0.2cm}
+\textbf{Nicht jede Kette ist reversibel!} Kreislauf $1 \to 2 \to 3 \to 1$:
 \[
-P = \begin{pmatrix} 0 & 1 & 0 \\ 0 & 0 & 1 \\ 1 & 0 & 0 \end{pmatrix}
+P = \begin{pmatrix} 0 & 1 & 0 \\ 0 & 0 & 1 \\ 1 & 0 & 0 \end{pmatrix}, \quad
+\pi = (1/3, 1/3, 1/3)
 \]
-hat $\pi = (1/3, 1/3, 1/3)$, aber $\pi_1 p_{12} = 1/3 \neq 0 = \pi_2 p_{21}$.
+Aber: $\pi_1 p_{12} = 1/3 \neq 0 = \pi_2 p_{21}$ -- Detailed Balance verletzt!
  \end{frame}
 
 
@@ -1006,12 +638,133 @@ hat $\pi = (1/3, 1/3, 1/3)$, aber $\pi_1 p_{12} = 1/3 \neq 0 = \pi_2 p_{21}$.
 \item \textbf{Aperiodisch:} Keine periodischen Zyklen.
 \end{itemize}
 \end{block}
-\pause
 \begin{block}{Hauptsatz}
-\textbf{Irreduzibel + endlich} $\Rightarrow$ es existiert genau eine invariante Verteilung $\pi > 0$.\\
-\textbf{+ Aperiodisch} $\Rightarrow$ Konvergenz: $P^n \to$ Matrix mit Zeilen $\pi$.\\[0.2cm]
-Alle Definitionen und Beweise sind in Lean 4 / Mathlib formalisierbar!\\
-Siehe: \texttt{code/LeanMath/stochastic/markov\_invariant.lean}
+\textbf{Irreduzibel + endlich} $\Rightarrow$ genau eine invariante Verteilung $\pi > 0$.\\
+\textbf{+ Aperiodisch} $\Rightarrow$ Konvergenz: $P^n \to$ Matrix mit Zeilen $\pi$.
+\end{block}
+ \end{frame}
+
+
+%% =============================================
+%% PAGERANK: IDEE
+%% =============================================
+
+\begin{frame}
+    \frametitle{Markov-Ketten}
+\framesubtitle{Anwendung: Google PageRank}
+    \begin{block}{Idee (Brin \& Page, 1998)}
+Das Web ist ein gerichteter Graph. Ein ``Random Surfer'' klickt zufällig auf Links der aktuellen Seite $\Rightarrow$ Markov-Kette!
+\end{block}
+\begin{block}{Naives Modell}
+Zustandsraum $S = \{\text{Webseiten}\}$, Übergangsmatrix:
+\[
+p_{ij} = \begin{cases} \frac{1}{\text{out}(i)} & \text{falls } i \to j \text{ (Link vorhanden)} \\ 0 & \text{sonst} \end{cases}
+\]
+wobei $\text{out}(i)$ die Anzahl ausgehender Links von Seite $i$ ist.
+\end{block}
+\textbf{Problem:} Nicht irreduzibel (Sackgassen) und evtl.\ periodisch!
+ \end{frame}
+
+
+%% =============================================
+%% PAGERANK: GOOGLE-MATRIX
+%% =============================================
+
+\begin{frame}
+    \frametitle{Markov-Ketten}
+\framesubtitle{Google PageRank -- Die Google-Matrix}
+    \begin{block}{Lösung: Dämpfungsfaktor $\alpha \in (0,1)$}
+\[
+G = \alpha \cdot P + (1 - \alpha) \cdot \frac{1}{|S|} \mathbf{1}\mathbf{1}^T
+\]
+Mit Wahrscheinlichkeit $\alpha$: folge einem Link.\\
+Mit Wahrscheinlichkeit $1-\alpha$: springe zu einer zufälligen Seite.
+\end{block}
+\begin{block}{Eigenschaften von $G$ (typisch: $\alpha = 0.85$)}
+\begin{itemize}
+\item Alle Einträge $> 0$ $\Rightarrow$ \textbf{irreduzibel} und \textbf{aperiodisch}.
+\item Hauptsatz anwendbar: $\exists!$ invariante Verteilung $\pi$.
+\item $\pi_i$ = \textbf{PageRank} der Seite $i$ (Wichtigkeit).
+\end{itemize}
+\end{block}
+ \end{frame}
+
+
+%% =============================================
+%% PAGERANK: BEISPIEL
+%% =============================================
+
+\begin{frame}
+    \frametitle{Markov-Ketten}
+\framesubtitle{Google PageRank -- Beispiel}
+    \begin{block}{Mini-Web mit 4 Seiten}
+\end{block}
+\vspace{-0.3cm}
+\begin{center}
+\begin{tikzpicture}[->, >=stealth, auto, semithick, node distance=2.8cm]
+    \node[state] (A) {$A$};
+    \node[state] (B) [right of=A] {$B$};
+    \node[state] (C) [below of=B] {$C$};
+    \node[state] (D) [below of=A] {$D$};
+    \path (A) edge node{} (B)
+          (A) edge node{} (C)
+          (B) edge node{} (C)
+          (C) edge node{} (A)
+          (D) edge node{} (C);
+\end{tikzpicture}
+\end{center}
+\vspace{-0.3cm}
+Naive Matrix ($D$ ist Sackgasse für Random Surfer ohne Dämpfung):
+\[
+P = \begin{pmatrix} 0 & 1/2 & 1/2 & 0 \\ 0 & 0 & 1 & 0 \\ 1 & 0 & 0 & 0 \\ 0 & 0 & 1 & 0 \end{pmatrix}
+\]
+ \end{frame}
+
+
+%% =============================================
+%% PAGERANK: BERECHNUNG
+%% =============================================
+
+\begin{frame}
+    \frametitle{Markov-Ketten}
+\framesubtitle{Google PageRank -- Berechnung}
+    \begin{block}{Google-Matrix mit $\alpha = 0.85$}
+\[
+G = 0.85 \cdot P + 0.15 \cdot \frac{1}{4}\mathbf{1}\mathbf{1}^T
+\]
+\end{block}
+\begin{block}{Berechnung von $\pi$}
+Iteriere: $\mu_{n+1} = \mu_n \cdot G$ (Power-Iteration), bis Konvergenz.
+\end{block}
+\begin{block}{Ergebnis (gerundet)}
+\[
+\pi \approx (0.37,\; 0.20,\; 0.29,\; 0.14)
+\]
+\textbf{Ranking:} $A > C > B > D$\\[0.2cm]
+Seite $A$ hat den höchsten PageRank, weil $C$ (selbst wichtig) auf $A$ verlinkt.
+\end{block}
+ \end{frame}
+
+
+%% =============================================
+%% ZUSAMMENFASSUNG
+%% =============================================
+
+\begin{frame}
+    \frametitle{Markov-Ketten}
+\framesubtitle{Zusammenfassung}
+    \begin{block}{Zentrale Begriffe}
+\begin{itemize}
+\item \textbf{Markov-Kette:} Zukunft hängt nur von Gegenwart ab.
+\item \textbf{Stochastische Matrix:} Zeilensummen $= 1$, Einträge $\geq 0$.
+\item \textbf{Invariante Verteilung:} $\pi P = \pi$ (Gleichgewicht).
+\item \textbf{Irreduzibel:} Jeder Zustand von jedem erreichbar.
+\item \textbf{Aperiodisch:} Keine periodischen Zyklen.
+\end{itemize}
+\end{block}
+\begin{block}{Hauptsatz}
+\textbf{Irreduzibel + endlich} $\Rightarrow$ genau eine invariante Verteilung $\pi > 0$.\\
+\textbf{+ Aperiodisch} $\Rightarrow$ Konvergenz: $P^n \to$ Matrix mit Zeilen $\pi$.
 \end{block}
  \end{frame}
 
