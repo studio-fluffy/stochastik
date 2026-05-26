@@ -125,7 +125,7 @@ Zeile 1: Wenn heute Sonne, dann morgen Sonne mit $0.8$, Regen mit $0.2$.
     \begin{block}{Definition (Markov-Kette)}
 Eine Folge $(X_n)_{n \in \N_0}$ von Zufallsvariablen mit Werten in $S$ heißt \textbf{Markov-Kette} mit Übergangsmatrix $P$, falls:
 \[
-\PP(X_{n+1} = j \mid X_n = i, X_{n-1}, \ldots, X_0) = p_{ij}
+\PP(X_{n+1} = j \mid X_n = i, X_{n-1}, \ldots, X_0) = \PP(X_{n+1} = j \mid X_n = i) = p_{ij}
 \]
 für alle $n \in \N_0$ und alle $i, j \in S$.
 \end{block}
@@ -214,8 +214,52 @@ p_{ij}^{(m+n)} &= \PP(X_{m+n} = j \mid X_0 = i) & &\text{(Definition)}\\
 
 
 %% =============================================
+%% NOTATIONS-IDENTIFIKATION P^{(m)} = P^m
+%% =============================================
+
+\begin{frame}
+    \frametitle{Markov-Ketten}
+\framesubtitle{Bemerkung: $P^{(m)} = P^m$}
+\begin{block}{Was haben wir gerade gezeigt?}
+Mit $P^{(m)} := \bigl(p_{ij}^{(m)}\bigr)_{i,j \in S}$ liefert die Rechnung komponentenweise
+\[
+P^{(m+n)} = P^{(m)} \cdot P^{(n)} \qquad (\star)
+\]
+-- eine Aussage über die $P^{(\cdot)}$, noch nicht über Matrix\emph{potenzen} $P^m$!
+\end{block}
+\begin{block}{Induktion: $P^{(m)} = P^m$}
+\textbf{Basis} ($m=1$): $P^{(1)}_{ij} = p_{ij}$, also $P^{(1)} = P$.\\
+\textbf{Schritt}: Mit $n=1$ in $(\star)$ folgt
+$P^{(m+1)} = P^{(m)} \cdot P \stackrel{\text{IV}}{=} P^m \cdot P = P^{m+1}.$
+\end{block}
+\begin{block}{Folgerung}
+$P^{m+n} = P^{(m+n)} \stackrel{(\star)}{=} P^{(m)} \cdot P^{(n)} = P^m \cdot P^n. \qquad \square$
+\end{block}
+ \end{frame}
+
+
+%% =============================================
 %% VERTEILUNG ZUM ZEITPUNKT n
 %% =============================================
+
+\begin{frame}
+    \frametitle{Markov-Ketten}
+\framesubtitle{Einschub: Linksmultiplikation Zeilenvektor $\cdot$ Matrix}
+\begin{block}{Definition}
+Für einen \textbf{Zeilenvektor} $\mu = (\mu_1, \ldots, \mu_N) \in \R^{1 \times N}$ und $P = (p_{ij}) \in \R^{N \times N}$ ist $\mu \cdot P \in \R^{1 \times N}$ definiert durch
+\[
+(\mu \cdot P)_j \;=\; \sum_{i=1}^{N} \mu_i \, p_{ij}, \qquad j = 1, \ldots, N.
+\]
+Das ist das gewöhnliche Matrixprodukt einer $1 \!\times\! N$- mit einer $N \!\times\! N$-Matrix.
+\end{block}
+\begin{block}{Wahrscheinlichkeitsinterpretation (totale W'keit)}
+Mit $\mu_i = \PP(X_n = i)$ und $p_{ij} = \PP(X_{n+1} = j \mid X_n = i)$:
+\[
+(\mu P)_j \;=\; \sum_i \PP(X_n = i)\, \PP(X_{n+1} = j \mid X_n = i) \;=\; \PP(X_{n+1} = j).
+\]
+\end{block}
+ \end{frame}
+
 
 \begin{frame}
     \frametitle{Markov-Ketten}
@@ -341,7 +385,7 @@ Eine Markov-Kette heißt \textbf{irreduzibel}, falls man von jedem Zustand $i$ j
     \begin{block}{Definition (Periode)}
 Die \textbf{Periode} eines Zustands $i$ ist:
 \[
-d(i) = \gcd\{n \geq 1 : p_{ii}^{(n)} > 0\}
+d(i) = \mathrm{ggT}\{n \geq 1 : p_{ii}^{(n)} > 0\}
 \]
 Die Kette heißt \textbf{aperiodisch}, falls $d(i) = 1$ für alle $i \in S$.
 \end{block}
@@ -371,7 +415,36 @@ Die Kette heißt \textbf{aperiodisch}, falls $d(i) = 1$ für alle $i \in S$.
 \end{column}
 \end{columns}
 \vspace{0.3cm}
-\textbf{Hinweis:} Eine Selbstschleife ($p_{ii} > 0$) garantiert stets $d(i)=1$.
+\textbf{Hinweis:} Eine Selbstschleife ($p_{ii} > 0$) garantiert $d(i)=1$, ist aber nicht notwendig.
+ \end{frame}
+
+
+%% =============================================
+%% BEISPIEL APERIODISCH OHNE SELBSTSCHLEIFE
+%% =============================================
+
+\begin{frame}
+    \frametitle{Markov-Ketten}
+\framesubtitle{Aperiodisch ohne Selbstschleife}
+    \begin{block}{Gegenbeispiel}
+Auch ohne reflexive Kante kann eine Kette aperiodisch sein.
+\end{block}
+\begin{center}
+\begin{tikzpicture}[->, >=stealth, auto, semithick, node distance=2.8cm, scale=0.85]
+    \node[state] (1) {$1$};
+    \node[state] (2) [right of=1] {$2$};
+    \node[state] (3) [below of=2] {$3$};
+    \path (1) edge[bend left] node{} (2)
+          (2) edge[bend left] node{} (1)
+          (1) edge node{} (3)
+          (3) edge node{} (2);
+\end{tikzpicture}
+\end{center}
+\begin{itemize}
+\item Rückkehr nach $1$ in 2 Schritten: $1 \to 2 \to 1$
+\item Rückkehr nach $1$ in 3 Schritten: $1 \to 3 \to 2 \to 1$
+\item Also: $d(1) = \mathrm{ggT}\{2,3,\ldots\} = 1$ \quad $\Rightarrow$ aperiodisch
+\end{itemize}
  \end{frame}
 
 
@@ -393,8 +466,13 @@ Die Kette springt \emph{immer} zwischen den Zuständen hin und her:
 \]
 \begin{itemize}
 \item Rückkehr zu Zustand 1 nur nach $2, 4, 6, \ldots$ Schritten.
-\item $d(1) = \gcd\{2, 4, 6, \ldots\} = 2$. \quad $\Rightarrow$ Periodisch!
-\item Invariante Verteilung: $\pi = (1/2, 1/2)$, aber $P^n$ konvergiert \textbf{nicht}!
+\item $d(1) = \mathrm{ggT}\{2, 4, 6, \ldots\} = 2$. \quad $\Rightarrow$ Periodisch!
+\item Invariante Verteilung: $\pi = (1/2, 1/2)$, aber $P^n$ konvergiert \textbf{nicht}:
+\[
+P^{2k} = \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix}, \qquad
+P^{2k+1} = \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix}
+\]
+(oszilliert zwischen zwei Werten).
 \end{itemize}
  \end{frame}
 
@@ -415,7 +493,7 @@ Sei $(X_n)$ eine \textbf{irreduzible} Markov-Kette mit endlichem Zustandsraum $S
 \[
 \lim_{n \to \infty} \mu_0 P^n = \pi
 \]
-d.h. Konvergenz gegen $\pi$, unabhängig vom Startzustand.
+d.h.\ Konvergenz gegen $\pi$, unabhängig vom Startzustand.
 \end{enumerate}
 \end{block}
  \end{frame}
@@ -437,7 +515,7 @@ $\overline{P}_n := \frac{1}{n} \sum_{k=0}^{n-1} P^k$ \quad (Konvexkombination st
 \item \textbf{Bolzano-Weierstraß}: $\exists$ konvergente Teilfolge $\overline{P}_{n_k} \to Q$.
 \item Jede Zeile $q_i$ von $Q$ ist invariant, denn:
 \[
-\overline{P}_n \cdot P = \overline{P}_n + \tfrac{1}{n}(P^n - I) \;\xrightarrow{n\to\infty}\; Q
+\overline{P}_{n_k} \cdot P = \overline{P}_{n_k} + \tfrac{1}{n_k}(P^{n_k} - I) \;\xrightarrow{k\to\infty}\; Q + 0 = Q
 \]
 Also $Q \cdot P = Q$, d.h. $q_i \cdot P = q_i$. \hfill $\square$
 \end{itemize}
@@ -525,6 +603,27 @@ wobei $\rho < 1$ (Kontraktion bei Irreduzibilität + Aperiodizität).
  \end{frame}
 
 
+\begin{frame}
+    \frametitle{Markov-Ketten}
+\framesubtitle{Warum gibt es ein $\rho < 1$?}
+    \begin{block}{Schlüsselidee}
+Endlich + irreduzibel + aperiodisch $\Rightarrow$ es gibt ein $m \geq 1$ mit $P^m > 0$.\\
+Also hat nach $m$ Schritten jede Zeile von $P^m$ überall etwas Masse.
+\end{block}
+\begin{block}{Folge}
+Dann gibt es ein $c > 0$ mit
+\[
+\|\mu P^m - \nu P^m\|_{TV} \leq (1-c)\,\|\mu-\nu\|_{TV}
+\]
+für alle Verteilungen $\mu,\nu$. Durch Wiederholung folgt
+\[
+\|\mu P^n - \pi\|_{TV} \leq C\rho^n \qquad (0<\rho<1)
+\]
+also geometrische Konvergenz.
+\end{block}
+ \end{frame}
+
+
 %% =============================================
 %% KONVERGENZ BEISPIEL
 %% =============================================
@@ -586,13 +685,14 @@ $\pi$ erfüllt die \textbf{Detailed-Balance-Bedingung} bzgl. $P$, falls:
 \pi_i \cdot p_{ij} = \pi_j \cdot p_{ji} \quad \text{für alle } i, j \in S
 \]
 \end{block}
-\begin{block}{Satz}
-Erfüllt $\pi$ die Detailed-Balance-Bedingung, so ist $\pi$ invariant.
-\end{block}
-\begin{block}{Beweis}
+\begin{block}{Satz: Detailed Balance $\Rightarrow$ $\pi$ invariant}
 \[
-(\pi P)_j = \sum_i \pi_i p_{ij} = \sum_i \pi_j p_{ji} = \pi_j \underbrace{\sum_i p_{ji}}_{=1} = \pi_j \quad \checkmark
+(\pi P)_j = \sum_i \pi_i p_{ij} \overset{\text{DB}}{=} \sum_i \pi_j p_{ji} = \pi_j \underbrace{\sum_i p_{ji}}_{=1} = \pi_j \quad \square
 \]
+\end{block}
+\begin{block}{Intuition: Flussgleichgewicht}
+$\pi_i p_{ij}$ = ``Fluss'' von $i$ nach $j$ im Gleichgewicht.\\
+DB: Fluss $i \to j$ = Rückfluss $j \to i$ für \emph{jedes} Paar $\Rightarrow$ Gleichgewicht.
 \end{block}
  \end{frame}
 
@@ -865,19 +965,45 @@ Hauptsatz: Irreduzibel + aperiodisch $\Rightarrow$ $X_n \to \pi$ in Verteilung!
     \begin{block}{Gegeben}
 \begin{itemize}
 \item Zielverteilung $\pi$ (bis auf Normierung bekannt): $\pi(x) \propto f(x)$
-\item Vorschlagsverteilung $q(y \mid x)$ (leicht zu sampeln)
+\item Vorschlagsverteilung $q(y \mid x)$ (frei wählbar, leicht zu sampeln)
 \end{itemize}
 \end{block}
-\begin{block}{Algorithmus}
-Gegeben $X_n = x$:
+\begin{block}{Algorithmus (ein Schritt: $X_n = x \to X_{n+1} = ?$)}
 \begin{enumerate}
-\item Schlage $y \sim q(\cdot \mid x)$ vor.
-\item Berechne Akzeptanzwahrscheinlichkeit:
+\item Ziehe Vorschlag $y \sim q(\cdot \mid x)$.
+\item Berechne Akzeptanzwahrscheinlichkeit (eine \textbf{Zahl} $\in [0,1]$):
 \[
 \alpha(x, y) = \min\!\left(1, \;\frac{\pi(y)\, q(x \mid y)}{\pi(x)\, q(y \mid x)}\right)
 \]
-\item Mit W'keit $\alpha$: setze $X_{n+1} = y$. Sonst: $X_{n+1} = x$.
+\item Ziehe $U \sim \text{Uniform}(0,1)$.
+\item Falls $U < \alpha(x,y)$: setze $X_{n+1} = y$ \quad (\textbf{akzeptiere}).\\
+      Sonst: setze $X_{n+1} = x$ \quad (\textbf{ablehne}, bleibe stehen).
 \end{enumerate}
+\end{block}
+ \end{frame}
+
+
+%% =============================================
+%% METROPOLIS-HASTINGS: ÜBERGANGSMATRIX
+%% =============================================
+
+\begin{frame}
+    \frametitle{MCMC}
+\framesubtitle{Metropolis-Hastings -- Die Übergangsmatrix $P$}
+    \begin{block}{Was ist $P(x,y)$?}
+$P(x,y)$ = Wahrscheinlichkeit, von $x$ nach $y$ zu springen (für $x \neq y$).\\
+Der \textbf{einzige Weg} von $x$ nach $y$: Vorschlag $y$ UND Akzeptanz.
+\end{block}
+\begin{block}{Definition der Übergangsmatrix}
+\[
+P(x,y) = \underbrace{q(y \mid x)}_{\substack{\text{W'keit, dass}\\\text{$y$ vorgeschlagen wird}}} \cdot \; \underbrace{\alpha(x,y)}_{\substack{\text{W'keit, dass}\\\text{akzeptiert wird}}} \qquad (x \neq y)
+\]
+Dies ist der Multiplikationssatz: $P(A \cap B) = P(A) \cdot P(B \mid A)$.
+\end{block}
+\begin{block}{Verbleibe-Wahrscheinlichkeit}
+\[
+P(x,x) = 1 - \sum_{y \neq x} P(x,y) \quad \text{(alles was übrig bleibt)}
+\]
 \end{block}
  \end{frame}
 
@@ -889,19 +1015,67 @@ Gegeben $X_n = x$:
 \begin{frame}
     \frametitle{MCMC}
 \framesubtitle{Metropolis-Hastings -- Korrektheit}
-    \begin{block}{Satz: $\pi$ erfüllt Detailed Balance}
-Die Übergangsmatrix $P$ des Metropolis-Hastings-Algorithmus erfüllt:
+    \begin{block}{Satz: $\pi$ erfüllt Detailed Balance bzgl.\ $P$}
 \[
 \pi(x)\, P(x,y) = \pi(y)\, P(y,x) \quad \text{für alle } x \neq y
 \]
 \end{block}
-\begin{block}{Beweis}
-Für $x \neq y$: $P(x,y) = q(y\mid x) \cdot \alpha(x,y)$. O.B.d.A.\ $\pi(x)q(y|x) \geq \pi(y)q(x|y)$:
-\begin{align*}
-\pi(x) P(x,y) &= \pi(x)\, q(y|x) \cdot \frac{\pi(y)\,q(x|y)}{\pi(x)\,q(y|x)} = \pi(y)\,q(x|y) \\
-\pi(y) P(y,x) &= \pi(y)\, q(x|y) \cdot \min\!\left(1, \frac{\pi(x)q(y|x)}{\pi(y)q(x|y)}\right) = \pi(y)\,q(x|y)
-\end{align*}
-$\Rightarrow$ Detailed Balance $\Rightarrow$ $\pi$ ist invariant! \hfill $\square$
+\begin{block}{Warum?}
+$\alpha$ ist genau so konstruiert, dass die ``Flüsse'' balanciert sind:\\[0.1cm]
+$\alpha(x,y) = \min\!\left(1, \frac{\pi(y)q(x|y)}{\pi(x)q(y|x)}\right)$ korrigiert die Asymmetrie von $q$ und $\pi$.
+\end{block}
+ \end{frame}
+
+
+%% =============================================
+%% METROPOLIS-HASTINGS: BEWEIS
+%% =============================================
+
+\begin{frame}
+    \frametitle{MCMC}
+\framesubtitle{Metropolis-Hastings -- Beweis Detailed Balance}
+    \begin{block}{Beweis}
+O.B.d.A.\ $\pi(x)q(y|x) \geq \pi(y)q(x|y)$. Dann:
+$\alpha(x,y) = \frac{\pi(y)\,q(x|y)}{\pi(x)\,q(y|x)} \leq 1$ \; und \; $\alpha(y,x) = 1$.
+\end{block}
+\textbf{Linke Seite:}
+\[
+\pi(x)\, P(x,y) = \pi(x)\, q(y|x) \cdot \frac{\pi(y)\,q(x|y)}{\pi(x)\,q(y|x)} = \pi(y)\,q(x|y)
+\]
+\textbf{Rechte Seite:}
+\[
+\pi(y)\, P(y,x) = \pi(y)\, q(x|y) \cdot \underbrace{\alpha(y,x)}_{= 1} = \pi(y)\,q(x|y)
+\]
+\begin{block}{Ergebnis}
+$\pi(x) P(x,y) = \pi(y) q(x|y) = \pi(y) P(y,x) \quad \checkmark$ \quad $\Rightarrow$ $\pi$ ist invariant! \hfill $\square$
+\end{block}
+ \end{frame}
+
+
+%% =============================================
+%% METROPOLIS-HASTINGS: KONVERGENZ
+%% =============================================
+
+\begin{frame}
+    \frametitle{MCMC}
+\framesubtitle{Metropolis-Hastings -- Konvergenz}
+    \begin{block}{Warum konvergiert MH zur Zielverteilung $\pi$?}
+Drei Voraussetzungen des Hauptsatzes sind erfüllt:
+\end{block}
+\begin{enumerate}
+\item \textbf{$\pi$ ist invariant:} Detailed Balance (gerade bewiesen).
+\item \textbf{Irreduzibel:} Falls $q(y \mid x) > 0$ für alle $x,y$, dann:
+\[
+P(x,y) = q(y|x) \cdot \alpha(x,y) > 0 \quad \forall\, x \neq y
+\]
+Jeder Zustand ist in einem Schritt erreichbar.
+\item \textbf{Aperiodisch:} Vorschlag kann abgelehnt werden $\Rightarrow$ $P(x,x) > 0$ (Selbstschleife) $\Rightarrow$ $d(x) = 1$.
+\end{enumerate}
+\begin{block}{Schlussfolgerung (Hauptsatz)}
+\[
+\text{Irreduzibel + aperiodisch} \;\Rightarrow\; P^n \to \pi \quad \text{(Konvergenz!)}
+\]
+Die Normierungskonstante von $\pi$ wird \textbf{nie} benötigt ($\alpha$ enthält nur Verhältnisse).
 \end{block}
  \end{frame}
 
@@ -939,18 +1113,41 @@ $q(y \mid x) = \mathcal{N}(x, \sigma^2)$ \quad (Random Walk Metropolis)
 \begin{frame}
     \frametitle{MCMC}
 \framesubtitle{Monte-Carlo-Integration}
-    \begin{block}{Problem}
-Berechne $\E_\pi[g] = \sum_{x \in S} g(x)\, \pi(x)$ \quad (oder $\int g(x)\,\pi(x)\,dx$)\\[0.1cm]
-Oft ist $|S|$ riesig oder $\pi$ nur bis auf Normierung bekannt.
-\end{block}
-\begin{block}{Lösung: Ergodentheorem}
-Ist $(X_n)$ eine irreduzible, aperiodische Markov-Kette mit invarianter Verteilung $\pi$, so gilt:
+    \begin{block}{Trick: künstliche Verteilung einführen}
+Für
 \[
-\frac{1}{N} \sum_{n=1}^{N} g(X_n) \;\xrightarrow{N \to \infty}\; \E_\pi[g] \quad \text{(fast sicher)}
+I = \int h(x)\, dx
+\]
+wähle $\pi$ mit $\pi(x) > 0$ auf dem relevanten Bereich. Dann:
+\[
+I = \int \frac{h(x)}{\pi(x)}\, \pi(x)\, dx = \E_\pi\!\left[\frac{h(X)}{\pi(X)}\right]
 \]
 \end{block}
-\begin{block}{Praxis}
-Simuliere Kette, berechne Durchschnitt $\Rightarrow$ approximiert Erwartungswert!
+\begin{block}{Ergodentheorem}
+\[
+\frac{1}{N} \sum_{n=1}^{N} f(X_n) \;\xrightarrow{N \to \infty}\; \E_\pi[f] \quad \text{(fast sicher)}
+\]
+Hier: $f(x) = h(x)/\pi(x)$.
+\end{block}
+ \end{frame}
+
+
+\begin{frame}
+    \frametitle{MCMC}
+\framesubtitle{Monte-Carlo-Integration in der Praxis}
+    \begin{block}{Schätzer für ein allgemeines Integral}
+Nach Burn-in $B$:
+\[
+\widehat I_N = \frac{1}{N-B} \sum_{n=B+1}^{N} \frac{h(X_n)}{\pi(X_n)}
+\]
+als Näherung für $I = \int h(x)\, dx$.
+\end{block}
+\begin{block}{Spezialfall}
+Will man schon $\E_\pi[g] = \int g(x)\,\pi(x)\,dx$ berechnen, genügt einfach
+\[
+\frac{1}{N-B} \sum_{n=B+1}^{N} g(X_n)
+\]
+ohne den Faktor $1/\pi(X_n)$.
 \end{block}
  \end{frame}
 

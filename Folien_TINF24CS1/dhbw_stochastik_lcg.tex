@@ -1,0 +1,210 @@
+\documentclass{beamer}
+\usetheme{Warsaw}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[ngerman]{babel}
+\usepackage{fancybox}
+\usepackage{multimedia}
+\usepackage{subfig}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{booktabs}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    urlcolor=blue
+}
+
+\lstset{
+    basicstyle=\ttfamily\footnotesize,
+    keywordstyle=\color{blue}\bfseries,
+    commentstyle=\color{gray}\itshape,
+    stringstyle=\color{red!70!black},
+    showstringspaces=false,
+    language=Python,
+    frame=single,
+    breaklines=true
+}
+
+\setbeamertemplate{footline}[frame number]
+
+\begin{document}
+
+\title[Stochastik]
+{Wahrscheinlichkeitstheorie und Statistik (Stochastik)
+\\[1ex]
+Lineare Kongruenz-Generatoren}
+\author[Dr. Johannes Riesterer]
+{Dr.\ rer.\ nat.\ Johannes Riesterer}
+\date{}
+\subject{Stochastik}
+
+\frame{\titlepage}
+
+
+\begin{frame}
+    \frametitle{Pseudozufallszahlen}
+    \framesubtitle{Motivation}
+
+\begin{block}{Problem}
+Ein Computer ist deterministisch -- echte Zufallszahlen kann er nicht
+erzeugen. Für Simulationen (Monte Carlo, Bootstrapping, Kryptographie,
+Spiele, \ldots) benötigt man jedoch Folgen, die sich \emph{wie} Zufall
+verhalten.
+\end{block}
+
+\begin{block}{Idee: Pseudozufallszahlen}
+Eine deterministische Folge $X_0, X_1, X_2, \ldots$, die statistische
+Tests auf Zufälligkeit besteht. Vorteile:
+\begin{itemize}
+    \item reproduzierbar (Seed),
+    \item schnell berechenbar,
+    \item geringer Speicherbedarf.
+\end{itemize}
+\end{block}
+
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{Linearer Kongruenz-Generator (LCG)}
+    \framesubtitle{Definition}
+
+\begin{block}{Rekursionsvorschrift}
+Wähle
+\begin{itemize}
+    \item Modulus $m \in \mathbb{N}$, $m > 0$,
+    \item Multiplikator $a \in \{1, \ldots, m-1\}$,
+    \item Inkrement $c \in \{0, \ldots, m-1\}$,
+    \item Startwert (Seed) $X_0 \in \{0, \ldots, m-1\}$.
+\end{itemize}
+Die Folge ist definiert durch
+\[
+    X_{n+1} \;=\; (a \cdot X_n + c) \bmod m.
+\]
+\end{block}
+
+\begin{block}{Normierung auf $[0,1)$}
+\[
+    U_n \;=\; \frac{X_n}{m} \;\in\; [0,1).
+\]
+\end{block}
+
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{Beispiel}
+    \framesubtitle{$m=9,\ a=7,\ c=4,\ X_0=3$}
+
+\begin{block}{Berechnung von Hand}
+\[
+\begin{array}{c|l|c}
+n & \text{Rechnung} & X_n \\ \hline
+0 & -                                       & 3 \\
+1 & (7\cdot 3 + 4) \bmod 9 = 25 \bmod 9     & 7 \\
+2 & (7\cdot 7 + 4) \bmod 9 = 53 \bmod 9     & 8 \\
+3 & (7\cdot 8 + 4) \bmod 9 = 60 \bmod 9     & 6 \\
+4 & (7\cdot 6 + 4) \bmod 9 = 46 \bmod 9     & 1 \\
+5 & (7\cdot 1 + 4) \bmod 9 = 11 \bmod 9     & 2 \\
+6 & (7\cdot 2 + 4) \bmod 9 = 18 \bmod 9     & 0 \\
+7 & (7\cdot 0 + 4) \bmod 9 =  4 \bmod 9     & 4 \\
+8 & (7\cdot 4 + 4) \bmod 9 = 32 \bmod 9     & 5 \\
+9 & (7\cdot 5 + 4) \bmod 9 = 39 \bmod 9     & 3 \\
+\end{array}
+\]
+\end{block}
+
+Nach $9 = m$ Schritten wiederholt sich die Folge -- maximale Periode erreicht.
+
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{Periode}
+    \framesubtitle{Hull--Dobell-Bedingungen}
+
+\begin{block}{Beobachtung}
+Da $X_n \in \{0, 1, \ldots, m-1\}$, gibt es höchstens $m$ verschiedene
+Werte. Spätestens nach $m$ Schritten wiederholt sich die Folge.
+\end{block}
+
+\begin{block}{Satz (Hull \& Dobell, 1962)}
+Ein LCG hat genau dann die maximale Periode $m$, wenn:
+\begin{enumerate}
+    \item $\gcd(c, m) = 1$,
+    \item für jeden Primfaktor $p$ von $m$ gilt $p \mid (a-1)$,
+    \item ist $4 \mid m$, so auch $4 \mid (a-1)$.
+\end{enumerate}
+\end{block}
+
+\begin{block}{Beispiele aus der Praxis}
+\begin{tabular}{lrrr}
+\toprule
+                    & $m$       & $a$         & $c$ \\
+\midrule
+glibc \texttt{rand()}        & $2^{31}$  & 1103515245  & 12345 \\
+Numerical Recipes   & $2^{32}$  & 1664525     & 1013904223 \\
+\bottomrule
+\end{tabular}
+\end{block}
+
+\end{frame}
+
+
+\begin{frame}[fragile]
+    \frametitle{Implementierung in Python}
+
+\begin{lstlisting}
+def lcg(seed, a=1664525, c=1013904223, m=2**32, n=10):
+    x = seed
+    for _ in range(n):
+        x = (a * x + c) % m
+        yield x / m   # in [0, 1)
+
+print(list(lcg(seed=42, n=5)))
+\end{lstlisting}
+
+\begin{block}{Bemerkung}
+Mit demselben Seed liefert der Generator stets dieselbe Folge --
+unverzichtbar für reproduzierbare Simulationen.
+\end{block}
+
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{Eigenschaften und Grenzen}
+
+\begin{block}{Vorteile}
+\begin{itemize}
+    \item sehr schnell, eine Multiplikation und eine Addition pro Schritt,
+    \item minimaler Speicherbedarf (ein Integer),
+    \item deterministisch reproduzierbar.
+\end{itemize}
+\end{block}
+
+\begin{block}{Nachteile}
+\begin{itemize}
+    \item \textbf{Marsaglia-Effekt:} Die Tupel
+          $(X_n, X_{n+1}, \ldots, X_{n+k-1})$ liegen in $[0,1)^k$ auf
+          wenigen Hyperebenen $\Rightarrow$ schlechte Verteilung in
+          hohen Dimensionen.
+    \item niederwertige Bits haben oft sehr kurze Perioden,
+    \item \textbf{nicht kryptographisch sicher}: aus wenigen Ausgaben
+          lassen sich $a, c, m$ rekonstruieren.
+\end{itemize}
+\end{block}
+
+\begin{block}{Heutige Standards}
+Mersenne Twister (\texttt{numpy.random}, Python \texttt{random}),
+PCG, xorshift, \ldots
+\end{block}
+
+\end{frame}
+
+
+\end{document}

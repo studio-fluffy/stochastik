@@ -1,0 +1,17 @@
+\frametitle{Implementierung in Python}
+
+\begin{lstlisting}
+def lcg(seed, a=1664525, c=1013904223, m=2**32, n=10):
+    x = seed
+    for _ in range(n):
+        x = (a * x + c) % m
+        yield x / m   # in [0, 1)
+
+print(list(lcg(seed=42, n=5)))
+\end{lstlisting}
+
+\begin{block}{Bemerkung}
+Mit demselben Seed liefert der Generator stets dieselbe Folge --
+unverzichtbar für reproduzierbare Simulationen.
+\end{block}
+
