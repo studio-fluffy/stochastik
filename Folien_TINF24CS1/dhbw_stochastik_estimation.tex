@@ -303,13 +303,49 @@ Sei $\rho \in \Theta$ fest. Wegen linearität des EW und u.i.v. ist $\mathbb{E}(
 \framesubtitle{}
 
 \begin{block}{Beweis}
-Aus Linearität des EW und $\mathbb{E}(X_i - M) = 0$, u.i.v, stochastische Unabhängigkeit folgt
+Aus Definition von $V$, Linearität des EW und $\mathbb{E}(X_i - M) = 0$ folgt
 \begin{align*}
-&(n-1) \mathbb{E}(V)  = \sum_{i=1}^n  \mathbb{V}(X_i - M) \\
-& = n   \mathbb{V} (\frac{n-1}{n} X_1  - \frac{1}{n} \sum_{j=2}^n X_j) \\
-& = n((\frac{n-1}{n})^2 + (n-1) \frac{1}{n^2}  ) v(\rho) = (n-1) v(\rho)
+&(n-1) \mathbb{E}(V)
+= \mathbb{E}\!\left(\sum_{i=1}^n (X_i-M)^2\right) \\
+&= \sum_{i=1}^n \mathbb{E}\big((X_i-M)^2\big) \\
+&= \sum_{i=1}^n \mathbb{V}(X_i-M)
+\qquad \text{(da $\mathbb{E}(X_i-M)=0$)} \\
+&= n\,\mathbb{V}(X_1-M)
+\qquad \text{(Symmetrie: alle $X_i-M$ gleich verteilt).}
 \end{align*}
-Durch Teilen beider Seiten durch $n-1$ folgt die Behauptung. 
+Außerdem gilt
+\[
+X_1-M = X_1-\frac{1}{n}\sum_{j=1}^n X_j
+= \frac{n-1}{n}X_1 - \frac{1}{n}\sum_{j=2}^n X_j.
+\]
+\end{block}
+
+
+ \end{frame}
+
+
+
+\begin{frame}
+    \frametitle{Statistik - Parameterschätzung}
+\framesubtitle{}
+
+\begin{block}{Beweis (Fortsetzung)}
+\scriptsize
+\begin{align*}
+(n-1) \mathbb{E}(V)
+&= n\,\mathbb{V}\!\left(\frac{n-1}{n}X_1 - \frac{1}{n}\sum_{j=2}^n X_j\right) \\
+&= n\left(\left(\frac{n-1}{n}\right)^2\mathbb{V}(X_1)
++ \frac{1}{n^2}\mathbb{V}\!\left(\sum_{j=2}^n X_j\right)\right)
+\quad \text{(Unabhängigkeit)} \\
+&= n\left(\left(\frac{n-1}{n}\right)^2v(\rho)
++ \frac{n-1}{n^2}v(\rho)\right) \\
+&= n\frac{n-1}{n}v(\rho) = (n-1)v(\rho).
+\end{align*}
+Dabei wurde benutzt:
+\[
+\mathbb{V}\!\left(\sum_{j=2}^n X_j\right) = \sum_{j=2}^n \mathbb{V}(X_j) = (n-1)v(\rho).
+\]
+Durch Teilen beider Seiten durch $n-1$ folgt die Behauptung.
 \end{block}
 
 
