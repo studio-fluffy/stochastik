@@ -1,0 +1,1636 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[ngerman]{babel}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.6em}
+
+\renewcommand{\labelenumi}{\alph{enumi})}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\PP}{\mathbb{P}}
+\newcommand{\E}{\mathbb{E}}
+
+\title{Übungsblatt: Markov-Ketten und MCMC}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section*{Aufgaben}
+
+\subsection*{Aufgabe 1: Stochastische Matrizen}
+
+Prüfen Sie, ob die folgenden Matrizen stochastische Matrizen sind. Begründen Sie Ihre Antwort.
+
+\[
+P_1 =
+\begin{pmatrix}
+0.6 & 0.4 \\
+0.1 & 0.9
+\end{pmatrix},
+\qquad
+P_2 =
+\begin{pmatrix}
+0.3 & 0.5 \\
+0.2 & 0.8
+\end{pmatrix},
+\qquad
+P_3 =
+\begin{pmatrix}
+0.4 & 0.6 \\
+1.1 & -0.1
+\end{pmatrix}.
+\]
+
+\subsection*{Aufgabe 2: Zwei-Schritt-Übergangswahrscheinlichkeiten}
+
+Eine App modelliert, ob ein Nutzer an einem Tag aktiv oder inaktiv ist. Der Zustandsraum sei
+
+\[
+S = \{A,I\},
+\]
+
+wobei $A$ für aktiv und $I$ für inaktiv steht. Die Übergangsmatrix sei
+
+\[
+P =
+\begin{pmatrix}
+0.7 & 0.3 \\
+0.5 & 0.5
+\end{pmatrix}.
+\]
+
+\begin{enumerate}
+    \item Berechnen Sie $P^2$.
+    \item Wie groß ist die Wahrscheinlichkeit, dass ein heute aktiver Nutzer übermorgen inaktiv ist?
+    \item Wie groß ist die Wahrscheinlichkeit, dass ein heute inaktiver Nutzer übermorgen aktiv ist?
+\end{enumerate}
+
+\subsection*{Aufgabe 3: Verteilung nach mehreren Schritten}
+
+Für die Nutzer-Kette aus Aufgabe 2 sei die Anfangsverteilung
+
+\[
+\mu_0 = (0.4,0.6).
+\]
+
+\begin{enumerate}
+    \item Berechnen Sie $\mu_1 = \mu_0P$.
+    \item Berechnen Sie $\mu_2 = \mu_0P^2$.
+    \item Interpretieren Sie das Ergebnis.
+\end{enumerate}
+
+\subsection*{Aufgabe 4: Invariante Verteilung}
+
+Berechnen Sie die invariante Verteilung der Markov-Kette mit
+
+\[
+P =
+\begin{pmatrix}
+0.7 & 0.3 \\
+0.5 & 0.5
+\end{pmatrix}.
+\]
+
+Gesucht ist ein Wahrscheinlichkeitsvektor
+
+\[
+\pi = (\pi_A,\pi_I)
+\]
+
+mit
+
+\[
+\pi P = \pi
+\qquad \text{und} \qquad
+\pi_A+\pi_I=1.
+\]
+
+\subsection*{Aufgabe 5: Irreduzibilität und Aperiodizität}
+
+Gegeben seien die Übergangsmatrizen
+
+\[
+P_1 =
+\begin{pmatrix}
+0 & 1 \\
+1 & 0
+\end{pmatrix},
+\qquad
+P_2 =
+\begin{pmatrix}
+0.4 & 0.6 \\
+0.2 & 0.8
+\end{pmatrix},
+\qquad
+P_3 =
+\begin{pmatrix}
+1 & 0 \\
+0.3 & 0.7
+\end{pmatrix}.
+\]
+
+\begin{enumerate}
+    \item Entscheiden Sie jeweils, ob die Markov-Kette irreduzibel ist.
+    \item Entscheiden Sie jeweils, ob die Markov-Kette aperiodisch ist.
+    \item Erklären Sie, warum bei $P_1$ trotz Existenz einer invarianten Verteilung keine Konvergenz von $P_1^n$ gegen eine Grenzmatrix auftritt.
+\end{enumerate}
+
+\subsection*{Aufgabe 6: Drei Zustände}
+
+Ein einfaches Lernmodell unterscheidet drei Zustände:
+
+\[
+S = \{K,U,M\}.
+\]
+
+Dabei steht $K$ für konzentriert, $U$ für unkonzentriert und $M$ für müde. Die Übergangsmatrix sei
+
+\[
+P =
+\begin{pmatrix}
+0.6 & 0.3 & 0.1 \\
+0.2 & 0.5 & 0.3 \\
+0.1 & 0.4 & 0.5
+\end{pmatrix}.
+\]
+
+\begin{enumerate}
+    \item Prüfen Sie, ob $P$ stochastisch ist.
+    \item Berechnen Sie die Verteilung nach einem Schritt für
+    \[
+    \mu_0 = (1,0,0).
+    \]
+    \item Berechnen Sie die Verteilung nach einem Schritt für
+    \[
+    \mu_0 = (0.2,0.5,0.3).
+    \]
+    \item Interpretieren Sie die Ergebnisse im Kontext des Lernmodells.
+\end{enumerate}
+
+\subsection*{Aufgabe 7: Invariante Verteilung bei drei Zuständen}
+
+Für die Markov-Kette
+
+\[
+P =
+\begin{pmatrix}
+0.6 & 0.3 & 0.1 \\
+0.2 & 0.5 & 0.3 \\
+0.1 & 0.4 & 0.5
+\end{pmatrix}
+\]
+
+sei
+
+\[
+\pi =
+\left(
+\frac{3}{10},
+\frac{9}{20},
+\frac{1}{4}
+\right).
+\]
+
+\begin{enumerate}
+    \item Prüfen Sie, ob $\pi$ ein Wahrscheinlichkeitsvektor ist.
+    \item Prüfen Sie durch Rechnung, ob $\pi P = \pi$ gilt.
+    \item Interpretieren Sie die stationäre Verteilung.
+\end{enumerate}
+
+\subsection*{Aufgabe 8: Detailed Balance}
+
+Betrachten Sie die Markov-Kette mit zwei Zuständen
+
+\[
+S = \{0,1\}
+\]
+
+und Übergangsmatrix
+
+\[
+P =
+\begin{pmatrix}
+0.75 & 0.25 \\
+0.15 & 0.85
+\end{pmatrix}.
+\]
+
+\begin{enumerate}
+    \item Berechnen Sie die invariante Verteilung $\pi$.
+    \item Prüfen Sie, ob die Detailed-Balance-Bedingung
+    \[
+    \pi_i p_{ij} = \pi_j p_{ji}
+    \]
+    erfüllt ist.
+    \item Was folgt daraus?
+\end{enumerate}
+
+\subsection*{Aufgabe 9: Nicht-reversible Kette}
+
+Betrachten Sie die Markov-Kette mit Zustandsraum
+
+\[
+S=\{1,2,3\}
+\]
+
+und Übergangsmatrix
+
+\[
+P =
+\begin{pmatrix}
+0.1 & 0.9 & 0 \\
+0 & 0.1 & 0.9 \\
+0.9 & 0 & 0.1
+\end{pmatrix}.
+\]
+
+\begin{enumerate}
+    \item Zeigen Sie, dass
+    \[
+    \pi=\left(\frac13,\frac13,\frac13\right)
+    \]
+    invariant ist.
+    \item Prüfen Sie, ob Detailed Balance erfüllt ist.
+    \item Ist die Kette aperiodisch? Begründen Sie.
+\end{enumerate}
+
+\subsection*{Aufgabe 10: PageRank}
+
+Ein kleines Web bestehe aus vier Seiten $A,B,C,D$.
+
+Die Links seien:
+
+\[
+A \to B,
+\qquad
+A \to C,
+\qquad
+B \to C,
+\qquad
+C \to A,
+\qquad
+D \to A,
+\qquad
+D \to C.
+\]
+
+\begin{enumerate}
+    \item Stellen Sie die naive Übergangsmatrix $P$ auf. Verwenden Sie die Reihenfolge $A,B,C,D$.
+    \item Erklären Sie kurz, warum PageRank häufig eine Google-Matrix
+    \[
+    G = \alpha P + (1-\alpha)\frac{1}{n}\mathbf{1}\mathbf{1}^T
+    \]
+    verwendet.
+    \item Welche Wirkung hat der Dämpfungsfaktor $1-\alpha$?
+\end{enumerate}
+
+\subsection*{Aufgabe 11: Metropolis-Algorithmus}
+
+Eine Zielverteilung sei bis auf Normierung gegeben durch
+
+\[
+\pi(x) \propto e^{-x^2/4}.
+\]
+
+Es wird ein symmetrischer Vorschlag verwendet, also
+
+\[
+q(y \mid x) = q(x \mid y).
+\]
+
+\begin{enumerate}
+    \item Geben Sie die Akzeptanzwahrscheinlichkeit des Metropolis-Algorithmus an.
+    \item Berechnen Sie die Akzeptanzwahrscheinlichkeit für einen Vorschlag von $x=0$ nach $y=2$.
+    \item Berechnen Sie die Akzeptanzwahrscheinlichkeit für einen Vorschlag von $x=3$ nach $y=1$.
+    \item Interpretieren Sie die beiden Ergebnisse.
+\end{enumerate}
+
+\subsection*{Aufgabe 12: Metropolis-Hastings mit asymmetrischem Vorschlag}
+
+Betrachten Sie einen endlichen Zustandsraum
+
+\[
+S=\{1,2\}
+\]
+
+mit Zielverteilung
+
+\[
+\pi(1)=\frac14,
+\qquad
+\pi(2)=\frac34.
+\]
+
+Die Vorschlagswahrscheinlichkeiten seien
+
+\[
+q(2\mid 1)=0.8,
+\qquad
+q(1\mid 2)=0.4.
+\]
+
+\begin{enumerate}
+    \item Berechnen Sie die Akzeptanzwahrscheinlichkeit $\alpha(1,2)$.
+    \item Berechnen Sie die Akzeptanzwahrscheinlichkeit $\alpha(2,1)$.
+    \item Berechnen Sie die Übergangswahrscheinlichkeiten $P(1,2)$ und $P(2,1)$.
+    \item Prüfen Sie Detailed Balance für die beiden Zustände.
+\end{enumerate}
+
+\subsection*{Aufgabe 13: Monte-Carlo-Integration mit MCMC}
+
+Sei $(X_n)$ eine Markov-Kette mit stationärer Verteilung $\pi$.
+
+\begin{enumerate}
+    \item Wie kann man mit den Zuständen $X_{B+1},\dots,X_N$ nach einer Burn-in-Zeit $B$ den Erwartungswert
+    \[
+    \E_\pi[g(X)]
+    \]
+    approximieren?
+    \item Warum werden die ersten $B$ Werte häufig verworfen?
+    \item Worin liegt der Unterschied zwischen unabhängigen Monte-Carlo-Stichproben und MCMC-Stichproben?
+\end{enumerate}
+
+\newpage
+
+\section*{Lösungen}
+
+\subsection*{Lösung zu Aufgabe 1}
+
+Eine Matrix ist stochastisch, wenn alle Einträge nichtnegativ sind und jede Zeile Summe $1$ hat.
+
+Für
+
+\[
+P_1 =
+\begin{pmatrix}
+0.6 & 0.4 \\
+0.1 & 0.9
+\end{pmatrix}
+\]
+
+sind alle Einträge nichtnegativ. Außerdem gilt:
+
+\[
+0.6+0.4=1,
+\qquad
+0.1+0.9=1.
+\]
+
+Also ist $P_1$ stochastisch.
+
+Für
+
+\[
+P_2 =
+\begin{pmatrix}
+0.3 & 0.5 \\
+0.2 & 0.8
+\end{pmatrix}
+\]
+
+gilt für die erste Zeile:
+
+\[
+0.3+0.5=0.8 \neq 1.
+\]
+
+Also ist $P_2$ nicht stochastisch.
+
+Für
+
+\[
+P_3 =
+\begin{pmatrix}
+0.4 & 0.6 \\
+1.1 & -0.1
+\end{pmatrix}
+\]
+
+sind die Zeilensummen zwar beide gleich $1$, aber der Eintrag $-0.1$ ist negativ. Wahrscheinlichkeiten dürfen nicht negativ sein.
+
+Also ist $P_3$ nicht stochastisch.
+
+\subsection*{Lösung zu Aufgabe 2}
+
+Es gilt:
+
+\[
+P^2 =
+\begin{pmatrix}
+0.7 & 0.3 \\
+0.5 & 0.5
+\end{pmatrix}
+\begin{pmatrix}
+0.7 & 0.3 \\
+0.5 & 0.5
+\end{pmatrix}.
+\]
+
+Damit:
+
+\[
+P^2 =
+\begin{pmatrix}
+0.7\cdot 0.7 + 0.3\cdot 0.5
+&
+0.7\cdot 0.3 + 0.3\cdot 0.5
+\\
+0.5\cdot 0.7 + 0.5\cdot 0.5
+&
+0.5\cdot 0.3 + 0.5\cdot 0.5
+\end{pmatrix}.
+\]
+
+Also:
+
+\[
+P^2 =
+\begin{pmatrix}
+0.49+0.15 & 0.21+0.15 \\
+0.35+0.25 & 0.15+0.25
+\end{pmatrix}
+=
+\begin{pmatrix}
+0.64 & 0.36 \\
+0.60 & 0.40
+\end{pmatrix}.
+\]
+
+\begin{enumerate}
+    \item
+    \[
+    P^2 =
+    \begin{pmatrix}
+    0.64 & 0.36 \\
+    0.60 & 0.40
+    \end{pmatrix}.
+    \]
+
+    \item Wenn der Nutzer heute aktiv ist, ist die Wahrscheinlichkeit, dass er übermorgen inaktiv ist,
+
+    \[
+    p_{AI}^{(2)} = 0.36.
+    \]
+
+    \item Wenn der Nutzer heute inaktiv ist, ist die Wahrscheinlichkeit, dass er übermorgen aktiv ist,
+
+    \[
+    p_{IA}^{(2)} = 0.60.
+    \]
+\end{enumerate}
+
+\subsection*{Lösung zu Aufgabe 3}
+
+Gegeben ist
+
+\[
+\mu_0 = (0.4,0.6).
+\]
+
+\begin{enumerate}
+    \item Es gilt
+    \[
+    \mu_1 = \mu_0P.
+    \]
+
+    Also:
+
+    \[
+    \mu_1
+    =
+    (0.4,0.6)
+    \begin{pmatrix}
+    0.7 & 0.3 \\
+    0.5 & 0.5
+    \end{pmatrix}.
+    \]
+
+    Komponentenweise:
+
+    \[
+    \mu_1 =
+    (0.4\cdot 0.7 + 0.6\cdot 0.5,\;
+     0.4\cdot 0.3 + 0.6\cdot 0.5).
+    \]
+
+    Also:
+
+    \[
+    \mu_1=(0.58,0.42).
+    \]
+
+    \item Aus Aufgabe 2 wissen wir:
+
+    \[
+    P^2 =
+    \begin{pmatrix}
+    0.64 & 0.36 \\
+    0.60 & 0.40
+    \end{pmatrix}.
+    \]
+
+    Daher:
+
+    \[
+    \mu_2 = \mu_0P^2
+    =
+    (0.4,0.6)
+    \begin{pmatrix}
+    0.64 & 0.36 \\
+    0.60 & 0.40
+    \end{pmatrix}.
+    \]
+
+    Also:
+
+    \[
+    \mu_2 =
+    (0.4\cdot 0.64 + 0.6\cdot 0.60,\;
+     0.4\cdot 0.36 + 0.6\cdot 0.40).
+    \]
+
+    Damit:
+
+    \[
+    \mu_2=(0.616,0.384).
+    \]
+
+    \item Nach zwei Schritten beträgt die Wahrscheinlichkeit für einen aktiven Nutzer $0.616$ und für einen inaktiven Nutzer $0.384$.
+
+    Die Verteilung bewegt sich in Richtung der stationären Verteilung aus Aufgabe 4.
+\end{enumerate}
+
+\subsection*{Lösung zu Aufgabe 4}
+
+Gesucht ist
+
+\[
+\pi=(\pi_A,\pi_I)
+\]
+
+mit
+
+\[
+\pi P = \pi.
+\]
+
+Das bedeutet:
+
+\[
+(\pi_A,\pi_I)
+\begin{pmatrix}
+0.7 & 0.3 \\
+0.5 & 0.5
+\end{pmatrix}
+=
+(\pi_A,\pi_I).
+\]
+
+Daraus folgt:
+
+\[
+0.7\pi_A+0.5\pi_I=\pi_A,
+\]
+
+\[
+0.3\pi_A+0.5\pi_I=\pi_I.
+\]
+
+Aus der ersten Gleichung folgt:
+
+\[
+0.5\pi_I=0.3\pi_A.
+\]
+
+Also:
+
+\[
+\pi_I=\frac{3}{5}\pi_A.
+\]
+
+Zusätzlich gilt:
+
+\[
+\pi_A+\pi_I=1.
+\]
+
+Einsetzen liefert:
+
+\[
+\pi_A+\frac35\pi_A=1.
+\]
+
+Also:
+
+\[
+\frac85\pi_A=1.
+\]
+
+Damit:
+
+\[
+\pi_A=\frac58.
+\]
+
+Folglich:
+
+\[
+\pi_I=\frac38.
+\]
+
+Die invariante Verteilung ist also
+
+\[
+\boxed{
+\pi=
+\left(
+\frac58,\frac38
+\right)
+}.
+\]
+
+\subsection*{Lösung zu Aufgabe 5}
+
+\[
+P_1 =
+\begin{pmatrix}
+0 & 1 \\
+1 & 0
+\end{pmatrix}.
+\]
+
+Die Kette springt immer zwischen den beiden Zuständen hin und her.
+
+\begin{enumerate}
+    \item $P_1$ ist irreduzibel, denn von Zustand $1$ erreicht man Zustand $2$ und von Zustand $2$ erreicht man Zustand $1$.
+
+    \[
+    P_2 =
+    \begin{pmatrix}
+    0.4 & 0.6 \\
+    0.2 & 0.8
+    \end{pmatrix}
+    \]
+
+    ist ebenfalls irreduzibel, denn alle Einträge sind positiv. Jeder Zustand ist von jedem anderen Zustand in einem Schritt erreichbar.
+
+    \[
+    P_3 =
+    \begin{pmatrix}
+    1 & 0 \\
+    0.3 & 0.7
+    \end{pmatrix}
+    \]
+
+    ist nicht irreduzibel. Von Zustand $1$ gelangt man nie nach Zustand $2$, da $p_{12}=0$ und Zustand $1$ absorbierend ist.
+
+    \item $P_1$ ist nicht aperiodisch. Rückkehr zu Zustand $1$ ist nur nach gerader Schrittzahl möglich:
+
+    \[
+    2,4,6,\dots
+    \]
+
+    Daher ist
+
+    \[
+    d(1)=\mathrm{ggT}(2,4,6,\dots)=2.
+    \]
+
+    Die Kette ist periodisch mit Periode $2$.
+
+    $P_2$ ist aperiodisch, da beide Zustände Selbstschleifen besitzen:
+
+    \[
+    p_{11}=0.4>0,
+    \qquad
+    p_{22}=0.8>0.
+    \]
+
+    $P_3$ ist ebenfalls aperiodisch bezüglich der einzelnen Zustände, da
+
+    \[
+    p_{11}>0,
+    \qquad
+    p_{22}>0.
+    \]
+
+    Allerdings ist $P_3$ nicht irreduzibel.
+
+    \item Für $P_1$ gilt:
+
+    \[
+    P_1^2=
+    \begin{pmatrix}
+    1 & 0 \\
+    0 & 1
+    \end{pmatrix}
+    =I.
+    \]
+
+    Daher:
+
+    \[
+    P_1^{2k}=I,
+    \qquad
+    P_1^{2k+1}=P_1.
+    \]
+
+    Die Potenzen wechseln also zwischen zwei Matrizen. Deshalb konvergiert $P_1^n$ nicht, obwohl eine invariante Verteilung existiert, nämlich
+
+    \[
+    \pi=
+    \left(
+    \frac12,\frac12
+    \right).
+    \]
+\end{enumerate}
+
+\subsection*{Lösung zu Aufgabe 6}
+
+\begin{enumerate}
+    \item Die Matrix ist
+
+    \[
+    P =
+    \begin{pmatrix}
+    0.6 & 0.3 & 0.1 \\
+    0.2 & 0.5 & 0.3 \\
+    0.1 & 0.4 & 0.5
+    \end{pmatrix}.
+    \]
+
+    Alle Einträge sind nichtnegativ. Die Zeilensummen sind:
+
+    \[
+    0.6+0.3+0.1=1,
+    \]
+
+    \[
+    0.2+0.5+0.3=1,
+    \]
+
+    \[
+    0.1+0.4+0.5=1.
+    \]
+
+    Also ist $P$ stochastisch.
+
+    \item Für
+
+    \[
+    \mu_0=(1,0,0)
+    \]
+
+    gilt:
+
+    \[
+    \mu_1=\mu_0P.
+    \]
+
+    Also:
+
+    \[
+    \mu_1
+    =
+    (1,0,0)
+    \begin{pmatrix}
+    0.6 & 0.3 & 0.1 \\
+    0.2 & 0.5 & 0.3 \\
+    0.1 & 0.4 & 0.5
+    \end{pmatrix}
+    =
+    (0.6,0.3,0.1).
+    \]
+
+    \item Für
+
+    \[
+    \mu_0=(0.2,0.5,0.3)
+    \]
+
+    gilt:
+
+    \[
+    \mu_1=\mu_0P.
+    \]
+
+    Also:
+
+    \[
+    \mu_1
+    =
+    (0.2,0.5,0.3)
+    \begin{pmatrix}
+    0.6 & 0.3 & 0.1 \\
+    0.2 & 0.5 & 0.3 \\
+    0.1 & 0.4 & 0.5
+    \end{pmatrix}.
+    \]
+
+    Komponentenweise:
+
+    \[
+    \mu_1 =
+    (
+    0.2\cdot 0.6 + 0.5\cdot 0.2 + 0.3\cdot 0.1,\;
+    0.2\cdot 0.3 + 0.5\cdot 0.5 + 0.3\cdot 0.4,\;
+    0.2\cdot 0.1 + 0.5\cdot 0.3 + 0.3\cdot 0.5
+    ).
+    \]
+
+    Damit:
+
+    \[
+    \mu_1=(0.25,0.43,0.32).
+    \]
+
+    \item Wenn der Lernende sicher konzentriert startet, ist er nach einem Schritt mit Wahrscheinlichkeit $0.6$ konzentriert, mit Wahrscheinlichkeit $0.3$ unkonzentriert und mit Wahrscheinlichkeit $0.1$ müde.
+
+    Bei der zweiten Anfangsverteilung verschiebt sich die Verteilung leicht in Richtung Konzentration und Müdigkeit, während der Anteil der unkonzentrierten Zustände sinkt.
+\end{enumerate}
+
+\subsection*{Lösung zu Aufgabe 7}
+
+Zunächst prüfen wir, ob
+
+\[
+\pi=
+\left(
+\frac{3}{10},
+\frac{9}{20},
+\frac{1}{4}
+\right)
+\]
+
+ein Wahrscheinlichkeitsvektor ist.
+
+Alle Einträge sind nichtnegativ. Außerdem gilt:
+
+\[
+\frac{3}{10}+\frac{9}{20}+\frac14
+=
+\frac{6}{20}+\frac{9}{20}+\frac{5}{20}
+=
+\frac{20}{20}
+=
+1.
+\]
+
+Also ist $\pi$ ein Wahrscheinlichkeitsvektor.
+
+Nun berechnen wir $\pi P$:
+
+\[
+\pi P
+=
+\left(
+\frac{3}{10},
+\frac{9}{20},
+\frac14
+\right)
+\begin{pmatrix}
+0.6 & 0.3 & 0.1 \\
+0.2 & 0.5 & 0.3 \\
+0.1 & 0.4 & 0.5
+\end{pmatrix}.
+\]
+
+Erste Komponente:
+
+\[
+\frac{3}{10}\cdot 0.6
++
+\frac{9}{20}\cdot 0.2
++
+\frac14\cdot 0.1
+=
+0.18+0.09+0.025
+=
+0.295.
+\]
+
+Dies ist nicht gleich
+
+\[
+\frac{3}{10}=0.3.
+\]
+
+Daher ist die angegebene Verteilung nicht exakt invariant.
+
+Die korrekte invariante Verteilung berechnet man aus
+
+\[
+\pi P=\pi,
+\qquad
+\pi_K+\pi_U+\pi_M=1.
+\]
+
+Setze
+
+\[
+\pi=(a,b,c).
+\]
+
+Dann gilt:
+
+\[
+0.6a+0.2b+0.1c=a,
+\]
+
+\[
+0.3a+0.5b+0.4c=b,
+\]
+
+\[
+a+b+c=1.
+\]
+
+Äquivalent:
+
+\[
+-0.4a+0.2b+0.1c=0,
+\]
+
+\[
+0.3a-0.5b+0.4c=0,
+\]
+
+\[
+a+b+c=1.
+\]
+
+Multipliziert man die ersten beiden Gleichungen mit $10$, erhält man:
+
+\[
+-4a+2b+c=0,
+\]
+
+\[
+3a-5b+4c=0.
+\]
+
+Aus der ersten Gleichung folgt:
+
+\[
+c=4a-2b.
+\]
+
+Einsetzen in die zweite Gleichung liefert:
+
+\[
+3a-5b+4(4a-2b)=0.
+\]
+
+Also:
+
+\[
+3a-5b+16a-8b=0,
+\]
+
+\[
+19a-13b=0.
+\]
+
+Damit:
+
+\[
+b=\frac{19}{13}a.
+\]
+
+Außerdem:
+
+\[
+c=4a-2\cdot \frac{19}{13}a
+=
+\frac{52}{13}a-\frac{38}{13}a
+=
+\frac{14}{13}a.
+\]
+
+Nun verwenden wir
+
+\[
+a+b+c=1.
+\]
+
+Also:
+
+\[
+a+\frac{19}{13}a+\frac{14}{13}a=1.
+\]
+
+Damit:
+
+\[
+\frac{46}{13}a=1.
+\]
+
+Also:
+
+\[
+a=\frac{13}{46}.
+\]
+
+Daraus folgt:
+
+\[
+b=\frac{19}{46},
+\qquad
+c=\frac{14}{46}.
+\]
+
+Die korrekte invariante Verteilung ist daher
+
+\[
+\boxed{
+\pi=
+\left(
+\frac{13}{46},
+\frac{19}{46},
+\frac{14}{46}
+\right)
+}.
+\]
+
+Näherungsweise:
+
+\[
+\pi\approx (0.283,\;0.413,\;0.304).
+\]
+
+Interpretation:
+
+Langfristig befindet sich das System ungefähr zu $28.3\%$ im Zustand konzentriert, zu $41.3\%$ im Zustand unkonzentriert und zu $30.4\%$ im Zustand müde.
+
+\subsection*{Lösung zu Aufgabe 8}
+
+Gegeben ist
+
+\[
+P =
+\begin{pmatrix}
+0.75 & 0.25 \\
+0.15 & 0.85
+\end{pmatrix}.
+\]
+
+Gesucht ist zunächst
+
+\[
+\pi=(\pi_0,\pi_1)
+\]
+
+mit
+
+\[
+\pi P=\pi,
+\qquad
+\pi_0+\pi_1=1.
+\]
+
+Aus
+
+\[
+(\pi_0,\pi_1)
+\begin{pmatrix}
+0.75 & 0.25 \\
+0.15 & 0.85
+\end{pmatrix}
+=
+(\pi_0,\pi_1)
+\]
+
+folgt:
+
+\[
+0.75\pi_0+0.15\pi_1=\pi_0.
+\]
+
+Also:
+
+\[
+0.15\pi_1=0.25\pi_0.
+\]
+
+Damit:
+
+\[
+\pi_1=\frac{5}{3}\pi_0.
+\]
+
+Mit
+
+\[
+\pi_0+\pi_1=1
+\]
+
+folgt:
+
+\[
+\pi_0+\frac53\pi_0=1.
+\]
+
+Also:
+
+\[
+\frac83\pi_0=1.
+\]
+
+Damit:
+
+\[
+\pi_0=\frac38,
+\qquad
+\pi_1=\frac58.
+\]
+
+Die invariante Verteilung ist also
+
+\[
+\pi=
+\left(
+\frac38,\frac58
+\right).
+\]
+
+Nun prüfen wir Detailed Balance:
+
+\[
+\pi_0p_{01}
+=
+\frac38\cdot 0.25
+=
+\frac{3}{32}.
+\]
+
+Außerdem:
+
+\[
+\pi_1p_{10}
+=
+\frac58\cdot 0.15
+=
+\frac{5}{8}\cdot \frac{15}{100}
+=
+\frac{75}{800}
+=
+\frac{3}{32}.
+\]
+
+Also gilt:
+
+\[
+\pi_0p_{01}
+=
+\pi_1p_{10}.
+\]
+
+Die Detailed-Balance-Bedingung ist erfüllt. Daher ist die Kette reversibel, und $\pi$ ist invariant.
+
+\subsection*{Lösung zu Aufgabe 9}
+
+Gegeben ist
+
+\[
+P =
+\begin{pmatrix}
+0.1 & 0.9 & 0 \\
+0 & 0.1 & 0.9 \\
+0.9 & 0 & 0.1
+\end{pmatrix}
+\]
+
+und
+
+\[
+\pi=
+\left(
+\frac13,\frac13,\frac13
+\right).
+\]
+
+Wir berechnen:
+
+\[
+\pi P
+=
+\left(
+\frac13,\frac13,\frac13
+\right)
+\begin{pmatrix}
+0.1 & 0.9 & 0 \\
+0 & 0.1 & 0.9 \\
+0.9 & 0 & 0.1
+\end{pmatrix}.
+\]
+
+Erste Komponente:
+
+\[
+\frac13\cdot 0.1+\frac13\cdot 0+\frac13\cdot 0.9
+=
+\frac13.
+\]
+
+Zweite Komponente:
+
+\[
+\frac13\cdot 0.9+\frac13\cdot 0.1+\frac13\cdot 0
+=
+\frac13.
+\]
+
+Dritte Komponente:
+
+\[
+\frac13\cdot 0+\frac13\cdot 0.9+\frac13\cdot 0.1
+=
+\frac13.
+\]
+
+Also gilt:
+
+\[
+\pi P=\pi.
+\]
+
+Damit ist $\pi$ invariant.
+
+Nun prüfen wir Detailed Balance. Für die Zustände $1$ und $2$ gilt:
+
+\[
+\pi_1p_{12}
+=
+\frac13\cdot 0.9
+=
+0.3.
+\]
+
+Aber:
+
+\[
+\pi_2p_{21}
+=
+\frac13\cdot 0
+=
+0.
+\]
+
+Also gilt:
+
+\[
+\pi_1p_{12}\neq \pi_2p_{21}.
+\]
+
+Detailed Balance ist nicht erfüllt. Die Kette ist also nicht reversibel.
+
+Die Kette ist aperiodisch, da jeder Zustand eine Selbstschleife besitzt:
+
+\[
+p_{11}=p_{22}=p_{33}=0.1>0.
+\]
+
+Damit ist die Periode jedes Zustands gleich $1$.
+
+\subsection*{Lösung zu Aufgabe 10}
+
+Die Seiten werden in der Reihenfolge
+
+\[
+A,B,C,D
+\]
+
+angeordnet.
+
+Von $A$ gehen zwei Links aus, nämlich nach $B$ und $C$:
+
+\[
+p_{AB}=\frac12,
+\qquad
+p_{AC}=\frac12.
+\]
+
+Von $B$ geht ein Link nach $C$:
+
+\[
+p_{BC}=1.
+\]
+
+Von $C$ geht ein Link nach $A$:
+
+\[
+p_{CA}=1.
+\]
+
+Von $D$ gehen zwei Links aus, nämlich nach $A$ und $C$:
+
+\[
+p_{DA}=\frac12,
+\qquad
+p_{DC}=\frac12.
+\]
+
+Also ist die naive Übergangsmatrix
+
+\[
+P=
+\begin{pmatrix}
+0 & \frac12 & \frac12 & 0 \\
+0 & 0 & 1 & 0 \\
+1 & 0 & 0 & 0 \\
+\frac12 & 0 & \frac12 & 0
+\end{pmatrix}.
+\]
+
+PageRank verwendet häufig eine Google-Matrix
+
+\[
+G=\alpha P+(1-\alpha)\frac1n\mathbf{1}\mathbf{1}^T,
+\]
+
+weil das naive Linkmodell Probleme haben kann:
+
+\begin{itemize}
+    \item Es kann Sackgassen geben, also Seiten ohne ausgehende Links.
+    \item Der Graph kann nicht irreduzibel sein.
+    \item Die Kette kann periodisch sein.
+\end{itemize}
+
+Der Zusatzterm
+
+\[
+(1-\alpha)\frac1n\mathbf{1}\mathbf{1}^T
+\]
+
+modelliert zufälliges Springen auf eine beliebige Seite. Dadurch erhält jede Seite eine positive Übergangswahrscheinlichkeit zu jeder anderen Seite.
+
+Der Dämpfungsfaktor $1-\alpha$ gibt an, mit welcher Wahrscheinlichkeit der Random Surfer nicht einem Link folgt, sondern zufällig auf eine beliebige Seite springt.
+
+\subsection*{Lösung zu Aufgabe 11}
+
+Da der Vorschlag symmetrisch ist, gilt:
+
+\[
+q(y\mid x)=q(x\mid y).
+\]
+
+Damit vereinfacht sich die Metropolis-Hastings-Akzeptanzwahrscheinlichkeit zu
+
+\[
+\alpha(x,y)
+=
+\min\left(1,\frac{\pi(y)}{\pi(x)}\right).
+\]
+
+Da
+
+\[
+\pi(x)\propto e^{-x^2/4},
+\]
+
+gilt:
+
+\[
+\frac{\pi(y)}{\pi(x)}
+=
+\frac{e^{-y^2/4}}{e^{-x^2/4}}
+=
+e^{(x^2-y^2)/4}.
+\]
+
+Also:
+
+\[
+\boxed{
+\alpha(x,y)
+=
+\min\left(1,e^{(x^2-y^2)/4}\right)
+}.
+\]
+
+Für $x=0$ und $y=2$ gilt:
+
+\[
+\alpha(0,2)
+=
+\min\left(1,e^{(0^2-2^2)/4}\right)
+=
+\min(1,e^{-1}).
+\]
+
+Also:
+
+\[
+\alpha(0,2)=e^{-1}\approx 0.368.
+\]
+
+Für $x=3$ und $y=1$ gilt:
+
+\[
+\alpha(3,1)
+=
+\min\left(1,e^{(3^2-1^2)/4}\right)
+=
+\min(1,e^2).
+\]
+
+Da $e^2>1$, folgt:
+
+\[
+\alpha(3,1)=1.
+\]
+
+Interpretation:
+
+Der Vorschlag von $0$ nach $2$ geht in einen Bereich geringerer Dichte und wird deshalb nur mit Wahrscheinlichkeit etwa $0.368$ akzeptiert.
+
+Der Vorschlag von $3$ nach $1$ geht in einen Bereich höherer Dichte und wird deshalb immer akzeptiert.
+
+\subsection*{Lösung zu Aufgabe 12}
+
+Gegeben ist
+
+\[
+\pi(1)=\frac14,
+\qquad
+\pi(2)=\frac34,
+\]
+
+sowie
+
+\[
+q(2\mid 1)=0.8,
+\qquad
+q(1\mid 2)=0.4.
+\]
+
+Die Metropolis-Hastings-Akzeptanzwahrscheinlichkeit lautet:
+
+\[
+\alpha(x,y)
+=
+\min\left(
+1,
+\frac{\pi(y)q(x\mid y)}{\pi(x)q(y\mid x)}
+\right).
+\]
+
+Für den Vorschlag $1\to 2$ gilt:
+
+\[
+\alpha(1,2)
+=
+\min\left(
+1,
+\frac{\pi(2)q(1\mid 2)}{\pi(1)q(2\mid 1)}
+\right).
+\]
+
+Einsetzen ergibt:
+
+\[
+\alpha(1,2)
+=
+\min\left(
+1,
+\frac{\frac34\cdot 0.4}{\frac14\cdot 0.8}
+\right).
+\]
+
+Der Bruch ist:
+
+\[
+\frac{\frac34\cdot 0.4}{\frac14\cdot 0.8}
+=
+\frac{0.3}{0.2}
+=
+1.5.
+\]
+
+Also:
+
+\[
+\alpha(1,2)=1.
+\]
+
+Für den Vorschlag $2\to 1$ gilt:
+
+\[
+\alpha(2,1)
+=
+\min\left(
+1,
+\frac{\pi(1)q(2\mid 1)}{\pi(2)q(1\mid 2)}
+\right).
+\]
+
+Einsetzen ergibt:
+
+\[
+\alpha(2,1)
+=
+\min\left(
+1,
+\frac{\frac14\cdot 0.8}{\frac34\cdot 0.4}
+\right).
+\]
+
+Der Bruch ist:
+
+\[
+\frac{\frac14\cdot 0.8}{\frac34\cdot 0.4}
+=
+\frac{0.2}{0.3}
+=
+\frac23.
+\]
+
+Also:
+
+\[
+\alpha(2,1)=\frac23.
+\]
+
+Die Übergangswahrscheinlichkeiten sind für verschiedene Zustände:
+
+\[
+P(x,y)=q(y\mid x)\alpha(x,y).
+\]
+
+Damit:
+
+\[
+P(1,2)=q(2\mid 1)\alpha(1,2)=0.8\cdot 1=0.8.
+\]
+
+Und:
+
+\[
+P(2,1)=q(1\mid 2)\alpha(2,1)=0.4\cdot \frac23=\frac{4}{15}.
+\]
+
+Nun prüfen wir Detailed Balance:
+
+\[
+\pi(1)P(1,2)
+=
+\frac14\cdot 0.8
+=
+0.2.
+\]
+
+Außerdem:
+
+\[
+\pi(2)P(2,1)
+=
+\frac34\cdot \frac{4}{15}
+=
+\frac{3}{15}
+=
+0.2.
+\]
+
+Also gilt:
+
+\[
+\pi(1)P(1,2)=\pi(2)P(2,1).
+\]
+
+Detailed Balance ist erfüllt.
+
+\subsection*{Lösung zu Aufgabe 13}
+
+\begin{enumerate}
+    \item Nach einer Burn-in-Zeit $B$ kann man den Erwartungswert
+
+    \[
+    \E_\pi[g(X)]
+    \]
+
+    durch den empirischen Mittelwert approximieren:
+
+    \[
+    \widehat I
+    =
+    \frac{1}{N-B}
+    \sum_{n=B+1}^{N}g(X_n).
+    \]
+
+    \item Die ersten $B$ Werte werden häufig verworfen, weil die Kette zu Beginn noch stark vom Startwert abhängen kann. Erst nach einer gewissen Laufzeit ist die Verteilung von $X_n$ näher an der stationären Zielverteilung $\pi$.
+
+    \item Bei klassischer Monte-Carlo-Integration verwendet man häufig unabhängige Stichproben.
+
+    Bei MCMC sind die Stichproben dagegen im Allgemeinen abhängig, weil jeder neue Zustand aus dem vorherigen erzeugt wird. Der Vorteil ist, dass man auch aus komplizierten Verteilungen sampeln kann, aus denen direkte unabhängige Stichproben schwer zu erzeugen sind.
+\end{enumerate}
+
+\end{document}
