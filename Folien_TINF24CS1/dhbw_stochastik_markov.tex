@@ -811,13 +811,25 @@ P = \begin{pmatrix} 0 & 1/2 & 1/2 & 0 \\ 0 & 0 & 1 & 0 \\ 1 & 0 & 0 & 0 \\ 0 & 0
 \framesubtitle{Google PageRank -- Berechnung}
     \begin{block}{Google-Matrix mit $\alpha = 0.85$}
 \[
-G = 0.85 \cdot P + 0.15 \cdot \frac{1}{4} \, \mathbb{I}
+G = 0.85 \cdot P + 0.15 \cdot \frac{1}{4} \, \one\one^{T}
+ = \begin{pmatrix}
+0.0375 & 0.4625 & 0.4625 & 0.0375 \\
+0.0375 & 0.0375 & 0.8875 & 0.0375 \\
+0.8875 & 0.0375 & 0.0375 & 0.0375 \\
+0.0375 & 0.0375 & 0.8875 & 0.0375
+\end{pmatrix}
 \]
 \end{block}
 \begin{block}{Berechnung von $\pi$}
 Iteriere: $\mu_{n+1} = \mu_n \cdot G$ (Power-Iteration), bis Konvergenz.
 \end{block}
-\begin{block}{Ergebnis (gerundet)}
+ \end{frame}
+
+
+\begin{frame}
+    \frametitle{Markov-Ketten}
+\framesubtitle{Google PageRank -- Ergebnis}
+    \begin{block}{Ergebnis (gerundet)}
 \[
 \pi \approx (0.37,\; 0.20,\; 0.29,\; 0.14)
 \]
@@ -835,14 +847,14 @@ Seite $A$ hat den höchsten PageRank, weil $C$ (selbst wichtig) auf $A$ verlinkt
     \frametitle{Markov-Ketten}
 \framesubtitle{Anwendung: Kartenmischen}
     \begin{block}{Modell}
-Ein Kartendeck mit $n$ Karten = eine Permutation $\sigma \in S_n$.\\[0.2cm]
-Zustandsraum: $S = S_n$ (alle $n!$ Permutationen).\\[0.1cm]
+Ein Kartendeck mit $N$ Karten = eine Permutation $\sigma \in S_N$.\\[0.2cm]
+Zustandsraum: $S = S_N$ (alle $N!$ Permutationen).\\[0.1cm]
 Ein Mischvorgang $\hat{=}$ ein Übergang $\sigma \to \sigma'$.
 \end{block}
 \begin{block}{Beispiel: Top-to-Random Shuffle}
 Nimm die oberste Karte und stecke sie an eine zufällige Position:
 \[
-p_{\sigma, \sigma'} = \begin{cases} \frac{1}{n} & \text{falls } \sigma' \text{ durch Einfügen der Top-Karte entsteht} \\ 0 & \text{sonst} \end{cases}
+p_{\sigma, \sigma'} = \begin{cases} \frac{1}{N} & \text{falls } \sigma' \text{ durch Einfügen der Top-Karte entsteht} \\ 0 & \text{sonst} \end{cases}
 \]
 \end{block}
 \textbf{Markov-Eigenschaft:} Die nächste Anordnung hängt nur von der aktuellen ab!
@@ -859,16 +871,16 @@ p_{\sigma, \sigma'} = \begin{cases} \frac{1}{n} & \text{falls } \sigma' \text{ d
     \begin{block}{Eigenschaften der Misch-Kette}
 \begin{itemize}
 \item \textbf{Irreduzibel:} Jede Permutation ist von jeder anderen erreichbar.
-\item \textbf{Aperiodisch:} Top-Karte kann an gleicher Stelle bleiben ($p_{\sigma\sigma} = 1/n > 0$).
+\item \textbf{Aperiodisch:} Top-Karte kann an gleicher Stelle bleiben ($p_{\sigma\sigma} = 1/N > 0$).
 \item $\Rightarrow$ Hauptsatz anwendbar!
 \end{itemize}
 \end{block}
 \begin{block}{Invariante Verteilung}
 Die Gleichverteilung
 \[
-\pi = \left(\frac{1}{n!}, \ldots, \frac{1}{n!}\right)
+\pi = \left(\frac{1}{N!}, \ldots, \frac{1}{N!}\right)
 \]
-ist invariant; wegen Irreduzibilit"at ist sie die \textbf{eindeutige} invariante Verteilung.
+ist invariant; wegen Irreduzibilität ist sie die \textbf{eindeutige} invariante Verteilung.
 \end{block}
  \end{frame}
 
@@ -876,13 +888,13 @@ ist invariant; wegen Irreduzibilit"at ist sie die \textbf{eindeutige} invariante
 \begin{frame}
     \frametitle{Markov-Ketten}
 \framesubtitle{Kartenmischen -- Warum ist $\pi$ invariant?}
-    \begin{block}{Gleichverteilung auf $S_n$}
-$\pi(\sigma)=\frac{1}{n!}$ für alle $\sigma \in S_n$ bedeutet: Jede Permutation ist gleich wahrscheinlich.
+    \begin{block}{Gleichverteilung auf $S_N$}
+$\pi(\sigma)=\frac{1}{N!}$ für alle $\sigma \in S_N$ bedeutet: Jede Permutation ist gleich wahrscheinlich.
 \end{block}
 \begin{block}{Erster Schritt}
 Fixiere eine Zielpermutation $\tau$.\\
-Es gibt genau $n$ Vorgänger, die in einem Schritt nach $\tau$ führen: für jede Einfügeposition genau einen.\\
-Jeder dieser Vorgänger hat unter der Gleichverteilung Wahrscheinlichkeit $\frac{1}{n!}$.
+Es gibt genau $N$ Vorgänger, die in einem Schritt nach $\tau$ führen: für jede Einfügeposition genau einen.\\
+Jeder dieser Vorgänger hat unter der Gleichverteilung Wahrscheinlichkeit $\frac{1}{N!}$.
 \end{block}
  \end{frame}
 
@@ -891,10 +903,10 @@ Jeder dieser Vorgänger hat unter der Gleichverteilung Wahrscheinlichkeit $\frac
     \frametitle{Markov-Ketten}
 \framesubtitle{Kartenmischen -- Warum ist $\pi$ invariant?}
 \begin{block}{Zweiter Schritt}
-Von jedem dieser $n$ Vorgänger geht man mit Wahrscheinlichkeit $\frac{1}{n}$ nach $\tau$.\\
+Von jedem dieser $N$ Vorgänger geht man mit Wahrscheinlichkeit $\frac{1}{N}$ nach $\tau$.\\
 Also ist die Gesamtwahrscheinlichkeit für $\tau$ nach einem Schritt
 \[
-n \cdot \frac{1}{n!}\cdot \frac{1}{n} = \frac{1}{n!} = \pi(\tau).
+N \cdot \frac{1}{N!}\cdot \frac{1}{N} = \frac{1}{N!} = \pi(\tau).
 \]
 Also bleibt die Gleichverteilung nach einem Mischschritt erhalten.
 \end{block}
@@ -918,9 +930,9 @@ Da die Gleichverteilung bereits invariant ist, muss sie diese eindeutige invaria
 
 \begin{frame}
     \frametitle{Markov-Ketten}
-\framesubtitle{Kartenmischen -- Warum $n\ln n$?}
+\framesubtitle{Kartenmischen -- Warum $N\ln N$?}
     \begin{block}{Mischzeit (Mixing Time)}
-Top-to-Random: $\approx n \ln n$ Schritte (für $n=52$: ca.\ $200$).
+Top-to-Random: $\approx N \ln N$ Schritte (für $N=52$: ca.\ $200$).
 \end{block}
     \begin{block}{Heuristik (Coupon-Collector-Idee)}
 Eine Karte ist erst dann wirklich ``durchmischt'', wenn sie irgendwann selbst oben lag und damit aktiv bewegt wurde.
@@ -928,7 +940,7 @@ Eine Karte ist erst dann wirklich ``durchmischt'', wenn sie irgendwann selbst ob
 \begin{block}{Erster Schritt}
 Für eine feste Karte gilt nach $k$ Schritten:
 \[
-\left(1-\frac{1}{n}\right)^k \approx e^{-k/n}
+\left(1-\frac{1}{N}\right)^k \approx e^{-k/N}
 \]
 Sie wurde also mit ungefähr dieser Wahrscheinlichkeit noch nie bewegt.
 \end{block}
@@ -937,17 +949,18 @@ Sie wurde also mit ungefähr dieser Wahrscheinlichkeit noch nie bewegt.
 
 \begin{frame}
     \frametitle{Markov-Ketten}
-\framesubtitle{Kartenmischen -- Warum $n\ln n$?}
+\framesubtitle{Kartenmischen -- Warum $N\ln N$?}
     \begin{block}{Zweiter Schritt}
 Damit ist die erwartete Zahl noch nie bewegter Karten ungefähr
 \[
-n\,e^{-k/n}.
+N\,e^{-k/N}.
 \]
-``Gut gemischt'' ist das Deck erst, wenn diese Zahl klein wird, also etwa von Ordnung $1$:
+    ``Gut gemischt'' ist das Deck erst, wenn im Mittel nur noch sehr wenige Karten unberührt sind,
+    also etwa $1$ oder $2$:
 \[
-n\,e^{-k/n} \approx 1
+N\,e^{-k/N} \approx 1
 \quad \Longrightarrow \quad
-k \approx n\ln n.
+k \approx N\ln N.
 \]
 \end{block}
  \end{frame}

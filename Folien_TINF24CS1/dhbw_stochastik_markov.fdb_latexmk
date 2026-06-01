@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1780303657.93582 "dhbw_stochastik_markov.tex" "dhbw_stochastik_markov.pdf" "dhbw_stochastik_markov" 1780303661.74638 0
+["pdflatex"] 1780305349.29311 "dhbw_stochastik_markov.tex" "dhbw_stochastik_markov.pdf" "dhbw_stochastik_markov" 1780305353.23439 0
   "/etc/texmf/web2c/texmf.cnf" 1733989132.21817 475 c0e671620eb5563b2130f56340a5fde8 ""
   "/home/johannes/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1095.600pk" 1780298562.54746 26208 4a51acbfc1d13ab929c6a2eae1915a21 ""
   "/home/johannes/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecsi0600.600pk" 1780298562.92846 14768 e5ae3f6fe8a42ba41dbff167f41f7060 ""
@@ -78,6 +78,7 @@
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmss10.tfm" 1136768653 1316 b636689f1933f24d1294acdf6041daaa ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmss8.tfm" 1136768653 1296 d77f431d10d47c8ea2cc18cf45346274 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmss9.tfm" 1136768653 1320 49357c421c0d469f88b867dd0c3d10e8 ""
+  "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmssbx10.tfm" 1136768653 1272 e2d13f0df30bf3ad990bb9d028e37f34 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmsy10.tfm" 1136768653 1124 6c73e740cf17375f03eec0ee63599741 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmsy6.tfm" 1136768653 1116 933a60c408fc0a863a92debe84b2d294 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmsy8.tfm" 1136768653 1120 8b7d695260f3cff42e636090a8002094 ""
@@ -318,10 +319,10 @@
   "/usr/share/texmf/web2c/texmf.cnf" 1707919699 40399 f2c302f7d2af602abb742093540a5834 ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1767443022.6559 165012 f177baa1c39a3ebd62c3096a43521a0d ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1767443185 7356332 5fe4910e5cfa247a0fd1174dacbabfdb ""
-  "dhbw_stochastik_markov.aux" 1780303661.58058 7269 a546d109e2429f902a07824630f00486 "pdflatex"
-  "dhbw_stochastik_markov.nav" 1780303661.58158 5108 6e766689523f10babb1adf77cf7b20c1 "pdflatex"
-  "dhbw_stochastik_markov.out" 1780303658.56855 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
-  "dhbw_stochastik_markov.tex" 1780303651.57347 41958 9afbf244392ac473b6da263ad3e03990 ""
+  "dhbw_stochastik_markov.aux" 1780305353.06426 7398 4dc5833f117aa88e226c56af31a96f82 "pdflatex"
+  "dhbw_stochastik_markov.nav" 1780305353.06526 5201 0cb8308858948099e50efeef52c9005c "pdflatex"
+  "dhbw_stochastik_markov.out" 1780305349.96422 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "dhbw_stochastik_markov.tex" 1780305350.57123 42283 7e826a65f116f6c201bc923a41569267 ""
   (generated)
   "dhbw_stochastik_markov.aux"
   "dhbw_stochastik_markov.log"
