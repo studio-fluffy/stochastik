@@ -8,6 +8,7 @@
 \usepackage{subfig}
 \usepackage{amsmath}
 \usepackage{amssymb}
+\usepackage{bm}
 \usepackage{hyperref}
 \hypersetup{
     colorlinks=true,     
@@ -21,6 +22,7 @@
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\N}{\mathbb{N}}
 \newcommand{\E}{\mathbb{E}}
+\newcommand{\one}{\bm{1}}
 \newcommand{\PP}{\mathbb{P}}
 
 \begin{document}
@@ -738,7 +740,7 @@ Zustandsraum $S = \{\text{Webseiten}\}$, Übergangsmatrix:
 \[
 p_{ij} = \begin{cases} \frac{1}{\text{out}(i)} & \text{falls } i \to j \text{ (Link vorhanden)} \\ 0 & \text{sonst} \end{cases}
 \]
-wobei $\text{out}(i)$ die Anzahl ausgehender Links von Seite $i$ ist.
+mit $\text{out}(i)$ = Anzahl ausgehender Links von Seite $i$; $P$ ist \textbf{zeilenstochastisch}.
 \end{block}
 \textbf{Problem:} Nicht irreduzibel (Sackgassen) und evtl.\ periodisch!
  \end{frame}
@@ -753,8 +755,9 @@ wobei $\text{out}(i)$ die Anzahl ausgehender Links von Seite $i$ ist.
 \framesubtitle{Google PageRank -- Die Google-Matrix}
     \begin{block}{Lösung: Dämpfungsfaktor $\alpha \in (0,1)$}
 \[
-G = \alpha \cdot P + (1 - \alpha) \cdot \frac{1}{|S|} \mathbf{1}\mathbf{1}^T
+G = \alpha \cdot P + (1 - \alpha) \cdot \frac{1}{|S|} \, \mathbb{I}
 \]
+mit $|S|$ = Anzahl aller Seiten in $S$; auch $G$ ist \textbf{zeilenstochastisch}.\\
 Mit Wahrscheinlichkeit $\alpha$: folge einem Link.\\
 Mit Wahrscheinlichkeit $1-\alpha$: springe zu einer zufälligen Seite.
 \end{block}
@@ -808,7 +811,7 @@ P = \begin{pmatrix} 0 & 1/2 & 1/2 & 0 \\ 0 & 0 & 1 & 0 \\ 1 & 0 & 0 & 0 \\ 0 & 0
 \framesubtitle{Google PageRank -- Berechnung}
     \begin{block}{Google-Matrix mit $\alpha = 0.85$}
 \[
-G = 0.85 \cdot P + 0.15 \cdot \frac{1}{4}\mathbf{1}\mathbf{1}^T
+G = 0.85 \cdot P + 0.15 \cdot \frac{1}{4} \, \mathbb{I}
 \]
 \end{block}
 \begin{block}{Berechnung von $\pi$}
@@ -861,12 +864,91 @@ p_{\sigma, \sigma'} = \begin{cases} \frac{1}{n} & \text{falls } \sigma' \text{ d
 \end{itemize}
 \end{block}
 \begin{block}{Invariante Verteilung}
-Die Gleichverteilung $\pi(\sigma) = \frac{1}{n!}$ ist invariant (Symmetrie).
-Da irreduzibel: sie ist die \textbf{eindeutige} invariante Verteilung.
+Die Gleichverteilung
+\[
+\pi = \left(\frac{1}{n!}, \ldots, \frac{1}{n!}\right)
+\]
+ist invariant; wegen Irreduzibilit"at ist sie die \textbf{eindeutige} invariante Verteilung.
 \end{block}
-\begin{block}{Mischzeit (Mixing Time)}
-Wie viele Schritte bis ``gut gemischt'' ($\|\mu_n - \pi\|_{TV} < \varepsilon$)?\\
+ \end{frame}
+
+
+\begin{frame}
+    \frametitle{Markov-Ketten}
+\framesubtitle{Kartenmischen -- Warum ist $\pi$ invariant?}
+    \begin{block}{Gleichverteilung auf $S_n$}
+$\pi(\sigma)=\frac{1}{n!}$ für alle $\sigma \in S_n$ bedeutet: Jede Permutation ist gleich wahrscheinlich.
+\end{block}
+\begin{block}{Erster Schritt}
+Fixiere eine Zielpermutation $\tau$.\\
+Es gibt genau $n$ Vorgänger, die in einem Schritt nach $\tau$ führen: für jede Einfügeposition genau einen.\\
+Jeder dieser Vorgänger hat unter der Gleichverteilung Wahrscheinlichkeit $\frac{1}{n!}$.
+\end{block}
+ \end{frame}
+
+
+\begin{frame}
+    \frametitle{Markov-Ketten}
+\framesubtitle{Kartenmischen -- Warum ist $\pi$ invariant?}
+\begin{block}{Zweiter Schritt}
+Von jedem dieser $n$ Vorgänger geht man mit Wahrscheinlichkeit $\frac{1}{n}$ nach $\tau$.\\
+Also ist die Gesamtwahrscheinlichkeit für $\tau$ nach einem Schritt
+\[
+n \cdot \frac{1}{n!}\cdot \frac{1}{n} = \frac{1}{n!} = \pi(\tau).
+\]
+Also bleibt die Gleichverteilung nach einem Mischschritt erhalten.
+\end{block}
+ \end{frame}
+
+
+\begin{frame}
+    \frametitle{Markov-Ketten}
+\framesubtitle{Kartenmischen -- Warum eindeutig?}
+\begin{block}{Warum eindeutig?}
+Hier gilt:
+\begin{itemize}
+\item Der Zustandsraum $S_n$ ist endlich.
+\item Die Kette ist irreduzibel.
+\end{itemize}
+Nach dem Hauptsatz gibt es deshalb genau eine invariante Verteilung.\\
+Da die Gleichverteilung bereits invariant ist, muss sie diese eindeutige invariante Verteilung sein.
+\end{block}
+ \end{frame}
+
+
+\begin{frame}
+    \frametitle{Markov-Ketten}
+\framesubtitle{Kartenmischen -- Warum $n\ln n$?}
+    \begin{block}{Mischzeit (Mixing Time)}
 Top-to-Random: $\approx n \ln n$ Schritte (für $n=52$: ca.\ $200$).
+\end{block}
+    \begin{block}{Heuristik (Coupon-Collector-Idee)}
+Eine Karte ist erst dann wirklich ``durchmischt'', wenn sie irgendwann selbst oben lag und damit aktiv bewegt wurde.
+\end{block}
+\begin{block}{Erster Schritt}
+Für eine feste Karte gilt nach $k$ Schritten:
+\[
+\left(1-\frac{1}{n}\right)^k \approx e^{-k/n}
+\]
+Sie wurde also mit ungefähr dieser Wahrscheinlichkeit noch nie bewegt.
+\end{block}
+ \end{frame}
+
+
+\begin{frame}
+    \frametitle{Markov-Ketten}
+\framesubtitle{Kartenmischen -- Warum $n\ln n$?}
+    \begin{block}{Zweiter Schritt}
+Damit ist die erwartete Zahl noch nie bewegter Karten ungefähr
+\[
+n\,e^{-k/n}.
+\]
+``Gut gemischt'' ist das Deck erst, wenn diese Zahl klein wird, also etwa von Ordnung $1$:
+\[
+n\,e^{-k/n} \approx 1
+\quad \Longrightarrow \quad
+k \approx n\ln n.
+\]
 \end{block}
  \end{frame}
 
@@ -991,14 +1073,13 @@ Hauptsatz: Irreduzibel + aperiodisch $\Rightarrow$ $X_n \to \pi$ in Verteilung!
     \frametitle{MCMC}
 \framesubtitle{Metropolis-Hastings -- Die Übergangsmatrix $P$}
     \begin{block}{Was ist $P(x,y)$?}
-$P(x,y)$ = Wahrscheinlichkeit, von $x$ nach $y$ zu springen (für $x \neq y$).\\
-Der \textbf{einzige Weg} von $x$ nach $y$: Vorschlag $y$ UND Akzeptanz.
+Für $x \neq y$: Wahrscheinlichkeit, von $x$ nach $y$ zu springen.
 \end{block}
 \begin{block}{Definition der Übergangsmatrix}
 \[
-P(x,y) = \underbrace{q(y \mid x)}_{\substack{\text{W'keit, dass}\\\text{$y$ vorgeschlagen wird}}} \cdot \; \underbrace{\alpha(x,y)}_{\substack{\text{W'keit, dass}\\\text{akzeptiert wird}}} \qquad (x \neq y)
+P(x,y) = q(y \mid x) \cdot \alpha(x,y) \qquad (x \neq y)
 \]
-Dies ist der Multiplikationssatz: $P(A \cap B) = P(A) \cdot P(B \mid A)$.
+mit $q(y \mid x)$ = Vorschlagswahrscheinlichkeit und $\alpha(x,y)$ = Akzeptanzwahrscheinlichkeit.
 \end{block}
 \begin{block}{Verbleibe-Wahrscheinlichkeit}
 \[
@@ -1035,7 +1116,7 @@ $\alpha(x,y) = \min\!\left(1, \frac{\pi(y)q(x|y)}{\pi(x)q(y|x)}\right)$ korrigie
     \frametitle{MCMC}
 \framesubtitle{Metropolis-Hastings -- Beweis Detailed Balance}
     \begin{block}{Beweis}
-O.B.d.A.\ $\pi(x)q(y|x) \geq \pi(y)q(x|y)$. Dann:
+O.B.d.A.\ $\pi(x)q(y|x) \geq \pi(y)q(x|y)$\; (sonst vertausche $x$ und $y$). Dann:
 $\alpha(x,y) = \frac{\pi(y)\,q(x|y)}{\pi(x)\,q(y|x)} \leq 1$ \; und \; $\alpha(y,x) = 1$.
 \end{block}
 \textbf{Linke Seite:}
