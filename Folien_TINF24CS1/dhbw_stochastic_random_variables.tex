@@ -1740,28 +1740,56 @@ Man \emph{multipliziert} mit der Verzerrung \(|\det DT(x)|\), ausgewertet direkt
 \end{block}
 \end{frame}
 
-\begin{frame}{Substitutionsregel: Transformationssatz und Jacobi-Faktor}
-Die Substitutionsregel setzt sich aus zwei Bausteinen zusammen:
+\begin{frame}{Zwei Bausteine: Transformationssatz \((A)\) und Verzerrung \((B)\)}
+Die Substitutionsregel ruht auf zwei Aussagen:
 
 \smallskip
-\textbf{(A) Abstrakter Transformationssatz} (rein maßtheoretisch):
-\(\ \int_V g\,d(T_\#\mu)=\int_U (g\circ T)\,d\mu.\)
+\textbf{(A) Abstrakter Transformationssatz} (rein maßtheoretisch): für ein Maß \(\mu\) auf \(U\) und messbares \(g\)
+\[
+\int_V g\,d(T_\#\mu)=\int_U (g\circ T)\,d\mu.
+\]
 Gilt für jedes messbare \(T\), \emph{ohne} Jacobi-Faktor -- er schiebt das Integral nur von \(V\) nach \(U\).
 
 \smallskip
-\textbf{(B) Volumen-Verzerrung} (Analysis): \(dy=|\det DT(x)|\,dx\), d.h. mit \(d\mu=|\det DT|\,d\lambda^n\) gerade \(T_\#\mu=\lambda^n\) -- der geometrische Gehalt.
+\textbf{(B) Volumen-Verzerrung} (Analysis): \(dy=|\det DT(x)|\,dx\); gleichwertig dazu ist für \(d\mu=|\det DT|\,d\lambda^n\)
+\[
+T_\#\mu=\lambda^n.
+\]
+Das ist der geometrische Gehalt (der Jacobi-Faktor).
+\end{frame}
+
+\begin{frame}{Das Bildmaß \(T_\#\mu\): Masse umlagern}
+Ein Maß \(\mu\) verteilt ``Masse'' auf \(U\). Die Abbildung \(T\) schiebt jeden Punkt \(x\in U\) auf \(y=T(x)\in V\). Das \textbf{Bildmaß} \(T_\#\mu\) ist diese nach \(V\) transportierte Masse:
+\[
+T_\#\mu(B)=\mu\big(T^{-1}(B)\big)\qquad(\text{Masse über dem Urbild}).
+\]
 
 \smallskip
-\textbf{Zusammenspiel:}
+\textbf{Diskrete Anschauung.} Liegen Massen \(m_1,\dots,m_k\) bei \(x_1,\dots,x_k\), so liegen sie nach dem Schieben bei \(y_i=T(x_i)\). Integrieren heißt ``Funktionswert mal Masse summieren'':
 \[
 \begin{aligned}
-\int_V f\,d\lambda^n
-&\overset{(B)}{=}\int_V f\,d(T_\#\mu)
-\overset{(A)}{=}\int_U (f\circ T)\,d\mu\\
-&=\int_U f(T(x))\,|\det DT(x)|\,d\lambda^n(x).
+\int_V f\,d(T_\#\mu)&=\sum_i f(y_i)\,m_i=\sum_i f\big(T(x_i)\big)\,m_i\\
+&=\int_U (f\circ T)\,d\mu.
 \end{aligned}
 \]
-Den Transformationssatz \((A)\) braucht man genau im \emph{mittleren} Schritt (Verschieben \(V\to U\)); den Jacobi-Faktor liefert er \emph{nicht} -- der kommt aus \((B)\).
+Das ist Satz \((A)\): man wertet \(f\) einfach dort aus, wohin die Masse geschoben wurde, am Ort \(y_i=T(x_i)\).
+\end{frame}
+
+\begin{frame}{Warum ist \(T_\#\mu=\lambda^n\)?}
+{\small
+Wähle \(\mu\) auf \(U\) mit Dichte \(|\det DT|\), also \(d\mu=|\det DT|\,d\lambda^n\). Dann reproduziert die umgelagerte Masse genau das Volumen:
+\[
+T_\#\mu(B)=\mu\big(T^{-1}(B)\big)=\int_{T^{-1}(B)}|\det DT(x)|\,dx=\operatorname{vol}(B)=\lambda^n(B).
+\]
+Die mittlere Gleichheit ist die Volumen-Verzerrung \((B)\).
+
+\smallskip
+\textbf{1D zum Anfassen.} \(T\colon[a,b]\to[T(a),T(b)]\) wachsend, Dichte \(T'\):
+\[
+T_\#\mu\big((c,d)\big)=\int_{T^{-1}(c)}^{T^{-1}(d)}T'(x)\,dx=d-c=\text{Länge von }(c,d).
+\]
+\(T_\#\mu\) misst also Längen, d.h. \(T_\#\mu=\lambda\).
+}
 \end{frame}
 
 \begin{frame}{Dichtetransformation (multiplikative Form)}
