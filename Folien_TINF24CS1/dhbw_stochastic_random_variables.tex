@@ -1724,163 +1724,94 @@ Durch Subtraktion erhält man
 \end{block}
 \end{frame}
 
-\begin{frame}{Dichtetransformation in \(\mathbb R^n\)}
+\begin{frame}{Volumen-Verzerrung und Substitutionsregel}
+\begin{block}{Lokale Verzerrung}
+Sei \(T\colon U\to V\) eine \(C^1\)-Diffeomorphie zwischen offenen Mengen \(U,V\subseteq\mathbb R^n\). Lokal um \(x\) wird \(T\) durch \(DT(x)\) beschrieben; eine lineare Abbildung skaliert Volumina mit \(|\det DT(x)|\). Ein Volumenelement transformiert sich also als
+\[
+dy=|\det DT(x)|\,dx,\qquad y=T(x).
+\]
+\end{block}
+\begin{block}{Substitutionsregel (multiplikative Form)}
+Für messbares \(f\ge 0\) (oder \(f\in L^1\)) folgt direkt
+\[
+\boxed{\ \int_V f(y)\,dy=\int_U f(T(x))\,|\det DT(x)|\,dx\ }.
+\]
+Man \emph{multipliziert} mit der Verzerrung \(|\det DT(x)|\), ausgewertet direkt bei \(x\).
+\end{block}
+\end{frame}
+
+\begin{frame}{Substitutionsregel: Transformationssatz und Jacobi-Faktor}
+Die Substitutionsregel setzt sich aus zwei Bausteinen zusammen:
+
+\smallskip
+\textbf{(A) Abstrakter Transformationssatz} (rein maßtheoretisch):
+\(\ \int_V g\,d(T_\#\mu)=\int_U (g\circ T)\,d\mu.\)
+Gilt für jedes messbare \(T\), \emph{ohne} Jacobi-Faktor -- er schiebt das Integral nur von \(V\) nach \(U\).
+
+\smallskip
+\textbf{(B) Volumen-Verzerrung} (Analysis): \(dy=|\det DT(x)|\,dx\), d.h. mit \(d\mu=|\det DT|\,d\lambda^n\) gerade \(T_\#\mu=\lambda^n\) -- der geometrische Gehalt.
+
+\smallskip
+\textbf{Zusammenspiel:}
+\[
+\begin{aligned}
+\int_V f\,d\lambda^n
+&\overset{(B)}{=}\int_V f\,d(T_\#\mu)
+\overset{(A)}{=}\int_U (f\circ T)\,d\mu\\
+&=\int_U f(T(x))\,|\det DT(x)|\,d\lambda^n(x).
+\end{aligned}
+\]
+Den Transformationssatz \((A)\) braucht man genau im \emph{mittleren} Schritt (Verschieben \(V\to U\)); den Jacobi-Faktor liefert er \emph{nicht} -- der kommt aus \((B)\).
+\end{frame}
+
+\begin{frame}{Dichtetransformation (multiplikative Form)}
 \begin{block}{Satz}
-Sei \(T\colon U\to V\) eine \(C^1\)-Diffeomorphie zwischen offenen Mengen
-\(U,V\subseteq\mathbb R^n\).
-Sei \(\mu\) ein Maß auf \(U\) mit Dichte \(p\), also
+Sei \(X\) eine Zufallsvariable mit Dichte \(p\) auf \(U\). Beschreibe die neue Variable \(Y\) (Werte in \(V\)) als Parametrisierung des \emph{alten} durch das \emph{neue} Argument,
 \[
-d\mu(x)=p(x)\,d\lambda^n(x).
+X=\Phi(Y),\qquad \Phi\colon V\to U\ \ C^1\text{-Diffeomorphismus}.
 \]
-Dann besitzt das Bildmaß \(T_\#\mu\) auf \(V\) die Dichte
+Dann hat \(Y\) die Dichte
 \[
-q(y)=p(T^{-1}(y))
-\frac{1}{|\det DT(T^{-1}(y))|}.
+\boxed{\,q(y)=p\bigl(\Phi(y)\bigr)\,\bigl|\det D\Phi(y)\bigr|\,}.
 \]
+Nur eine Multiplikation mit der Verzerrung \(|\det D\Phi(y)|\), direkt bei \(y\) ausgewertet.
 \end{block}
 \end{frame}
 
-\begin{frame}{Transformationsformel in \(\mathbb R^n\)}
-\begin{block}{Folgerung}
-Für jede messbare Funktion \(f\colon V\to\mathbb R\) mit \(f\ge 0\) oder \(f\in L^1(T_\#\mu)\) gilt
+\begin{frame}{Herleitung über die Substitution}
+\begin{block}{Massenerhaltung}
+Für messbares \(A\subseteq V\) ist \(\{Y\in A\}=\{X\in\Phi(A)\}\), also
 \[
-\int_V f(y)\,q(y)\,d\lambda^n(y)
-=
-\int_U f(T(x))\,p(x)\,d\lambda^n(x),
+P(Y\in A)=\int_{\Phi(A)} p(x)\,dx
+\overset{x=\Phi(y)}{=}\int_A p\bigl(\Phi(y)\bigr)\,|\det D\Phi(y)|\,dy.
 \]
-wobei
-\[
-q(y)=p(T^{-1}(y))
-\frac{1}{|\det DT(T^{-1}(y))|}.
-\]
+Da dies für alle \(A\) gilt, ist \(q(y)=p(\Phi(y))\,|\det D\Phi(y)|\).
 \end{block}
-
-\begin{block}{Kurzform}
-Mit \(d\lambda^n(x)=dx\) und \(d\lambda^n(y)=dy\) schreibt man auch
+\begin{block}{Eine Dimension / Merkregel}
 \[
-\int_V f(y)\,q(y)\,dy
-=
-\int_U f(T(x))\,p(x)\,dx.
+\begin{gathered}
+q(y)=p(\varphi(y))\,|\varphi'(y)|,\\[2pt]
+\text{denn}\quad
+\underbrace{q(y)\,dy}_{\text{Masse bei }y}=\underbrace{p(x)\,dx}_{\text{Masse bei }x},\qquad dx=|\varphi'(y)|\,dy.
+\end{gathered}
 \]
-\end{block}
-\end{frame}
-
-\begin{frame}{Beweisskizze zur Dichtetransformation I}
-\begin{block}{Ausgangspunkt}
-Nach dem allgemeinen Transformationssatz gilt für messbares \(f\):
-\[
-\int_V f(y)\,d(T_\#\mu)(y)
-=
-\int_U f(T(x))\,d\mu(x).
-\]
-Da \(\mu\) die Dichte \(p\) besitzt, folgt
-\[
-\int_V f(y)\,d(T_\#\mu)(y)
-=
-\int_U f(T(x))\,p(x)\,d\lambda^n(x).
-\]
-\end{block}
-
-\begin{block}{Ziel}
-Wir möchten die linke Seite wieder als Integral gegen eine Dichte \(q\) auf \(V\) schreiben.
-\end{block}
-\end{frame}
-
-\begin{frame}{Beweisskizze zur Dichtetransformation II}
-\begin{block}{Lokale lineare Approximation}
-In einem kleinen Gebiet um \(x\) wird \(T\) näherungsweise durch die lineare Abbildung
-\[
-DT(x)
-\]
-beschrieben.
-Eine lineare Abbildung \(A\) skaliert Volumina mit dem Faktor
-\[
-|\det A|.
-\]
-Daher wird ein kleines Volumenelement \(d\lambda^n(x)\) unter \(T\) näherungsweise zu
-\[
-d\lambda^n(y)\approx |\det DT(x)|\,d\lambda^n(x).
-\]
-\end{block}
-\end{frame}
-
-\begin{frame}{Beweisskizze zur Dichtetransformation III}
-\begin{block}{Einsetzen von \(x=T^{-1}(y)\)}
-Setzt man \(x=T^{-1}(y)\), dann erhält man heuristisch
-\[
-p(x)\,d\lambda^n(x)
-=
-p(T^{-1}(y))
-\frac{1}{|\det DT(T^{-1}(y))|}\,d\lambda^n(y).
-\]
-Daher ist die Dichte des Bildmaßes
-\[
-q(y)=p(T^{-1}(y))
-\frac{1}{|\det DT(T^{-1}(y))|}.
-\]
-\end{block}
-
-\begin{block}{Bemerkung}
-Ein strenger Beweis benötigt den mehrdimensionalen Transformationssatz aus der Analysis.
-\end{block}
-\end{frame}
-
-\begin{frame}{Substitutionssatz in \(\mathbb R^n\)}
-\begin{block}{Herleitung des Jacobi-Faktors}
-Setze \(S:=T^{-1}\colon V\to U\). Auf \(V\) ist \(\mu=\lambda^n\), also in der
-allgemeinen Dichtetransformation \(p\equiv 1\). Daher hat \(S_\#\lambda^n\) auf \(U\)
-die Dichte
-\[
-q(x)=\frac{1}{|\det DS(S^{-1}(x))|}.
-\]
-Da \(S^{-1}=T\) und \(DS=D(T^{-1})\), ist
-\[
-q(x)=\frac{1}{|\det D(T^{-1})(T(x))|}.
-\]
-Wegen
-\[
-\left|\det D(T^{-1})(T(x))\right|=\frac{1}{|\det DT(x)|}
-\]
-folgt
-\[
-q(x)=|\det DT(x)|.
-\]
-\end{block}
-\end{frame}
-
-\begin{frame}{Substitutionssatz in \(\mathbb R^n\) (Forts.)}
-\begin{block}{Spezialfall Lebesgue-Maß}
-Also ist \(S_\#\lambda^n\) das Maß mit Dichte \(|\det DT(x)|\) bezüglich \(\lambda^n\).
-Für messbares \(f\) gilt daher
-\[
-\int_V f(y)\,d\lambda^n(y)
-=
-\int_U f(T(x))\,|\det DT(x)|\,d\lambda^n(x).
-\]
-\end{block}
-
-\begin{block}{Kurzform}
-Mit \(d\lambda^n(x)=dx\) und \(d\lambda^n(y)=dy\) schreibt man
-\[
-\int_V f(y)\,dy
-=
-\int_U f(T(x))\,|\det DT(x)|\,dx.
-\]
+\(|\varphi'(y)|\) ist die lokale Verzerrung (Streckung) der Abbildung \(\varphi\colon y\mapsto x\).
 \end{block}
 \end{frame}
 
 \begin{frame}{Spezialfall in einer Dimension}
-\begin{block}{Satz}
+\begin{block}{Satz (folgt direkt aus der Substitutionsregel)}
 Ist \(T\colon [a,b]\to[T(a),T(b)]\) streng monoton und \(C^1\), dann gilt
 \[
 \int_{T(a)}^{T(b)} f(y)\,dy
 =
 \int_a^b f(T(x))\,|T'(x)|\,dx.
 \]
+Das ist der Fall \(n=1\) der Substitutionsregel mit \(|\det DT(x)|=|T'(x)|\).
 \end{block}
 
 \begin{block}{Monoton wachsender Fall}
-Ist \(T\) streng wachsend, dann
+Ist \(T\) streng wachsend, so ist \(|T'|=T'\) und
 \[
 \int_{T(a)}^{T(b)} f(y)\,dy
 =
@@ -1890,25 +1821,16 @@ Ist \(T\) streng wachsend, dann
 \end{frame}
 
 \begin{frame}{Beweisskizze in Dimension 1}
-\begin{block}{Schritt 1: Intervalle}
-Zunächst für \(f=\mathbf 1_{(u,v]}\).
-Wegen der Monotonie ist
+\begin{block}{Ableiten nach der oberen Grenze (wachsendes \(T\))}
+Setze
 \[
-T^{-1}((u,v])
+F(t)=\int_{T(a)}^{T(t)} f(y)\,dy,\qquad G(t)=\int_a^t f(T(x))\,T'(x)\,dx.
 \]
-wieder ein Intervall.
-\end{block}
-
-\begin{block}{Schritt 2: Hauptsatz}
-Dann folgt
+Beide verschwinden bei \(t=a\). Mit Hauptsatz und Kettenregel
 \[
-v-u=\int_{T^{-1}(u)}^{T^{-1}(v)} T'(x)\,dx.
+F'(t)=f(T(t))\,T'(t)=G'(t),
 \]
-Damit gilt die Behauptung für Intervall-Indikatoren.
-\end{block}
-
-\begin{block}{Schritt 3}
-Mit Linearität folgt der Satz für Treppenfunktionen, danach per Approximation für allgemeine Funktionen.
+also \(F\equiv G\); insbesondere \(F(b)=G(b)\) -- die Behauptung. (Fallendes \(T\): Betrag \(|T'|\).)
 \end{block}
 \end{frame}
 
@@ -1943,23 +1865,16 @@ Sei \(X\sim U([1,2])\), also mit Dichte
 \[
 p(x)=\mathbf 1_{[1,2]}(x),
 \]
-und \(Y=X^2\).
-Dann ist die Dichte von \(Y\) auf \([1,4]\):
+und \(Y=X^2\). Parametrisiere alt durch neu: \(x=\Phi(y)=\sqrt y\), also \(\Phi'(y)=\tfrac{1}{2\sqrt y}\). Direkte Form \(q(y)=p(\Phi(y))\,|\Phi'(y)|\):
 \[
-q(y)=p(\sqrt y)\frac{1}{2\sqrt y}
+q(y)=p(\sqrt y)\,\frac{1}{2\sqrt y}
 =
 \frac{1}{2\sqrt y}\,\mathbf 1_{[1,4]}(y).
 \]
 \end{block}
 
 \begin{block}{Kontrolle}
-Für messbares \(f\) gilt
-\[
-\int_1^4 f(y)\,\frac{1}{2\sqrt y}\,dy
-=
-\int_1^2 f(x^2)\,dx.
-\]
-Also wird \([1,2]\) auf \([1,4]\) abgebildet.
+Für messbares \(f\) gilt \(\displaystyle\int_1^4 f(y)\,\frac{1}{2\sqrt y}\,dy=\int_1^2 f(x^2)\,dx\); also wird \([1,2]\) auf \([1,4]\) abgebildet.
 \end{block}
 \end{frame}
 
